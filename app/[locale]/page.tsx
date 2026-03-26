@@ -1,8 +1,10 @@
+import { Suspense } from 'react'
 import Header from '@/components/Header/Header'
 import Method from '@/components/Sections/Method/Method'
 import Solutions from '@/components/Sections/Solutions/Solutions'
 import Portfolio from '@/components/Sections/Portfolio/Portfolio'
 import About from '@/components/Sections/About/About'
+import Contact from '@/components/Sections/Contact/Contact'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -33,7 +35,9 @@ export default async function Home({
       <About dict={dict.about} />
 
       {/* Section 6 — Contact */}
-      {/* <Contact locale={locale} dict={dict.contact} /> */}
+      <Suspense>
+        <Contact dict={dict.contact} />
+      </Suspense>
     </main>
   )
 }

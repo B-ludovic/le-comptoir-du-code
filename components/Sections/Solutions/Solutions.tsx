@@ -39,7 +39,7 @@ type Props = {
 }
 
 export default function Solutions({ dict }: Props) {
-  const cards: (Card & { number: string })[] = [
+  const cards: (Card & { number: string; budgetParam: string })[] = [
     {
       number: '01',
       title: dict.card1_title,
@@ -49,6 +49,7 @@ export default function Solutions({ dict }: Props) {
       features: dict.card1_features,
       delay: dict.card1_delay,
       cta: dict.cta,
+      budgetParam: '1',
     },
     {
       number: '02',
@@ -59,6 +60,7 @@ export default function Solutions({ dict }: Props) {
       features: dict.card2_features,
       delay: dict.card2_delay,
       cta: dict.cta,
+      budgetParam: '2',
     },
     {
       number: '03',
@@ -69,6 +71,7 @@ export default function Solutions({ dict }: Props) {
       features: dict.card3_features,
       delay: dict.card3_delay,
       cta: dict.cta,
+      budgetParam: '3',
     },
   ]
 
@@ -114,7 +117,7 @@ export default function Solutions({ dict }: Props) {
 
                 <div className={styles.cardFooter}>
                   <span className={styles.delay}>{card.delay}</span>
-                  <a href="#contact" className={styles.btn}>{card.cta}</a>
+                  <a href={`?budget=${card.budgetParam}#contact`} className={styles.btn}>{card.cta}</a>
                 </div>
               </div>
 
