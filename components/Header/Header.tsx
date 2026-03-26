@@ -92,6 +92,18 @@ export default function Header({ locale, nav }: Props) {
           ))}
         </nav>
 
+        {/* Portrait */}
+        <div className={styles.portraitMedallion}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/ludovic.jpeg"
+            alt="Ludovic — Le Comptoir du Code"
+            width={32}
+            height={32}
+            className={styles.portraitImage}
+          />
+        </div>
+
         {/* Actions : langue + hamburger */}
         <div className={styles.actions}>
           <button

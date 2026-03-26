@@ -159,6 +159,37 @@
     width: 100%;
 }
 
+/* Portrait médaillon */
+.portraitMedallion {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  margin-left: 0.5rem;
+  margin-right: 1.5rem;
+  background-color: transparent;
+  border: 1px solid rgba(232, 196, 160, 0.4);
+}
+
+.portraitMedallion::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #E8C4A0;
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.portraitImage {
+  object-fit: cover;
+  filter: grayscale(100%) contrast(120%) brightness(85%);
+}
+
 /* Actions */
 .actions {
     display: flex;
