@@ -59,14 +59,21 @@
     "cta": "Start this project"
   },
   "portfolio": {
-    "section_title": "Out of the workshop.",
+    "eyebrow": "Code running in production.",
+    "section_title": "Four projects. Four levels of complexity.",
+    "intro": "Applications that were delivered, used, and that work without me standing by to prop them up.",
     "project1_title": "Fairy Chair Studio",
-    "project1_desc": "Full e-commerce for a hair salon. Real-time stock management, Stripe payments, automated invoicing, custom admin panel.",
-    "project1_stack": "Next.js, NestJS, Prisma",
-    "project2_title": "Mea Vita",
-    "project2_desc": "Online store with product catalogue and secure order system.",
-    "project3_title": "Okanime",
-    "project3_desc": "Management platform with complex database, catalogue and advanced tracking system."
+    "project1_desc": "Full e-commerce for an afro hair salon. Real-time stock, Stripe payments, Brevo newsletters, admin panel with PDF invoicing and Colissimo export.",
+    "project1_stack": "Next.js 15 · NestJS · PostgreSQL · Stripe · Prisma",
+    "project2_title": "Mea Vita Création",
+    "project2_desc": "Artisan leather goods shop. Persistent cart, Stripe, animated delivery tracking timeline, partial refunds and auto-generated PDF invoices.",
+    "project2_stack": "Next.js 14 · Express · PostgreSQL · Stripe · Prisma",
+    "project3_title": "O'Kanime",
+    "project3_desc": "Community anime library. Automated import from MyAnimeList via Jikan API, personal collection with 6 tracking statuses, reviews and ratings.",
+    "project3_stack": "Next.js 16 · Express · PostgreSQL · Prisma · Jikan API",
+    "project4_title": "Aux P'tits Pois",
+    "project4_desc": "Management platform for a local farm cooperative. Weekly baskets, member and producer management, distribution sessions, PDF contracts and newsletters.",
+    "project4_stack": "Next.js 15 · Express · PostgreSQL · Prisma · Puppeteer"
   },
   "about": {
     "section_title": "Who codes your tools?",
