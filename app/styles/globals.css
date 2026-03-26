@@ -46,6 +46,7 @@ ul {
 
 section {
   padding: var(--section-padding);
+  scroll-margin-top: 80px;
 }
 
 @media (max-width: 768px) {
