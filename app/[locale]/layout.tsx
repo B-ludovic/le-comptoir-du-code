@@ -15,6 +15,20 @@ export const metadata: Metadata = {
     siteName: 'Le Comptoir du Code',
     locale: 'fr_FR',
     type: 'website',
+    images: [
+      {
+        url: 'https://lecomptoirducode.fr/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Le Comptoir du Code — Développeur Web Indépendant',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Le Comptoir du Code | Développeur Web Indépendant',
+    description: 'Des applications qui tournent en production. Parlons de votre projet.',
+    images: ['https://lecomptoirducode.fr/og-image.png'],
   },
 }
 
