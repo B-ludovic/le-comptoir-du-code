@@ -46,7 +46,6 @@ export default function Header({ locale, nav }: Props) {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
-
         {/* Logo */}
         <Link href={`/${locale}`} className={styles.logo}>
           Le Comptoir du Code
@@ -54,7 +53,7 @@ export default function Header({ locale, nav }: Props) {
 
         {/* Nav desktop */}
         <nav className={styles.nav}>
-          {navLinks.map(link => (
+          {navLinks.map((link) => (
             <a key={link.href} href={link.href} className={styles.navLink}>
               {link.label}
             </a>
@@ -87,7 +86,7 @@ export default function Header({ locale, nav }: Props) {
 
       {/* Nav mobile */}
       <nav className={`${styles.mobileNav} ${menuOpen ? styles.mobileOpen : ''}`}>
-        {navLinks.map(link => (
+        {navLinks.map((link) => (
           <a
             key={link.href}
             href={link.href}

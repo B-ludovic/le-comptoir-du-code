@@ -1,192 +1,192 @@
 /* Header */
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 1.75rem 0;
-  background-color: transparent;
-  transition: background-color var(--transition-base),
-              padding var(--transition-base),
-              border-bottom var(--transition-base);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.75rem 0;
+    background-color: transparent;
+    transition: background-color var(--transition-base),
+        padding var(--transition-base),
+        border-bottom var(--transition-base);
 }
 
 .header.scrolled {
-  background-color: rgba(26, 23, 20, 0.95);
-  backdrop-filter: blur(8px);
-  padding: 1.25rem 0;
-  border-bottom: var(--border-subtle);
+    background-color: rgba(26, 23, 20, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 1.25rem 0;
+    border-bottom: var(--border-subtle);
 }
 
 .inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* Logo */
 .logo {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--text-main);
-  letter-spacing: 0.5px;
-  transition: color var(--transition-base);
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+    transition: color var(--transition-base);
 }
 
 .logo:hover {
-  color: var(--accent-primary);
+    color: var(--accent-primary);
 }
 
 /* Nav desktop */
 .nav {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
 }
 
 .navLink {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  transition: color var(--transition-base);
-  position: relative;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color var(--transition-base);
+    position: relative;
 }
 
 .navLink::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--accent-primary);
-  transition: width var(--transition-base);
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent-primary);
+    transition: width var(--transition-base);
 }
 
 .navLink:hover {
-  color: var(--accent-primary);
+    color: var(--accent-primary);
 }
 
 .navLink:hover::after {
-  width: 100%;
+    width: 100%;
 }
 
 /* Actions */
 .actions {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 /* Switcher de langue */
 .langSwitch {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: none;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: color var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color var(--transition-base);
 }
 
 .langSwitch:hover {
-  color: var(--text-main);
+    color: var(--text-main);
 }
 
 .langActive {
-  color: var(--accent-primary);
+    color: var(--accent-primary);
 }
 
 .langSeparator {
-  color: var(--text-muted);
-  opacity: 0.4;
+    color: var(--text-muted);
+    opacity: 0.4;
 }
 
 /* Hamburger */
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
 }
 
 .hamburger span {
-  display: block;
-  width: 22px;
-  height: 1px;
-  background-color: var(--text-main);
-  transition: all var(--transition-base);
-  transform-origin: center;
+    display: block;
+    width: 22px;
+    height: 1px;
+    background-color: var(--text-main);
+    transition: all var(--transition-base);
+    transform-origin: center;
 }
 
 .hamburger.open span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
-  opacity: 0;
+    opacity: 0;
 }
 
 .hamburger.open span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
 }
 
 /* Nav mobile */
 .mobileNav {
-  display: none;
-  flex-direction: column;
-  gap: 0;
-  background-color: rgba(26, 23, 20, 0.98);
-  border-top: var(--border-subtle);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height var(--transition-base);
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background-color: rgba(26, 23, 20, 0.98);
+    border-top: var(--border-subtle);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-base);
 }
 
 .mobileNav.mobileOpen {
-  max-height: 400px;
+    max-height: 400px;
 }
 
 .mobileNavLink {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 1.25rem 2rem;
-  border-bottom: var(--border-subtle);
-  transition: color var(--transition-base), background-color var(--transition-base);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 1.25rem 2rem;
+    border-bottom: var(--border-subtle);
+    transition: color var(--transition-base), background-color var(--transition-base);
 }
 
 .mobileNavLink:hover {
-  color: var(--accent-primary);
-  background-color: var(--bg-card);
+    color: var(--accent-primary);
+    background-color: var(--bg-card);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .nav {
-    display: none;
-  }
+    .nav {
+        display: none;
+    }
 
-  .hamburger {
-    display: flex;
-  }
+    .hamburger {
+        display: flex;
+    }
 
-  .mobileNav {
-    display: flex;
-  }
+    .mobileNav {
+        display: flex;
+    }
 }
