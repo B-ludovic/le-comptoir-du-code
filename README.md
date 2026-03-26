@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧰 Le Comptoir du Code
 
-## Getting Started
+Portfolio freelance de développement web. Une page. Pas de framework CSS tiers, pas de template.
+---
 
-First, run the development server:
+## ⚙️ Stack
+
+- **Next.js 16** — App Router, Turbopack
+- **TypeScript** — strict mode
+- **CSS Modules** — zéro dépendance de style externe
+- **ImprovMX + Nodemailer** — formulaire de contact via SMTP
+- **Lucide React + React Icons** — icônes
+
+---
+
+## ✨ Fonctionnalités
+
+- 🌍 Site bilingue FR / EN avec détection automatique de la langue (`accept-language`)
+- 📐 6 sections : Méthode, Solutions, Réalisations, Le Codeur, Contact
+- 📬 Formulaire de contact avec pré-sélection du budget et envoi SMTP
+- 📄 Pages légales : Mentions Légales, Politique de Confidentialité, Gestion des Cookies, CGP de Services
+- 🎨 Design system complet : variables CSS, typographie Cormorant Garamond + DM Sans, palette warm dark
+- 📱 Responsive mobile
+
+---
+
+## 🚀 Installation
+
+```bash
+git clone git@github.com:B-ludovic/le-comptoir-du-code.git
+cd le-comptoir-du-code
+npm install
+```
+
+Créer un fichier `.env` à la racine :
+
+```env
+IMPROVMX_SMTP_USER=contact@lecomptoirducode.fr
+IMPROVMX_SMTP_PASSWORD=votre_mot_de_passe_improvmx
+```
+
+Lancer le serveur de développement :
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site tourne sur [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🗂️ Structure
 
-## Learn More
+```
+app/
+├── [locale]/               # Routing i18n (fr / en)
+│   ├── page.tsx            # Page principale
+│   ├── mentions-legales/
+│   ├── politique-de-confidentialite/
+│   ├── gestion-des-cookies/
+│   └── conditions-generales/
+├── api/contact/route.ts    # Envoi email via ImprovMX
+├── dictionaries/           # Traductions fr.json / en.json
+└── styles/                 # Variables CSS + globals
 
-To learn more about Next.js, take a look at the following resources:
+components/
+├── Header/
+├── Footer/
+├── Legal/
+└── Sections/
+    ├── Method/
+    ├── Solutions/
+    ├── Portfolio/
+    ├── About/
+    └── Contact/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌐 Déploiement
 
-## Deploy on Vercel
+Prévu sur [Vercel](https://vercel.com/). Les variables d'environnement sont à renseigner dans les settings du projet Vercel.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*✍🏽 Ludovic BATAILLE — [lecomptoirducode.fr](https://lecomptoirducode.fr)*
