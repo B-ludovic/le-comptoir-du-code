@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import emailjs from '@emailjs/browser'
 import styles from './Contact.module.css'
 
 type Props = {
@@ -37,21 +36,31 @@ export default function Contact({ dict }: Props) {
     else if (budget === '3') setSelectedBudget(dict.budget_3)
   }, [searchParams, dict.budget_1, dict.budget_2, dict.budget_3])
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!formRef.current) return
 
     setStatus('sending')
 
+    const data = new FormData(formRef.current)
+
     try {
-      await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        formRef.current,
-        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! }
-      )
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from_name: data.get('from_name'),
+          reply_to: data.get('reply_to'),
+          budget: data.get('budget'),
+          message: data.get('message'),
+        }),
+      })
+
+      if (!res.ok) throw new Error()
+
       setStatus('success')
       formRef.current.reset()
+      setSelectedBudget('')
     } catch {
       setStatus('error')
     }
@@ -130,7 +139,11 @@ export default function Contact({ dict }: Props) {
               disabled={status === 'sending'}
               className={styles.btn}
             >
-              {status === 'sending' ? '...' : dict.btn_submit}
+              {status === 'sending' ? (
+                <span className={styles.dots}>
+                  <span>.</span><span>.</span><span>.</span>
+                </span>
+              ) : dict.btn_submit}
             </button>
 
             {status === 'success' && (
