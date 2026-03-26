@@ -76,8 +76,12 @@
     "project4_stack": "Next.js 15 · Express · PostgreSQL · Prisma · Puppeteer"
   },
   "about": {
-    "section_title": "Qui code vos outils ?",
-    "text": "Après 18 ans à encadrer des équipes commerciales et à gérer des imprévus, j'ai basculé vers ce qui m'a toujours vraiment passionné : le code. Mon passé de manager m'a laissé une exigence absolue : le blabla ne fait pas avancer les projets.\n\nJe suis un observateur minutieux ; je vois au premier coup d'œil ce qui cloche sur un écran, ce qui sonne faux ou ce qui ralentit l'utilisateur. Je ne vous ferai jamais de grandes promesses en vous disant que je suis quelqu'un de 'fiable' — je trouve que ce mot est galvaudé. En revanche, quand on me confie un travail, je refuse viscéralement d'être celui sur qui on ne peut pas compter. Je ne me couche pas tant que le code ne fait pas exactement ce qui était prévu.\n\nNous ne sommes pas là pour devenir amis, nous sommes là pour construire une solution technique performante pour votre entreprise."
+    "eyebrow": "L'artisan derrière l'écran.",
+    "section_title": "L'exigence du manager. La rigueur du codeur.",
+    "p1": "Après 18 ans à encadrer des équipes commerciales et à gérer des crises sur le terrain, j'ai tombé la cravate pour revenir à ma véritable obsession : la logique pure du code.",
+    "p2": "Mon passé de manager m'a laissé une cicatrice et une conviction : **le blabla ne fait pas avancer les projets**. Je ne vous ferai pas perdre votre temps avec du jargon technique pour justifier une facture. Je suis un observateur minutieux : je vois au premier coup d'œil ce qui cloche sur une interface, ce qui sonne faux ou ce qui ralentit vos clients.",
+    "p3": "Je ne vous ferai jamais de grandes promesses en vous jurant que je suis quelqu'un de \"fiable\" — ce mot est devenu une formule de politesse vide de sens. En revanche, quand on me confie un cahier des charges, **je refuse viscéralement d'être le maillon faible**. Je ne ferme pas mon éditeur de code tant que **l'outil ne fait pas exactement ce qui a été signé au comptoir**.",
+    "p4": "Nous ne sommes pas là pour devenir amis. Nous sommes là pour **construire un moteur technique performant pour votre entreprise**. Et ça, je sais le faire."
   },
   "contact": {
     "section_title": "Déposer le brief.",

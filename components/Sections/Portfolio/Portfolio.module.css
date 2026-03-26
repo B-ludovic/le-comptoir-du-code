@@ -73,6 +73,8 @@
 
 .projectImage {
   flex: 1.2;
+  overflow: hidden;
+  border-radius: var(--card-radius);
 }
 
 .imageLink {
@@ -84,11 +86,6 @@
 .imageLink:hover .screenshot {
   transform: scale(1.03);
   box-shadow: 0 36px 110px rgba(0, 0, 0, 0.65);
-}
-
-.projectImage {
-  overflow: hidden;
-  border-radius: var(--card-radius);
 }
 
 .screenshot {
@@ -206,11 +203,13 @@
 
   .number {
     font-size: 8rem;
-    bottom: -1rem;
+    top: 50%;
+    transform: translateY(-70%);
     right: -0.5rem;
   }
 
   .projectWrapper:nth-child(even) .number {
+    right: auto;
     left: -0.5rem;
   }
 

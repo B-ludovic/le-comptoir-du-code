@@ -2,6 +2,7 @@ import Header from '@/components/Header/Header'
 import Method from '@/components/Sections/Method/Method'
 import Solutions from '@/components/Sections/Solutions/Solutions'
 import Portfolio from '@/components/Sections/Portfolio/Portfolio'
+import About from '@/components/Sections/About/About'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -29,7 +30,7 @@ export default async function Home({
       <Portfolio dict={dict.portfolio} />
 
       {/* Section 5 — Le Codeur */}
-      {/* <About locale={locale} dict={dict.about} /> */}
+      <About dict={dict.about} />
 
       {/* Section 6 — Contact */}
       {/* <Contact locale={locale} dict={dict.contact} /> */}

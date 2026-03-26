@@ -76,8 +76,12 @@
     "project4_stack": "Next.js 15 · Express · PostgreSQL · Prisma · Puppeteer"
   },
   "about": {
-    "section_title": "Who codes your tools?",
-    "text": "After 18 years managing sales teams and handling the unexpected, I shifted to what has always truly driven me: code. My background as a manager left me with one absolute standard: talk doesn't move projects forward.\n\nI'm a meticulous observer. I can spot at a glance what's broken on a screen, what feels off, or what's slowing the user down. I'll never make grand promises about being 'reliable' — I find that word has lost all meaning. What I will tell you is this: when I'm trusted with a job, I refuse to be the one who lets people down. I don't stop until the code does exactly what was agreed.\n\nWe're not here to become friends. We're here to build a solid technical solution for your business."
+    "eyebrow": "The craftsman behind the screen.",
+    "section_title": "A manager's standards. A developer's precision.",
+    "p1": "After 18 years managing sales teams and handling crises on the ground, I traded the tie for what has always been my real obsession: the pure logic of code.",
+    "p2": "My background as a manager left me with a scar and a conviction: **talk doesn't move projects forward**. I won't waste your time with technical jargon to justify an invoice. I'm a meticulous observer — I can spot at a glance what's broken on an interface, what feels off, or what's slowing your clients down.",
+    "p3": "I'll never make grand promises swearing I'm someone you can 'rely on' — that word has become a meaningless pleasantry. What I will tell you is this: when I'm handed a brief, **I refuse to be the weak link**. I don't close my code editor until **the tool does exactly what was agreed at the counter**.",
+    "p4": "We're not here to become friends. We're here to **build a solid technical engine for your business**. And that, I know how to do."
   },
   "contact": {
     "section_title": "Submit the brief.",
