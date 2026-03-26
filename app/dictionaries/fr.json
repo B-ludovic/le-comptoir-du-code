@@ -18,7 +18,9 @@
     "block3_text": "Un outil testé, sécurisé, et qui vous appartient à 100 %. Je vous forme à son utilisation et je m'efface."
   },
   "solutions": {
-    "section_title": "Des forfaits clairs pour des besoins précis.",
+    "eyebrow": "Choisissez votre niveau d'ambition.",
+    "section_title": "Trois forfaits. Zéro surprise.",
+    "intro": "Des offres calibrées pour des besoins réels. Pas de devis flou, pas de tarif qui s'envole en cours de route.",
     "card1_title": "La Présence",
     "card1_subtitle": "Site Vitrine",
     "card1_price": "À partir de 1 200 €",
@@ -53,7 +55,8 @@
       "Génération de PDF",
       "Espace administrateur sur-mesure"
     ],
-    "card3_delay": "3 semaines et +"
+    "card3_delay": "3 semaines et +",
+    "cta": "Démarrer ce projet"
   },
   "portfolio": {
     "section_title": "Ce qui sort de l'atelier.",

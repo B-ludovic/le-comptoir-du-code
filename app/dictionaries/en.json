@@ -18,7 +18,9 @@
     "block3_text": "A tested, secure tool that belongs to you 100%. I train you on how to use it, then step back."
   },
   "solutions": {
-    "section_title": "Clear packages for precise needs.",
+    "eyebrow": "Choose your level of ambition.",
+    "section_title": "Three packages. Zero surprises.",
+    "intro": "Offers calibrated for real needs. No vague quotes, no price that balloons mid-project.",
     "card1_title": "The Presence",
     "card1_subtitle": "Showcase Website",
     "card1_price": "From €1,200",
@@ -53,7 +55,8 @@
       "PDF generation",
       "Custom admin panel"
     ],
-    "card3_delay": "3 weeks and more"
+    "card3_delay": "3 weeks and more",
+    "cta": "Start this project"
   },
   "portfolio": {
     "section_title": "Out of the workshop.",

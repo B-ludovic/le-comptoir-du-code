@@ -1,5 +1,6 @@
 import Header from '@/components/Header/Header'
 import Method from '@/components/Sections/Method/Method'
+import Solutions from '@/components/Sections/Solutions/Solutions'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -21,7 +22,7 @@ export default async function Home({
       <Method dict={dict.method} />
 
       {/* Section 3 — Solutions */}
-      {/* <Solutions locale={locale} dict={dict.solutions} /> */}
+      <Solutions dict={dict.solutions} />
 
       {/* Section 4 — Réalisations */}
       {/* <Portfolio locale={locale} dict={dict.portfolio} /> */}

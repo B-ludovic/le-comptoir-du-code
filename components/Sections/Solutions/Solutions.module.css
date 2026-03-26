@@ -1,0 +1,294 @@
+.section {
+  padding: var(--section-padding);
+}
+
+/* Header — même layout que Method */
+.header {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 5rem;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent-primary);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.headerRight {
+  padding-bottom: 0.5rem;
+}
+
+.intro {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* Grille des cartes */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.card {
+  position: relative;
+  padding: 0 2.5rem;
+  overflow: visible;
+  transition: transform var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:first-child {
+  padding-left: 2.5rem;
+}
+
+.card:first-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(232, 196, 160, 0.2) 20%,
+    rgba(232, 196, 160, 0.2) 80%,
+    transparent
+  );
+  box-shadow: 0 0 6px rgba(232, 196, 160, 0.25), 0 0 14px rgba(232, 196, 160, 0.1);
+}
+
+.card:last-child {
+  padding-right: 0;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Séparateur vertical */
+.separator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(232, 196, 160, 0.2) 20%,
+    rgba(232, 196, 160, 0.2) 80%,
+    transparent
+  );
+  box-shadow: 0 0 6px rgba(232, 196, 160, 0.25), 0 0 14px rgba(232, 196, 160, 0.1);
+}
+
+/* Numéro fantôme */
+.number {
+  position: absolute;
+  top: -1.5rem;
+  left: -0.5rem;
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-muted);
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -4px;
+}
+
+/* Contenu de la carte */
+.cardContent {
+  position: relative;
+  z-index: 1;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.cardSubtitle {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+.cardPrice {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-top: 0.25rem;
+}
+
+.cardDesc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Features */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.checkIcon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+/* Footer de la carte */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: var(--border-subtle);
+  margin-top: auto;
+}
+
+.delay {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+/* Bouton */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--card-radius);
+  transition: background-color var(--transition-base), color var(--transition-base);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background-color: var(--accent-primary);
+  color: var(--bg-main);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .headerRight {
+    padding-bottom: 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .card {
+    padding: 0 0 3rem 0;
+  }
+
+  .card:first-child {
+    padding-left: 0;
+  }
+
+  .card:first-child::before {
+    display: none;
+  }
+
+  .card:last-child {
+    padding-bottom: 0;
+  }
+
+  .separator {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(232, 196, 160, 0.2) 20%,
+      rgba(232, 196, 160, 0.2) 80%,
+      transparent
+    );
+  }
+
+  .number {
+    font-size: 6rem;
+  }
+
+  .cardFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

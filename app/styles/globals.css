@@ -71,6 +71,10 @@ main {
 }
 
 section {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: var(--section-padding);
   scroll-margin-top: 80px;
 }
