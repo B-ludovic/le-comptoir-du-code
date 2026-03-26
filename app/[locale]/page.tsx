@@ -1,4 +1,5 @@
 import Header from '@/components/Header/Header'
+import Method from '@/components/Sections/Method/Method'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -10,14 +11,14 @@ export default async function Home({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const dict = dictionaries[locale as 'fr' | 'en']
+  const dict = dictionaries[locale as 'fr' | 'en'] ?? dictionaries.fr
 
   return (
     <main>
       <Header locale={locale} nav={dict.nav} />
 
       {/* Section 2 — Méthode */}
-      {/* <Method locale={locale} dict={dict.method} /> */}
+      <Method dict={dict.method} />
 
       {/* Section 3 — Solutions */}
       {/* <Solutions locale={locale} dict={dict.solutions} /> */}
