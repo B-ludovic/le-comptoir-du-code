@@ -37,7 +37,12 @@ export default function Header({ locale, nav }: Props) {
       const el = document.getElementById(id)
       if (!el) return
       const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id)
+            window.history.replaceState(null, '', `#${id}`)
+          }
+        },
         { threshold: 0.4 }
       )
       observer.observe(el)
