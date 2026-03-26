@@ -2,9 +2,29 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { z } from 'zod'
 
+// Rate limiting : 3 requêtes max par IP sur 15 minutes
+const rateLimit = new Map<string, { count: number; reset: number }>()
+const LIMIT = 3
+const WINDOW_MS = 15 * 60 * 1000
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now()
+  const entry = rateLimit.get(ip)
+
+  if (!entry || now > entry.reset) {
+    rateLimit.set(ip, { count: 1, reset: now + WINDOW_MS })
+    return true
+  }
+
+  if (entry.count >= LIMIT) return false
+
+  entry.count++
+  return true
+}
+
 const schema = z.object({
   from_name: z.string().min(1).max(100),
-  reply_to: z.string().email().max(200),
+  reply_to: z.email().max(200),
   budget: z.string().max(200).optional(),
   message: z.string().min(10).max(5000),
 })
@@ -20,6 +40,15 @@ const transporter = nodemailer.createTransport({
 })
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { error: 'Trop de tentatives. Réessayez dans 15 minutes.' },
+      { status: 429 }
+    )
+  }
+
   const body = await req.json()
   const result = schema.safeParse(body)
 
