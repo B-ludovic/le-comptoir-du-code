@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "method": "Méthode",
+    "solutions": "Solutions",
+    "portfolio": "Réalisations",
+    "about": "Le Codeur",
+    "contact": "Contact"
+  },
+  "method": {
+    "section_title": "Un fonctionnement sans zone d'ombre.",
+    "block1_title": "Le brief au comptoir.",
+    "block1_text": "Vous m'exposez votre besoin métier. Je vous dis immédiatement si c'est réalisable, avec quelle technologie, et à quel prix.",
+    "block2_title": "L'arrière-boutique.",
+    "block2_text": "Je conçois et je code. Vous continuez à gérer votre entreprise sans perdre de temps dans des réunions interminables. L'avancement est factuel.",
+    "block3_title": "La livraison.",
+    "block3_text": "Un outil testé, sécurisé, et qui vous appartient à 100 %. Je vous forme à son utilisation et je m'efface."
+  },
+  "solutions": {
+    "section_title": "Des forfaits clairs pour des besoins précis.",
+    "card1_title": "La Présence",
+    "card1_subtitle": "Site Vitrine",
+    "card1_price": "À partir de 1 200 €",
+    "card1_desc": "Un site rapide, optimisé pour les mobiles et conçu pour convertir vos visiteurs en clients.",
+    "card1_features": [
+      "Design sur-mesure",
+      "3 à 5 pages",
+      "Responsive mobile impeccable",
+      "Formulaire de contact",
+      "Mise en ligne incluse"
+    ],
+    "card1_delay": "3 à 4 jours",
+    "card2_title": "L'E-commerce & Réservation",
+    "card2_price": "À partir de 2 500 €",
+    "card2_desc": "Vente en ligne de vos produits (paiements sécurisés Stripe) ou prise de rendez-vous synchronisée avec votre agenda.",
+    "card2_features": [
+      "Site vitrine inclus",
+      "Synchronisation d'agenda",
+      "Boutique en ligne",
+      "Paiements Stripe sécurisés",
+      "Catalogue produits"
+    ],
+    "card2_delay": "7 à 12 jours",
+    "card3_title": "Les Outils Sur-Mesure",
+    "card3_subtitle": "Applications métiers",
+    "card3_price": "À partir de 5 000 €",
+    "card3_desc": "Développement de votre back-office. Tableaux de bord de gestion, suivi des stocks, automatisation de factures PDF.",
+    "card3_features": [
+      "Base de données complexe",
+      "Tableaux de bord CRUD",
+      "Back-end robuste NestJS",
+      "Génération de PDF",
+      "Espace administrateur sur-mesure"
+    ],
+    "card3_delay": "3 semaines et +"
+  },
+  "portfolio": {
+    "section_title": "Ce qui sort de l'atelier.",
+    "project1_title": "Fairy Chair Studio",
+    "project1_desc": "E-commerce complet pour un salon de coiffure. Gestion des stocks en temps réel, paiements Stripe, facturation automatisée, espace administrateur sur-mesure.",
+    "project1_stack": "Next.js, NestJS, Prisma",
+    "project2_title": "Mea Vita",
+    "project2_desc": "Boutique en ligne avec catalogue produits et système de commande sécurisé.",
+    "project3_title": "Okanime",
+    "project3_desc": "Plateforme de gestion avec base de données complexe, catalogue et système de suivi avancé."
+  },
+  "about": {
+    "section_title": "Qui code vos outils ?",
+    "text": "Après 18 ans à encadrer des équipes commerciales et à gérer des imprévus, j'ai basculé vers ce qui m'a toujours vraiment passionné : le code. Mon passé de manager m'a laissé une exigence absolue : le blabla ne fait pas avancer les projets.\n\nJe suis un observateur minutieux ; je vois au premier coup d'œil ce qui cloche sur un écran, ce qui sonne faux ou ce qui ralentit l'utilisateur. Je ne vous ferai jamais de grandes promesses en vous disant que je suis quelqu'un de 'fiable' — je trouve que ce mot est galvaudé. En revanche, quand on me confie un travail, je refuse viscéralement d'être celui sur qui on ne peut pas compter. Je ne me couche pas tant que le code ne fait pas exactement ce qui était prévu.\n\nNous ne sommes pas là pour devenir amis, nous sommes là pour construire une solution technique performante pour votre entreprise."
+  },
+  "contact": {
+    "section_title": "Déposer le brief.",
+    "intro": "Décrivez votre besoin avec précision ci-dessous. Si votre projet correspond à mon champ de compétences, nous fixerons un appel ciblé de 15 minutes pour valider le périmètre technique.",
+    "field_name": "Nom / Entreprise",
+    "field_email": "Email",
+    "field_description": "Description de votre besoin",
+    "field_description_placeholder": "Soyez factuel : quelles sont les fonctionnalités indispensables ?",
+    "field_budget": "Enveloppe budgétaire estimée",
+    "budget_1": "1 200 € — 2 500 € (Site Vitrine)",
+    "budget_2": "2 500 € — 5 000 € (E-commerce / Réservation)",
+    "budget_3": "À partir de 5 000 € (Application Sur-Mesure)",
+    "btn_submit": "Envoyer la demande"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "method": "Method",
+    "solutions": "Solutions",
+    "portfolio": "Work",
+    "about": "The Dev",
+    "contact": "Contact"
+  },
+  "method": {
+    "section_title": "A process with no grey areas.",
+    "block1_title": "The brief at the counter.",
+    "block1_text": "You explain your business need. I tell you immediately whether it's feasible, with which technology, and at what price.",
+    "block2_title": "The back room.",
+    "block2_text": "I design and I code. You keep running your business without wasting time in endless meetings. Progress is factual.",
+    "block3_title": "The delivery.",
+    "block3_text": "A tested, secure tool that belongs to you 100%. I train you on how to use it, then step back."
+  },
+  "solutions": {
+    "section_title": "Clear packages for precise needs.",
+    "card1_title": "The Presence",
+    "card1_subtitle": "Showcase Website",
+    "card1_price": "From €1,200",
+    "card1_desc": "A fast website, optimised for mobile and designed to convert visitors into clients.",
+    "card1_features": [
+      "Custom design",
+      "3 to 5 pages",
+      "Flawless mobile responsive",
+      "Contact form",
+      "Deployment included"
+    ],
+    "card1_delay": "3 to 4 days",
+    "card2_title": "E-commerce & Booking",
+    "card2_price": "From €2,500",
+    "card2_desc": "Sell your products online (secure Stripe payments) or take appointments synced with your calendar.",
+    "card2_features": [
+      "Showcase website included",
+      "Calendar synchronisation",
+      "Online store",
+      "Secure Stripe payments",
+      "Product catalogue"
+    ],
+    "card2_delay": "7 to 12 days",
+    "card3_title": "Custom Tools",
+    "card3_subtitle": "Business Applications",
+    "card3_price": "From €5,000",
+    "card3_desc": "Development of your back-office. Management dashboards, stock tracking, automated PDF invoicing.",
+    "card3_features": [
+      "Complex database",
+      "CRUD dashboards",
+      "Robust NestJS back-end",
+      "PDF generation",
+      "Custom admin panel"
+    ],
+    "card3_delay": "3 weeks and more"
+  },
+  "portfolio": {
+    "section_title": "Out of the workshop.",
+    "project1_title": "Fairy Chair Studio",
+    "project1_desc": "Full e-commerce for a hair salon. Real-time stock management, Stripe payments, automated invoicing, custom admin panel.",
+    "project1_stack": "Next.js, NestJS, Prisma",
+    "project2_title": "Mea Vita",
+    "project2_desc": "Online store with product catalogue and secure order system.",
+    "project3_title": "Okanime",
+    "project3_desc": "Management platform with complex database, catalogue and advanced tracking system."
+  },
+  "about": {
+    "section_title": "Who codes your tools?",
+    "text": "After 18 years managing sales teams and handling the unexpected, I shifted to what has always truly driven me: code. My background as a manager left me with one absolute standard: talk doesn't move projects forward.\n\nI'm a meticulous observer. I can spot at a glance what's broken on a screen, what feels off, or what's slowing the user down. I'll never make grand promises about being 'reliable' — I find that word has lost all meaning. What I will tell you is this: when I'm trusted with a job, I refuse to be the one who lets people down. I don't stop until the code does exactly what was agreed.\n\nWe're not here to become friends. We're here to build a solid technical solution for your business."
+  },
+  "contact": {
+    "section_title": "Submit the brief.",
+    "intro": "Describe your need precisely below. If your project falls within my area of expertise, we'll schedule a focused 15-minute call to validate the technical scope.",
+    "field_name": "Name / Company",
+    "field_email": "Email",
+    "field_description": "Description of your need",
+    "field_description_placeholder": "Be factual: what are the essential features?",
+    "field_budget": "Estimated budget",
+    "budget_1": "€1,200 — €2,500 (Showcase Website)",
+    "budget_2": "€2,500 — €5,000 (E-commerce / Booking)",
+    "budget_3": "From €5,000 (Custom Application)",
+    "btn_submit": "Send request"
+  }
+}
