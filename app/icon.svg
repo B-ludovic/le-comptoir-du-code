@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Fond sombre -->
+  <rect width="32" height="32" rx="4" fill="#1A1714"/>
+  <!-- Bordure accent -->
+  <rect x="1" y="1" width="30" height="30" rx="3" fill="none" stroke="#E8C4A0" stroke-width="1"/>
+  <!-- Texte C/C -->
+  <text
+    x="16"
+    y="21"
+    font-family="monospace"
+    font-size="12"
+    font-weight="700"
+    fill="#E8C4A0"
+    text-anchor="middle"
+    dominant-baseline="auto"
+    letter-spacing="-0.5"
+  >C/C</text>
+</svg>
