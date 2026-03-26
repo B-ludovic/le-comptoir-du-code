@@ -7,7 +7,9 @@
     "contact": "Contact"
   },
   "method": {
-    "section_title": "Un fonctionnement sans zone d'ombre.",
+    "eyebrow": "De l'idée à la mise en ligne, sans détours.",
+    "section_title": "Trois étapes. Pas une de plus.",
+    "intro": "Pas de réunions inutiles, pas d'approximations. Chaque étape a un livrable, un délai, un prix.",
     "block1_title": "Le brief au comptoir.",
     "block1_text": "Vous m'exposez votre besoin métier. Je vous dis immédiatement si c'est réalisable, avec quelle technologie, et à quel prix.",
     "block2_title": "L'arrière-boutique.",

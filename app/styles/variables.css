@@ -5,10 +5,11 @@
   --bg-main: #1A1714;
   --bg-card: #242019;
   --bg-card-hover: #2A251E;
+  --bg-glow: rgba(200, 120, 40, 0.08);
 
   /* Typographie */
   --text-main: #F0EBE3;
-  --text-muted: #9A9088;
+  --text-muted: #ADA49C;
 
   /* Accents */
   --accent-primary: #E8C4A0;
@@ -19,7 +20,7 @@
   --font-body: 'DM Sans', sans-serif;
 
   /* Espacements */
-  --section-padding: 8rem 2rem;
+  --section-padding: 10rem 2rem;
   --container-max: 1200px;
   --card-radius: 2px;
 

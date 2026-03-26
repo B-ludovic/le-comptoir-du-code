@@ -3,7 +3,9 @@ import styles from './Method.module.css'
 
 type Props = {
   dict: {
+    eyebrow: string
     section_title: string
+    intro: string
     block1_title: string
     block1_text: string
     block2_title: string
@@ -39,7 +41,15 @@ export default function Method({ dict }: Props) {
     <section id="method" className={styles.section}>
       <div className="container">
 
-        <h2 className={styles.sectionTitle}>{dict.section_title}</h2>
+        <div className={styles.header}>
+          <div className={styles.headerLeft}>
+            <p className={styles.eyebrow}>{dict.eyebrow}</p>
+            <h2 className={styles.sectionTitle}>{dict.section_title}</h2>
+          </div>
+          <div className={styles.headerRight}>
+            <p className={styles.intro}>{dict.intro}</p>
+          </div>
+        </div>
 
         <div className={styles.blocks}>
           {blocks.map((block, index) => {
