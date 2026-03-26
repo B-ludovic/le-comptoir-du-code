@@ -7,6 +7,7 @@ type Card = {
   price: string
   desc: string
   features: string[]
+  maintenance?: string
   delay: string
   cta: string
 }
@@ -27,12 +28,14 @@ type Props = {
     card2_price: string
     card2_desc: string
     card2_features: string[]
+    card2_maintenance: string
     card2_delay: string
     card3_title: string
     card3_subtitle?: string
     card3_price: string
     card3_desc: string
     card3_features: string[]
+    card3_maintenance: string
     card3_delay: string
     cta: string
   }
@@ -58,6 +61,7 @@ export default function Solutions({ dict }: Props) {
       price: dict.card2_price,
       desc: dict.card2_desc,
       features: dict.card2_features,
+      maintenance: dict.card2_maintenance,
       delay: dict.card2_delay,
       cta: dict.cta,
       budgetParam: '2',
@@ -69,6 +73,7 @@ export default function Solutions({ dict }: Props) {
       price: dict.card3_price,
       desc: dict.card3_desc,
       features: dict.card3_features,
+      maintenance: dict.card3_maintenance,
       delay: dict.card3_delay,
       cta: dict.cta,
       budgetParam: '3',
@@ -114,6 +119,13 @@ export default function Solutions({ dict }: Props) {
                     </li>
                   ))}
                 </ul>
+
+                {card.maintenance && (
+                  <div className={styles.warranty}>
+                    <span className={styles.warrantyIcon}>✦</span>
+                    {card.maintenance}
+                  </div>
+                )}
 
                 <div className={styles.cardFooter}>
                   <span className={styles.delay}>{card.delay}</span>

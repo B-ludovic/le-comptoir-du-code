@@ -39,9 +39,9 @@ const articles = {
         "C'est une règle absolue de l'artisanat : l'œuvre appartient à son créateur tant qu'elle n'est pas payée. Le transfert des droits de propriété intellectuelle sur le code sur-mesure et le design ne s'opère qu'au moment du paiement intégral de la facture finale. Une fois soldé, le code vous appartient.",
     },
     {
-      title: "7. Garantie et Maintenance engagée",
+      title: "7. Garantie et Maintenance technique",
       content:
-        "Sauf mention contraire, chaque création de site inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Cette maintenance couvre les mises à jour de sécurité et la correction de bugs. Elle ne couvre pas les demandes de nouvelles fonctionnalités, les refontes de design, ou les pannes causées par une mauvaise manipulation du client dans son espace administrateur.",
+        "Pour les projets d'une valeur égale ou supérieure à 2 500 € (offres E-commerce et Sur-Mesure), la prestation inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Cette maintenance couvre exclusivement les mises à jour de sécurité et la correction de bugs critiques liés à mon code. Elle ne couvre en aucun cas les demandes de nouvelles fonctionnalités, les modifications de contenu, les refontes de design, ou les pannes causées par une manipulation du client. Pour les projets d'une valeur inférieure à 2 500 € (offre Présence), le site est livré clé en main. Toute intervention technique post-livraison fera l'objet d'un devis séparé.",
     },
     {
       title: "8. Résiliation",
@@ -86,9 +86,9 @@ const articles = {
         "This is an absolute rule of craftsmanship: the work belongs to its creator until it is paid for. The transfer of intellectual property rights over custom code and design only occurs upon full payment of the final invoice. Once settled, the code is yours.",
     },
     {
-      title: "7. Warranty and Committed Maintenance",
+      title: "7. Warranty and Technical Maintenance",
       content:
-        "Unless otherwise stated, each website creation includes technical maintenance for 12 months from the launch date. This maintenance covers security updates and bug fixes. It does not cover requests for new features, design overhauls, or malfunctions caused by the client's mishandling of their admin panel.",
+        "For projects valued at €2,500 or more (E-commerce and Custom plans), the service includes technical maintenance for 12 months from the launch date. This maintenance covers exclusively security updates and critical bug fixes related to my code. It does not cover requests for new features, content modifications, design overhauls, or malfunctions caused by the client. For projects under €2,500 (Presence plan), the site is delivered turnkey. Any post-delivery technical work will be subject to a separate quote.",
     },
     {
       title: "8. Termination",

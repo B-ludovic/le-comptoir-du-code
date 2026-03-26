@@ -43,6 +43,7 @@
       "Paiements Stripe sécurisés",
       "Catalogue produits"
     ],
+    "card2_maintenance": "1 an de mises à jour de sécurité inclus",
     "card2_delay": "7 à 12 jours",
     "card3_title": "Les Outils Sur-Mesure",
     "card3_subtitle": "Applications métiers",
@@ -55,6 +56,7 @@
       "Génération de PDF",
       "Espace administrateur sur-mesure"
     ],
+    "card3_maintenance": "1 an de mises à jour de sécurité inclus",
     "card3_delay": "3 semaines et +",
     "cta": "Démarrer ce projet"
   },
