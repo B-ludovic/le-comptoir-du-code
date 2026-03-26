@@ -1,10 +1,37 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
+const BASE_URL = 'https://lecomptoirducode.fr'
+const slug = 'mentions-legales'
 const dictionaries = { fr, en }
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const isFr = locale !== 'en'
+  return {
+    title: isFr
+      ? 'Mentions Légales | Le Comptoir du Code'
+      : 'Legal Notice | Le Comptoir du Code',
+    description: isFr
+      ? 'Mentions légales du site Le Comptoir du Code — éditeur, hébergement, propriété intellectuelle.'
+      : 'Legal notice for Le Comptoir du Code — publisher, hosting, intellectual property.',
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/${slug}`,
+      languages: {
+        fr: `${BASE_URL}/fr/${slug}`,
+        en: `${BASE_URL}/en/${slug}`,
+      },
+    },
+  }
+}
 
 export default async function MentionsLegales({
   params,

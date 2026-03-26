@@ -1,0 +1,37 @@
+# Le Comptoir du Code
+
+> Développeur Web Indépendant — Sites vitrines, e-commerce et applications sur-mesure.
+
+Ludovic BATAILLE est développeur web freelance basé en France, spécialisé en Next.js, React, TypeScript et NestJS. Il conçoit et livre des applications web performantes, accessibles et maintenables pour des entrepreneurs, des PME et des startups.
+
+## Services
+
+- **La Présence** — Site vitrine professionnel à partir de 1 200 €. Design soigné, performances optimisées, SEO technique inclus.
+- **L'E-commerce & Réservation** — Boutique en ligne ou système de réservation à partir de 2 500 €. Inclut 1 an de mises à jour de sécurité.
+- **Les Outils Sur-Mesure** — Application métier, tableau de bord, outil interne à partir de 5 000 €. Inclut 1 an de mises à jour de sécurité.
+
+## Stack technique
+
+Next.js, React, TypeScript, NestJS, Node.js, PostgreSQL, Tailwind CSS, Vercel.
+
+## Engagements
+
+- Code propre et documenté, livré avec les sources
+- 1 an de maintenance technique incluse sur les projets ≥ 2 500 €
+- Interlocuteur unique du brief à la mise en production
+- Pas de template revendu : chaque projet est développé sur-mesure
+
+## Contact
+
+- Site : https://lecomptoirducode.fr
+- Email : contact@lecomptoirducode.fr
+- GitHub : https://github.com/B-ludovic
+
+## Pages
+
+- https://lecomptoirducode.fr/fr — Page d'accueil (français)
+- https://lecomptoirducode.fr/en — Homepage (English)
+- https://lecomptoirducode.fr/fr/mentions-legales — Mentions légales
+- https://lecomptoirducode.fr/fr/politique-de-confidentialite — Politique de confidentialité
+- https://lecomptoirducode.fr/fr/gestion-des-cookies — Gestion des cookies
+- https://lecomptoirducode.fr/fr/conditions-generales — Conditions générales de prestation

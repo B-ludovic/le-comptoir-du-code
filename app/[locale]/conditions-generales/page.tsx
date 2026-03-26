@@ -1,10 +1,37 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
+const BASE_URL = 'https://lecomptoirducode.fr'
+const slug = 'conditions-generales'
 const dictionaries = { fr, en }
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const isFr = locale !== 'en'
+  return {
+    title: isFr
+      ? 'Conditions Générales de Prestation | Le Comptoir du Code'
+      : 'Terms of Service | Le Comptoir du Code',
+    description: isFr
+      ? 'Conditions générales de prestation de services du Comptoir du Code — tarifs, délais, maintenance, propriété intellectuelle.'
+      : 'Terms of service for Le Comptoir du Code — pricing, timelines, maintenance, intellectual property.',
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/${slug}`,
+      languages: {
+        fr: `${BASE_URL}/fr/${slug}`,
+        en: `${BASE_URL}/en/${slug}`,
+      },
+    },
+  }
+}
 
 const articles = {
   fr: [

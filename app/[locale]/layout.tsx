@@ -2,34 +2,52 @@ import type { Metadata } from 'next'
 import '@/app/styles/variables.css'
 import '@/app/styles/globals.css'
 
-export const metadata: Metadata = {
-  title: 'Le Comptoir du Code | Développeur Web Indépendant',
-  description:
-    'Création de sites vitrines, e-commerce et applications sur-mesure. Un code propre, performant, et 1 an de maintenance technique engagée.',
-  keywords: 'développeur freelance, site vitrine, e-commerce, outil sur-mesure, Next.js, NestJS',
-  authors: [{ name: 'Ludovic BATAILLE' }],
-  openGraph: {
-    title: 'Le Comptoir du Code',
-    description: 'Des applications qui tournent en production. Parlons de votre projet.',
-    url: 'https://lecomptoirducode.fr',
-    siteName: 'Le Comptoir du Code',
-    locale: 'fr_FR',
-    type: 'website',
-    images: [
-      {
-        url: 'https://lecomptoirducode.fr/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Le Comptoir du Code — Développeur Web Indépendant',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
+const BASE_URL = 'https://lecomptoirducode.fr'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US'
+
+  return {
     title: 'Le Comptoir du Code | Développeur Web Indépendant',
-    description: 'Des applications qui tournent en production. Parlons de votre projet.',
-    images: ['https://lecomptoirducode.fr/og-image.png'],
-  },
+    description:
+      'Création de sites vitrines, e-commerce et applications sur-mesure. Un code propre, performant, et 1 an de maintenance technique engagée.',
+    keywords: 'développeur freelance, site vitrine, e-commerce, outil sur-mesure, Next.js, NestJS',
+    authors: [{ name: 'Ludovic BATAILLE' }],
+    alternates: {
+      canonical: `${BASE_URL}/${locale}`,
+      languages: {
+        fr: `${BASE_URL}/fr`,
+        en: `${BASE_URL}/en`,
+      },
+    },
+    openGraph: {
+      title: 'Le Comptoir du Code',
+      description: 'Des applications qui tournent en production. Parlons de votre projet.',
+      url: `${BASE_URL}/${locale}`,
+      siteName: 'Le Comptoir du Code',
+      locale: ogLocale,
+      type: 'website',
+      images: [
+        {
+          url: `${BASE_URL}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Le Comptoir du Code — Développeur Web Indépendant',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Le Comptoir du Code | Développeur Web Indépendant',
+      description: 'Des applications qui tournent en production. Parlons de votre projet.',
+      images: [`${BASE_URL}/og-image.png`],
+    },
+  }
 }
 
 const jsonLd = {
@@ -39,7 +57,22 @@ const jsonLd = {
   description:
     'Développeur Web Indépendant spécialisé en Next.js et React. Création de sites vitrines, e-commerce et applications sur-mesure.',
   url: 'https://lecomptoirducode.fr',
+  email: 'contact@lecomptoirducode.fr',
+  image: 'https://lecomptoirducode.fr/og-image.png',
   priceRange: 'À partir de 1200€',
+  sameAs: ['https://github.com/B-ludovic'],
+  knowsAbout: [
+    'Next.js',
+    'React',
+    'TypeScript',
+    'NestJS',
+    'Node.js',
+    'PostgreSQL',
+    'Développement web',
+    'Applications sur-mesure',
+    'Sites vitrines',
+    'E-commerce',
+  ],
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'FR',

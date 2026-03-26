@@ -1,10 +1,37 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
+const BASE_URL = 'https://lecomptoirducode.fr'
+const slug = 'politique-de-confidentialite'
 const dictionaries = { fr, en }
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const isFr = locale !== 'en'
+  return {
+    title: isFr
+      ? 'Politique de Confidentialité | Le Comptoir du Code'
+      : 'Privacy Policy | Le Comptoir du Code',
+    description: isFr
+      ? 'Politique de confidentialité du site Le Comptoir du Code — données personnelles, cookies, droits des utilisateurs.'
+      : 'Privacy policy for Le Comptoir du Code — personal data, cookies, user rights.',
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/${slug}`,
+      languages: {
+        fr: `${BASE_URL}/fr/${slug}`,
+        en: `${BASE_URL}/en/${slug}`,
+      },
+    },
+  }
+}
 
 export default async function PolitiqueDeConfidentialite({
   params,
