@@ -96,5 +96,12 @@
     "budget_2": "€2,500 — €5,000 (E-commerce / Booking)",
     "budget_3": "From €5,000 (Custom Application)",
     "btn_submit": "Send request"
+  },
+  "footer": {
+    "copyright": "© 2026 Le Comptoir du Code. All rights reserved.",
+    "legal": "Legal Notice",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "cgps": "Terms of Service"
   }
 }

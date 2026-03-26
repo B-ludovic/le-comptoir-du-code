@@ -1,0 +1,82 @@
+import Header from '@/components/Header/Header'
+import Footer from '@/components/Footer/Footer'
+import styles from '@/components/Legal/Legal.module.css'
+import fr from '@/app/dictionaries/fr.json'
+import en from '@/app/dictionaries/en.json'
+
+const dictionaries = { fr, en }
+
+export default async function MentionsLegales({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  const dict = dictionaries[locale as 'fr' | 'en'] ?? dictionaries.fr
+  const isFr = locale !== 'en'
+
+  return (
+    <>
+      <Header locale={locale} nav={dict.nav} />
+      <main className={styles.main}>
+        <div className="container">
+
+          <a href={`/${locale}`} className={styles.back}>
+            ← {isFr ? 'Retour' : 'Back'}
+          </a>
+
+          <h1 className={styles.title}>
+            {isFr ? 'Mentions Légales' : 'Legal Notice'}
+          </h1>
+
+          <div className={styles.block}>
+            <h2 className={styles.heading}>
+              {isFr ? 'Éditeur du site' : 'Site Publisher'}
+            </h2>
+            <p className={styles.text}>Ludovic BATAILLE</p>
+            <p className={styles.text}>
+              {isFr
+                ? "Statut : Micro-entreprise (en cours d'immatriculation)"
+                : 'Status: Sole trader (registration in progress)'}
+            </p>
+            <p className={styles.text}>
+              Email :{' '}
+              <a href="mailto:contact@lecomptoirducode.fr">
+                contact@lecomptoirducode.fr
+              </a>
+            </p>
+            <p className={styles.text}>
+              {isFr
+                ? 'Directeur de la publication : Ludovic BATAILLE'
+                : 'Publication Director: Ludovic BATAILLE'}
+            </p>
+          </div>
+
+          <div className={styles.block}>
+            <h2 className={styles.heading}>
+              {isFr ? 'Hébergement' : 'Hosting'}
+            </h2>
+            <p className={styles.text}>
+              {isFr
+                ? <>Ce site est hébergé par <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>, dont le siège social est situé au 340 S Lemon Ave, Walnut, CA 91789, USA.</>
+                : <>This site is hosted by <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>, whose registered office is located at 340 S Lemon Ave, Walnut, CA 91789, USA.</>}
+            </p>
+          </div>
+
+          <div className={styles.block}>
+            <h2 className={styles.heading}>
+              {isFr ? 'Propriété intellectuelle' : 'Intellectual Property'}
+            </h2>
+            <p className={styles.text}>
+              {isFr
+                ? "L'architecture, le design, les textes et le code de ce site appartiennent exclusivement à Ludovic BATAILLE. Toute reproduction, copie ou utilisation mécanique de ces éléments, même partielle, est strictement interdite sans accord écrit préalable."
+                : 'The architecture, design, texts and code of this site belong exclusively to Ludovic BATAILLE. Any reproduction, copy or mechanical use of these elements, even partial, is strictly prohibited without prior written agreement.'}
+            </p>
+          </div>
+
+        </div>
+      </main>
+      <Footer locale={locale} dict={dict.footer} />
+    </>
+  )
+}

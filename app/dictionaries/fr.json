@@ -96,5 +96,12 @@
     "budget_2": "2 500 € — 5 000 € (E-commerce / Réservation)",
     "budget_3": "À partir de 5 000 € (Application Sur-Mesure)",
     "btn_submit": "Envoyer la demande"
+  },
+  "footer": {
+    "copyright": "© 2026 Le Comptoir du Code. Tous droits réservés.",
+    "legal": "Mentions Légales",
+    "privacy": "Politique de Confidentialité",
+    "cookies": "Gestion des Cookies",
+    "cgps": "CGP de Services"
   }
 }

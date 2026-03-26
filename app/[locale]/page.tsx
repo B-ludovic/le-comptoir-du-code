@@ -5,6 +5,7 @@ import Solutions from '@/components/Sections/Solutions/Solutions'
 import Portfolio from '@/components/Sections/Portfolio/Portfolio'
 import About from '@/components/Sections/About/About'
 import Contact from '@/components/Sections/Contact/Contact'
+import Footer from '@/components/Footer/Footer'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -34,10 +35,13 @@ export default async function Home({
       {/* Section 5 — Le Codeur */}
       <About dict={dict.about} />
 
-      {/* Section 6 — Contact */}
-      <Suspense>
-        <Contact dict={dict.contact} />
-      </Suspense>
+      {/* Section 6 — Contact + Footer */}
+      <div style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column' }}>
+        <Suspense>
+          <Contact dict={dict.contact} />
+        </Suspense>
+        <Footer locale={locale} dict={dict.footer} />
+      </div>
     </main>
   )
 }

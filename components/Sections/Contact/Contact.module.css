@@ -1,4 +1,6 @@
 .section {
+  flex: 1;
+  min-height: unset;
   padding: var(--section-padding);
 }
 
