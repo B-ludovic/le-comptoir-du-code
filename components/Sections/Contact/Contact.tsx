@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { ChevronDown } from 'lucide-react'
 import styles from './Contact.module.css'
 
 type Props = {
@@ -14,6 +15,7 @@ type Props = {
     field_description: string
     field_description_placeholder: string
     field_budget: string
+    field_budget_placeholder: string
     budget_1: string
     budget_2: string
     budget_3: string
@@ -113,12 +115,12 @@ export default function Contact({ dict }: Props) {
                 value={selectedBudget}
                 onChange={(e) => setSelectedBudget(e.target.value)}
               >
-                <option value="">—</option>
+                <option value="" disabled>{dict.field_budget_placeholder}</option>
                 <option value={dict.budget_1}>{dict.budget_1}</option>
                 <option value={dict.budget_2}>{dict.budget_2}</option>
                 <option value={dict.budget_3}>{dict.budget_3}</option>
               </select>
-              <span className={styles.selectArrow}>↓</span>
+              <ChevronDown size={14} strokeWidth={1.5} className={styles.selectArrow} />
             </div>
           </div>
 
