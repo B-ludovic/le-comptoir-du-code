@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Le Comptoir du Code',
   description: 'Développement web sur-mesure pour les indépendants et TPE. Sites vitrines, e-commerce, outils métiers.',
   keywords: 'développeur freelance, site vitrine, e-commerce, outil sur-mesure, Next.js, NestJS',
-  authors: [{ name: 'Ludovic BATAILLE' }],
+  authors: [{ name: 'Ludovic B.' }],
   openGraph: {
     title: 'Le Comptoir du Code',
     description: 'Développement web sur-mesure pour les indépendants et TPE.',
@@ -15,15 +15,17 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }) {
+  const { locale } = await params
+
   return (
-    <html lang={params.locale}>
+    <html lang={locale}>
       <body>{children}</body>
     </html>
   )
