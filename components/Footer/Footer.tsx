@@ -1,4 +1,8 @@
+'use client'
+
+import { Fragment } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import styles from './Footer.module.css'
 
@@ -14,6 +18,15 @@ type Props = {
 }
 
 export default function Footer({ locale, dict }: Props) {
+  const pathname = usePathname()
+
+  const legalLinks = [
+    { href: `/${locale}/mentions-legales`, label: dict.legal },
+    { href: `/${locale}/politique-de-confidentialite`, label: dict.privacy },
+    { href: `/${locale}/gestion-des-cookies`, label: dict.cookies },
+    { href: `/${locale}/conditions-generales`, label: dict.cgps },
+  ]
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -22,13 +35,17 @@ export default function Footer({ locale, dict }: Props) {
           <p className={styles.copyright}>{dict.copyright}</p>
 
           <nav className={styles.legalLinks}>
-            <Link href={`/${locale}/mentions-legales`}>{dict.legal}</Link>
-            <span className={styles.sep}>—</span>
-            <Link href={`/${locale}/politique-de-confidentialite`}>{dict.privacy}</Link>
-            <span className={styles.sep}>—</span>
-            <Link href={`/${locale}/gestion-des-cookies`}>{dict.cookies}</Link>
-            <span className={styles.sep}>—</span>
-            <Link href={`/${locale}/conditions-generales`}>{dict.cgps}</Link>
+            {legalLinks.map((link, i) => (
+              <Fragment key={link.href}>
+                {i > 0 && <span className={styles.sep}>—</span>}
+                <Link
+                  href={link.href}
+                  className={pathname === link.href ? styles.legalLinkActive : ''}
+                >
+                  {link.label}
+                </Link>
+              </Fragment>
+            ))}
           </nav>
 
           <div className={styles.social}>

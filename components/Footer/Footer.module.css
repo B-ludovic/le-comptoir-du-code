@@ -37,6 +37,10 @@
   color: var(--accent-primary);
 }
 
+.legalLinkActive {
+  color: var(--accent-primary);
+}
+
 .sep {
   color: var(--text-muted);
   opacity: 0.4;

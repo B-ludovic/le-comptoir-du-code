@@ -19,6 +19,7 @@ type Props = {
 export default function Header({ locale, nav }: Props) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
   const pathname = usePathname()
   const router = useRouter()
 
@@ -26,6 +27,24 @@ export default function Header({ locale, nav }: Props) {
     const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const ids = ['method', 'solutions', 'portfolio', 'about', 'contact']
+    const observers: IntersectionObserver[] = []
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        { threshold: 0.4 }
+      )
+      observer.observe(el)
+      observers.push(observer)
+    })
+
+    return () => observers.forEach((o) => o.disconnect())
   }, [])
 
   function switchLocale() {
@@ -36,11 +55,11 @@ export default function Header({ locale, nav }: Props) {
   }
 
   const navLinks = [
-    { href: '#method', label: nav.method },
-    { href: '#solutions', label: nav.solutions },
-    { href: '#portfolio', label: nav.portfolio },
-    { href: '#about', label: nav.about },
-    { href: '#contact', label: nav.contact },
+    { href: `/${locale}#method`, label: nav.method, section: 'method' },
+    { href: `/${locale}#solutions`, label: nav.solutions, section: 'solutions' },
+    { href: `/${locale}#portfolio`, label: nav.portfolio, section: 'portfolio' },
+    { href: `/${locale}#about`, label: nav.about, section: 'about' },
+    { href: `/${locale}#contact`, label: nav.contact, section: 'contact' },
   ]
 
   return (
@@ -48,13 +67,21 @@ export default function Header({ locale, nav }: Props) {
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <Link href={`/${locale}`} className={styles.logo}>
-          Le Comptoir du Code
+          <span className={styles.logoMark}>C/C</span>
+          <span className={styles.logoText}>
+            <span className={styles.logoTop}>LE COMPTOIR</span>
+            <span className={styles.logoBottom}>du Code</span>
+          </span>
         </Link>
 
         {/* Nav desktop */}
         <nav className={styles.nav}>
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className={styles.navLink}>
+            <a
+              key={link.href}
+              href={link.href}
+              className={`${styles.navLink} ${activeSection === link.section ? styles.navLinkActive : ''}`}
+            >
               {link.label}
             </a>
           ))}
@@ -90,13 +117,18 @@ export default function Header({ locale, nav }: Props) {
           <a
             key={link.href}
             href={link.href}
-            className={styles.mobileNavLink}
+            className={`${styles.mobileNavLink} ${activeSection === link.section ? styles.mobileNavLinkActive : ''}`}
             onClick={() => setMenuOpen(false)}
           >
             {link.label}
           </a>
         ))}
       </nav>
+
+      {/* Overlay blur */}
+      {menuOpen && (
+        <div className={styles.overlay} onClick={() => setMenuOpen(false)} />
+      )}
     </header>
   )
 }
