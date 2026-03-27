@@ -191,7 +191,7 @@
 
   .projectRow,
   .projectWrapper:nth-child(even) .projectRow {
-    flex-direction: column;
+    flex-direction: column-reverse;
     min-height: unset;
     gap: 2.5rem;
   }
