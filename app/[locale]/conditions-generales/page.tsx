@@ -53,7 +53,7 @@ const articles = {
     {
       title: "4. Tarifs et Modalités de paiement",
       content:
-        "Les prix sont indiqués en euros et hors taxes (TVA non applicable, art. 293 B du CGI). Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai maximum de 15 jours à compter de la date d'émission de la facture.",
+        "Les prix sont indiqués en euros et hors taxes (TVA non applicable, art. 293 B du CGI). Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement.",
     },
     {
       title: "5. Retard de paiement",
@@ -73,7 +73,7 @@ const articles = {
     {
       title: "8. Résiliation",
       content:
-        "En cas de rupture du contrat avant son terme par le client, l'acompte reste acquis au Comptoir du Code. De plus, les heures déjà travaillées au-delà du montant de l'acompte seront facturées au prorata.",
+        "En cas de rupture du contrat avant son terme par le client, l'acompte reste acquis au Comptoir du Code. De plus, les heures déjà travaillées au-delà du montant de l'acompte seront facturées sur la base du taux journalier en vigueur indiqué sur le devis.",
     },
     {
       title: "9. Litiges",
@@ -100,7 +100,7 @@ const articles = {
     {
       title: "4. Pricing and Payment Terms",
       content:
-        "Prices are quoted in euros, excluding taxes (VAT not applicable, art. 293 B of the French Tax Code). The invoice balance is due upon project delivery (launch or source code delivery), with a maximum deadline of 15 days from the invoice date.",
+        "Prices are quoted in euros, excluding taxes (VAT not applicable, art. 293 B of the French Tax Code). The invoice balance is due upon project delivery (launch or source code delivery), with a maximum deadline of 15 days from the invoice date. Payment is accepted by bank transfer only.",
     },
     {
       title: "5. Late Payment",
@@ -120,7 +120,7 @@ const articles = {
     {
       title: "8. Termination",
       content:
-        "In case of contract termination before completion by the client, the deposit remains with Le Comptoir du Code. Additionally, hours already worked beyond the deposit amount will be invoiced on a pro-rata basis.",
+        "In case of contract termination before completion by the client, the deposit remains with Le Comptoir du Code. Additionally, hours already worked beyond the deposit amount will be invoiced based on the daily rate stated in the quote.",
     },
     {
       title: "9. Disputes",
