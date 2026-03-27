@@ -264,10 +264,13 @@
     flex-direction: column;
     gap: 0;
     background-color: rgba(26, 23, 20, 0.98);
-    border-top: var(--border-subtle);
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--transition-base);
+}
+
+.mobileNav.mobileOpen {
+    border-top: var(--border-subtle);
 }
 
 .mobileNav.mobileOpen {
