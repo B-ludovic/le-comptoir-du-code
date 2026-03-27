@@ -61,8 +61,8 @@
     "cta": "Start this project"
   },
   "portfolio": {
-    "eyebrow": "Code running in production.",
-    "section_title": "Four projects. Four levels of complexity.",
+    "eyebrow": "Archives du Comptoir.",
+    "section_title": "Four projects opened. Four projects delivered.",
     "intro": "Applications that were delivered, used, and that work without me standing by to prop them up.",
     "project1_title": "Fairy Chair Studio",
     "project1_desc": "Full e-commerce for an afro hair salon. Real-time stock, Stripe payments, Brevo newsletters, admin panel with PDF invoicing and Colissimo export.",
@@ -83,7 +83,7 @@
     "p1": "After 18 years managing sales teams and handling crises on the ground, I traded the tie for what has always been my real obsession: the pure logic of code.",
     "p2": "My background as a manager left me with a scar and a conviction: **talk doesn't move projects forward**. I won't waste your time with technical jargon to justify an invoice. I'm a meticulous observer — I can spot at a glance what's broken on an interface, what feels off, or what's slowing your clients down.",
     "p3": "I'll never make grand promises swearing I'm someone you can 'rely on' — that word has become a meaningless pleasantry. What I will tell you is this: when I'm handed a brief, **I refuse to be the weak link**. I don't close my code editor until **the tool does exactly what was agreed at the counter**.",
-    "p4": "We're not here to become friends. We're here to **build a solid technical engine for your business**. And that, I know how to do."
+    "p4": "What brings us together is a tool to build and a result to deliver. I give it everything — you run your business, and you sleep easy."
   },
   "contact": {
     "eyebrow": "You have a project. Let's talk.",

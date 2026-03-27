@@ -61,8 +61,8 @@
     "cta": "Démarrer ce projet"
   },
   "portfolio": {
-    "eyebrow": "Du code qui tourne en production.",
-    "section_title": "Quatre projets. Quatre niveaux de complexité.",
+    "eyebrow": "Archives du Comptoir.",
+    "section_title": "Quatre chantiers ouverts. Quatre chantiers livrés.",
     "intro": "Des applications livrées, utilisées, et qui fonctionnent sans que je sois là pour les tenir à bout de bras.",
     "project1_title": "Fairy Chair Studio",
     "project1_desc": "E-commerce complet pour un salon de coiffure afro. Stocks en temps réel, paiements Stripe, newsletters Brevo, espace admin avec facturation PDF et export Colissimo.",
@@ -83,7 +83,7 @@
     "p1": "Après 18 ans à encadrer des équipes commerciales et à gérer des crises sur le terrain, j'ai tombé la cravate pour revenir à ma véritable obsession : la logique pure du code.",
     "p2": "Mon passé de manager m'a laissé une cicatrice et une conviction : **le blabla ne fait pas avancer les projets**. Je ne vous ferai pas perdre votre temps avec du jargon technique pour justifier une facture. Je suis un observateur minutieux : je vois au premier coup d'œil ce qui cloche sur une interface, ce qui sonne faux ou ce qui ralentit vos clients.",
     "p3": "Je ne vous ferai jamais de grandes promesses en vous jurant que je suis quelqu'un de \"fiable\" — ce mot est devenu une formule de politesse vide de sens. En revanche, quand on me confie un cahier des charges, **je refuse viscéralement d'être le maillon faible**. Je ne ferme pas mon éditeur de code tant que **l'outil ne fait pas exactement ce qui a été signé au comptoir**.",
-    "p4": "Nous ne sommes pas là pour devenir amis. Nous sommes là pour **construire un moteur technique performant pour votre entreprise**. Et ça, je sais le faire."
+    "p4": "Ce qui nous réunit, c'est un outil à construire et un résultat à tenir. Je mets tout dedans — vous faites tourner votre entreprise, et vous dormez tranquille."
   },
   "contact": {
     "eyebrow": "Vous avez un projet. Parlons-en.",
