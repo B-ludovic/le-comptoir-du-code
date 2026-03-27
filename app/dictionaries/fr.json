@@ -23,7 +23,7 @@
     "intro": "Des offres calibrées pour des besoins réels. Pas de devis flou, pas de tarif qui s'envole en cours de route.",
     "card1_title": "La Présence",
     "card1_subtitle": "Site Vitrine",
-    "card1_price": "À partir de 1 200 €",
+    "card1_price": "À partir de 1 500 €",
     "card1_desc": "Un site rapide, optimisé pour les mobiles et conçu pour convertir vos visiteurs en clients.",
     "card1_features": [
       "Design sur-mesure",
@@ -32,9 +32,10 @@
       "Formulaire de contact",
       "Mise en ligne incluse"
     ],
+    "card1_maintenance": "Maintenance optionnelle : 80 €/mois",
     "card1_delay": "3 à 4 jours",
     "card2_title": "L'E-commerce & Réservation",
-    "card2_price": "À partir de 2 500 €",
+    "card2_price": "À partir de 3 000 €",
     "card2_desc": "Vente en ligne de vos produits (paiements sécurisés Stripe) ou prise de rendez-vous synchronisée avec votre agenda.",
     "card2_features": [
       "Site vitrine inclus",
@@ -43,7 +44,7 @@
       "Paiements Stripe sécurisés",
       "Catalogue produits"
     ],
-    "card2_maintenance": "1 an de mises à jour de sécurité inclus",
+    "card2_maintenance": "1 an de mises à jour de sécurité inclus, puis 100 €/mois",
     "card2_delay": "7 à 12 jours",
     "card3_title": "Les Outils Sur-Mesure",
     "card3_subtitle": "Applications métiers",
@@ -56,7 +57,7 @@
       "Génération de PDF",
       "Espace administrateur sur-mesure"
     ],
-    "card3_maintenance": "1 an de mises à jour de sécurité inclus",
+    "card3_maintenance": "1 an de mises à jour de sécurité inclus, puis 120 €/mois",
     "card3_delay": "3 semaines et +",
     "cta": "Démarrer ce projet"
   },
@@ -95,8 +96,8 @@
     "field_description_placeholder": "Soyez factuel : quelles sont les fonctionnalités indispensables ?",
     "field_budget": "Enveloppe budgétaire estimée",
     "field_budget_placeholder": "Sélectionner une enveloppe",
-    "budget_1": "1 200 € — 2 500 € (Site Vitrine)",
-    "budget_2": "2 500 € — 5 000 € (E-commerce / Réservation)",
+    "budget_1": "1 500 € — 3 000 € (Site Vitrine)",
+    "budget_2": "3 000 € — 5 000 € (E-commerce / Réservation)",
     "budget_3": "À partir de 5 000 € (Application Sur-Mesure)",
     "btn_submit": "Envoyer la demande"
   },

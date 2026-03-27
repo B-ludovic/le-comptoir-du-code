@@ -59,7 +59,7 @@ const jsonLd = {
   url: 'https://lecomptoirducode.fr',
   email: 'contact@lecomptoirducode.fr',
   image: 'https://lecomptoirducode.fr/og-image.png',
-  priceRange: 'À partir de 1200€',
+  priceRange: 'À partir de 1500€',
   sameAs: ['https://github.com/B-ludovic'],
   knowsAbout: [
     'Next.js',
@@ -81,16 +81,16 @@ const jsonLd = {
     {
       '@type': 'Offer',
       name: 'La Présence (Site Vitrine)',
-      price: '1200.00',
+      price: '1500.00',
       priceCurrency: 'EUR',
-      description: 'À partir de 1 200 €',
+      description: 'À partir de 1 500 €',
     },
     {
       '@type': 'Offer',
       name: "L'E-commerce & Réservation",
-      price: '2500.00',
+      price: '3000.00',
       priceCurrency: 'EUR',
-      description: 'À partir de 2 500 €. Inclut 1 an de mises à jour de sécurité.',
+      description: 'À partir de 3 000 €. Inclut 1 an de mises à jour de sécurité.',
     },
     {
       '@type': 'Offer',

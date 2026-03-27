@@ -68,7 +68,7 @@ const articles = {
     {
       title: "7. Garantie et Maintenance technique",
       content:
-        "Pour les projets d'une valeur égale ou supérieure à 2 500 € (offres E-commerce et Sur-Mesure), la prestation inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Cette maintenance couvre exclusivement les mises à jour de sécurité et la correction de bugs critiques liés à mon code. Elle ne couvre en aucun cas les demandes de nouvelles fonctionnalités, les modifications de contenu, les refontes de design, ou les pannes causées par une manipulation du client. Pour les projets d'une valeur inférieure à 2 500 € (offre Présence), le site est livré clé en main. Toute intervention technique post-livraison fera l'objet d'un devis séparé.",
+        "Pour les projets d'une valeur égale ou supérieure à 3 000 € (offres E-commerce et Sur-Mesure), la prestation inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Au terme de cette première année, un contrat de maintenance mensuel est proposé : 100 €/mois pour l'offre E-commerce, 120 €/mois pour l'offre Sur-Mesure. Cette maintenance couvre exclusivement les mises à jour de sécurité et la correction de bugs bloquants liés à mon code, définis comme toute anomalie empêchant l'utilisation normale de l'outil tel que livré. Elle ne couvre en aucun cas les demandes de nouvelles fonctionnalités, les modifications de contenu, les refontes de design, ou les pannes causées par une manipulation du client. Pour les projets d'une valeur inférieure à 3 000 € (offre Présence), une maintenance optionnelle est disponible à 80 €/mois. En l'absence de contrat de maintenance, toute intervention technique post-livraison fera l'objet d'un devis séparé. Le contrat de maintenance mensuel est résiliable à tout moment avec un préavis d'un mois calendaire, sans pénalité.",
     },
     {
       title: "8. Résiliation",
@@ -115,7 +115,7 @@ const articles = {
     {
       title: "7. Warranty and Technical Maintenance",
       content:
-        "For projects valued at €2,500 or more (E-commerce and Custom plans), the service includes technical maintenance for 12 months from the launch date. This maintenance covers exclusively security updates and critical bug fixes related to my code. It does not cover requests for new features, content modifications, design overhauls, or malfunctions caused by the client. For projects under €2,500 (Presence plan), the site is delivered turnkey. Any post-delivery technical work will be subject to a separate quote.",
+        "For projects valued at €3,000 or more (E-commerce and Custom plans), the service includes technical maintenance for 12 months from the launch date. After this first year, a monthly maintenance contract is available: €100/month for the E-commerce plan, €120/month for the Custom Tools plan. This maintenance covers exclusively security updates and the correction of blocking bugs related to my code, defined as any anomaly preventing normal use of the tool as delivered. It does not cover requests for new features, content modifications, design overhauls, or malfunctions caused by the client. For projects under €3,000 (Presence plan), optional maintenance is available at €80/month. Without a maintenance contract, any post-delivery technical work will be subject to a separate quote. The monthly maintenance contract may be cancelled at any time with one calendar month's notice, without penalty.",
     },
     {
       title: "8. Termination",

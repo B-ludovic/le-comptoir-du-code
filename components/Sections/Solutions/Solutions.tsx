@@ -22,6 +22,7 @@ type Props = {
     card1_price: string
     card1_desc: string
     card1_features: string[]
+    card1_maintenance: string
     card1_delay: string
     card2_title: string
     card2_subtitle?: string
@@ -50,6 +51,7 @@ export default function Solutions({ dict }: Props) {
       price: dict.card1_price,
       desc: dict.card1_desc,
       features: dict.card1_features,
+      maintenance: dict.card1_maintenance,
       delay: dict.card1_delay,
       cta: dict.cta,
       budgetParam: '1',
