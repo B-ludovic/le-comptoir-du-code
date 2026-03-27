@@ -35,6 +35,7 @@
     "card1_maintenance": "Optional maintenance — security updates: €80/month",
     "card1_delay": "3 to 4 days",
     "card2_title": "E-commerce & Booking",
+    "card2_subtitle": "Sales & Booking",
     "card2_price": "From €3,000",
     "card2_desc": "Sell your products online (secure Stripe payments) or take appointments synced with your calendar.",
     "card2_features": [

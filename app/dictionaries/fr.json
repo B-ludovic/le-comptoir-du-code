@@ -35,6 +35,7 @@
     "card1_maintenance": "Maintenance optionnelle — mises à jour de sécurité : 80\u00A0€/mois",
     "card1_delay": "3 à 4 jours",
     "card2_title": "L'E-commerce & Réservation",
+    "card2_subtitle": "Vente & Réservation",
     "card2_price": "À partir de 3 000 €",
     "card2_desc": "Vente en ligne de vos produits (paiements sécurisés Stripe) ou prise de rendez-vous synchronisée avec votre agenda.",
     "card2_features": [
