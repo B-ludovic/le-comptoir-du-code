@@ -83,7 +83,7 @@ const articles = {
   ],
   en: [
     {
-      title: "1. Object and Scope",
+      title: "1. Purpose and Scope",
       content:
         'These conditions govern the web development and consulting services provided by Ludovic BATAILLE (hereinafter "Le Comptoir du Code") to its clients. Any signature of a quote implies unconditional acceptance of these conditions. Here, we work on trust — but the framework is defined.',
     },
