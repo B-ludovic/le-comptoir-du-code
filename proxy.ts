@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { timingSafeEqual } from 'crypto'
 
 const locales = ['fr', 'en']
 const defaultLocale = 'fr'
@@ -22,7 +23,15 @@ export function proxy(request: NextRequest) {
   const isDevisPath = /^\/[a-z]{2}\/devis(?!\/login)/.test(pathname) || pathname === '/devis'
   if (isDevisPath) {
     const token = request.cookies.get('devis_auth')?.value
-    if (token !== process.env.DEVIS_TOKEN) {
+    const expected = process.env.DEVIS_TOKEN
+    const valid = token && expected && (() => {
+      try {
+        const a = Buffer.from(token)
+        const b = Buffer.from(expected)
+        return a.length === b.length && timingSafeEqual(a, b)
+      } catch { return false }
+    })()
+    if (!valid) {
       const locale = locales.find(l => pathname.startsWith(`/${l}/`)) ?? defaultLocale
       return NextResponse.redirect(new URL(`/${locale}/devis/login`, request.url))
     }
