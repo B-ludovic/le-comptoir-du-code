@@ -18,6 +18,16 @@ function getLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
+  // Protection de la page /devis (sauf /devis/login)
+  const isDevisPath = /^\/[a-z]{2}\/devis(?!\/login)/.test(pathname) || pathname === '/devis'
+  if (isDevisPath) {
+    const token = request.cookies.get('devis_auth')?.value
+    if (token !== process.env.DEVIS_TOKEN) {
+      const locale = locales.find(l => pathname.startsWith(`/${l}/`)) ?? defaultLocale
+      return NextResponse.redirect(new URL(`/${locale}/devis/login`, request.url))
+    }
+  }
+
   const pathnameHasLocale = locales.some(
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
