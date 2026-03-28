@@ -38,15 +38,19 @@ export default function DevisLogin() {
           <span className={styles.logoMark}>C/C</span>
           <span className={styles.logoText}>Accès privé</span>
         </div>
+        <label htmlFor="password" className="sr-only">Mot de passe</label>
         <input
+          id="password"
           type="password"
           className={styles.input}
           placeholder="Mot de passe"
           value={password}
           onChange={e => setPassword(e.target.value)}
           autoFocus
+          aria-invalid={!!error}
+          aria-describedby={error ? 'password-error' : undefined}
         />
-        {error && <p className={styles.error}>{error}</p>}
+        {error && <p id="password-error" className={styles.error} role="alert" aria-live="assertive">{error}</p>}
         <button type="submit" className={styles.btn} disabled={loading}>
           {loading ? '...' : 'Entrer'}
         </button>

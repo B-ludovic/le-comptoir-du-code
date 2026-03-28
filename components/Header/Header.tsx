@@ -120,6 +120,8 @@ export default function Header({ locale, nav }: Props) {
             className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
           >
             <span />
             <span />
@@ -129,7 +131,7 @@ export default function Header({ locale, nav }: Props) {
       </div>
 
       {/* Nav mobile */}
-      <nav className={`${styles.mobileNav} ${menuOpen ? styles.mobileOpen : ''}`}>
+      <nav id="mobile-nav" className={`${styles.mobileNav} ${menuOpen ? styles.mobileOpen : ''}`}>
         {navLinks.map((link) => (
           <a
             key={link.href}

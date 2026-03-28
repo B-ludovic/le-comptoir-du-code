@@ -86,8 +86,9 @@ export default function Contact({ dict }: Props) {
 
           <div className={styles.row}>
             <div className={styles.field}>
-              <label className={styles.label}>{dict.field_name}</label>
+              <label htmlFor="from_name" className={styles.label}>{dict.field_name}</label>
               <input
+                id="from_name"
                 type="text"
                 name="from_name"
                 required
@@ -95,8 +96,9 @@ export default function Contact({ dict }: Props) {
               />
             </div>
             <div className={styles.field}>
-              <label className={styles.label}>{dict.field_email}</label>
+              <label htmlFor="reply_to" className={styles.label}>{dict.field_email}</label>
               <input
+                id="reply_to"
                 type="email"
                 name="reply_to"
                 required
@@ -106,9 +108,10 @@ export default function Contact({ dict }: Props) {
           </div>
 
           <div className={styles.field}>
-            <label className={styles.label}>{dict.field_budget}</label>
+            <label htmlFor="budget" className={styles.label}>{dict.field_budget}</label>
             <div className={styles.selectWrapper}>
               <select
+                id="budget"
                 name="budget"
                 required
                 className={styles.select}
@@ -120,13 +123,14 @@ export default function Contact({ dict }: Props) {
                 <option value={dict.budget_2}>{dict.budget_2}</option>
                 <option value={dict.budget_3}>{dict.budget_3}</option>
               </select>
-              <ChevronDown size={14} strokeWidth={1.5} className={styles.selectArrow} />
+              <ChevronDown size={14} strokeWidth={1.5} className={styles.selectArrow} aria-hidden="true" />
             </div>
           </div>
 
           <div className={styles.field}>
-            <label className={styles.label}>{dict.field_description}</label>
+            <label htmlFor="message" className={styles.label}>{dict.field_description}</label>
             <textarea
+              id="message"
               name="message"
               required
               rows={6}
@@ -149,10 +153,14 @@ export default function Contact({ dict }: Props) {
             </button>
 
             {status === 'success' && (
-              <p className={styles.successMsg}>Message envoyé. Je reviens vers vous rapidement.</p>
+              <p className={styles.successMsg} role="status" aria-live="polite">
+                Message envoyé. Je reviens vers vous rapidement.
+              </p>
             )}
             {status === 'error' && (
-              <p className={styles.errorMsg}>Une erreur est survenue. Réessayez ou écrivez directement à votre adresse email.</p>
+              <p className={styles.errorMsg} role="alert" aria-live="assertive">
+                Une erreur est survenue. Réessayez ou écrivez directement à votre adresse email.
+              </p>
             )}
           </div>
 
