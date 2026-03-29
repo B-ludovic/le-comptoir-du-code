@@ -60,7 +60,8 @@
     ],
     "card3_maintenance": "1 an de mises à jour de sécurité inclus, puis 120\u00A0€\u2060/\u2060mois",
     "card3_delay": "3 semaines et +",
-    "cta": "Démarrer ce projet"
+    "cta": "Démarrer ce projet",
+    "vat_notice": "Tous nos tarifs sont indiqués hors taxes. Une TVA de 20 % s'applique en sus."
   },
   "portfolio": {
     "eyebrow": "Archives du Comptoir.",

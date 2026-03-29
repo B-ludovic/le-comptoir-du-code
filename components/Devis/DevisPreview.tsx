@@ -16,11 +16,14 @@ function calcTotals(data: DevisData) {
   const s1 = parseFloat(data.service_1_amount) || 0
   const s2 = parseFloat(data.service_2_amount) || 0
   const ht = s1 + s2
-  const acompte = ht * 0.3
+  const tva = ht * 0.20
+  const ttc = ht + tva
+  const acompte = ttc * 0.3
   return {
     total_ht: fmt(String(ht)),
+    tva_amount: fmt(String(tva)),
     acompte_amount: fmt(String(acompte)),
-    total_ttc: fmt(String(ht)),
+    total_ttc: fmt(String(ttc)),
   }
 }
 
@@ -116,8 +119,9 @@ export default function DevisPreview({ data }: Props) {
     <div class="party">
       <div class="party-label">Prestataire</div>
       <span class="party-name">Le Comptoir du Code</span>
-      <span class="party-detail">Ludovic BATAILLE</span>
-      <span class="party-detail">Auto-entrepreneur${data.siret ? ` — SIRET : ${data.siret}` : ''}</span>
+      <span class="party-detail">EURL (en cours d'immatriculation)</span>
+      <span class="party-detail">SIRET : ${data.siret || 'En cours d\'attribution'}</span>
+      <span class="party-detail">N° TVA : En cours d'attribution</span>
       <span class="party-detail">contact@lecomptoirducode.fr</span>
       <span class="party-detail">lecomptoirducode.fr</span>
     </div>
@@ -201,9 +205,9 @@ export default function DevisPreview({ data }: Props) {
   <div class="totaux">
     <div class="totaux-block">
       <div class="totaux-line"><span>Sous-total HT</span><span>${totals.total_ht}</span></div>
-      <div class="totaux-line"><span>TVA</span><span>Non applicable</span></div>
-      <div class="totaux-line acompte"><span>Acompte à la signature (30 %)</span><span>${totals.acompte_amount}</span></div>
+      <div class="totaux-line"><span>TVA (20 %)</span><span>${totals.tva_amount}</span></div>
       <div class="totaux-line total"><span>Total TTC</span><span class="amount">${totals.total_ttc}</span></div>
+      <div class="totaux-line acompte"><span>Acompte à la signature (30 %)</span><span>${totals.acompte_amount}</span></div>
     </div>
   </div>
 
@@ -211,7 +215,7 @@ export default function DevisPreview({ data }: Props) {
     <div class="condition-block">
       <div class="condition-title">Modalités de paiement</div>
       <div class="condition-text">
-        Acompte de 30 % (${totals.acompte_amount}) à la signature — solde à la livraison.<br>
+        Acompte de 30 % du TTC (${totals.acompte_amount}) à la signature — solde à la livraison.<br>
         Règlement par virement bancaire uniquement.<br>
         Délai de paiement : 15 jours à compter de la facture.
       </div>
@@ -237,7 +241,7 @@ export default function DevisPreview({ data }: Props) {
   <div class="signature-section">
     <div class="signature-block">
       <div class="signature-title">Signature du prestataire</div>
-      <div class="signature-mention">Le Comptoir du Code — Ludovic BATAILLE</div>
+      <div class="signature-mention">Le Comptoir du Code &mdash; EURL &mdash; G&eacute;rant&nbsp; &mdash; Ludovic BATAILLE</div>
       <div class="signature-line"></div>
       <div class="signature-label">Signature</div>
     </div>
@@ -250,11 +254,11 @@ export default function DevisPreview({ data }: Props) {
   </div>
 
   <div class="mentions">
-    <p>TVA non applicable en vertu de l'article 293 B du CGI. — En cas de retard de paiement : pénalités égales à 3× le taux d'intérêt légal en vigueur + indemnité forfaitaire de recouvrement de 40 €. — Les droits de propriété intellectuelle sont transférés au client à réception du paiement intégral. — Les présentes conditions sont soumises au droit français. Tout litige sera soumis au tribunal compétent du siège social du prestataire.</p>
+    <p>En cas de retard de paiement : pénalités égales à 3× le taux d'intérêt légal en vigueur + indemnité forfaitaire de recouvrement de 40 €. — Les droits de propriété intellectuelle sont transférés au client à réception du paiement intégral. — Les présentes conditions sont soumises au droit français. Tout litige sera soumis au tribunal compétent du siège social du prestataire.</p>
   </div>
 
   <div class="footer">
-    <div class="footer-left">Le Comptoir du Code — Ludovic BATAILLE — Auto-entrepreneur</div>
+    <div class="footer-left">Le Comptoir du Code — EURL (en cours d'immatriculation) — Gérant : Ludovic BATAILLE</div>
     <div class="footer-right">
       <span class="footer-site">lecomptoirducode.fr</span><br>
       contact@lecomptoirducode.fr

@@ -38,7 +38,7 @@ const articles = {
     {
       title: "1. Objet et champ d'application",
       content:
-        "Les présentes conditions régissent les prestations de développement web et de conseil proposées par Ludovic BATAILLE (ci-après \"Le Comptoir du Code\") à ses clients. Toute signature d'un devis implique l'acceptation sans réserve de ces conditions. Ici, on travaille en confiance, mais le cadre est défini.",
+        "Les présentes conditions régissent les prestations de développement web et de conseil proposées par l'EURL Le Comptoir du Code (en cours d'immatriculation), représentée par Ludovic BATAILLE, à ses clients. Toute signature d'un devis implique l'acceptation sans réserve de ces conditions. Ici, on travaille en confiance, mais le cadre est défini.",
     },
     {
       title: "2. Formation du contrat et Acompte",
@@ -53,7 +53,7 @@ const articles = {
     {
       title: "4. Tarifs et Modalités de paiement",
       content:
-        "Les prix sont indiqués en euros et hors taxes (TVA non applicable, art. 293 B du CGI). Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement.",
+        "Les prix sur les devis sont indiqués en euros et Hors Taxes (HT). La Taxe sur la Valeur Ajoutée (TVA) au taux en vigueur s'applique en sus. Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement.",
     },
     {
       title: "5. Retard de paiement",
@@ -85,7 +85,7 @@ const articles = {
     {
       title: "1. Purpose and Scope",
       content:
-        'These conditions govern the web development and consulting services provided by Ludovic BATAILLE (hereinafter "Le Comptoir du Code") to its clients. Any signature of a quote implies unconditional acceptance of these conditions. Here, we work on trust — but the framework is defined.',
+        'These conditions govern the web development and consulting services provided by Le Comptoir du Code EURL (registration in progress), represented by Ludovic BATAILLE, to its clients. Any signature of a quote implies unconditional acceptance of these conditions. Here, we work on trust — but the framework is defined.',
     },
     {
       title: "2. Contract Formation and Deposit",
@@ -100,7 +100,7 @@ const articles = {
     {
       title: "4. Pricing and Payment Terms",
       content:
-        "Prices are quoted in euros, excluding taxes (VAT not applicable, art. 293 B of the French Tax Code). The invoice balance is due upon project delivery (launch or source code delivery), with a maximum deadline of 15 days from the invoice date. Payment is accepted by bank transfer only.",
+        "Prices on quotes are indicated in euros, excluding VAT (HT). Value Added Tax (VAT) at the applicable rate is charged in addition. The invoice balance is due upon project delivery (launch or source code delivery), with a maximum deadline of 15 days from the invoice date. Payment is accepted by bank transfer only.",
     },
     {
       title: "5. Late Payment",

@@ -48,6 +48,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto 1fr auto auto;
   gap: 0;
 }
 
@@ -55,9 +56,10 @@
   position: relative;
   padding: 0 2.5rem;
   overflow: visible;
+  display: grid;
+  grid-row: span 6;
+  grid-template-rows: subgrid;
   transition: transform var(--transition-base);
-  display: flex;
-  flex-direction: column;
 }
 
 .card:first-child {
@@ -127,16 +129,17 @@
   position: relative;
   z-index: 1;
   padding-top: 2rem;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 5;
+  grid-template-rows: subgrid;
   gap: 1.5rem;
-  flex: 1;
 }
 
 .cardHeader {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .cardTitle {
@@ -163,6 +166,27 @@
   font-weight: 600;
   color: var(--accent-primary);
   margin-top: 0.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.cardPriceHT {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.vatNotice {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0.7;
 }
 
 .cardDesc {
@@ -177,7 +201,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  flex: 1;
+  align-self: start;
 }
 
 .feature {

@@ -60,7 +60,8 @@
     ],
     "card3_maintenance": "1 year of maintenance included, then €120/mo",
     "card3_delay": "3 weeks+",
-    "cta": "Start your project"
+    "cta": "Start your project",
+    "vat_notice": "All prices are quoted excluding taxes. 20% VAT applies in addition."
   },
   "portfolio": {
     "eyebrow": "The Counter Archives.",

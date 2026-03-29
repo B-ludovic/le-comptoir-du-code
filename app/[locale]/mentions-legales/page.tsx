@@ -63,8 +63,8 @@ export default async function MentionsLegales({
             <p className={styles.text}>Ludovic BATAILLE</p>
             <p className={styles.text}>
               {isFr
-                ? "Statut : Micro-entreprise (en cours d'immatriculation)"
-                : 'Status: Sole trader (registration in progress)'}
+                ? "Statut : EURL (Société en cours d'immatriculation)"
+                : 'Status: EURL — Single-member LLC (registration in progress)'}
             </p>
             <p className={styles.text}>
               Email :{' '}

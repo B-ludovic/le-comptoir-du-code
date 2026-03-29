@@ -39,6 +39,7 @@ type Props = {
     card3_maintenance: string
     card3_delay: string
     cta: string
+    vat_notice: string
   }
 }
 
@@ -108,7 +109,9 @@ export default function Solutions({ dict }: Props) {
                   {card.subtitle && (
                     <span className={styles.cardSubtitle}>{card.subtitle}</span>
                   )}
-                  <p className={styles.cardPrice}>{card.price}</p>
+                  <p className={styles.cardPrice}>
+                    {card.price}&nbsp;<span className={styles.cardPriceHT}>HT</span>
+                  </p>
                 </div>
 
                 <p className={styles.cardDesc}>{card.desc}</p>
@@ -139,6 +142,8 @@ export default function Solutions({ dict }: Props) {
             </div>
           ))}
         </div>
+
+        <p className={styles.vatNotice}>{dict.vat_notice}</p>
 
       </div>
     </section>
