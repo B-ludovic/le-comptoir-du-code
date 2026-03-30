@@ -38,7 +38,7 @@ const articles = {
     {
       title: "1. Objet et champ d'application",
       content:
-        "Les présentes conditions régissent les prestations de développement web et de conseil proposées par l'EURL Le Comptoir du Code (en cours d'immatriculation), représentée par Ludovic BATAILLE, à ses clients. Toute signature d'un devis implique l'acceptation sans réserve de ces conditions. Ici, on travaille en confiance, mais le cadre est défini.",
+        "Les présentes conditions régissent les prestations de développement web et de conseil proposées par Ludovic BATAILLE (Le Comptoir du Code), agissant sous le statut d'entrepreneur-salarié et hébergé juridiquement par la coopérative Jump Green, à ses clients. Toute signature d'une proposition commerciale ou d'un devis implique l'acceptation sans réserve de ces conditions. Ici, on travaille en confiance, mais le cadre est défini.",
     },
     {
       title: "2. Formation du contrat et Acompte",
@@ -53,7 +53,7 @@ const articles = {
     {
       title: "4. Tarifs et Modalités de paiement",
       content:
-        "Les prix sur les devis sont indiqués en euros et Hors Taxes (HT). La Taxe sur la Valeur Ajoutée (TVA) au taux en vigueur s'applique en sus. Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement.",
+        "Les prix sur les devis sont indiqués en euros et Hors Taxes (HT). La Taxe sur la Valeur Ajoutée (TVA) au taux en vigueur s'applique en sus. Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement, sur le compte bancaire professionnel indiqué sur la facture.",
     },
     {
       title: "5. Retard de paiement",
@@ -78,54 +78,54 @@ const articles = {
     {
       title: "9. Litiges",
       content:
-        "Les présentes conditions sont soumises au droit français. En cas de litige, on essaiera toujours de trouver une solution à l'amiable autour du comptoir. À défaut, le tribunal compétent sera celui du siège social du Comptoir du Code.",
+        "Les présentes conditions sont soumises au droit français. En cas de litige, on essaiera toujours de trouver une solution à l'amiable autour du comptoir. À défaut, le tribunal compétent sera celui du ressort du siège social de la coopérative Jump Green (Tribunal de Commerce de Bobigny).",
     },
   ],
   en: [
     {
       title: "1. Purpose and Scope",
       content:
-        'These conditions govern the web development and consulting services provided by Le Comptoir du Code EURL (registration in progress), represented by Ludovic BATAILLE, to its clients. Any signature of a quote implies unconditional acceptance of these conditions. Here, we work on trust — but the framework is defined.',
+        "These Terms and Conditions govern the web development and consulting services provided to clients by Ludovic BATAILLE (Le Comptoir du Code), operating under the status of employee-entrepreneur and legally hosted by the Jump Green cooperative. Signing a commercial proposal or quote implies unconditional acceptance of these terms. We work on a foundation of trust here, but the framework must be clearly defined.",
     },
     {
       title: "2. Contract Formation and Deposit",
       content:
-        'A project officially starts upon receipt of two elements: the quote, dated, signed, with the mention "Accepted", and a deposit of 30% of the total amount (unless otherwise stated on the quote). Without these two elements, not a single line of code will be written. The deposit validates the reservation of my time and is non-refundable in case of cancellation by the client.',
+        'A project officially begins upon receipt of two items: the quote—dated, signed, and bearing the handwritten note "Accepted" (Bon pour accord)—and the payment of a 30% deposit of the total amount (unless otherwise specified on the quote). Without these two elements, not a single line of code will be written. This deposit secures my time and is non-refundable should the client cancel the project.',
     },
     {
       title: "3. Client Commitments (Content)",
       content:
-        "For me to deliver a high-performance engine on time, I need fuel. The client undertakes to provide all content (texts, logos, images, server access) necessary for the project within the agreed timeframes. Any delay in delivering these elements will result in a proportional delay in the final delivery date. I cannot be held responsible for this.",
+        "To deliver a high-performance engine on time, I need fuel. The client agrees to provide all necessary content (texts, logos, images, server access) within the agreed deadlines. Any delay in delivering these materials will result in a proportional extension of the final delivery date. I cannot be held liable for such delays.",
     },
     {
       title: "4. Pricing and Payment Terms",
       content:
-        "Prices on quotes are indicated in euros, excluding VAT (HT). Value Added Tax (VAT) at the applicable rate is charged in addition. The invoice balance is due upon project delivery (launch or source code delivery), with a maximum deadline of 15 days from the invoice date. Payment is accepted by bank transfer only.",
+        "Prices on quotes are listed in euros, excluding taxes (HT). Value-Added Tax (VAT) at the current rate is applied additionally. The remaining balance is due upon delivery of the project (website launch or source code handover), with a strict maximum payment term of 15 days from the invoice issue date. Payments must be made exclusively by bank transfer to the professional account indicated on the invoice.",
     },
     {
       title: "5. Late Payment",
       content:
-        "Any late payment will automatically, from the first day of delay, incur late payment penalties equal to 3 times the applicable legal interest rate, as well as a flat-rate recovery fee of €40. Le Comptoir du Code also reserves the right to suspend the website until full payment is received.",
+        "Any late payment will automatically trigger, from the very first day of delay, late payment penalties equal to 3 times the applicable legal interest rate, along with a flat-rate recovery indemnity of €40. Le Comptoir du Code also reserves the right to suspend the website's hosting or launch until the balance is paid in full.",
     },
     {
       title: "6. Intellectual Property (The Code)",
       content:
-        "This is an absolute rule of craftsmanship: the work belongs to its creator until it is paid for. The transfer of intellectual property rights over custom code and design only occurs upon full payment of the final invoice. Once settled, the code is yours.",
+        "This is an absolute rule of craftsmanship: the work belongs to its creator until it is paid for. The transfer of intellectual property rights for custom code and design takes place only upon full payment of the final invoice. Once the balance is settled, the code is entirely yours.",
     },
     {
       title: "7. Warranty and Technical Maintenance",
       content:
-        "For projects valued at €3,000 or more (E-commerce and Custom plans), the service includes technical maintenance for 12 months from the launch date. After this first year, a monthly maintenance contract is available: €100/month for the E-commerce plan, €120/month for the Custom Tools plan. This maintenance covers exclusively security updates and the correction of blocking bugs related to my code, defined as any anomaly preventing normal use of the tool as delivered. It does not cover requests for new features, content modifications, design overhauls, or malfunctions caused by the client. For projects under €3,000 (Presence plan), optional maintenance is available at €80/month. Without a maintenance contract, any post-delivery technical work will be subject to a separate quote. The monthly maintenance contract may be cancelled at any time with one calendar month's notice, without penalty.",
+        "For projects valued at €3,000 or more (E-commerce and Custom plans), the service includes technical maintenance for 12 months following the launch date. After this initial year, a monthly maintenance contract is offered: €100/month for the E-commerce plan, and €120/month for the Custom plan. This maintenance strictly covers security updates and the fixing of blocking bugs related to my code (defined as any anomaly preventing the normal use of the delivered tool). It explicitly does not cover requests for new features, content updates, design overhauls, or breakdowns caused by client mishandling. For projects under €3,000 (Presence plan), optional maintenance is available for €80/month. Without an active maintenance contract, any post-delivery technical intervention will require a separate quote. The monthly maintenance contract can be canceled at any time with a one-month calendar notice, penalty-free.",
     },
     {
       title: "8. Termination",
       content:
-        "In case of contract termination before completion by the client, the deposit remains with Le Comptoir du Code. Additionally, hours already worked beyond the deposit amount will be invoiced based on the daily rate stated in the quote.",
+        "If the client terminates the contract before its completion, the deposit is forfeited and retained by Le Comptoir du Code. Furthermore, any hours already worked that exceed the value of the deposit will be invoiced based on the current daily rate indicated on the quote.",
     },
     {
       title: "9. Disputes",
       content:
-        "These conditions are governed by French law. In case of a dispute, we will always try to find an amicable solution at the counter. Failing that, the competent court will be that of Le Comptoir du Code's registered office.",
+        "These terms are governed by French law. In the event of a dispute, we will always try to find an amicable solution around the counter first. Failing that, the competent jurisdiction will be the Commercial Court of Bobigny, aligned with the registered office of the Jump Green cooperative.",
     },
   ],
 }

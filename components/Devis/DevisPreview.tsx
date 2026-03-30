@@ -119,11 +119,12 @@ export default function DevisPreview({ data }: Props) {
     <div class="party">
       <div class="party-label">Prestataire</div>
       <span class="party-name">Le Comptoir du Code</span>
-      <span class="party-detail">EURL (en cours d'immatriculation)</span>
-      <span class="party-detail">SIRET : ${data.siret || 'En cours d\'attribution'}</span>
-      <span class="party-detail">N° TVA : En cours d'attribution</span>
+      <span class="party-detail">Ludovic BATAILLE (Entrepreneur-salarié)</span>
+      <span class="party-detail">Hébergé par : Jump Green</span>
+      <span class="party-detail">7 Place de l'Hôtel de Ville, 93600 Aulnay-sous-Bois</span>
+      <span class="party-detail">SIRET : 97761078100014</span>
+      <span class="party-detail">N° TVA : FR10977610781</span>
       <span class="party-detail">contact@lecomptoirducode.fr</span>
-      <span class="party-detail">lecomptoirducode.fr</span>
     </div>
     <div class="party">
       <div class="party-label">Client</div>
@@ -258,7 +259,7 @@ export default function DevisPreview({ data }: Props) {
   </div>
 
   <div class="footer">
-    <div class="footer-left">Le Comptoir du Code — EURL (en cours d'immatriculation) — Gérant : Ludovic BATAILLE</div>
+    <div class="footer-left">Le Comptoir du Code — Hébergé par Jump Green au capital de 18 501 € — SIRET 97761078100014 — RCS de Bobigny — TVA FR10977610781</div>
     <div class="footer-right">
       <span class="footer-site">lecomptoirducode.fr</span><br>
       contact@lecomptoirducode.fr

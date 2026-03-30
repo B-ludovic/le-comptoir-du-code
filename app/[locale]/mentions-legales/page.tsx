@@ -63,11 +63,26 @@ export default async function MentionsLegales({
             <p className={styles.text}>Ludovic BATAILLE</p>
             <p className={styles.text}>
               {isFr
-                ? "Statut : EURL (Société en cours d'immatriculation)"
-                : 'Status: EURL — Single-member LLC (registration in progress)'}
+                ? 'Statut : Entrepreneur-salarié (Le Comptoir du Code)'
+                : 'Status: Employee-entrepreneur (Le Comptoir du Code)'}
             </p>
             <p className={styles.text}>
-              Email :{' '}
+              {isFr
+                ? <>Hébergé juridiquement par la coopérative : <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">Jump Green</a></>
+                : <>Legally hosted by the cooperative: <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">Jump Green</a></>}
+            </p>
+            <p className={styles.text}>
+              {isFr
+                ? "Adresse : 7 Place de l'Hôtel de Ville, 93600 Aulnay-sous-Bois"
+                : "Address: 7 Place de l'Hôtel de Ville, 93600 Aulnay-sous-Bois, France"}
+            </p>
+            <p className={styles.text}>
+              {isFr
+                ? 'SIRET : 97761078100014 — RCS de Bobigny — NAF : 7022Z — TVA : FR10977610781'
+                : 'SIRET: 97761078100014 — Trade Register (RCS) of Bobigny — NAF: 7022Z — VAT: FR10977610781'}
+            </p>
+            <p className={styles.text}>
+              {isFr ? 'Email : ' : 'Email: '}
               <a href="mailto:contact@lecomptoirducode.fr">
                 contact@lecomptoirducode.fr
               </a>
@@ -86,7 +101,7 @@ export default async function MentionsLegales({
             <p className={styles.text}>
               {isFr
                 ? <>Ce site est hébergé par <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>, dont le siège social est situé au 340 S Lemon Ave, Walnut, CA 91789, USA.</>
-                : <>This site is hosted by <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>, whose registered office is located at 340 S Lemon Ave, Walnut, CA 91789, USA.</>}
+                : <>This website is hosted by <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>, headquartered at 340 S Lemon Ave, Walnut, CA 91789, USA.</>}
             </p>
           </div>
 
@@ -97,7 +112,7 @@ export default async function MentionsLegales({
             <p className={styles.text}>
               {isFr
                 ? "L'architecture, le design, les textes et le code de ce site appartiennent exclusivement à Ludovic BATAILLE. Toute reproduction, copie ou utilisation mécanique de ces éléments, même partielle, est strictement interdite sans accord écrit préalable."
-                : 'The architecture, design, texts and code of this site belong exclusively to Ludovic BATAILLE. Any reproduction, copy or mechanical use of these elements, even partial, is strictly prohibited without prior written agreement.'}
+                : "The architecture, design, texts, and source code of this website are the exclusive property of Ludovic BATAILLE. Any reproduction, copying, or mechanical use of these elements, whether in whole or in part, is strictly prohibited without prior written consent."}
             </p>
           </div>
 
