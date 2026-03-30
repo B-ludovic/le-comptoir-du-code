@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://lecomptoirducode.fr'
+const BASE_URL = 'https://lechoppeducode.com'
 const locales = ['fr', 'en']
 
 const legalPages = [

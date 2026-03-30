@@ -11,4 +11,4 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-Sitemap: https://lecomptoirducode.fr/sitemap.xml
+Sitemap: https://lechoppeducode.com/sitemap.xml

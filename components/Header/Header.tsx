@@ -72,9 +72,9 @@ export default function Header({ locale, nav }: Props) {
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <Link href={`/${locale}`} className={styles.logo}>
-          <span className={styles.logoMark}>C/C</span>
+          <span className={styles.logoMark}>E/C</span>
           <span className={styles.logoText}>
-            <span className={styles.logoTop}>LE COMPTOIR</span>
+            <span className={styles.logoTop}>L&apos;ECHOPPE</span>
             <span className={styles.logoBottom}>du Code</span>
           </span>
         </Link>
@@ -97,7 +97,7 @@ export default function Header({ locale, nav }: Props) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/ludovic.jpeg"
-            alt="Ludovic — Le Comptoir du Code"
+            alt="Ludovic — L'Echoppe du Code"
             width={32}
             height={32}
             className={styles.portraitImage}

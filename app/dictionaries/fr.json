@@ -10,7 +10,7 @@
     "eyebrow": "De l'idée à la mise en ligne, sans détours.",
     "section_title": "Trois étapes. Pas une de plus.",
     "intro": "Pas de réunions inutiles, pas d'approximations. Chaque étape a un livrable, un délai, un prix.",
-    "block1_title": "Le brief au comptoir.",
+    "block1_title": "Le brief à l'echoppe.",
     "block1_text": "Vous m'exposez votre besoin métier. Je vous dis immédiatement si c'est réalisable, avec quelle technologie, et à quel prix.",
     "block2_title": "L'arrière-boutique.",
     "block2_text": "Je conçois et je code. Vous continuez à gérer votre entreprise sans perdre de temps dans des réunions interminables. L'avancement est factuel.",
@@ -64,7 +64,7 @@
     "vat_notice": "Tous nos tarifs sont indiqués hors taxes. Une TVA de 20 % s'applique en sus."
   },
   "portfolio": {
-    "eyebrow": "Archives du Comptoir.",
+    "eyebrow": "Archives de l'Echoppe.",
     "section_title": "Quatre chantiers ouverts. Quatre chantiers livrés.",
     "intro": "Des applications livrées, utilisées, et qui fonctionnent sans que je sois là pour les tenir à bout de bras.",
     "project1_title": "Fairy Chair Studio",
@@ -85,7 +85,7 @@
     "section_title": "L'exigence du manager. La rigueur du codeur.",
     "p1": "Après 18 ans à encadrer des équipes sur le terrain et à piloter des opérations, j'ai tombé la cravate pour revenir à ma véritable obsession : la mécanique pure du web.",
     "p2": "De cette première vie de manager, j'ai gardé une grille de lecture implacable. Je sais qu'un chef d'entreprise n'a pas le temps pour le jargon ou les grandes théories : il a besoin d'outils qui tournent. Mon œil a été formé à repérer les frictions. Quand j'analyse un projet, je vois immédiatement ce qui ralentit vos clients, ce qui alourdit une interface ou ce qui sonne faux.",
-    "p3": "C'est ce qui fonde ce Comptoir. Je ne vous ferai pas de grandes promesses creuses. Ce qui nous réunit, c'est un cahier des charges à tenir et un résultat à livrer.",
+    "p3": "C'est ce qui fonde cette Echoppe. Je ne vous ferai pas de grandes promesses creuses. Ce qui nous réunit, c'est un cahier des charges à tenir et un résultat à livrer.",
     "p4": "On se met d'accord sur les fondations, je forge l'architecture, et je ne ferme pas mon éditeur tant que la machine ne fait pas exactement ce qui a été signé. Mon métier, c'est de produire un code solide pour que vous puissiez vous concentrer sur le vôtre."
   },
   "contact": {
@@ -104,7 +104,7 @@
     "btn_submit": "Envoyer la demande"
   },
   "footer": {
-    "copyright": "© 2026 Le Comptoir du Code. Tous droits réservés.",
+    "copyright": "© 2026 L'Echoppe du Code. Tous droits réservés.",
     "legal": "Mentions Légales",
     "privacy": "Politique de Confidentialité",
     "cookies": "Gestion des Cookies",

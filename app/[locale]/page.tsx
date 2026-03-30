@@ -22,7 +22,7 @@ export default async function Home({
   return (
     <main>
       <Header locale={locale} nav={dict.nav} />
-      <h1 className="sr-only">Le Comptoir du Code — Développeur Web Indépendant</h1>
+      <h1 className="sr-only">L&apos;Echoppe du Code — Développeur Web Indépendant</h1>
 
       {/* Section 2 — Méthode */}
       <Method dict={dict.method} />

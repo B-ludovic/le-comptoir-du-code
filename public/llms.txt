@@ -1,4 +1,4 @@
-# Le Comptoir du Code
+# L'Echoppe du Code
 
 > Développeur Web Indépendant — Sites vitrines, e-commerce et applications sur-mesure.
 
@@ -23,15 +23,15 @@ Next.js, React, TypeScript, NestJS, Node.js, PostgreSQL, Tailwind CSS, Vercel.
 
 ## Contact
 
-- Site : https://lecomptoirducode.fr
-- Email : contact@lecomptoirducode.fr
+- Site : https://lechoppeducode.com
+- Email : contact@lechoppeducode.com
 - GitHub : https://github.com/B-ludovic
 
 ## Pages
 
-- https://lecomptoirducode.fr/fr — Page d'accueil (français)
-- https://lecomptoirducode.fr/en — Homepage (English)
-- https://lecomptoirducode.fr/fr/mentions-legales — Mentions légales
-- https://lecomptoirducode.fr/fr/politique-de-confidentialite — Politique de confidentialité
-- https://lecomptoirducode.fr/fr/gestion-des-cookies — Gestion des cookies
-- https://lecomptoirducode.fr/fr/conditions-generales — Conditions générales de prestation
+- https://lechoppeducode.com/fr — Page d'accueil (français)
+- https://lechoppeducode.com/en — Homepage (English)
+- https://lechoppeducode.com/fr/mentions-legales — Mentions légales
+- https://lechoppeducode.com/fr/politique-de-confidentialite — Politique de confidentialité
+- https://lechoppeducode.com/fr/gestion-des-cookies — Gestion des cookies
+- https://lechoppeducode.com/fr/conditions-generales — Conditions générales de prestation

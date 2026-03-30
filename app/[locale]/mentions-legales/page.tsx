@@ -5,7 +5,7 @@ import styles from '@/components/Legal/Legal.module.css'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
-const BASE_URL = 'https://lecomptoirducode.fr'
+const BASE_URL = 'https://lechoppeducode.com'
 const slug = 'mentions-legales'
 const dictionaries = { fr, en }
 
@@ -18,11 +18,11 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? 'Mentions Légales | Le Comptoir du Code'
-      : 'Legal Notice | Le Comptoir du Code',
+      ? "Mentions Légales | L'Echoppe du Code"
+      : "Legal Notice | L'Echoppe du Code",
     description: isFr
-      ? 'Mentions légales du site Le Comptoir du Code — éditeur, hébergement, propriété intellectuelle.'
-      : 'Legal notice for Le Comptoir du Code — publisher, hosting, intellectual property.',
+      ? "Mentions légales du site L'Echoppe du Code — éditeur, hébergement, propriété intellectuelle."
+      : "Legal notice for L'Echoppe du Code — publisher, hosting, intellectual property.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/${slug}`,
       languages: {
@@ -63,8 +63,8 @@ export default async function MentionsLegales({
             <p className={styles.text}>Ludovic BATAILLE</p>
             <p className={styles.text}>
               {isFr
-                ? 'Statut : Entrepreneur-salarié (Le Comptoir du Code)'
-                : 'Status: Employee-entrepreneur (Le Comptoir du Code)'}
+                ? "Statut : Entrepreneur-salarié (L'Echoppe du Code)"
+                : "Status: Employee-entrepreneur (L'Echoppe du Code)"}
             </p>
             <p className={styles.text}>
               {isFr
@@ -83,8 +83,8 @@ export default async function MentionsLegales({
             </p>
             <p className={styles.text}>
               {isFr ? 'Email : ' : 'Email: '}
-              <a href="mailto:contact@lecomptoirducode.fr">
-                contact@lecomptoirducode.fr
+              <a href="mailto:contact@lechoppeducode.com">
+                contact@lechoppeducode.com
               </a>
             </p>
             <p className={styles.text}>

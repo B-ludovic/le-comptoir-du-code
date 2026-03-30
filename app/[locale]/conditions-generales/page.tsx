@@ -5,7 +5,7 @@ import styles from '@/components/Legal/Legal.module.css'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
-const BASE_URL = 'https://lecomptoirducode.fr'
+const BASE_URL = 'https://lechoppeducode.com'
 const slug = 'conditions-generales'
 const dictionaries = { fr, en }
 
@@ -18,11 +18,11 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? 'Conditions Générales de Prestation | Le Comptoir du Code'
-      : 'Terms of Service | Le Comptoir du Code',
+      ? "Conditions Générales de Prestation | L'Echoppe du Code"
+      : "Terms of Service | L'Echoppe du Code",
     description: isFr
-      ? 'Conditions générales de prestation de services du Comptoir du Code — tarifs, délais, maintenance, propriété intellectuelle.'
-      : 'Terms of service for Le Comptoir du Code — pricing, timelines, maintenance, intellectual property.',
+      ? "Conditions générales de prestation de services de L'Echoppe du Code — tarifs, délais, maintenance, propriété intellectuelle."
+      : "Terms of service for L'Echoppe du Code — pricing, timelines, maintenance, intellectual property.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/${slug}`,
       languages: {
@@ -38,7 +38,7 @@ const articles = {
     {
       title: "1. Objet et champ d'application",
       content:
-        "Les présentes conditions régissent les prestations de développement web et de conseil proposées par Ludovic BATAILLE (Le Comptoir du Code), agissant sous le statut d'entrepreneur-salarié et hébergé juridiquement par la coopérative Jump Green, à ses clients. Toute signature d'une proposition commerciale ou d'un devis implique l'acceptation sans réserve de ces conditions. Ici, on travaille en confiance, mais le cadre est défini.",
+        "Les présentes conditions régissent les prestations de développement web et de conseil proposées par Ludovic BATAILLE (L'Echoppe du Code), agissant sous le statut d'entrepreneur-salarié et hébergé juridiquement par la coopérative Jump Green, à ses clients. Toute signature d'une proposition commerciale ou d'un devis implique l'acceptation sans réserve de ces conditions. Ici, on travaille en confiance, mais le cadre est défini.",
     },
     {
       title: "2. Formation du contrat et Acompte",
@@ -58,7 +58,7 @@ const articles = {
     {
       title: "5. Retard de paiement",
       content:
-        "Tout retard de paiement entraînera de plein droit, dès le premier jour de retard, l'application de pénalités de retard égales à 3 fois le taux d'intérêt légal en vigueur, ainsi qu'une indemnité forfaitaire pour frais de recouvrement de 40 €. Le Comptoir du Code se réserve également le droit de suspendre la mise en ligne du site jusqu'au règlement intégral.",
+        "Tout retard de paiement entraînera de plein droit, dès le premier jour de retard, l'application de pénalités de retard égales à 3 fois le taux d'intérêt légal en vigueur, ainsi qu'une indemnité forfaitaire pour frais de recouvrement de 40 €. L'Echoppe du Code se réserve également le droit de suspendre la mise en ligne du site jusqu'au règlement intégral.",
     },
     {
       title: "6. Propriété Intellectuelle (Le Code)",
@@ -73,19 +73,19 @@ const articles = {
     {
       title: "8. Résiliation",
       content:
-        "En cas de rupture du contrat avant son terme par le client, l'acompte reste acquis au Comptoir du Code. De plus, les heures déjà travaillées au-delà du montant de l'acompte seront facturées sur la base du taux journalier en vigueur indiqué sur le devis.",
+        "En cas de rupture du contrat avant son terme par le client, l'acompte reste acquis à l'Echoppe du Code. De plus, les heures déjà travaillées au-delà du montant de l'acompte seront facturées sur la base du taux journalier en vigueur indiqué sur le devis.",
     },
     {
       title: "9. Litiges",
       content:
-        "Les présentes conditions sont soumises au droit français. En cas de litige, on essaiera toujours de trouver une solution à l'amiable autour du comptoir. À défaut, le tribunal compétent sera celui du ressort du siège social de la coopérative Jump Green (Tribunal de Commerce de Bobigny).",
+        "Les présentes conditions sont soumises au droit français. En cas de litige, on essaiera toujours de trouver une solution à l'amiable autour de l'echoppe. À défaut, le tribunal compétent sera celui du ressort du siège social de la coopérative Jump Green (Tribunal de Commerce de Bobigny).",
     },
   ],
   en: [
     {
       title: "1. Purpose and Scope",
       content:
-        "These Terms and Conditions govern the web development and consulting services provided to clients by Ludovic BATAILLE (Le Comptoir du Code), operating under the status of employee-entrepreneur and legally hosted by the Jump Green cooperative. Signing a commercial proposal or quote implies unconditional acceptance of these terms. We work on a foundation of trust here, but the framework must be clearly defined.",
+        "These Terms and Conditions govern the web development and consulting services provided to clients by Ludovic BATAILLE (L'Echoppe du Code), operating under the status of employee-entrepreneur and legally hosted by the Jump Green cooperative. Signing a commercial proposal or quote implies unconditional acceptance of these terms. We work on a foundation of trust here, but the framework must be clearly defined.",
     },
     {
       title: "2. Contract Formation and Deposit",
@@ -105,7 +105,7 @@ const articles = {
     {
       title: "5. Late Payment",
       content:
-        "Any late payment will automatically trigger, from the very first day of delay, late payment penalties equal to 3 times the applicable legal interest rate, along with a flat-rate recovery indemnity of €40. Le Comptoir du Code also reserves the right to suspend the website's hosting or launch until the balance is paid in full.",
+        "Any late payment will automatically trigger, from the very first day of delay, late payment penalties equal to 3 times the applicable legal interest rate, along with a flat-rate recovery indemnity of €40. L'Echoppe du Code also reserves the right to suspend the website's hosting or launch until the balance is paid in full.",
     },
     {
       title: "6. Intellectual Property (The Code)",
@@ -120,12 +120,12 @@ const articles = {
     {
       title: "8. Termination",
       content:
-        "If the client terminates the contract before its completion, the deposit is forfeited and retained by Le Comptoir du Code. Furthermore, any hours already worked that exceed the value of the deposit will be invoiced based on the current daily rate indicated on the quote.",
+        "If the client terminates the contract before its completion, the deposit is forfeited and retained by L'Echoppe du Code. Furthermore, any hours already worked that exceed the value of the deposit will be invoiced based on the current daily rate indicated on the quote.",
     },
     {
       title: "9. Disputes",
       content:
-        "These terms are governed by French law. In the event of a dispute, we will always try to find an amicable solution around the counter first. Failing that, the competent jurisdiction will be the Commercial Court of Bobigny, aligned with the registered office of the Jump Green cooperative.",
+        "These terms are governed by French law. In the event of a dispute, we will always try to find an amicable solution around the echoppe first. Failing that, the competent jurisdiction will be the Commercial Court of Bobigny, aligned with the registered office of the Jump Green cooperative.",
     },
   ],
 }

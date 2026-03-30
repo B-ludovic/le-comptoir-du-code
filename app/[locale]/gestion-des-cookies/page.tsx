@@ -5,7 +5,7 @@ import styles from '@/components/Legal/Legal.module.css'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
-const BASE_URL = 'https://lecomptoirducode.fr'
+const BASE_URL = 'https://lechoppeducode.com'
 const slug = 'gestion-des-cookies'
 const dictionaries = { fr, en }
 
@@ -18,11 +18,11 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? 'Gestion des Cookies | Le Comptoir du Code'
-      : 'Cookie Policy | Le Comptoir du Code',
+      ? "Gestion des Cookies | L'Echoppe du Code"
+      : "Cookie Policy | L'Echoppe du Code",
     description: isFr
-      ? 'Gestion des cookies du site Le Comptoir du Code — types de cookies utilisés et paramétrage.'
-      : 'Cookie policy for Le Comptoir du Code — types of cookies used and configuration.',
+      ? "Gestion des cookies du site L'Echoppe du Code — types de cookies utilisés et paramétrage."
+      : "Cookie policy for L'Echoppe du Code — types of cookies used and configuration.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/${slug}`,
       languages: {
@@ -70,8 +70,8 @@ export default async function GestionDesCookies({
           <div className={styles.block}>
             <p className={styles.text}>
               {isFr
-                ? "Le Comptoir du Code a été conçu pour être rapide, propre et respectueux de votre navigation. Par conséquent, ce site n'utilise aucun cookie de ciblage publicitaire ou de tracking marketing (pas de Google Analytics, pas de Pixel Facebook)."
-                : "Le Comptoir du Code was designed to be fast, clean and respectful of your browsing. As a result, this site uses no advertising or marketing tracking cookies (no Google Analytics, no Facebook Pixel)."}
+                ? "L'Echoppe du Code a été conçu pour être rapide, propre et respectueux de votre navigation. Par conséquent, ce site n'utilise aucun cookie de ciblage publicitaire ou de tracking marketing (pas de Google Analytics, pas de Pixel Facebook)."
+                : "L'Echoppe du Code was designed to be fast, clean and respectful of your browsing. As a result, this site uses no advertising or marketing tracking cookies (no Google Analytics, no Facebook Pixel)."}
             </p>
             <p className={styles.text}>
               {isFr

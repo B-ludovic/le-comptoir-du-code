@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import '@/app/styles/variables.css'
 import '@/app/styles/globals.css'
 
-const BASE_URL = 'https://lecomptoirducode.fr'
+const BASE_URL = 'https://lechoppeducode.com'
 
 export async function generateMetadata({
   params,
@@ -13,7 +13,7 @@ export async function generateMetadata({
   const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US'
 
   return {
-    title: 'Le Comptoir du Code | Développeur Web Indépendant',
+    title: "L'Echoppe du Code | Développeur Web Indépendant",
     description:
       'Création de sites vitrines, e-commerce et applications sur-mesure. Un code propre, performant, et 1 an de maintenance technique engagée.',
     keywords: 'développeur freelance, site vitrine, e-commerce, outil sur-mesure, Next.js, NestJS',
@@ -26,10 +26,10 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: 'Le Comptoir du Code',
+      title: "L'Echoppe du Code",
       description: 'Des applications qui tournent en production. Parlons de votre projet.',
       url: `${BASE_URL}/${locale}`,
-      siteName: 'Le Comptoir du Code',
+      siteName: "L'Echoppe du Code",
       locale: ogLocale,
       type: 'website',
       images: [
@@ -37,13 +37,13 @@ export async function generateMetadata({
           url: `${BASE_URL}/og-image.png`,
           width: 1200,
           height: 630,
-          alt: 'Le Comptoir du Code — Développeur Web Indépendant',
+          alt: "L'Echoppe du Code — Développeur Web Indépendant",
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Le Comptoir du Code | Développeur Web Indépendant',
+      title: "L'Echoppe du Code | Développeur Web Indépendant",
       description: 'Des applications qui tournent en production. Parlons de votre projet.',
       images: [`${BASE_URL}/og-image.png`],
     },
@@ -53,12 +53,12 @@ export async function generateMetadata({
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  name: 'Le Comptoir du Code',
+  name: "L'Echoppe du Code",
   description:
     'Développeur Web Indépendant spécialisé en Next.js et React. Création de sites vitrines, e-commerce et applications sur-mesure.',
-  url: 'https://lecomptoirducode.fr',
-  email: 'contact@lecomptoirducode.fr',
-  image: 'https://lecomptoirducode.fr/og-image.png',
+  url: 'https://lechoppeducode.com',
+  email: 'contact@lechoppeducode.com',
+  image: 'https://lechoppeducode.com/og-image.png',
   priceRange: 'À partir de 1500€',
   sameAs: ['https://github.com/B-ludovic'],
   knowsAbout: [

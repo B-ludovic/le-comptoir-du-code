@@ -104,7 +104,7 @@ export default function DevisPreview({ data }: Props) {
     <div class="logo">
       <div class="logo-mark">C/C</div>
       <div>
-        <span class="logo-label-top">LE COMPTOIR</span>
+        <span class="logo-label-top">L'ECHOPPE</span>
         <span class="logo-label-bottom">du Code</span>
       </div>
     </div>
@@ -118,13 +118,13 @@ export default function DevisPreview({ data }: Props) {
   <div class="parties">
     <div class="party">
       <div class="party-label">Prestataire</div>
-      <span class="party-name">Le Comptoir du Code</span>
+      <span class="party-name">L'Echoppe du Code</span>
       <span class="party-detail">Ludovic BATAILLE (Entrepreneur-salarié)</span>
       <span class="party-detail">Hébergé par : Jump Green</span>
       <span class="party-detail">7 Place de l'Hôtel de Ville, 93600 Aulnay-sous-Bois</span>
       <span class="party-detail">SIRET : 97761078100014</span>
       <span class="party-detail">N° TVA : FR10977610781</span>
-      <span class="party-detail">contact@lecomptoirducode.fr</span>
+      <span class="party-detail">contact@lechoppeducode.com</span>
     </div>
     <div class="party">
       <div class="party-label">Client</div>
@@ -242,7 +242,7 @@ export default function DevisPreview({ data }: Props) {
   <div class="signature-section">
     <div class="signature-block">
       <div class="signature-title">Signature du prestataire</div>
-      <div class="signature-mention">Le Comptoir du Code &mdash; EURL &mdash; G&eacute;rant&nbsp; &mdash; Ludovic BATAILLE</div>
+      <div class="signature-mention">L'Echoppe du Code &mdash; EURL &mdash; G&eacute;rant&nbsp; &mdash; Ludovic BATAILLE</div>
       <div class="signature-line"></div>
       <div class="signature-label">Signature</div>
     </div>
@@ -259,10 +259,10 @@ export default function DevisPreview({ data }: Props) {
   </div>
 
   <div class="footer">
-    <div class="footer-left">Le Comptoir du Code — Hébergé par Jump Green au capital de 18 501 € — SIRET 97761078100014 — RCS de Bobigny — TVA FR10977610781</div>
+    <div class="footer-left">L'Echoppe du Code — Hébergé par Jump Green au capital de 18 501 € — SIRET 97761078100014 — RCS de Bobigny — TVA FR10977610781</div>
     <div class="footer-right">
-      <span class="footer-site">lecomptoirducode.fr</span><br>
-      contact@lecomptoirducode.fr
+      <span class="footer-site">lechoppeducode.com</span><br>
+      contact@lechoppeducode.com
     </div>
   </div>
 </body>

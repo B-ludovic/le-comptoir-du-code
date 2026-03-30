@@ -5,7 +5,7 @@ import styles from '@/components/Legal/Legal.module.css'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
-const BASE_URL = 'https://lecomptoirducode.fr'
+const BASE_URL = 'https://lechoppeducode.com'
 const slug = 'politique-de-confidentialite'
 const dictionaries = { fr, en }
 
@@ -18,11 +18,11 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? 'Politique de Confidentialité | Le Comptoir du Code'
-      : 'Privacy Policy | Le Comptoir du Code',
+      ? "Politique de Confidentialité | L'Echoppe du Code"
+      : "Privacy Policy | L'Echoppe du Code",
     description: isFr
-      ? 'Politique de confidentialité du site Le Comptoir du Code — données personnelles, cookies, droits des utilisateurs.'
-      : 'Privacy policy for Le Comptoir du Code — personal data, cookies, user rights.',
+      ? "Politique de confidentialité du site L'Echoppe du Code — données personnelles, cookies, droits des utilisateurs."
+      : "Privacy policy for L'Echoppe du Code — personal data, cookies, user rights.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/${slug}`,
       languages: {
@@ -60,8 +60,8 @@ export default async function PolitiqueDeConfidentialite({
             <p className={styles.text}>
               <strong>
                 {isFr
-                  ? "Au Comptoir du Code, je traite vos données comme je traite le code : avec rigueur et sans fioritures."
-                  : "At Le Comptoir du Code, I handle your data the same way I handle code: with rigour and without unnecessary clutter."}
+                  ? "À l'Echoppe du Code, je traite vos données comme je traite le code : avec rigueur et sans fioritures."
+                  : "At L'Echoppe du Code, I handle your data the same way I handle code: with rigour and without unnecessary clutter."}
               </strong>
             </p>
           </div>
@@ -107,8 +107,8 @@ export default async function PolitiqueDeConfidentialite({
               {isFr
                 ? "Conformément au RGPD, vous gardez le contrôle total. Vous pouvez à tout moment me demander d'accéder à vos données, de les modifier ou de les supprimer en m'écrivant directement à : "
                 : "In accordance with GDPR, you retain full control. You can at any time request access to your data, modify or delete it by writing to: "}
-              <a href="mailto:contact@lecomptoirducode.fr">
-                contact@lecomptoirducode.fr
+              <a href="mailto:contact@lechoppeducode.com">
+                contact@lechoppeducode.com
               </a>
             </p>
           </div>

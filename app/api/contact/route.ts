@@ -60,8 +60,8 @@ export async function POST(req: NextRequest) {
 
   try {
     await transporter.sendMail({
-      from: `"Le Comptoir du Code" <contact@lecomptoirducode.fr>`,
-      to: 'contact@lecomptoirducode.fr',
+      from: `"L'Echoppe du Code" <contact@lechoppeducode.com>`,
+      to: 'contact@lechoppeducode.com',
       replyTo: reply_to,
       subject: `Nouveau brief — ${from_name}`,
       text: `Nom : ${from_name}\nEmail : ${reply_to}\nBudget : ${budget || '—'}\n\n${message}`,
