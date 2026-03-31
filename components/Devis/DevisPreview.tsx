@@ -199,6 +199,15 @@ export default function DevisPreview({ data }: Props) {
           <td class="right">—</td>
           <td class="right">—</td>
         </tr>
+        <tr>
+          <td class="desc">
+            Infrastructure &amp; services tiers
+            <span class="desc-sub">Hébergement front-end, back-end, base de données — facturés directement au client par les prestataires (Vercel, Render, Supabase, etc.)</span>
+          </td>
+          <td>Client</td>
+          <td class="right">—</td>
+          <td class="right">~50–100 € HT/mois</td>
+        </tr>
       </tbody>
     </table>
   </div>

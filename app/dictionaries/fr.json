@@ -32,7 +32,7 @@
       "Formulaire de contact",
       "Mise en ligne incluse"
     ],
-    "card1_maintenance": "Maintenance optionnelle — mises à jour de sécurité : 80\u00A0€/mois",
+    "card1_maintenance": "Maintenance optionnelle — mises à jour de sécurité : 70\u00A0€\u2060/\u2060mois HT",
     "card1_delay": "3 à 4 jours",
     "card2_title": "L'E-commerce & Réservation",
     "card2_subtitle": "Vente & Réservation",
@@ -45,7 +45,7 @@
       "Paiements Stripe sécurisés",
       "Catalogue produits"
     ],
-    "card2_maintenance": "1 an de mises à jour de sécurité inclus, puis 100\u00A0€\u2060/\u2060mois",
+    "card2_maintenance": "1 an de mises à jour de sécurité inclus, puis 85\u00A0€\u2060/\u2060mois HT",
     "card2_delay": "7 à 12 jours",
     "card3_title": "Les Outils Sur-Mesure",
     "card3_subtitle": "Applications métiers",
@@ -58,7 +58,7 @@
       "Génération de PDF",
       "Espace administrateur sur-mesure"
     ],
-    "card3_maintenance": "1 an de mises à jour de sécurité inclus, puis 120\u00A0€\u2060/\u2060mois",
+    "card3_maintenance": "1 an de mises à jour de sécurité inclus, puis à partir de 165\u00A0€\u2060/\u2060mois HT",
     "card3_delay": "3 semaines et +",
     "cta": "Démarrer ce projet",
     "vat_notice": "Tous nos tarifs sont indiqués hors taxes. Une TVA de 20 % s'applique en sus."

@@ -32,7 +32,7 @@
       "Lead generation form",
       "Deployment included"
     ],
-    "card1_maintenance": "Optional maintenance — Security updates: €80/mo",
+    "card1_maintenance": "Optional maintenance — Security updates: €70/mo excl. VAT",
     "card1_delay": "3 to 4 days",
     "card2_title": "Commerce & Booking",
     "card2_subtitle": "Sales & Scheduling",
@@ -45,7 +45,7 @@
       "Secure Stripe integration",
       "Product management"
     ],
-    "card2_maintenance": "1 year of maintenance included, then €100/mo",
+    "card2_maintenance": "1 year of maintenance included, then €85/mo excl. VAT",
     "card2_delay": "7 to 12 days",
     "card3_title": "Custom Tools",
     "card3_subtitle": "Business Applications",
@@ -58,7 +58,7 @@
       "Automated PDF generation",
       "Custom internal panel"
     ],
-    "card3_maintenance": "1 year of maintenance included, then €120/mo",
+    "card3_maintenance": "1 year of maintenance included, then from €165/mo excl. VAT",
     "card3_delay": "3 weeks+",
     "cta": "Start your project",
     "vat_notice": "All prices are quoted excluding taxes. 20% VAT applies in addition."

@@ -31,7 +31,7 @@ const FORFAITS = [
     service_1_delay: 'À définir',
     service_1_amount: '5000',
     maintenance_option: 'offered' as const,
-    maintenance_rate: '120\u00A0\u20AC\u2060/\u2060mois',
+    maintenance_rate: '165\u00A0\u20AC\u2060/\u2060mois HT',
   },
 ]
 

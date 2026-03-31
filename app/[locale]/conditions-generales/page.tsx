@@ -68,7 +68,7 @@ const articles = {
     {
       title: "7. Garantie et Maintenance technique",
       content:
-        "Pour les projets d'une valeur égale ou supérieure à 3 000 € (offres E-commerce et Sur-Mesure), la prestation inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Au terme de cette première année, un contrat de maintenance mensuel est proposé : 100 €/mois pour l'offre E-commerce, 120 €/mois pour l'offre Sur-Mesure. Cette maintenance couvre exclusivement les mises à jour de sécurité et la correction de bugs bloquants liés à mon code, définis comme toute anomalie empêchant l'utilisation normale de l'outil tel que livré. Elle ne couvre en aucun cas les demandes de nouvelles fonctionnalités, les modifications de contenu, les refontes de design, ou les pannes causées par une manipulation du client. Pour les projets d'une valeur inférieure à 3 000 € (offre Présence), une maintenance optionnelle est disponible à 80 €/mois. En l'absence de contrat de maintenance, toute intervention technique post-livraison fera l'objet d'un devis séparé. Le contrat de maintenance mensuel est résiliable à tout moment avec un préavis d'un mois calendaire, sans pénalité.",
+        "Pour les projets d'une valeur égale ou supérieure à 3 000 € (offres E-commerce et Sur-Mesure), la prestation inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Au terme de cette première année, un contrat de maintenance mensuel est proposé : 85 € HT/mois pour l'offre E-commerce, à partir de 165 € HT/mois pour l'offre Sur-Mesure. Cette maintenance couvre exclusivement les mises à jour de sécurité et la correction de bugs bloquants liés à mon code, définis comme toute anomalie empêchant l'utilisation normale de l'outil tel que livré. Elle ne couvre en aucun cas les demandes de nouvelles fonctionnalités, les modifications de contenu, les refontes de design, ou les pannes causées par une manipulation du client. Pour les projets d'une valeur inférieure à 3 000 € (offre Présence), une maintenance optionnelle est disponible à 70 € HT/mois. En l'absence de contrat de maintenance, toute intervention technique post-livraison fera l'objet d'un devis séparé. Le contrat de maintenance mensuel est résiliable à tout moment avec un préavis d'un mois calendaire, sans pénalité. Les coûts d'infrastructure (hébergement front-end, back-end, base de données, services tiers) sont exclus de la maintenance et restent à la charge directe du client, facturés par les prestataires concernés. Une estimation est fournie dans le devis à titre indicatif.",
     },
     {
       title: "8. Résiliation",
@@ -115,7 +115,7 @@ const articles = {
     {
       title: "7. Warranty and Technical Maintenance",
       content:
-        "For projects valued at €3,000 or more (E-commerce and Custom plans), the service includes technical maintenance for 12 months following the launch date. After this initial year, a monthly maintenance contract is offered: €100/month for the E-commerce plan, and €120/month for the Custom plan. This maintenance strictly covers security updates and the fixing of blocking bugs related to my code (defined as any anomaly preventing the normal use of the delivered tool). It explicitly does not cover requests for new features, content updates, design overhauls, or breakdowns caused by client mishandling. For projects under €3,000 (Presence plan), optional maintenance is available for €80/month. Without an active maintenance contract, any post-delivery technical intervention will require a separate quote. The monthly maintenance contract can be canceled at any time with a one-month calendar notice, penalty-free.",
+        "For projects valued at €3,000 or more (E-commerce and Custom plans), the service includes technical maintenance for 12 months following the launch date. After this initial year, a monthly maintenance contract is offered: €85 excl. VAT/month for the E-commerce plan, and from €165 excl. VAT/month for the Custom plan. This maintenance strictly covers security updates and the fixing of blocking bugs related to my code (defined as any anomaly preventing the normal use of the delivered tool). It explicitly does not cover requests for new features, content updates, design overhauls, or breakdowns caused by client mishandling. For projects under €3,000 (Presence plan), optional maintenance is available for €70 excl. VAT/month. Without an active maintenance contract, any post-delivery technical intervention will require a separate quote. The monthly maintenance contract can be canceled at any time with a one-month calendar notice, penalty-free. Infrastructure costs (front-end hosting, back-end hosting, database, third-party services) are excluded from the maintenance scope and remain the client's direct responsibility, billed by the relevant providers. An estimate is provided in the quote for reference.",
     },
     {
       title: "8. Termination",
@@ -155,6 +155,10 @@ export default async function ConditionsGenerales({
               ? 'Conditions Générales de Prestation de Services'
               : 'General Terms and Conditions of Service'}
           </h1>
+
+          <p className={styles.text} style={{ opacity: 0.6, fontSize: '0.85rem', marginBottom: '2rem' }}>
+            {isFr ? 'Dernière mise à jour : 31 mars 2026' : 'Last updated: March 31, 2026'}
+          </p>
 
           {content.map((article) => (
             <div key={article.title} className={styles.block}>
