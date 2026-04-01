@@ -109,10 +109,10 @@ export default function Solutions({ dict }: Props) {
                   {card.subtitle && (
                     <span className={styles.cardSubtitle}>{card.subtitle}</span>
                   )}
-                  <p className={styles.cardPrice}>
-                    {card.price}&nbsp;<span className={styles.cardPriceHT}>HT</span>
-                  </p>
                 </div>
+                <p className={styles.cardPrice}>
+                  {card.price}&nbsp;<span className={styles.cardPriceHT}>HT</span>
+                </p>
 
                 <p className={styles.cardDesc}>{card.desc}</p>
 
