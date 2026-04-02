@@ -38,7 +38,7 @@ const articles = {
     {
       title: "1. Objet et champ d'application",
       content:
-        "Les présentes conditions régissent les prestations de développement web et de conseil proposées par Ludovic BATAILLE (L'Echoppe du Code), agissant sous le statut d'entrepreneur-salarié et hébergé juridiquement par la coopérative Jump Green, à ses clients. Toute signature d'une proposition commerciale ou d'un devis implique l'acceptation sans réserve de ces conditions. Ici, on travaille en confiance, mais le cadre est défini.",
+        "Les présentes conditions régissent les prestations de développement web et de conseil proposées par Ludovic BATAILLE (L'Echoppe du Code), agissant sous le statut d'entrepreneur-salarié et hébergé juridiquement par la société de portage salarial Jump Blue, à ses clients. Toute signature d'une proposition commerciale ou d'un devis implique l'acceptation sans réserve de ces conditions. Ici, on travaille en confiance, mais le cadre est défini.",
     },
     {
       title: "2. Formation du contrat et Acompte",
@@ -78,14 +78,14 @@ const articles = {
     {
       title: "9. Litiges",
       content:
-        "Les présentes conditions sont soumises au droit français. En cas de litige, on essaiera toujours de trouver une solution à l'amiable autour de l'echoppe. À défaut, le tribunal compétent sera celui du ressort du siège social de la coopérative Jump Green (Tribunal de Commerce de Bobigny).",
+        "Les présentes conditions sont soumises au droit français. En cas de litige, on essaiera toujours de trouver une solution à l'amiable autour de l'echoppe. À défaut, le tribunal compétent sera celui du ressort du siège social de la société Jump Blue (Tribunal de Commerce de Paris).",
     },
   ],
   en: [
     {
       title: "1. Purpose and Scope",
       content:
-        "These Terms and Conditions govern the web development and consulting services provided to clients by Ludovic BATAILLE (L'Echoppe du Code), operating under the status of employee-entrepreneur and legally hosted by the Jump Green cooperative. Signing a commercial proposal or quote implies unconditional acceptance of these terms. We work on a foundation of trust here, but the framework must be clearly defined.",
+        "These Terms and Conditions govern the web development and consulting services provided to clients by Ludovic BATAILLE (L'Echoppe du Code), operating under the status of employee-entrepreneur and legally hosted by the Jump Blue umbrella company. Signing a commercial proposal or quote implies unconditional acceptance of these terms. We work on a foundation of trust here, but the framework must be clearly defined.",
     },
     {
       title: "2. Contract Formation and Deposit",
@@ -125,7 +125,7 @@ const articles = {
     {
       title: "9. Disputes",
       content:
-        "These terms are governed by French law. In the event of a dispute, we will always try to find an amicable solution around the echoppe first. Failing that, the competent jurisdiction will be the Commercial Court of Bobigny, aligned with the registered office of the Jump Green cooperative.",
+        "These terms are governed by French law. In the event of a dispute, we will always try to find an amicable solution around the echoppe first. Failing that, the competent jurisdiction will be the Commercial Court of Paris, aligned with the registered office of Jump Blue.",
     },
   ],
 }
