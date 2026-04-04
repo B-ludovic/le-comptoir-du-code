@@ -65,7 +65,7 @@
   },
   "portfolio": {
     "eyebrow": "The Counter Archives.",
-    "section_title": "Four projects started. Four projects shipped.",
+    "section_title": "Five projects started. Five projects shipped.",
     "intro": "Production-ready applications that run on their own — no hand-holding required.",
     "project1_title": "Fairy Chair Studio",
     "project1_desc": "End-to-end e-commerce for an Afro hair salon. Real-time stock, Stripe payments, Brevo newsletters, and an admin panel with PDF invoicing and Colissimo export.",
@@ -78,7 +78,10 @@
     "project3_stack": "Next.js 16 · Express · PostgreSQL · Prisma · Jikan API",
     "project4_title": "Aux P'tits Pois",
     "project4_desc": "Operations platform for a local farm co-op. Weekly basket management, member and producer portals, distribution logs, and PDF contracts.",
-    "project4_stack": "Next.js 15 · Express · PostgreSQL · Prisma · Puppeteer"
+    "project4_stack": "Next.js 15 · Express · PostgreSQL · Prisma · Puppeteer",
+    "project5_title": "La Requeyrie",
+    "project5_desc": "An elegant showcase for a three-apartment estate in Montignac-Lascaux, built for an international clientele.",
+    "project5_stack": "React 19 · Vite · react-i18next · CSS Modules"
   },
   "about": {
     "eyebrow": "The craftsman behind the code.",

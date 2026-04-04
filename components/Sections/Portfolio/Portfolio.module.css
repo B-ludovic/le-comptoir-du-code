@@ -158,6 +158,15 @@
   border-radius: var(--card-radius);
 }
 
+/* Lien titre */
+.titleLink {
+  display: inline-block;
+}
+
+.titleLink:hover .projectTitle {
+  color: var(--accent-primary);
+}
+
 /* Titre */
 .projectTitle {
   font-family: var(--font-heading);
@@ -166,6 +175,7 @@
   font-style: italic;
   color: var(--text-main);
   line-height: 1.1;
+  transition: color 0.3s ease;
 }
 
 /* Description */

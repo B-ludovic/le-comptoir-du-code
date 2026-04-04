@@ -1,5 +1,16 @@
 import Image from 'next/image'
 import styles from './Portfolio.module.css'
+import ProjectCarousel from './ProjectCarousel'
+
+type Project = {
+  number: string
+  title: string
+  desc: string
+  stack: string
+  image?: string
+  images?: string[]
+  url: string | null
+}
 
 type Props = {
   dict: {
@@ -18,15 +29,30 @@ type Props = {
     project4_title: string
     project4_desc: string
     project4_stack: string
+    project5_title: string
+    project5_desc: string
+    project5_stack: string
   }
 }
 
 export default function Portfolio({ dict }: Props) {
-  const projects = [
+  const projects: Project[] = [
     { number: '01', title: dict.project1_title, desc: dict.project1_desc, stack: dict.project1_stack, image: '/images/page-salon.png', url: null },
     { number: '02', title: dict.project2_title, desc: dict.project2_desc, stack: dict.project2_stack, image: '/images/page-meavita.png', url: null },
     { number: '03', title: dict.project3_title, desc: dict.project3_desc, stack: dict.project3_stack, image: '/images/accueil-okanime.png', url: 'https://okanime.live/' },
     { number: '04', title: dict.project4_title, desc: dict.project4_desc, stack: dict.project4_stack, image: '/images/accueil-auxptitspois.png', url: 'https://www.auxptitspois.fr/' },
+    {
+      number: '05',
+      title: dict.project5_title,
+      desc: dict.project5_desc,
+      stack: dict.project5_stack,
+      images: [
+        '/images/req-appartements.jpeg.png',
+        '/images/req-around.jpeg.png',
+        '/images/req-footer.jpeg.png',
+      ],
+      url: 'https://www.larequeyrie.fr',
+    },
   ]
 
   return (
@@ -49,19 +75,11 @@ export default function Portfolio({ dict }: Props) {
             <div className={styles.projectRow}>
 
               <div className={styles.projectImage}>
-                {project.url ? (
-                  <a href={project.url} target="_blank" rel="noopener noreferrer" className={styles.imageLink}>
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={800}
-                      height={500}
-                      className={styles.screenshot}
-                    />
-                  </a>
+                {project.images ? (
+                  <ProjectCarousel images={project.images} alt={project.title} />
                 ) : (
                   <Image
-                    src={project.image}
+                    src={project.image!}
                     alt={project.title}
                     width={800}
                     height={500}
@@ -78,7 +96,13 @@ export default function Portfolio({ dict }: Props) {
                       <span key={tag} className={styles.tag}>{tag}</span>
                     ))}
                   </div>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  {project.url ? (
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" className={styles.titleLink}>
+                      <h3 className={styles.projectTitle}>{project.title}</h3>
+                    </a>
+                  ) : (
+                    <h3 className={styles.projectTitle}>{project.title}</h3>
+                  )}
                   <p className={styles.projectDesc}>{project.desc}</p>
                 </div>
               </div>

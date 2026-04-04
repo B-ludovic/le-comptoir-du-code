@@ -65,7 +65,7 @@
   },
   "portfolio": {
     "eyebrow": "Archives de l'Echoppe.",
-    "section_title": "Quatre chantiers ouverts. Quatre chantiers livrés.",
+    "section_title": "Cinq chantiers ouverts. Cinq chantiers livrés.",
     "intro": "Des applications livrées, utilisées, et qui fonctionnent sans que je sois là pour les tenir à bout de bras.",
     "project1_title": "Fairy Chair Studio",
     "project1_desc": "E-commerce complet pour un salon de coiffure afro. Stocks en temps réel, paiements Stripe, newsletters Brevo, espace admin avec facturation PDF et export Colissimo.",
@@ -78,7 +78,10 @@
     "project3_stack": "Next.js 16 · Express · PostgreSQL · Prisma · Jikan API",
     "project4_title": "Aux P'tits Pois",
     "project4_desc": "Plateforme de gestion pour une AMAP. Paniers hebdomadaires, gestion des adhérents et producteurs, permanences, contrats PDF et newsletters.",
-    "project4_stack": "Next.js 15 · Express · PostgreSQL · Prisma · Puppeteer"
+    "project4_stack": "Next.js 15 · Express · PostgreSQL · Prisma · Puppeteer",
+    "project5_title": "La Requeyrie",
+    "project5_desc": "Création d'une vitrine élégante pour un domaine de trois appartements à Montignac-Lascaux, avec un fort enjeu sur la clientèle internationale.",
+    "project5_stack": "React 19 · Vite · react-i18next · CSS Modules"
   },
   "about": {
     "eyebrow": "L'artisan derrière l'écran.",
