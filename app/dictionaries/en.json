@@ -80,7 +80,7 @@
     "project4_desc": "Operations platform for a local farm co-op. Weekly basket management, member and producer portals, distribution logs, and PDF contracts.",
     "project4_stack": "Next.js 15 · Express · PostgreSQL · Prisma · Puppeteer",
     "project5_title": "La Requeyrie",
-    "project5_desc": "An elegant showcase for a three-apartment estate in Montignac-Lascaux, built for an international clientele.",
+    "project5_desc": "Showcasing a family estate nestled in the lush greenery of Montignac-Lascaux. For these three flower-named apartments, the goal was to craft a digital presence as warm as their gardens, ready to welcome travelers from all over the world.",
     "project5_stack": "React 19 · Vite · react-i18next · CSS Modules"
   },
   "about": {

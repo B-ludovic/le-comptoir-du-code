@@ -80,7 +80,7 @@
     "project4_desc": "Plateforme de gestion pour une AMAP. Paniers hebdomadaires, gestion des adhérents et producteurs, permanences, contrats PDF et newsletters.",
     "project4_stack": "Next.js 15 · Express · PostgreSQL · Prisma · Puppeteer",
     "project5_title": "La Requeyrie",
-    "project5_desc": "Création d'une vitrine élégante pour un domaine de trois appartements à Montignac-Lascaux, avec un fort enjeu sur la clientèle internationale.",
+    "project5_desc": "Mise en lumière d'un domaine familial niché dans la verdure à Montignac-Lascaux. Pour ces trois appartements aux noms fleuris, l'enjeu était de créer une vitrine aussi chaleureuse que leurs jardins, capable d'accueillir les voyageurs de tous horizons.",
     "project5_stack": "React 19 · Vite · react-i18next · CSS Modules"
   },
   "about": {
