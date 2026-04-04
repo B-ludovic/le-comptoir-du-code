@@ -40,8 +40,8 @@ function CarouselInner({
             <Image
               src={src}
               alt={`${alt} — ${i + 1}`}
-              width={variant === 'modal' ? 1400 : 800}
-              height={variant === 'modal' ? 875 : 500}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1400px"
               className={styles.screenshot}
             />
           </div>

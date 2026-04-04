@@ -1,16 +1,11 @@
 /* ── Inline thumbnail ── */
 .thumbnailWrapper {
+  width: 100%;
+  aspect-ratio: 8 / 5;
   position: relative;
+  overflow: hidden;
   cursor: zoom-in;
   border-radius: var(--card-radius);
-  overflow: hidden;
-}
-
-.carousel {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--card-radius);
-  aspect-ratio: 16 / 10;
 }
 
 .hoverOverlay {
@@ -25,6 +20,7 @@
   transition: opacity 0.3s ease;
   border-radius: var(--card-radius);
   pointer-events: none;
+  z-index: 1;
 }
 
 .thumbnailWrapper:hover .hoverOverlay {
@@ -32,10 +28,14 @@
 }
 
 /* ── Shared carousel internals ── */
+.carousel {
+  position: absolute;
+  inset: 0;
+}
+
 .track {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
 }
 
 .slide {
@@ -52,13 +52,10 @@
 }
 
 .screenshot {
-  width: 100%;
-  height: 100%;
   object-fit: contain;
   border-radius: 4px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(232, 196, 160, 0.1);
-  display: block;
 }
 
 /* Arrows */
