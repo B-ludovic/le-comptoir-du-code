@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import styles from './ProjectCarousel.module.css'
 
 type Props = {
@@ -10,22 +10,38 @@ type Props = {
   alt: string
 }
 
-export default function ProjectCarousel({ images, alt }: Props) {
-  const [current, setCurrent] = useState(0)
-
-  const prev = () => setCurrent((c) => (c - 1 + images.length) % images.length)
-  const next = () => setCurrent((c) => (c + 1) % images.length)
+function CarouselInner({
+  images,
+  alt,
+  current,
+  setCurrent,
+  variant,
+}: {
+  images: string[]
+  alt: string
+  current: number
+  setCurrent: (i: number) => void
+  variant: 'inline' | 'modal'
+}) {
+  const prev = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrent((current - 1 + images.length) % images.length)
+  }
+  const next = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrent((current + 1) % images.length)
+  }
 
   return (
-    <div className={styles.carousel}>
+    <div className={variant === 'modal' ? styles.carouselModal : styles.carousel}>
       <div className={styles.track}>
         {images.map((src, i) => (
           <div key={src} className={`${styles.slide} ${i === current ? styles.active : ''}`}>
             <Image
               src={src}
               alt={`${alt} — ${i + 1}`}
-              width={800}
-              height={500}
+              width={variant === 'modal' ? 1400 : 800}
+              height={variant === 'modal' ? 875 : 500}
               className={styles.screenshot}
             />
           </div>
@@ -43,12 +59,54 @@ export default function ProjectCarousel({ images, alt }: Props) {
         {images.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurrent(i)}
+            onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
             className={`${styles.dot} ${i === current ? styles.dotActive : ''}`}
             aria-label={`Image ${i + 1}`}
           />
         ))}
       </div>
     </div>
+  )
+}
+
+export default function ProjectCarousel({ images, alt }: Props) {
+  const [current, setCurrent] = useState(0)
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isOpen) return
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false)
+    }
+    window.addEventListener('keydown', handleEsc)
+    return () => window.removeEventListener('keydown', handleEsc)
+  }, [isOpen])
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [isOpen])
+
+  return (
+    <>
+      {/* Inline thumbnail */}
+      <div className={styles.thumbnailWrapper} onClick={() => setIsOpen(true)} role="button" tabIndex={0} aria-label="Ouvrir la galerie">
+        <CarouselInner images={images} alt={alt} current={current} setCurrent={setCurrent} variant="inline" />
+        <div className={styles.hoverOverlay}>
+        </div>
+      </div>
+
+      {/* Modal */}
+      {isOpen && (
+        <div className={styles.modalBackdrop} onClick={() => setIsOpen(false)}>
+          <button className={styles.closeButton} onClick={() => setIsOpen(false)} aria-label="Fermer la galerie">
+            <X size={22} strokeWidth={1.5} />
+          </button>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <CarouselInner images={images} alt={alt} current={current} setCurrent={setCurrent} variant="modal" />
+          </div>
+        </div>
+      )}
+    </>
   )
 }

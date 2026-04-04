@@ -1,3 +1,11 @@
+/* ── Inline thumbnail ── */
+.thumbnailWrapper {
+  position: relative;
+  cursor: zoom-in;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
 .carousel {
   position: relative;
   overflow: hidden;
@@ -5,6 +13,25 @@
   aspect-ratio: 16 / 10;
 }
 
+.hoverOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 13, 11, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: var(--card-radius);
+  pointer-events: none;
+}
+
+.thumbnailWrapper:hover .hoverOverlay {
+  opacity: 1;
+}
+
+/* ── Shared carousel internals ── */
 .track {
   position: relative;
   width: 100%;
@@ -20,7 +47,6 @@
 }
 
 .slide.active {
-  position: absolute;
   opacity: 1;
   pointer-events: auto;
 }
@@ -28,14 +54,14 @@
 .screenshot {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 4px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(232, 196, 160, 0.1);
   display: block;
 }
 
-/* Flèches */
+/* Arrows */
 .arrow {
   position: absolute;
   top: 50%;
@@ -68,7 +94,7 @@
   right: 0.75rem;
 }
 
-/* Points */
+/* Dots */
 .dots {
   position: absolute;
   bottom: 0.75rem;
@@ -93,4 +119,62 @@
 .dot.dotActive {
   background: var(--accent-primary);
   transform: scale(1.3);
+}
+
+/* ── Modal ── */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 13, 11, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.modalContent {
+  position: relative;
+  width: 90vw;
+  max-width: 1200px;
+  animation: scaleIn 0.25s ease-out forwards;
+}
+
+.carouselModal {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--card-radius);
+  aspect-ratio: 16 / 10;
+}
+
+.closeButton {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: rgba(232, 196, 160, 0.45);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  color: var(--accent-primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.96); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
 }
