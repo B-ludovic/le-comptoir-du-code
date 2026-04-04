@@ -68,13 +68,13 @@ export default async function MentionsLegales({
             </p>
             <p className={styles.text}>
               {isFr
-                ? <>Hébergé juridiquement par la coopérative : <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">Jump Blue</a></>
-                : <>Legally hosted by the cooperative: <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">Jump Blue</a></>}
+                ? <>Hébergé juridiquement par la société de portage salarial : <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">Jump Blue</a></>
+                : <>Legally hosted by the umbrella company: <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">Jump Blue</a></>}
             </p>
             <p className={styles.text}>
               {isFr
-                ? "Adresse : 28 Rue du Chemin Vert, 75001 Paris, France"
-                : "Address: 28 Rue du Chemin Vert, 75001 Paris, France"}
+                ? "Adresse : 28 Rue du Chemin Vert, 75011 Paris, France"
+                : "Address: 28 Rue du Chemin Vert, 75011 Paris, France"}
             </p>
             <p className={styles.text}>
               {isFr

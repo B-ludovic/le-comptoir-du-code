@@ -37,10 +37,60 @@ type Props = {
 
 export default function Portfolio({ dict }: Props) {
   const projects: Project[] = [
-    { number: '01', title: dict.project1_title, desc: dict.project1_desc, stack: dict.project1_stack, image: '/images/page-salon.png', url: null },
-    { number: '02', title: dict.project2_title, desc: dict.project2_desc, stack: dict.project2_stack, image: '/images/page-meavita.png', url: null },
-    { number: '03', title: dict.project3_title, desc: dict.project3_desc, stack: dict.project3_stack, image: '/images/accueil-okanime.png', url: 'https://okanime.live/' },
-    { number: '04', title: dict.project4_title, desc: dict.project4_desc, stack: dict.project4_stack, image: '/images/accueil-auxptitspois.png', url: 'https://www.auxptitspois.fr/' },
+    {
+      number: '01',
+      title: dict.project1_title,
+      desc: dict.project1_desc,
+      stack: dict.project1_stack,
+      images: [
+        '/images/page-salon.png',
+        '/images/fcs-drawer.png',
+        '/images/fcs-bijoux.png',
+        '/images/fcs-accordeon.png',
+        '/images/fcs-coeur.png',
+      ],
+      url: null,
+    },
+    {
+      number: '02',
+      title: dict.project2_title,
+      desc: dict.project2_desc,
+      stack: dict.project2_stack,
+      images: [
+        '/images/page-meavita.png',
+        '/images/mea-accueil.png',
+        '/images/mea-sacs.png',
+        '/images/mea-presentation.png',
+        '/images/mea-inscription.png',
+      ],
+      url: null,
+    },
+    {
+      number: '03',
+      title: dict.project3_title,
+      desc: dict.project3_desc,
+      stack: dict.project3_stack,
+      images: [
+        '/images/accueil-okanime.png',
+        '/images/bibliotheque-okanime.png',
+        '/images/detail-okanime.png',
+        '/images/base-okanime.png',
+      ],
+      url: 'https://okanime.live/',
+    },
+    {
+      number: '04',
+      title: dict.project4_title,
+      desc: dict.project4_desc,
+      stack: dict.project4_stack,
+      images: [
+        '/images/accueil-auxptitspois.png',
+        '/images/product-auxptitspois.jpeg.png',
+        '/images/recette-auxptitspois.jpeg.png',
+        '/images/abonnement-auxptitspois.jpeg.png',
+      ],
+      url: 'https://www.auxptitspois.fr/',
+    },
     {
       number: '05',
       title: dict.project5_title,
@@ -58,7 +108,6 @@ export default function Portfolio({ dict }: Props) {
   return (
     <section id="portfolio" className={styles.section}>
       <div className="container">
-
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <p className={styles.eyebrow}>{dict.eyebrow}</p>
@@ -71,9 +120,7 @@ export default function Portfolio({ dict }: Props) {
 
         {projects.map((project, index) => (
           <div key={project.number} className={styles.projectWrapper}>
-
             <div className={styles.projectRow}>
-
               <div className={styles.projectImage}>
                 {project.images ? (
                   <ProjectCarousel images={project.images} alt={project.title} />
@@ -93,11 +140,18 @@ export default function Portfolio({ dict }: Props) {
                 <div className={styles.textContent}>
                   <div className={styles.tags}>
                     {project.stack.split(' · ').map((tag) => (
-                      <span key={tag} className={styles.tag}>{tag}</span>
+                      <span key={tag} className={styles.tag}>
+                        {tag}
+                      </span>
                     ))}
                   </div>
                   {project.url ? (
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className={styles.titleLink}>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.titleLink}
+                    >
                       <h3 className={styles.projectTitle}>{project.title}</h3>
                     </a>
                   ) : (
@@ -106,14 +160,11 @@ export default function Portfolio({ dict }: Props) {
                   <p className={styles.projectDesc}>{project.desc}</p>
                 </div>
               </div>
-
             </div>
 
             {index !== projects.length - 1 && <div className={styles.separator} />}
-
           </div>
         ))}
-
       </div>
     </section>
   )
