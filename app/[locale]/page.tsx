@@ -6,6 +6,7 @@ import Portfolio from '@/components/Sections/Portfolio/Portfolio'
 import About from '@/components/Sections/About/About'
 import Contact from '@/components/Sections/Contact/Contact'
 import Footer from '@/components/Footer/Footer'
+import ScrollToHash from '@/components/ScrollToHash/ScrollToHash'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -22,6 +23,7 @@ export default async function Home({
   return (
     <main>
       <Header locale={locale} nav={dict.nav} />
+      <ScrollToHash />
       <h1 className="sr-only">L&apos;Echoppe du Code — Développeur Web Indépendant</h1>
 
       {/* Section 2 — Méthode */}

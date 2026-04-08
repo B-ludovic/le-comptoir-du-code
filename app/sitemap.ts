@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { getAllPosts } from '@/lib/blog'
 
 const BASE_URL = 'https://lechoppeducode.com'
 const locales = ['fr', 'en']
@@ -27,5 +28,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   )
 
-  return [...homepages, ...legalRoutes]
+  const blogListings = locales.map((locale) => ({
+    url: `${BASE_URL}/${locale}/blog`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }))
+
+  const blogArticles = locales.flatMap((locale) =>
+    getAllPosts(locale).map((post) => ({
+      url: `${BASE_URL}/${locale}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
+  )
+
+  return [...homepages, ...blogListings, ...blogArticles, ...legalRoutes]
 }

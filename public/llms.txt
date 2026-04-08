@@ -35,3 +35,12 @@ Next.js, React, TypeScript, NestJS, Node.js, PostgreSQL, Tailwind CSS, Vercel.
 - https://lechoppeducode.com/fr/politique-de-confidentialite — Politique de confidentialité
 - https://lechoppeducode.com/fr/gestion-des-cookies — Gestion des cookies
 - https://lechoppeducode.com/fr/conditions-generales — Conditions générales de prestation
+
+## Le Carnet (Blog)
+
+Articles pratiques sur la création de site internet, le coût réel des plateformes et l'artisanat numérique.
+
+- https://lechoppeducode.com/fr/blog — Le Carnet (français)
+- https://lechoppeducode.com/en/blog — Journal (English)
+- https://lechoppeducode.com/fr/blog/wix-vs-freelance-vrai-cout-5-ans — Wix, Framer, IA : le vrai coût de votre site en 2026
+- https://lechoppeducode.com/en/blog/wix-vs-freelance-vrai-cout-5-ans — Wix, Framer, AI: The real cost of your website in 2026
