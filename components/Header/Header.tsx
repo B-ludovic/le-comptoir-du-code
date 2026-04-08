@@ -13,6 +13,7 @@ type Props = {
     portfolio: string
     about: string
     contact: string
+    blog: string
   }
 }
 
@@ -65,6 +66,7 @@ export default function Header({ locale, nav }: Props) {
     { href: `/${locale}#portfolio`, label: nav.portfolio, section: 'portfolio' },
     { href: `/${locale}#about`, label: nav.about, section: 'about' },
     { href: `/${locale}#contact`, label: nav.contact, section: 'contact' },
+    { href: `/${locale}/blog`, label: nav.blog, section: 'blog' },
   ]
 
   return (

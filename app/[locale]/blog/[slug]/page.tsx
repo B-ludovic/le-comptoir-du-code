@@ -12,13 +12,17 @@ import { getPost, getPostSlugs } from '@/lib/blog'
 const BASE_URL = 'https://lechoppeducode.com'
 const dictionaries = { fr, en }
 
+export const dynamicParams = true
+
 export async function generateStaticParams({
   params,
 }: {
   params: { locale: string }
 }) {
-  const locale = params?.locale ?? 'fr'
-  return getPostSlugs(locale).map((slug) => ({ slug }))
+  const locales = params?.locale ? [params.locale] : ['fr', 'en']
+  return locales.flatMap((locale) =>
+    getPostSlugs(locale).map((slug) => ({ slug }))
+  )
 }
 
 export async function generateMetadata({
