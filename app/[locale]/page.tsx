@@ -12,11 +12,7 @@ import en from '@/app/dictionaries/en.json'
 
 const dictionaries = { fr, en }
 
-export default async function Home({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}) {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const dict = dictionaries[locale as 'fr' | 'en'] ?? dictionaries.fr
 

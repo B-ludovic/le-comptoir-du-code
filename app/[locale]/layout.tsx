@@ -19,8 +19,8 @@ export async function generateMetadata({
     : "Freelance Web Developer Paris | Custom Websites & Apps | L'Echoppe du Code"
 
   const description = isFr
-    ? "Développeur web freelance basé en Île-de-France. Création de sites vitrines, e-commerce et applications web sur-mesure. Code propre et performant, avec 1 an de maintenance technique incluse."
-    : "Paris-based freelance web developer. Custom websites, e-commerce and tailored web applications. Clean, performant code with 1 year of technical maintenance included."
+    ? 'Développeur web freelance basé en Île-de-France. Création de sites vitrines, e-commerce et applications web sur-mesure. Code propre et performant, avec 1 an de maintenance technique incluse.'
+    : 'Paris-based freelance web developer. Custom websites, e-commerce and tailored web applications. Clean, performant code with 1 year of technical maintenance included.'
 
   const keywords = isFr
     ? 'création site internet freelance, développeur web Paris, site vitrine sur-mesure, e-commerce freelance, application web sur-mesure, Next.js, développeur indépendant Île-de-France'
@@ -118,21 +118,24 @@ const jsonLd = {
         name: 'La Présence — Site Vitrine',
         price: '1500.00',
         priceCurrency: 'EUR',
-        description: 'Site vitrine sur-mesure à partir de 1 500 €. Idéal pour artisans, indépendants et petites entreprises.',
+        description:
+          'Site vitrine sur-mesure à partir de 1 500 € HT. Idéal pour artisans, indépendants et petites entreprises.',
       },
       {
         '@type': 'Offer',
         name: "L'E-commerce & Réservation",
         price: '3000.00',
         priceCurrency: 'EUR',
-        description: 'Boutique en ligne ou système de réservation à partir de 3 000 €. Inclut 1 an de maintenance.',
+        description:
+          'Boutique en ligne ou système de réservation à partir de 3 000 € HT. Inclut 1 an de maintenance.',
       },
       {
         '@type': 'Offer',
         name: 'Les Outils Sur-Mesure',
         price: '5000.00',
         priceCurrency: 'EUR',
-        description: 'Application web sur-mesure à partir de 5 000 €. Inclut 1 an de maintenance.',
+        description:
+          'Application web sur-mesure à partir de 5 000 € HT. Inclut 1 an de maintenance.',
       },
     ],
   },
