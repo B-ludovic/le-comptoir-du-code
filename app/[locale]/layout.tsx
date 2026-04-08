@@ -12,11 +12,24 @@ export async function generateMetadata({
   const { locale } = await params
   const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US'
 
+  const isFr = locale !== 'en'
+
+  const title = isFr
+    ? "Création Site Internet Freelance Paris | L'Echoppe du Code"
+    : "Freelance Web Developer Paris | Custom Websites & Apps | L'Echoppe du Code"
+
+  const description = isFr
+    ? "Développeur web freelance basé en Île-de-France. Création de sites vitrines, e-commerce et applications web sur-mesure. Code propre et performant, avec 1 an de maintenance technique incluse."
+    : "Paris-based freelance web developer. Custom websites, e-commerce and tailored web applications. Clean, performant code with 1 year of technical maintenance included."
+
+  const keywords = isFr
+    ? 'création site internet freelance, développeur web Paris, site vitrine sur-mesure, e-commerce freelance, application web sur-mesure, Next.js, développeur indépendant Île-de-France'
+    : 'freelance web developer Paris, custom website creation, e-commerce developer, bespoke web application, Next.js developer France'
+
   return {
-    title: "L'Echoppe du Code | Développeur Web Indépendant",
-    description:
-      'Création de sites vitrines, e-commerce et applications sur-mesure. Un code propre, performant, et 1 an de maintenance technique engagée.',
-    keywords: 'développeur freelance, site vitrine, e-commerce, outil sur-mesure, Next.js, NestJS',
+    title,
+    description,
+    keywords,
     authors: [{ name: 'Ludovic BATAILLE' }],
     alternates: {
       canonical: `${BASE_URL}/${locale}`,
@@ -26,8 +39,8 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: "L'Echoppe du Code",
-      description: 'Des applications qui tournent en production. Parlons de votre projet.',
+      title,
+      description,
       url: `${BASE_URL}/${locale}`,
       siteName: "L'Echoppe du Code",
       locale: ogLocale,
@@ -37,14 +50,14 @@ export async function generateMetadata({
           url: `${BASE_URL}/og-image.png`,
           width: 1200,
           height: 630,
-          alt: "L'Echoppe du Code — Développeur Web Indépendant",
+          alt: "L'Echoppe du Code — Développeur Web Freelance Paris",
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: "L'Echoppe du Code | Développeur Web Indépendant",
-      description: 'Des applications qui tournent en production. Parlons de votre projet.',
+      title,
+      description,
       images: [`${BASE_URL}/og-image.png`],
     },
   }
@@ -55,11 +68,28 @@ const jsonLd = {
   '@type': 'ProfessionalService',
   name: "L'Echoppe du Code",
   description:
-    'Développeur Web Indépendant spécialisé en Next.js et React. Création de sites vitrines, e-commerce et applications sur-mesure.',
+    'Développeur web freelance basé en Île-de-France. Création de sites vitrines, e-commerce et applications web sur-mesure. Code propre et performant, avec 1 an de maintenance technique incluse.',
   url: 'https://lechoppeducode.com',
   email: 'contact@lechoppeducode.com',
   image: 'https://lechoppeducode.com/og-image.png',
-  priceRange: 'À partir de 1500€',
+  priceRange: '€€',
+  founder: {
+    '@type': 'Person',
+    name: 'Ludovic BATAILLE',
+    jobTitle: 'Développeur Web Freelance',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Paris' },
+    { '@type': 'AdministrativeArea', name: 'Île-de-France' },
+    { '@type': 'Country', name: 'France' },
+  ],
+  serviceType: [
+    'Création de site internet',
+    'Développement web freelance',
+    'Site vitrine sur-mesure',
+    'Site e-commerce',
+    'Application web sur-mesure',
+  ],
   sameAs: ['https://github.com/B-ludovic'],
   knowsAbout: [
     'Next.js',
@@ -75,31 +105,37 @@ const jsonLd = {
   ],
   address: {
     '@type': 'PostalAddress',
+    addressLocality: 'Aulnay-sous-Bois',
+    addressRegion: 'Île-de-France',
     addressCountry: 'FR',
   },
-  offers: [
-    {
-      '@type': 'Offer',
-      name: 'La Présence (Site Vitrine)',
-      price: '1500.00',
-      priceCurrency: 'EUR',
-      description: 'À partir de 1 500 €',
-    },
-    {
-      '@type': 'Offer',
-      name: "L'E-commerce & Réservation",
-      price: '3000.00',
-      priceCurrency: 'EUR',
-      description: 'À partir de 3 000 €. Inclut 1 an de mises à jour de sécurité.',
-    },
-    {
-      '@type': 'Offer',
-      name: 'Les Outils Sur-Mesure',
-      price: '5000.00',
-      priceCurrency: 'EUR',
-      description: 'À partir de 5 000 €. Inclut 1 an de mises à jour de sécurité.',
-    },
-  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Prestations de développement web',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'La Présence — Site Vitrine',
+        price: '1500.00',
+        priceCurrency: 'EUR',
+        description: 'Site vitrine sur-mesure à partir de 1 500 €. Idéal pour artisans, indépendants et petites entreprises.',
+      },
+      {
+        '@type': 'Offer',
+        name: "L'E-commerce & Réservation",
+        price: '3000.00',
+        priceCurrency: 'EUR',
+        description: 'Boutique en ligne ou système de réservation à partir de 3 000 €. Inclut 1 an de maintenance.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Les Outils Sur-Mesure',
+        price: '5000.00',
+        priceCurrency: 'EUR',
+        description: 'Application web sur-mesure à partir de 5 000 €. Inclut 1 an de maintenance.',
+      },
+    ],
+  },
 }
 
 export default async function RootLayout({
