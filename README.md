@@ -1,6 +1,7 @@
-# 🧰 Le Comptoir du Code
+# 🛖 L'Echoppe du Code
 
-Portfolio freelance de développement web. Une page. Pas de framework CSS tiers, pas de template.
+Portfolio freelance de développement web. Bilingue FR/EN, sans framework CSS tiers, sans template.
+
 ---
 
 ## ⚙️ Stack
@@ -8,6 +9,8 @@ Portfolio freelance de développement web. Une page. Pas de framework CSS tiers,
 - **Next.js 16** — App Router, Turbopack
 - **TypeScript** — strict mode
 - **CSS Modules** — zéro dépendance de style externe
+- **next-mdx-remote + remark-gfm** — blog MDX
+- **gray-matter** — parsing des frontmatters MDX
 - **ImprovMX + Nodemailer** — formulaire de contact via SMTP
 - **Lucide React + React Icons** — icônes
 
@@ -15,12 +18,16 @@ Portfolio freelance de développement web. Une page. Pas de framework CSS tiers,
 
 ## ✨ Fonctionnalités
 
-- 🌍 Site bilingue FR / EN avec détection automatique de la langue (`accept-language`)
-- 📐 6 sections : Méthode, Solutions, Réalisations, Le Codeur, Contact
-- 📬 Formulaire de contact avec pré-sélection du budget et envoi SMTP
-- 📄 Pages légales : Mentions Légales, Politique de Confidentialité, Gestion des Cookies, CGP de Services
-- 🎨 Design system complet : variables CSS, typographie Cormorant Garamond + DM Sans, palette warm dark
-- 📱 Responsive mobile
+- Site bilingue FR / EN avec détection automatique de la langue (`accept-language`)
+- 7 sections : Méthode, Solutions, Réalisations, Le Codeur, Contact
+- Carousel multi-images avec lightbox modale sur chaque projet du portfolio
+- Blog MDX ("Le Carnet") : articles en FR et EN, tables GFM, SEO par article
+- Formulaire de contact avec pré-sélection du budget et envoi SMTP
+- Pages légales : Mentions Légales, Politique de Confidentialité, Gestion des Cookies, CGV
+- Générateur de devis PDF (accès protégé par mot de passe)
+- Design system complet : variables CSS, typographie Cormorant Garamond + DM Sans, palette warm dark
+- Schema.org JSON-LD (ProfessionalService), sitemap dynamique, llms.txt
+- Responsive mobile
 
 ---
 
@@ -32,11 +39,12 @@ cd le-comptoir-du-code
 npm install
 ```
 
-Créer un fichier `.env` à la racine :
+Créer un fichier `.env.local` à la racine :
 
 ```env
-IMPROVMX_SMTP_USER=contact@lecomptoirducode.fr
+IMPROVMX_SMTP_USER=contact@lechoppeducode.com
 IMPROVMX_SMTP_PASSWORD=votre_mot_de_passe_improvmx
+DEVIS_PASSWORD=votre_mot_de_passe_devis
 ```
 
 Lancer le serveur de développement :
@@ -53,34 +61,61 @@ Le site tourne sur [http://localhost:3000](http://localhost:3000).
 
 ```
 app/
-├── [locale]/               # Routing i18n (fr / en)
-│   ├── page.tsx            # Page principale
+├── [locale]/
+│   ├── page.tsx                        # Page principale
+│   ├── layout.tsx                      # Métadonnées, Schema.org, sitemap
+│   ├── blog/
+│   │   ├── page.tsx                    # Listing des articles
+│   │   └── [slug]/page.tsx             # Article MDX
+│   ├── devis/                          # Générateur de devis (protégé)
 │   ├── mentions-legales/
 │   ├── politique-de-confidentialite/
 │   ├── gestion-des-cookies/
 │   └── conditions-generales/
-├── api/contact/route.ts    # Envoi email via ImprovMX
-├── dictionaries/           # Traductions fr.json / en.json
-└── styles/                 # Variables CSS + globals
+├── api/
+│   ├── contact/route.ts                # Envoi email via ImprovMX
+│   └── devis-auth/route.ts
+├── dictionaries/                       # Traductions fr.json / en.json
+├── sitemap.ts                          # Sitemap dynamique (home + blog + légales)
+└── styles/                             # Variables CSS + globals
 
 components/
 ├── Header/
 ├── Footer/
 ├── Legal/
+├── ScrollToHash/                       # Scroll vers ancre depuis pages externes
+├── Devis/                              # Générateur de devis PDF
 └── Sections/
     ├── Method/
     ├── Solutions/
     ├── Portfolio/
+    │   ├── Portfolio.tsx
+    │   ├── ProjectCarousel.tsx         # Carousel + lightbox modale
+    │   └── ProjectCarousel.module.css
     ├── About/
     └── Contact/
+
+content/
+└── blog/
+    ├── fr/                             # Articles MDX en français
+    └── en/                             # Articles MDX en anglais
+
+lib/
+└── blog.ts                             # Lecture et parsing des articles MDX
+
+public/
+├── images/                             # Captures d'écran projets
+├── robots.txt
+└── llms.txt                            # Index pour crawlers IA
 ```
 
 ---
 
 ## 🌐 Déploiement
 
-Prévu sur [Vercel](https://vercel.com/). Les variables d'environnement sont à renseigner dans les settings du projet Vercel.
+Déployé sur [Vercel](https://vercel.com/) — [lechoppeducode.com](https://lechoppeducode.com).
+Les variables d'environnement sont à renseigner dans les settings du projet Vercel.
 
 ---
 
-*✍🏽 Ludovic BATAILLE — [lecomptoirducode.fr](https://lecomptoirducode.fr)*
+*Ludovic BATAILLE — [lechoppeducode.com](https://lechoppeducode.com)*
