@@ -38,47 +38,47 @@ const articles = {
     {
       title: "1. Objet et champ d'application",
       content:
-        "Les présentes conditions régissent les prestations de développement web et de conseil réalisées par Ludovic BATAILLE (opérant sous la marque commerciale \"L'Échoppe du Code\"), agissant en qualité de consultant autonome (Salarié porté) et hébergé juridiquement par la société de portage salarial Jump Green, ci-après désignée \"Le Prestataire\". Toute validation d'une proposition commerciale ou d'un devis implique l'acceptation sans réserve des présentes conditions par le client.",
+        "Les présentes conditions régissent les prestations de développement web et de conseil réalisées par Ludovic BATAILLE, opérant sous la marque commerciale \"L'Échoppe du Code\", ci-après désigné \"le Prestataire\", agissant en qualité de salarié porté et hébergé juridiquement par la société de portage salarial Jump Green, ci-après désignée \"la Société de Portage\". Toute validation d'une proposition commerciale ou d'un devis par la personne physique ou morale ayant passé commande, ci-après désignée \"le Client\", implique l'acceptation sans réserve des présentes conditions.",
     },
     {
       title: "2. Formation du contrat et Acompte",
       content:
-        "Un projet débute officiellement à réception de deux éléments : le devis daté, signé, et portant la mention \"Bon pour accord\", ainsi que le paiement d'un acompte de 30 % du montant total TTC (sauf mention contraire sur le devis). La production ne démarrera qu'à réception de ces éléments. L'acompte valide la réservation du temps alloué au projet et n'est pas remboursable en cas d'annulation unilatérale par le client.",
+        "Un projet débute officiellement à réception de deux éléments : le devis daté, signé, et portant la mention \"Bon pour accord\", ainsi que le paiement d'un acompte de 30 % du montant total HT indiqué sur le devis, auquel s'ajoute la TVA applicable (sauf mention contraire sur le devis). La production ne démarrera qu'à réception de ces deux éléments. L'acompte valide la réservation du temps alloué au projet et n'est pas remboursable en cas d'annulation unilatérale par le Client.",
     },
     {
-      title: "3. Les engagements du Client (Fourniture des contenus)",
+      title: "3. Engagements du Client (Fourniture des contenus)",
       content:
-        "Pour garantir le respect des délais, le client s'engage à fournir l'ensemble des contenus (textes, logos, images, accès serveurs) nécessaires à la réalisation du projet dans les temps convenus. Tout retard dans la livraison de ces éléments entraînera un report proportionnel de la date de livraison finale. Le Prestataire ne saurait en être tenu responsable.",
+        "Pour garantir le respect des délais, le Client s'engage à fournir l'ensemble des contenus (textes, logos, images, accès serveurs) nécessaires à la réalisation du projet dans les temps convenus. Tout retard dans la livraison de ces éléments entraînera un report proportionnel de la date de livraison finale. Le Prestataire ne saurait en être tenu responsable.",
     },
     {
       title: "4. Tarifs et Modalités de paiement",
       content:
-        "Les prix figurant sur les devis sont indiqués en euros et Hors Taxes (HT). La Taxe sur la Valeur Ajoutée (TVA) au taux en vigueur s'applique en sus. Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai de paiement maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel indiqué sur la facture.",
+        "Les prix figurant sur les devis sont indiqués en euros et Hors Taxes (HT). La Taxe sur la Valeur Ajoutée (TVA) au taux en vigueur s'applique en sus. Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai de paiement maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel du Prestataire indiqué sur la facture.",
     },
     {
       title: "5. Retard de paiement",
       content:
-        "Tout retard de paiement entraînera de plein droit, dès le premier jour de retard, l'application de pénalités de retard égales à 3 fois le taux d'intérêt légal en vigueur, ainsi qu'une indemnité forfaitaire pour frais de recouvrement de 40 €. Le Prestataire se réserve également le droit de suspendre la mise en ligne ou la livraison du site jusqu'au règlement intégral.",
+        "Tout retard de paiement du Client entraînera de plein droit, dès le premier jour de retard, l'application de pénalités de retard égales à 3 fois le taux d'intérêt légal en vigueur, ainsi qu'une indemnité forfaitaire pour frais de recouvrement de 40 €. Le Prestataire se réserve également le droit de suspendre la mise en ligne ou la livraison du site jusqu'au règlement intégral.",
     },
     {
       title: "6. Propriété Intellectuelle",
       content:
-        "Le transfert des droits de propriété intellectuelle sur le code sur-mesure et le design ne s'opère qu'au moment du paiement intégral de la facture finale. Tant que le solde n'est pas réglé, l'œuvre demeure la propriété exclusive du Prestataire. Une fois le paiement intégral effectué, la propriété du code est définitivement cédée au client.",
+        "Le transfert des droits de propriété intellectuelle sur le code sur-mesure et le design ne s'opère qu'au moment du paiement intégral de la facture finale par le Client. Tant que le solde n'est pas réglé, l'œuvre demeure la propriété exclusive du Prestataire. Une fois le paiement intégral effectué, la propriété du code est définitivement cédée au Client.",
     },
     {
       title: "7. Garantie et Maintenance technique",
       content:
-        "Pour les projets d'une valeur égale ou supérieure à 3 000 € HT (offres E-commerce et Sur-Mesure), la prestation inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Au terme de cette période, un contrat de maintenance mensuel optionnel est proposé (85 € HT/mois pour l'offre E-commerce, à partir de 165 € HT/mois pour l'offre Sur-Mesure). Cette maintenance couvre exclusivement les mises à jour de sécurité et la correction de bugs bloquants liés au code livré (anomalies empêchant l'utilisation normale de l'outil). Elle exclut les demandes de nouvelles fonctionnalités, les modifications de contenu, les refontes de design, ou les pannes causées par une manipulation du client. Pour les projets d'une valeur inférieure à 3 000 € HT (offre Présence), une maintenance optionnelle est disponible à 70 € HT/mois. En l'absence de contrat de maintenance, toute intervention technique post-livraison fera l'objet d'un devis séparé. Les coûts d'infrastructure (hébergement, noms de domaine, services tiers) sont exclus de la maintenance et restent à la charge directe du client.",
+        "Pour les projets d'une valeur égale ou supérieure à 3 000 € HT (offres E-commerce et Sur-Mesure), la prestation inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Au terme de cette période, un contrat de maintenance mensuel optionnel est proposé au Client (85 € HT/mois pour l'offre E-commerce, à partir de 165 € HT/mois pour l'offre Sur-Mesure). Cette maintenance couvre exclusivement les mises à jour de sécurité et la correction de bugs bloquants liés au code livré par le Prestataire (anomalies empêchant l'utilisation normale de l'outil). Elle exclut les demandes de nouvelles fonctionnalités, les modifications de contenu, les refontes de design, ou les pannes causées par une manipulation du Client. Pour les projets d'une valeur inférieure à 3 000 € HT (offre Présence), une maintenance optionnelle est disponible à 70 € HT/mois. En l'absence de contrat de maintenance, toute intervention technique post-livraison fera l'objet d'un devis séparé soumis au Client. Le contrat de maintenance mensuel est résiliable à tout moment par le Client avec un préavis d'un mois calendaire, sans pénalité. Les coûts d'infrastructure (hébergement, noms de domaine, services tiers) sont exclus de la maintenance et restent à la charge directe du Client.",
     },
     {
       title: "8. Résiliation",
       content:
-        "En cas de rupture du contrat avant son terme par le client, l'acompte versé reste acquis au Prestataire à titre de dédommagement. De plus, les heures de production déjà réalisées au-delà du montant de l'acompte seront facturées sur la base du taux journalier en vigueur indiqué sur le devis.",
+        "En cas de rupture du contrat avant son terme par le Client, l'acompte versé reste acquis au Prestataire à titre de dédommagement. De plus, les heures de production déjà réalisées au-delà du montant de l'acompte seront facturées au Client sur la base du taux journalier indiqué sur le devis ou, à défaut, sur la base d'un taux journalier communiqué par le Prestataire.",
     },
     {
       title: "9. Litiges",
       content:
-        "Les présentes conditions sont soumises au droit français. En cas de litige, les parties s'efforceront de trouver une solution amiable. À défaut d'accord, le tribunal compétent sera celui du ressort du siège social de la société de portage (Tribunal de Commerce compétent).",
+        "Les présentes conditions sont soumises au droit français. En cas de litige entre le Client et le Prestataire, les parties s'efforceront de trouver une solution amiable. À défaut d'accord, le tribunal compétent sera celui du ressort du siège social de la Société de Portage (Tribunal de Commerce compétent).",
     },
   ],
   en: [
@@ -90,7 +90,7 @@ const articles = {
     {
       title: "2. Contract Formation and Deposit",
       content:
-        'A project officially begins upon receipt of two items: the quote—dated, signed, and bearing the handwritten note "Accepted" (Bon pour accord)—and the payment of a 30% deposit of the total amount including VAT (unless otherwise specified on the quote). Production will not begin until both elements are received. This deposit secures the time allocated to the project and is non-refundable should the client unilaterally cancel.',
+        'A project officially begins upon receipt of two items: the quote—dated, signed, and bearing the handwritten note "Accepted" (Bon pour accord)—and the payment of a 30% deposit of the total amount excl. VAT as stated on the quote, plus applicable VAT (unless otherwise specified on the quote). Production will not begin until both elements are received. This deposit secures the time allocated to the project and is non-refundable should the Client unilaterally cancel.',
     },
     {
       title: "3. Client Commitments (Content Delivery)",
@@ -115,12 +115,12 @@ const articles = {
     {
       title: "7. Warranty and Technical Maintenance",
       content:
-        "For projects valued at €3,000 excl. VAT or more (E-commerce and Custom plans), the service includes 12 months of technical maintenance from the launch date. After this period, an optional monthly maintenance contract is available (€85 excl. VAT/month for the E-commerce plan, from €165 excl. VAT/month for the Custom plan). This maintenance covers only security updates and the correction of blocking bugs in the delivered code (anomalies preventing normal use of the tool). It excludes new feature requests, content updates, design overhauls, or issues caused by client mishandling. For projects under €3,000 excl. VAT (Presence plan), optional maintenance is available at €70 excl. VAT/month. Without a maintenance contract, any post-delivery technical intervention will require a separate quote. Infrastructure costs (hosting, domain names, third-party services) are excluded from maintenance and remain the client's direct responsibility.",
+        "For projects valued at €3,000 excl. VAT or more (E-commerce and Custom plans), the service includes 12 months of technical maintenance from the launch date. After this period, an optional monthly maintenance contract is available (€85 excl. VAT/month for the E-commerce plan, from €165 excl. VAT/month for the Custom plan). This maintenance covers only security updates and the correction of blocking bugs in the delivered code (anomalies preventing normal use of the tool). It excludes new feature requests, content updates, design overhauls, or issues caused by client mishandling. For projects under €3,000 excl. VAT (Presence plan), optional maintenance is available at €70 excl. VAT/month. Without a maintenance contract, any post-delivery technical intervention will require a separate quote submitted to the Client. The monthly maintenance contract may be cancelled by the Client at any time with one calendar month's notice, without penalty. Infrastructure costs (hosting, domain names, third-party services) are excluded from maintenance and remain the Client's direct responsibility.",
     },
     {
       title: "8. Termination",
       content:
-        "If the client terminates the contract before its completion, the deposit paid is forfeited and retained by the Service Provider as compensation. Furthermore, any production hours already completed beyond the value of the deposit will be invoiced at the daily rate indicated on the quote.",
+        "If the Client terminates the contract before its completion, the deposit paid is forfeited and retained by the Service Provider as compensation. Furthermore, any production hours already completed beyond the value of the deposit will be invoiced at the daily rate indicated on the quote or, failing that, at a daily rate communicated by the Service Provider.",
     },
     {
       title: "9. Disputes",
