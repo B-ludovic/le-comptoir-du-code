@@ -38,94 +38,94 @@ const articles = {
     {
       title: "1. Objet et champ d'application",
       content:
-        "Les présentes conditions régissent les prestations de développement web et de conseil proposées par Ludovic BATAILLE (L'Echoppe du Code), agissant sous le statut d'entrepreneur-salarié et hébergé juridiquement par la société de portage salarial Jump Green, à ses clients. Toute signature d'une proposition commerciale ou d'un devis implique l'acceptation sans réserve de ces conditions. Ici, on travaille en confiance, mais le cadre est défini.",
+        "Les présentes conditions régissent les prestations de développement web et de conseil réalisées par Ludovic BATAILLE (opérant sous la marque commerciale \"L'Échoppe du Code\"), agissant en qualité de consultant autonome (Salarié porté) et hébergé juridiquement par la société de portage salarial Jump Green, ci-après désignée \"Le Prestataire\". Toute validation d'une proposition commerciale ou d'un devis implique l'acceptation sans réserve des présentes conditions par le client.",
     },
     {
       title: "2. Formation du contrat et Acompte",
       content:
-        "Un projet démarre officiellement à réception de deux éléments : le devis daté, signé, et portant la mention \"Bon pour accord\", et le paiement d'un acompte de 30 % du montant total (sauf mention contraire sur le devis). Sans ces deux éléments, aucune ligne de code ne sera écrite. L'acompte valide la réservation de mon temps et n'est pas remboursable en cas d'annulation par le client.",
+        "Un projet débute officiellement à réception de deux éléments : le devis daté, signé, et portant la mention \"Bon pour accord\", ainsi que le paiement d'un acompte de 30 % du montant total TTC (sauf mention contraire sur le devis). La production ne démarrera qu'à réception de ces éléments. L'acompte valide la réservation du temps alloué au projet et n'est pas remboursable en cas d'annulation unilatérale par le client.",
     },
     {
-      title: "3. Les engagements du Client (Le contenu)",
+      title: "3. Les engagements du Client (Fourniture des contenus)",
       content:
-        "Pour que je puisse livrer un moteur performant dans les temps, j'ai besoin de carburant. Le client s'engage à fournir l'ensemble des contenus (textes, logos, images, accès serveurs) nécessaires à la réalisation du projet dans les délais convenus. Tout retard dans la livraison de ces éléments entraînera un report proportionnel de la date de livraison finale. Je ne saurais en être tenu responsable.",
+        "Pour garantir le respect des délais, le client s'engage à fournir l'ensemble des contenus (textes, logos, images, accès serveurs) nécessaires à la réalisation du projet dans les temps convenus. Tout retard dans la livraison de ces éléments entraînera un report proportionnel de la date de livraison finale. Le Prestataire ne saurait en être tenu responsable.",
     },
     {
       title: "4. Tarifs et Modalités de paiement",
       content:
-        "Les prix sur les devis sont indiqués en euros et Hors Taxes (HT). La Taxe sur la Valeur Ajoutée (TVA) au taux en vigueur s'applique en sus. Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement, sur le compte bancaire professionnel indiqué sur la facture.",
+        "Les prix figurant sur les devis sont indiqués en euros et Hors Taxes (HT). La Taxe sur la Valeur Ajoutée (TVA) au taux en vigueur s'applique en sus. Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai de paiement maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel indiqué sur la facture.",
     },
     {
       title: "5. Retard de paiement",
       content:
-        "Tout retard de paiement entraînera de plein droit, dès le premier jour de retard, l'application de pénalités de retard égales à 3 fois le taux d'intérêt légal en vigueur, ainsi qu'une indemnité forfaitaire pour frais de recouvrement de 40 €. L'Echoppe du Code se réserve également le droit de suspendre la mise en ligne du site jusqu'au règlement intégral.",
+        "Tout retard de paiement entraînera de plein droit, dès le premier jour de retard, l'application de pénalités de retard égales à 3 fois le taux d'intérêt légal en vigueur, ainsi qu'une indemnité forfaitaire pour frais de recouvrement de 40 €. Le Prestataire se réserve également le droit de suspendre la mise en ligne ou la livraison du site jusqu'au règlement intégral.",
     },
     {
-      title: "6. Propriété Intellectuelle (Le Code)",
+      title: "6. Propriété Intellectuelle",
       content:
-        "C'est une règle absolue de l'artisanat : l'œuvre appartient à son créateur tant qu'elle n'est pas payée. Le transfert des droits de propriété intellectuelle sur le code sur-mesure et le design ne s'opère qu'au moment du paiement intégral de la facture finale. Une fois soldé, le code vous appartient.",
+        "Le transfert des droits de propriété intellectuelle sur le code sur-mesure et le design ne s'opère qu'au moment du paiement intégral de la facture finale. Tant que le solde n'est pas réglé, l'œuvre demeure la propriété exclusive du Prestataire. Une fois le paiement intégral effectué, la propriété du code est définitivement cédée au client.",
     },
     {
       title: "7. Garantie et Maintenance technique",
       content:
-        "Pour les projets d'une valeur égale ou supérieure à 3 000 € (offres E-commerce et Sur-Mesure), la prestation inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Au terme de cette première année, un contrat de maintenance mensuel est proposé : 85 € HT/mois pour l'offre E-commerce, à partir de 165 € HT/mois pour l'offre Sur-Mesure. Cette maintenance couvre exclusivement les mises à jour de sécurité et la correction de bugs bloquants liés à mon code, définis comme toute anomalie empêchant l'utilisation normale de l'outil tel que livré. Elle ne couvre en aucun cas les demandes de nouvelles fonctionnalités, les modifications de contenu, les refontes de design, ou les pannes causées par une manipulation du client. Pour les projets d'une valeur inférieure à 3 000 € (offre Présence), une maintenance optionnelle est disponible à 70 € HT/mois. En l'absence de contrat de maintenance, toute intervention technique post-livraison fera l'objet d'un devis séparé. Le contrat de maintenance mensuel est résiliable à tout moment avec un préavis d'un mois calendaire, sans pénalité. Les coûts d'infrastructure (hébergement front-end, back-end, base de données, services tiers) sont exclus de la maintenance et restent à la charge directe du client, facturés par les prestataires concernés. Une estimation est fournie dans le devis à titre indicatif.",
+        "Pour les projets d'une valeur égale ou supérieure à 3 000 € HT (offres E-commerce et Sur-Mesure), la prestation inclut une maintenance technique d'une durée de 12 mois à compter de la mise en ligne. Au terme de cette période, un contrat de maintenance mensuel optionnel est proposé (85 € HT/mois pour l'offre E-commerce, à partir de 165 € HT/mois pour l'offre Sur-Mesure). Cette maintenance couvre exclusivement les mises à jour de sécurité et la correction de bugs bloquants liés au code livré (anomalies empêchant l'utilisation normale de l'outil). Elle exclut les demandes de nouvelles fonctionnalités, les modifications de contenu, les refontes de design, ou les pannes causées par une manipulation du client. Pour les projets d'une valeur inférieure à 3 000 € HT (offre Présence), une maintenance optionnelle est disponible à 70 € HT/mois. En l'absence de contrat de maintenance, toute intervention technique post-livraison fera l'objet d'un devis séparé. Les coûts d'infrastructure (hébergement, noms de domaine, services tiers) sont exclus de la maintenance et restent à la charge directe du client.",
     },
     {
       title: "8. Résiliation",
       content:
-        "En cas de rupture du contrat avant son terme par le client, l'acompte reste acquis à l'Echoppe du Code. De plus, les heures déjà travaillées au-delà du montant de l'acompte seront facturées sur la base du taux journalier en vigueur indiqué sur le devis.",
+        "En cas de rupture du contrat avant son terme par le client, l'acompte versé reste acquis au Prestataire à titre de dédommagement. De plus, les heures de production déjà réalisées au-delà du montant de l'acompte seront facturées sur la base du taux journalier en vigueur indiqué sur le devis.",
     },
     {
       title: "9. Litiges",
       content:
-        "Les présentes conditions sont soumises au droit français. En cas de litige, on essaiera toujours de trouver une solution à l'amiable autour de l'echoppe. À défaut, le tribunal compétent sera celui du ressort du siège social de la société Jump Green (Tribunal de Commerce de Bobigny).",
+        "Les présentes conditions sont soumises au droit français. En cas de litige, les parties s'efforceront de trouver une solution amiable. À défaut d'accord, le tribunal compétent sera celui du ressort du siège social de la société de portage (Tribunal de Commerce compétent).",
     },
   ],
   en: [
     {
       title: "1. Purpose and Scope",
       content:
-        "These Terms and Conditions govern the web development and consulting services provided to clients by Ludovic BATAILLE (L'Echoppe du Code), operating under the status of employee-entrepreneur and legally hosted by the Jump Green umbrella company. Signing a commercial proposal or quote implies unconditional acceptance of these terms. We work on a foundation of trust here, but the framework must be clearly defined.",
+        "These Terms and Conditions govern the web development and consulting services provided by Ludovic BATAILLE (operating under the trade name \"L'Échoppe du Code\"), acting as an autonomous consultant (portage salarial) and legally hosted by the umbrella company Jump Green, hereinafter referred to as \"the Service Provider\". Signing or validating a commercial proposal or quote implies unconditional acceptance of these terms by the client.",
     },
     {
       title: "2. Contract Formation and Deposit",
       content:
-        'A project officially begins upon receipt of two items: the quote—dated, signed, and bearing the handwritten note "Accepted" (Bon pour accord)—and the payment of a 30% deposit of the total amount (unless otherwise specified on the quote). Without these two elements, not a single line of code will be written. This deposit secures my time and is non-refundable should the client cancel the project.',
+        'A project officially begins upon receipt of two items: the quote—dated, signed, and bearing the handwritten note "Accepted" (Bon pour accord)—and the payment of a 30% deposit of the total amount including VAT (unless otherwise specified on the quote). Production will not begin until both elements are received. This deposit secures the time allocated to the project and is non-refundable should the client unilaterally cancel.',
     },
     {
-      title: "3. Client Commitments (Content)",
+      title: "3. Client Commitments (Content Delivery)",
       content:
-        "To deliver a high-performance engine on time, I need fuel. The client agrees to provide all necessary content (texts, logos, images, server access) within the agreed deadlines. Any delay in delivering these materials will result in a proportional extension of the final delivery date. I cannot be held liable for such delays.",
+        "To ensure deadlines are met, the client agrees to provide all necessary content (texts, logos, images, server access) within the agreed timeframes. Any delay in delivering these materials will result in a proportional extension of the final delivery date. The Service Provider cannot be held liable for such delays.",
     },
     {
       title: "4. Pricing and Payment Terms",
       content:
-        "Prices on quotes are listed in euros, excluding taxes (HT). Value-Added Tax (VAT) at the current rate is applied additionally. The remaining balance is due upon delivery of the project (website launch or source code handover), with a strict maximum payment term of 15 days from the invoice issue date. Payments must be made exclusively by bank transfer to the professional account indicated on the invoice.",
+        "Prices on quotes are listed in euros, excluding VAT (HT). Value-Added Tax at the current applicable rate is added on top. The remaining balance is due upon delivery of the project (website launch or source code handover), with a maximum payment term of 15 days from the invoice issue date. Payments must be made exclusively by bank transfer to the professional account indicated on the invoice.",
     },
     {
       title: "5. Late Payment",
       content:
-        "Any late payment will automatically trigger, from the very first day of delay, late payment penalties equal to 3 times the applicable legal interest rate, along with a flat-rate recovery indemnity of €40. L'Echoppe du Code also reserves the right to suspend the website's hosting or launch until the balance is paid in full.",
+        "Any late payment will automatically trigger, from the very first day of delay, late payment penalties equal to 3 times the applicable legal interest rate, along with a flat-rate recovery indemnity of €40. The Service Provider also reserves the right to suspend the delivery or launch of the website until the balance is paid in full.",
     },
     {
-      title: "6. Intellectual Property (The Code)",
+      title: "6. Intellectual Property",
       content:
-        "This is an absolute rule of craftsmanship: the work belongs to its creator until it is paid for. The transfer of intellectual property rights for custom code and design takes place only upon full payment of the final invoice. Once the balance is settled, the code is entirely yours.",
+        "The transfer of intellectual property rights over the custom code and design takes place only upon full payment of the final invoice. Until the balance is settled, the work remains the exclusive property of the Service Provider. Once full payment is received, ownership of the code is permanently transferred to the client.",
     },
     {
       title: "7. Warranty and Technical Maintenance",
       content:
-        "For projects valued at €3,000 or more (E-commerce and Custom plans), the service includes technical maintenance for 12 months following the launch date. After this initial year, a monthly maintenance contract is offered: €85 excl. VAT/month for the E-commerce plan, and from €165 excl. VAT/month for the Custom plan. This maintenance strictly covers security updates and the fixing of blocking bugs related to my code (defined as any anomaly preventing the normal use of the delivered tool). It explicitly does not cover requests for new features, content updates, design overhauls, or breakdowns caused by client mishandling. For projects under €3,000 (Presence plan), optional maintenance is available for €70 excl. VAT/month. Without an active maintenance contract, any post-delivery technical intervention will require a separate quote. The monthly maintenance contract can be canceled at any time with a one-month calendar notice, penalty-free. Infrastructure costs (front-end hosting, back-end hosting, database, third-party services) are excluded from the maintenance scope and remain the client's direct responsibility, billed by the relevant providers. An estimate is provided in the quote for reference.",
+        "For projects valued at €3,000 excl. VAT or more (E-commerce and Custom plans), the service includes 12 months of technical maintenance from the launch date. After this period, an optional monthly maintenance contract is available (€85 excl. VAT/month for the E-commerce plan, from €165 excl. VAT/month for the Custom plan). This maintenance covers only security updates and the correction of blocking bugs in the delivered code (anomalies preventing normal use of the tool). It excludes new feature requests, content updates, design overhauls, or issues caused by client mishandling. For projects under €3,000 excl. VAT (Presence plan), optional maintenance is available at €70 excl. VAT/month. Without a maintenance contract, any post-delivery technical intervention will require a separate quote. Infrastructure costs (hosting, domain names, third-party services) are excluded from maintenance and remain the client's direct responsibility.",
     },
     {
       title: "8. Termination",
       content:
-        "If the client terminates the contract before its completion, the deposit is forfeited and retained by L'Echoppe du Code. Furthermore, any hours already worked that exceed the value of the deposit will be invoiced based on the current daily rate indicated on the quote.",
+        "If the client terminates the contract before its completion, the deposit paid is forfeited and retained by the Service Provider as compensation. Furthermore, any production hours already completed beyond the value of the deposit will be invoiced at the daily rate indicated on the quote.",
     },
     {
       title: "9. Disputes",
       content:
-        "These terms are governed by French law. In the event of a dispute, we will always try to find an amicable solution around the echoppe first. Failing that, the competent jurisdiction will be the Commercial Court of Bobigny, aligned with the registered office of Jump Green.",
+        "These terms are governed by French law. In the event of a dispute, the parties will endeavour to reach an amicable resolution. Failing that, the competent jurisdiction will be the Commercial Court with authority over the registered office of the umbrella company.",
     },
   ],
 }
@@ -152,12 +152,12 @@ export default async function ConditionsGenerales({
 
           <h1 className={styles.title}>
             {isFr
-              ? 'Conditions Générales de Prestation de Services'
-              : 'General Terms and Conditions of Service'}
+              ? 'Conditions Générales de Vente et de Prestation de Services'
+              : 'General Terms and Conditions of Sale and Service'}
           </h1>
 
           <p className={styles.text} style={{ opacity: 0.6, fontSize: '0.85rem', marginBottom: '2rem' }}>
-            {isFr ? 'Dernière mise à jour : 31 mars 2026' : 'Last updated: March 31, 2026'}
+            {isFr ? 'Dernière mise à jour : 8 avril 2026' : 'Last updated: April 8, 2026'}
           </p>
 
           {content.map((article) => (
