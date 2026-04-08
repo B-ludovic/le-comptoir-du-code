@@ -8,6 +8,7 @@ export type PostMeta = {
   description: string
   date: string
   excerpt: string
+  coverImage?: string
 }
 
 export type Post = PostMeta & {
@@ -36,6 +37,7 @@ export function getPost(slug: string, locale: string): Post | null {
     description: data.description ?? '',
     date: data.date ?? '',
     excerpt: data.excerpt ?? '',
+    coverImage: data.coverImage ?? null,
     content,
   }
 }

@@ -59,6 +59,19 @@
   font-style: italic;
 }
 
+.coverWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 2rem;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
+.coverImage {
+  object-fit: cover;
+}
+
 /* ── Article body typography ── */
 .content {
   font-family: var(--font-body);

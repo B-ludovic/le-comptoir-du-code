@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import Header from '@/components/Header/Header'
@@ -86,6 +87,17 @@ export default async function ArticlePage({
               </time>
               <h1 className={styles.title}>{post.title}</h1>
               <p className={styles.description}>{post.description}</p>
+              {post.coverImage && (
+                <div className={styles.coverWrapper}>
+                  <Image
+                    src={post.coverImage}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 720px"
+                    className={styles.coverImage}
+                  />
+                </div>
+              )}
             </header>
 
             <div className={styles.content}>
