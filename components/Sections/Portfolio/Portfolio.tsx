@@ -49,7 +49,7 @@ export default function Portfolio({ dict }: Props) {
         '/images/fcs-accordeon.png',
         '/images/fcs-coeur.png',
       ],
-      url: null,
+      url: 'https://fairychairstudio.com/fr',
     },
     {
       number: '02',
