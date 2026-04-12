@@ -23,6 +23,7 @@ const defaultData: DevisData = {
   ],
   maintenance_option: 'none',
   maintenance_rate: '',
+  infra_rate: '',
 }
 
 export default function DevisPage() {

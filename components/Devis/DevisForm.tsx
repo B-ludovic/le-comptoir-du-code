@@ -61,6 +61,7 @@ export type DevisData = {
   services: Service[]
   maintenance_option: 'none' | 'offered' | 'paid'
   maintenance_rate: string
+  infra_rate: string
 }
 
 type Props = {
@@ -222,6 +223,16 @@ export default function DevisForm({ data, onChange }: Props) {
       <button type="button" className={styles.addServiceBtn} onClick={addService}>
         + Ajouter une prestation
       </button>
+
+      <section className={styles.section}>
+        <h3 className={styles.sectionTitle}>Infrastructure (indicatif)</h3>
+        <Field
+          label="Coût estimé / mois"
+          value={data.infra_rate}
+          onChange={v => set('infra_rate', v)}
+          placeholder="~50–100 € HT/mois"
+        />
+      </section>
     </div>
   )
 }

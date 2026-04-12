@@ -193,7 +193,7 @@ export default function DevisPreview({ data }: Props) {
           </td>
           <td>Client</td>
           <td class="right">—</td>
-          <td class="right">~50–100 € HT/mois</td>
+          <td class="right">${data.infra_rate || '~50–100 € HT/mois'}</td>
         </tr>
       </tbody>
     </table>
