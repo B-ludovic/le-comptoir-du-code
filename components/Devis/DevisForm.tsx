@@ -2,34 +2,48 @@
 
 import styles from './Devis.module.css'
 
+export type Service = {
+  name: string
+  description: string
+  type: string
+  delay: string
+  amount: string
+}
+
 const FORFAITS = [
   {
     label: 'La Présence — Site Vitrine',
-    service_1_name: 'La Présence — Site Vitrine',
-    service_1_description: 'Design sur-mesure, responsive, formulaire de contact, mise en ligne incluse.',
-    service_1_type: 'Forfait',
-    service_1_delay: '3 à 4 jours',
-    service_1_amount: '1500',
+    service: {
+      name: 'La Présence — Site Vitrine',
+      description: 'Design sur-mesure, responsive, formulaire de contact, mise en ligne incluse.',
+      type: 'Forfait',
+      delay: '3 à 4 jours',
+      amount: '1500',
+    } as Service,
     maintenance_option: 'none' as const,
     maintenance_rate: '80\u00A0\u20AC\u2060/\u2060mois',
   },
   {
     label: "L'E-commerce & Réservation",
-    service_1_name: "L'E-commerce & Réservation",
-    service_1_description: 'Site vitrine inclus, boutique en ligne, paiements Stripe, synchronisation agenda.',
-    service_1_type: 'Forfait',
-    service_1_delay: '7 à 12 jours',
-    service_1_amount: '3000',
+    service: {
+      name: "L'E-commerce & Réservation",
+      description: 'Site vitrine inclus, boutique en ligne, paiements Stripe, synchronisation agenda.',
+      type: 'Forfait',
+      delay: '7 à 12 jours',
+      amount: '3000',
+    } as Service,
     maintenance_option: 'offered' as const,
     maintenance_rate: '100\u00A0\u20AC\u2060/\u2060mois',
   },
   {
     label: 'Les Outils Sur-Mesure',
-    service_1_name: 'Les Outils Sur-Mesure — Application Métier',
-    service_1_description: 'Développement sur-mesure, base de données, tableau de bord, API dédiée.',
-    service_1_type: 'Forfait',
-    service_1_delay: 'À définir',
-    service_1_amount: '5000',
+    service: {
+      name: 'Les Outils Sur-Mesure — Application Métier',
+      description: 'Développement sur-mesure, base de données, tableau de bord, API dédiée.',
+      type: 'Forfait',
+      delay: 'À définir',
+      amount: '5000',
+    } as Service,
     maintenance_option: 'offered' as const,
     maintenance_rate: '165\u00A0\u20AC\u2060/\u2060mois HT',
   },
@@ -44,16 +58,7 @@ export type DevisData = {
   client_email: string
   client_address: string
   project_description: string
-  service_1_name: string
-  service_1_description: string
-  service_1_type: string
-  service_1_delay: string
-  service_1_amount: string
-  service_2_name: string
-  service_2_description: string
-  service_2_type: string
-  service_2_delay: string
-  service_2_amount: string
+  services: Service[]
   maintenance_option: 'none' | 'offered' | 'paid'
   maintenance_rate: string
 }
@@ -63,11 +68,10 @@ type Props = {
   onChange: (data: DevisData) => void
 }
 
-function Field({ label, name, value, onChange, type = 'text', placeholder }: {
+function Field({ label, value, onChange, type = 'text', placeholder }: {
   label: string
-  name: keyof DevisData
   value: string
-  onChange: (name: keyof DevisData, value: string) => void
+  onChange: (value: string) => void
   type?: string
   placeholder?: string
 }) {
@@ -79,17 +83,16 @@ function Field({ label, name, value, onChange, type = 'text', placeholder }: {
         className={styles.input}
         value={value}
         placeholder={placeholder}
-        onChange={e => onChange(name, e.target.value)}
+        onChange={e => onChange(e.target.value)}
       />
     </div>
   )
 }
 
-function TextareaField({ label, name, value, onChange, placeholder }: {
+function TextareaField({ label, value, onChange, placeholder }: {
   label: string
-  name: keyof DevisData
   value: string
-  onChange: (name: keyof DevisData, value: string) => void
+  onChange: (value: string) => void
   placeholder?: string
 }) {
   return (
@@ -99,16 +102,40 @@ function TextareaField({ label, name, value, onChange, placeholder }: {
         className={styles.textarea}
         value={value}
         placeholder={placeholder}
-        onChange={e => onChange(name, e.target.value)}
+        onChange={e => onChange(e.target.value)}
         rows={1}
       />
     </div>
   )
 }
 
+const emptyService = (): Service => ({
+  name: '',
+  description: '',
+  type: 'Forfait',
+  delay: '',
+  amount: '',
+})
+
 export default function DevisForm({ data, onChange }: Props) {
-  function set(name: keyof DevisData, value: string) {
-    onChange({ ...data, [name]: value } as DevisData)
+  function set<K extends keyof DevisData>(name: K, value: DevisData[K]) {
+    onChange({ ...data, [name]: value })
+  }
+
+  function setService(index: number, field: keyof Service, value: string) {
+    const updated = data.services.map((s, i) =>
+      i === index ? { ...s, [field]: value } : s
+    )
+    set('services', updated)
+  }
+
+  function addService() {
+    set('services', [...data.services, emptyService()])
+  }
+
+  function removeService(index: number) {
+    if (data.services.length <= 1) return
+    set('services', data.services.filter((_, i) => i !== index))
   }
 
   function applyForfait(index: string) {
@@ -117,11 +144,7 @@ export default function DevisForm({ data, onChange }: Props) {
     if (!forfait) return
     onChange({
       ...data,
-      service_1_name: forfait.service_1_name,
-      service_1_description: forfait.service_1_description,
-      service_1_type: forfait.service_1_type,
-      service_1_delay: forfait.service_1_delay,
-      service_1_amount: forfait.service_1_amount,
+      services: [forfait.service, ...data.services.slice(1)],
       maintenance_option: forfait.maintenance_option,
       maintenance_rate: forfait.maintenance_rate,
     })
@@ -139,58 +162,66 @@ export default function DevisForm({ data, onChange }: Props) {
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>Devis & Client</h3>
         <div className={styles.row}>
-          <Field label="Numéro" name="devis_number" value={data.devis_number} onChange={set} placeholder="DEV-2026-001" />
-          <Field label="Date" name="devis_date" value={data.devis_date} onChange={set} type="date" />
+          <Field label="Numéro" value={data.devis_number} onChange={v => set('devis_number', v)} placeholder="DEV-2026-001" />
+          <Field label="Date" value={data.devis_date} onChange={v => set('devis_date', v)} type="date" />
         </div>
         <div className={styles.row}>
-          <Field label="Entreprise" name="client_company" value={data.client_company} onChange={set} />
-          <Field label="Nom contact" name="client_name" value={data.client_name} onChange={set} />
+          <Field label="Entreprise" value={data.client_company} onChange={v => set('client_company', v)} />
+          <Field label="Nom contact" value={data.client_name} onChange={v => set('client_name', v)} />
         </div>
         <div className={styles.row}>
-          <Field label="Email" name="client_email" value={data.client_email} onChange={set} type="email" />
-          <Field label="SIRET" name="siret" value={data.siret} onChange={set} placeholder="En cours…" />
+          <Field label="Email" value={data.client_email} onChange={v => set('client_email', v)} type="email" />
+          <Field label="SIRET" value={data.siret} onChange={v => set('siret', v)} placeholder="En cours…" />
         </div>
-        <TextareaField label="Adresse & Objet" name="client_address" value={data.client_address} onChange={set} />
-        <TextareaField label="Description du projet" name="project_description" value={data.project_description} onChange={set} />
+        <TextareaField label="Adresse & Objet" value={data.client_address} onChange={v => set('client_address', v)} />
+        <TextareaField label="Description du projet" value={data.project_description} onChange={v => set('project_description', v)} />
       </section>
 
-      <section className={styles.section}>
-        <h3 className={styles.sectionTitle}>Prestation 1</h3>
-        <div className={styles.row}>
-          <Field label="Nom" name="service_1_name" value={data.service_1_name} onChange={set} />
-          <Field label="Montant (€)" name="service_1_amount" value={data.service_1_amount} onChange={set} type="number" placeholder="0" />
-        </div>
-        <TextareaField label="Description" name="service_1_description" value={data.service_1_description} onChange={set} />
-        <div className={styles.row}>
-          <Field label="Type" name="service_1_type" value={data.service_1_type} onChange={set} placeholder="Forfait" />
-          <Field label="Délai" name="service_1_delay" value={data.service_1_delay} onChange={set} placeholder="7 jours" />
-        </div>
-        <div className={styles.field}>
-          <label className={styles.label}>Maintenance</label>
-          <select
-            className={styles.select}
-            value={data.maintenance_option}
-            onChange={e => onChange({ ...data, maintenance_option: e.target.value as DevisData['maintenance_option'] })}
-          >
-            <option value="none">Aucune</option>
-            <option value="offered">Année 1 offerte — puis {data.maintenance_rate}/mois</option>
-            <option value="paid">Année 1 facturée à {data.maintenance_rate}/mois</option>
-          </select>
-        </div>
-      </section>
+      {data.services.map((service, index) => (
+        <section key={index} className={styles.section}>
+          <div className={styles.sectionTitleRow}>
+            <h3 className={styles.sectionTitle}>
+              Prestation {index + 1}{index === 0 ? '' : ' (optionnel)'}
+            </h3>
+            {data.services.length > 1 && (
+              <button
+                type="button"
+                className={styles.removeBtn}
+                onClick={() => removeService(index)}
+              >
+                Supprimer
+              </button>
+            )}
+          </div>
+          <div className={styles.row}>
+            <Field label="Nom" value={service.name} onChange={v => setService(index, 'name', v)} />
+            <Field label="Montant (€)" value={service.amount} onChange={v => setService(index, 'amount', v)} type="number" placeholder="0" />
+          </div>
+          <TextareaField label="Description" value={service.description} onChange={v => setService(index, 'description', v)} />
+          <div className={styles.row}>
+            <Field label="Type" value={service.type} onChange={v => setService(index, 'type', v)} placeholder="Forfait" />
+            <Field label="Délai" value={service.delay} onChange={v => setService(index, 'delay', v)} placeholder="7 jours" />
+          </div>
+          {index === 0 && (
+            <div className={styles.field}>
+              <label className={styles.label}>Maintenance</label>
+              <select
+                className={styles.select}
+                value={data.maintenance_option}
+                onChange={e => set('maintenance_option', e.target.value as DevisData['maintenance_option'])}
+              >
+                <option value="none">Aucune</option>
+                <option value="offered">Année 1 offerte — puis {data.maintenance_rate}/mois</option>
+                <option value="paid">Année 1 facturée à {data.maintenance_rate}/mois</option>
+              </select>
+            </div>
+          )}
+        </section>
+      ))}
 
-      <section className={styles.section}>
-        <h3 className={styles.sectionTitle}>Prestation 2 (optionnel)</h3>
-        <div className={styles.row}>
-          <Field label="Nom" name="service_2_name" value={data.service_2_name} onChange={set} />
-          <Field label="Montant (€)" name="service_2_amount" value={data.service_2_amount} onChange={set} type="number" placeholder="0" />
-        </div>
-        <TextareaField label="Description" name="service_2_description" value={data.service_2_description} onChange={set} />
-        <div className={styles.row}>
-          <Field label="Type" name="service_2_type" value={data.service_2_type} onChange={set} placeholder="Forfait" />
-          <Field label="Délai" name="service_2_delay" value={data.service_2_delay} onChange={set} placeholder="—" />
-        </div>
-      </section>
+      <button type="button" className={styles.addServiceBtn} onClick={addService}>
+        + Ajouter une prestation
+      </button>
     </div>
   )
 }
