@@ -30,12 +30,16 @@ const schema = z.object({
 })
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.improvmx.com',
+  host: 'smtp.mail.me.com',
   port: 587,
   secure: false,
+  requireTLS: true,
   auth: {
-    user: process.env.IMPROVMX_SMTP_USER,
-    pass: process.env.IMPROVMX_SMTP_PASSWORD,
+    user: process.env.ICLOUD_SMTP_USER,
+    pass: process.env.ICLOUD_SMTP_PASSWORD,
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 })
 
