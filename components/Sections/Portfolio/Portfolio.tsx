@@ -63,7 +63,7 @@ export default function Portfolio({ dict }: Props) {
         '/images/mea-presentation.png',
         '/images/mea-inscription.png',
       ],
-      url: 'https://github.com/B-ludovic/amap-website',
+      url: 'https://github.com/B-ludovic/mea-vita-creation',
     },
     {
       number: '03',
@@ -89,7 +89,7 @@ export default function Portfolio({ dict }: Props) {
         '/images/recette-auxptitspois.png',
         '/images/abonnement-auxptitspois.png',
       ],
-      url: 'https://www.auxptitspois.fr/',
+      url: 'https://github.com/B-ludovic/amap-website',
     },
     {
       number: '05',
