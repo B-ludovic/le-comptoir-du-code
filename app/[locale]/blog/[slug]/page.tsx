@@ -40,8 +40,8 @@ export async function generateMetadata({
     alternates: {
       canonical: `${BASE_URL}/${locale}/blog/${slug}`,
       languages: {
-        fr: `${BASE_URL}/fr/blog/${slug}`,
-        en: `${BASE_URL}/en/blog/${slug}`,
+        fr: `${BASE_URL}/fr/blog/${locale === 'fr' ? slug : (post.alternate_slug ?? slug)}`,
+        en: `${BASE_URL}/en/blog/${locale === 'en' ? slug : (post.alternate_slug ?? slug)}`,
       },
     },
     openGraph: {
@@ -66,9 +66,13 @@ export default async function ArticlePage({
 
   if (!post) notFound()
 
+  const altLocale = locale === 'fr' ? 'en' : 'fr'
+  const altSlug = post.alternate_slug ?? slug
+  const switchLocaleHref = `/${altLocale}/blog/${altSlug}`
+
   return (
     <>
-      <Header locale={locale} nav={dict.nav} />
+      <Header locale={locale} nav={dict.nav} switchLocaleHref={switchLocaleHref} />
       <main className={styles.main}>
         <div className="container">
 

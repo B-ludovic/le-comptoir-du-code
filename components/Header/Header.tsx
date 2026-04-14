@@ -15,9 +15,10 @@ type Props = {
     contact: string
     blog: string
   }
+  switchLocaleHref?: string
 }
 
-export default function Header({ locale, nav }: Props) {
+export default function Header({ locale, nav, switchLocaleHref }: Props) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
@@ -54,6 +55,10 @@ export default function Header({ locale, nav }: Props) {
   }, [])
 
   function switchLocale() {
+    if (switchLocaleHref) {
+      router.push(switchLocaleHref)
+      return
+    }
     const next = locale === 'fr' ? 'en' : 'fr'
     const segments = pathname.split('/')
     segments[1] = next

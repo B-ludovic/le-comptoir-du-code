@@ -9,6 +9,7 @@ export type PostMeta = {
   date: string
   excerpt: string
   coverImage?: string
+  alternate_slug?: string
 }
 
 export type Post = PostMeta & {
@@ -38,6 +39,7 @@ export function getPost(slug: string, locale: string): Post | null {
     date: data.date ?? '',
     excerpt: data.excerpt ?? '',
     coverImage: data.coverImage ?? null,
+    alternate_slug: data.alternate_slug ?? null,
     content,
   }
 }
@@ -46,12 +48,13 @@ export function getAllPosts(locale: string): PostMeta[] {
   return getPostSlugs(locale)
     .map((slug) => getPost(slug, locale))
     .filter((p): p is Post => p !== null)
-    .map(({ slug, title, description, date, excerpt }) => ({
+    .map(({ slug, title, description, date, excerpt, alternate_slug }) => ({
       slug,
       title,
       description,
       date,
       excerpt,
+      alternate_slug,
     }))
     .sort((a, b) => (a.date < b.date ? 1 : -1))
 }
