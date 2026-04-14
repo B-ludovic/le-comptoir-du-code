@@ -6,12 +6,12 @@ Portfolio freelance de développement web. Bilingue FR/EN, sans framework CSS ti
 
 ## ⚙️ Stack
 
-- **Next.js 16** — App Router, Turbopack
+- **Next.js 16.2.3** — App Router, Turbopack
 - **TypeScript** — strict mode
 - **CSS Modules** — zéro dépendance de style externe
 - **next-mdx-remote + remark-gfm** — blog MDX
 - **gray-matter** — parsing des frontmatters MDX
-- **ImprovMX + Nodemailer** — formulaire de contact via SMTP
+- **iCloud SMTP + Nodemailer** — formulaire de contact via SMTP
 - **Lucide React + React Icons** — icônes
 
 ---
@@ -21,10 +21,11 @@ Portfolio freelance de développement web. Bilingue FR/EN, sans framework CSS ti
 - Site bilingue FR / EN avec détection automatique de la langue (`accept-language`)
 - 7 sections : Méthode, Solutions, Réalisations, Le Codeur, Contact
 - Carousel multi-images avec lightbox modale sur chaque projet du portfolio
-- Blog MDX ("Le Carnet") : articles en FR et EN, tables GFM, SEO par article
+- Blog MDX ("Le Carnet") : articles en FR et EN, slugs bilingues localisés, tables GFM, SEO par article
 - Formulaire de contact avec pré-sélection du budget et envoi SMTP
 - Pages légales : Mentions Légales, Politique de Confidentialité, Gestion des Cookies, CGV
-- Générateur de devis PDF (accès protégé par mot de passe)
+- Générateur de devis PDF (accès protégé par mot de passe) — option tarification associative −50 %
+- L'Échoppe Solidaire : page dédiée aux associations LGBTQI+, tarification mécénat de compétences, FAQ accordéon natif
 - Design system complet : variables CSS, typographie Cormorant Garamond + DM Sans, palette warm dark
 - Schema.org JSON-LD (ProfessionalService), sitemap dynamique, llms.txt
 - Responsive mobile
@@ -39,12 +40,13 @@ cd le-comptoir-du-code
 npm install
 ```
 
-Créer un fichier `.env.local` à la racine :
+Créer un fichier `.env` à la racine :
 
 ```env
-IMPROVMX_SMTP_USER=contact@lechoppeducode.com
-IMPROVMX_SMTP_PASSWORD=votre_mot_de_passe_improvmx
+ICLOUD_SMTP_USER=votre_apple_id@icloud.com
+ICLOUD_SMTP_PASSWORD=votre_mot_de_passe_application_icloud
 DEVIS_PASSWORD=votre_mot_de_passe_devis
+DEVIS_TOKEN=votre_token_devis
 ```
 
 Lancer le serveur de développement :
@@ -66,21 +68,22 @@ app/
 │   ├── layout.tsx                      # Métadonnées, Schema.org, sitemap
 │   ├── blog/
 │   │   ├── page.tsx                    # Listing des articles
-│   │   └── [slug]/page.tsx             # Article MDX
+│   │   └── [slug]/page.tsx             # Article MDX (slugs bilingues)
+│   ├── echoppe-solidaire/              # Tarification associative LGBTQI+
 │   ├── devis/                          # Générateur de devis (protégé)
 │   ├── mentions-legales/
 │   ├── politique-de-confidentialite/
 │   ├── gestion-des-cookies/
 │   └── conditions-generales/
 ├── api/
-│   ├── contact/route.ts                # Envoi email via ImprovMX
+│   ├── contact/route.ts                # Envoi email via iCloud SMTP
 │   └── devis-auth/route.ts
 ├── dictionaries/                       # Traductions fr.json / en.json
-├── sitemap.ts                          # Sitemap dynamique (home + blog + légales)
+├── sitemap.ts                          # Sitemap dynamique (home + blog + légales + solidaire)
 └── styles/                             # Variables CSS + globals
 
 components/
-├── Header/
+├── Header/                             # Médaillon animé → L'Échoppe Solidaire
 ├── Footer/
 ├── Legal/
 ├── ScrollToHash/                       # Scroll vers ancre depuis pages externes
@@ -97,8 +100,8 @@ components/
 
 content/
 └── blog/
-    ├── fr/                             # Articles MDX en français
-    └── en/                             # Articles MDX en anglais
+    ├── fr/                             # Articles MDX en français (slug FR)
+    └── en/                             # Articles MDX en anglais (slug EN localisé)
 
 lib/
 └── blog.ts                             # Lecture et parsing des articles MDX
