@@ -50,13 +50,13 @@ export default async function EchoppeSolidairePage({
       number: '01',
       budgetParam: '1',
       title: isFr ? 'La Présence' : 'The Presence',
-      subtitle: isFr ? 'Vitrine ou association locale' : 'Showcase or local non-profit',
+      subtitle: isFr ? 'Vitrine ou association locale' : 'Informational site for local non-profits',
       originalPrice: '1 500 €',
       price: isFr ? 'À partir de 750 €' : 'From €750',
-      badge: isFr ? 'Mécénat de compétences 50 %' : '50% skills sponsorship',
+      badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
       desc: isFr
         ? 'Un site professionnel, rapide et référencé. Votre présence en ligne, enfin à la hauteur de votre engagement.'
-        : 'A professional, fast and well-referenced website. Your online presence, finally matching your commitment.',
+        : 'A professional, fast and SEO-ready website. Your online presence, finally matching your commitment.',
       features: isFr
         ? ['Design sur-mesure responsive', 'SEO local inclus', 'Formulaire de contact sécurisé', 'Mise en ligne incluse']
         : ['Responsive custom design', 'Local SEO included', 'Secure contact form', 'Deployment included'],
@@ -70,13 +70,13 @@ export default async function EchoppeSolidairePage({
       subtitle: isFr ? 'Dons, adhésions & espaces membres' : 'Donations, memberships & member areas',
       originalPrice: '3 000 €',
       price: isFr ? 'À partir de 1 500 €' : 'From €1,500',
-      badge: isFr ? 'Mécénat de compétences 50 %' : '50% skills sponsorship',
+      badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
       desc: isFr
         ? 'Gestion des dons Stripe, des adhésions récurrentes et des espaces membres sécurisés. Tout ce dont une association active a besoin.'
         : 'Stripe donation management, recurring memberships and secure member areas. Everything an active non-profit needs.',
       features: isFr
         ? ['Paiements Stripe sécurisés', 'Adhésions récurrentes', 'Espace membres privé', 'Reçus fiscaux PDF']
-        : ['Secure Stripe payments', 'Recurring memberships', 'Private member area', 'PDF tax receipts'],
+        : ['Secure Stripe payments', 'Recurring memberships', 'Private member portal', 'Automated PDF tax receipts'],
       maintenance: isFr ? 'Maintenance à partir de 50 €\u00A0HT/mois' : 'Maintenance from €50 excl. VAT/month',
       delay: isFr ? '7 à 12 jours' : '7 to 12 days',
     },
@@ -86,7 +86,7 @@ export default async function EchoppeSolidairePage({
       title: isFr ? 'Les Outils Sur-Mesure' : 'Custom Tools',
       subtitle: isFr ? 'Fédérations & grosses infrastructures' : 'Federations & large infrastructures',
       originalPrice: '5 000 €',
-      price: isFr ? 'Sur étude budgétaire' : 'On budget review',
+      price: isFr ? 'Sur étude budgétaire' : 'Custom quote',
       badge: isFr ? 'Remise calculée selon vos subventions' : 'Discount based on your grants',
       desc: isFr
         ? 'Votre projet est unique. La remise est calculée sur-mesure en fonction de vos subventions, votre budget réel, et l\'ampleur de votre infrastructure.'
@@ -106,7 +106,7 @@ export default async function EchoppeSolidairePage({
       title: isFr ? 'Transparence totale' : 'Total transparency',
       text: isFr
         ? "Le mécénat n'est pas du bricolage. Sur présentation de vos justificatifs, je vous fournis un devis officiel détaillant exactement la valeur de l'architecture et l'effort de mécénat appliqué. Un contrat en bonne et due forme est signé. Pas de zones d'ombre : vous connaissez la valeur réelle de votre outil, et nous avançons en toute sécurité."
-        : "Skills sponsorship is not improvisation. On presentation of your supporting documents, I provide an official quote detailing the exact value of the architecture and the sponsorship applied. A proper contract is signed. No grey areas: you know the real value of your tool, and we move forward with full confidence.",
+        : "Pro bono work is not guesswork. On presentation of your supporting documents, I provide an official quote detailing the exact value of the architecture and the sponsorship applied. A proper contract is signed. No grey areas: you know the real value of your tool, and we move forward with full confidence.",
     },
     {
       number: '02',
@@ -114,7 +114,7 @@ export default async function EchoppeSolidairePage({
       title: isFr ? "L'alliance stratégique" : 'The strategic alliance',
       text: isFr
         ? "Je ne suis pas juste un exécutant derrière un clavier. Je m'assois à votre table comme un partenaire technique. On challenge vos besoins réels, on élimine le superflu, et on conçoit ensemble la mécanique qui soulagera concrètement vos équipes sur le terrain. Mon rôle est de traduire vos enjeux militants en une infrastructure technique implacable."
-        : "I am not just an executor behind a keyboard. I sit at your table as a technical partner. We challenge your real needs, eliminate the superfluous, and design together the mechanism that will concretely support your teams in the field. My role is to translate your causes into relentless technical infrastructure.",
+        : "I am not just an order-taker behind a keyboard. I sit at your table as a technical partner. We challenge your real needs, eliminate the superfluous, and design together the mechanism that will concretely support your teams in the field. My role is to translate your missions into a bulletproof technical infrastructure.",
     },
     {
       number: '03',
