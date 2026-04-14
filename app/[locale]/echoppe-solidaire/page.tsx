@@ -208,7 +208,7 @@ export default async function EchoppeSolidairePage({
               <div className={styles.headerLeft}>
                 <p className={styles.eyebrow}>{isFr ? 'Tarification' : 'Pricing'}</p>
                 <h2 className={styles.sectionTitle}>
-                  {isFr ? 'La transparence brutale.' : 'Brutal transparency.'}
+                  {isFr ? 'La transparence contractuelle.' : 'Contractual transparency.'}
                 </h2>
               </div>
               <div className={styles.headerRight}>

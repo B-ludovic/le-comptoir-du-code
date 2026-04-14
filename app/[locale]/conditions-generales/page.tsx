@@ -48,7 +48,7 @@ const articles = {
     {
       title: "2 bis. Tarification solidaire — Associations",
       content:
-        "L'Échoppe du Code propose une tarification réduite, dite \"tarification solidaire\", aux structures à but non lucratif reconnues. Pour en bénéficier, le Client doit justifier de son statut associatif en fournissant, avant la signature du devis, l'un des documents suivants : récépissé de déclaration en préfecture, statuts déposés et enregistrés, ou extrait du Répertoire National des Associations (RNA). La réduction s'applique sur le montant HT indiqué sur le devis spécifique établi dans le cadre de cette offre. Tout Client ne pouvant produire ce justificatif sera facturé aux tarifs standards. Le Prestataire se réserve le droit de vérifier la validité des documents fournis et de refuser l'application de la tarification solidaire en cas de doute ou de non-conformité.",
+        "L'Échoppe du Code propose une tarification réduite, dite \"tarification solidaire\", aux structures à but non lucratif reconnues, en priorité aux associations LGBTQI+. Pour en bénéficier, le Client doit justifier de son statut associatif en fournissant, avant la signature du devis, l'un des documents suivants : récépissé de déclaration en préfecture, statuts déposés et enregistrés, ou extrait du Répertoire National des Associations (RNA). La réduction s'applique sur le montant HT indiqué sur le devis spécifique établi dans le cadre de cette offre. Tout Client ne pouvant produire ce justificatif sera facturé aux tarifs standards. Le Prestataire se réserve le droit de vérifier la validité des documents fournis et de refuser l'application de la tarification solidaire en cas de doute ou de non-conformité.",
     },
     {
       title: "3. Engagements du Client (Fourniture des contenus)",
@@ -100,7 +100,7 @@ const articles = {
     {
       title: "2b. Solidarity Pricing — Non-Profit Organisations",
       content:
-        "L'Échoppe du Code offers a reduced rate, referred to as \"solidarity pricing\", to recognised non-profit organisations. To qualify, the Client must provide proof of non-profit status before signing the quote, by submitting one of the following documents: official registration receipt from the relevant authority, filed and registered articles of association, or an extract from the National Register of Associations (RNA) or equivalent. The discount applies to the excl. VAT amount shown on the specific quote issued under this scheme. Any Client unable to provide such documentation will be invoiced at standard rates. The Service Provider reserves the right to verify the validity of submitted documents and to refuse solidarity pricing in the event of doubt or non-compliance.",
+        "L'Échoppe du Code offers a reduced rate, referred to as \"solidarity pricing\", to recognised non-profit organisations, with a priority focus on LGBTQI+ associations. To qualify, the Client must provide proof of non-profit status before signing the quote, by submitting one of the following documents: official registration receipt from the relevant authority, filed and registered articles of association, or an extract from the National Register of Associations (RNA) or equivalent. The discount applies to the excl. VAT amount shown on the specific quote issued under this scheme. Any Client unable to provide such documentation will be invoiced at standard rates. The Service Provider reserves the right to verify the validity of submitted documents and to refuse solidarity pricing in the event of doubt or non-compliance.",
     },
     {
       title: "3. Client Commitments (Content Delivery)",
@@ -167,7 +167,7 @@ export default async function ConditionsGenerales({
           </h1>
 
           <p className={styles.text} style={{ opacity: 0.6, fontSize: '0.85rem', marginBottom: '2rem' }}>
-            {isFr ? 'Dernière mise à jour : 14 avril 2026' : 'Last updated: April 14, 2026'}
+            {isFr ? 'Dernière mise à jour : 14 avril 2026 (v2)' : 'Last updated: April 14, 2026 (v2)'}
           </p>
 
           {content.map((article) => (
