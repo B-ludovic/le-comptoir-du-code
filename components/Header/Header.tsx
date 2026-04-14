@@ -45,7 +45,7 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
             window.history.replaceState(null, '', `#${id}`)
           }
         },
-        { threshold: 0.4 }
+        { threshold: 0, rootMargin: '0px 0px -50% 0px' }
       )
       observer.observe(el)
       observers.push(observer)
