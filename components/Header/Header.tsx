@@ -94,8 +94,8 @@ export default function Header({ locale, nav }: Props) {
           ))}
         </nav>
 
-        {/* Portrait */}
-        <div className={styles.portraitMedallion}>
+        {/* Portrait — lien vers L'Échoppe Solidaire */}
+        <a href={`/${locale}/echoppe-solidaire`} className={styles.portraitMedallion} aria-label="L'Échoppe Solidaire — tarification associative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/ludovic.jpeg"
@@ -104,7 +104,10 @@ export default function Header({ locale, nav }: Props) {
             height={32}
             className={styles.portraitImage}
           />
-        </div>
+          <span className={styles.portraitTooltip}>
+            {locale === 'fr' ? 'Vous êtes une association ?' : 'Are you a non-profit?'}
+          </span>
+        </a>
 
         {/* Actions : langue + hamburger */}
         <div className={styles.actions}>
