@@ -311,6 +311,60 @@ export default async function EchoppeSolidairePage({
           </div>
         </section>
 
+        {/* FAQ */}
+        <div className={styles.faq}>
+          <div className="container">
+            <p className={styles.faqEyebrow}>{isFr ? 'Questions fréquentes' : 'FAQ'}</p>
+            <div className={styles.faqList}>
+              {[
+                {
+                  q: isFr ? 'Comment prouver le statut de mon association ?' : 'How do I prove my non-profit status?',
+                  a: isFr
+                    ? "Un récépissé de déclaration en préfecture, vos statuts déposés, ou un extrait du RNA suffisent. Je les demande avant la signature du devis — pas de paperasse au dernier moment."
+                    : "A registration receipt from the relevant authority, your filed articles of association, or an RNA extract are sufficient. I ask for these before signing the quote — no last-minute paperwork.",
+                },
+                {
+                  q: isFr ? 'La remise de 50 % s\'applique aussi à la maintenance ?' : 'Does the 50% discount apply to maintenance too?',
+                  a: isFr
+                    ? "La maintenance post-livraison est calculée sur un tarif solidaire dédié, indiqué sur chaque forfait. Elle n'est pas automatiquement à −50 % du tarif standard, mais reste très en dessous du marché."
+                    : "Post-delivery maintenance is calculated at a dedicated solidarity rate, shown on each plan. It is not automatically 50% off the standard rate, but remains well below market price.",
+                },
+                {
+                  q: isFr ? 'Vous travaillez exclusivement avec des associations LGBTQI+ ?' : 'Do you work exclusively with LGBTQI+ organisations?',
+                  a: isFr
+                    ? "En priorité, oui. Mais L'Échoppe Solidaire est ouverte à toutes les structures à but non lucratif dont les valeurs s'alignent. Je prends chaque demande au cas par cas."
+                    : "Primarily, yes. But L'Échoppe Solidaire is open to all non-profit structures whose values align. I assess each request individually.",
+                },
+                {
+                  q: isFr ? 'Et si notre budget est inférieur aux forfaits affichés ?' : 'What if our budget is below the listed plans?',
+                  a: isFr
+                    ? "Écrivez-moi quand même. Je peux adapter le périmètre, étaler les paiements, ou orienter vers une solution plus légère. Une conversation honnête vaut mieux qu'un formulaire fermé."
+                    : "Write to me anyway. I can adjust the scope, spread payments, or point you towards a lighter solution. An honest conversation is worth more than a closed form.",
+                },
+                {
+                  q: isFr ? 'Comment se passe le paiement avec l\'acompte ?' : 'How does payment work with the deposit?',
+                  a: isFr
+                    ? "30 % à la signature (une facture d'acompte officielle est émise par Jump Green), 70 % à la mise en ligne. Règlement par virement uniquement. Aucun paiement avant que vous ayez validé le devis officiel."
+                    : "30% on signing (an official deposit invoice is issued by Jump Green), 70% on go-live. Bank transfer only. No payment before you have validated the official quote.",
+                },
+                {
+                  q: isFr ? 'Que se passe-t-il après la livraison ?' : 'What happens after delivery?',
+                  a: isFr
+                    ? "Je vous forme à l'utilisation de votre outil, je vous remets toutes les clés d'accès, et le code vous appartient intégralement. Si vous avez besoin de moi plus tard, je suis là — mais vous n'en dépendez pas."
+                    : "I train you on using your tool, hand over all access credentials, and the code is entirely yours. If you need me later, I am here — but you will not depend on me.",
+                },
+              ].map((item, i) => (
+                <details key={i} className={styles.faqItem}>
+                  <summary>{item.q}</summary>
+                  <div className={styles.faqAnswer}>
+                    <div className={styles.faqAnswerInner}>{item.a}</div>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Brief — même composant que Contact */}
         <Suspense>
           <Contact dict={{
