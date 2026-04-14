@@ -10,6 +10,16 @@ Ludovic BATAILLE est développeur web freelance basé en France, spécialisé en
 - **L'E-commerce & Réservation** — Boutique en ligne ou système de réservation à partir de 3 000 € HT. Inclut 1 an de maintenance offerte, puis engagement 1 an à 85 € HT/mois.
 - **Les Outils Sur-Mesure** — Application métier, tableau de bord, outil interne à partir de 5 000 € HT. Inclut 1 an de maintenance offerte, puis engagement 1 an à 165 € HT/mois.
 
+## L'Échoppe Solidaire — Tarification associative
+
+Offre dédiée aux associations loi 1901 et structures à but non lucratif. Mécénat de compétences 50 % sur l'ensemble des forfaits, sur justificatif de statut associatif. Même exigence technique, zéro concession sur la qualité.
+
+- **La Présence (associative)** — À partir de 750 € HT (au lieu de 1 500 €).
+- **L'E-commerce & Réservation (associatif)** — À partir de 1 500 € HT (au lieu de 3 000 €).
+- **Les Outils Sur-Mesure (associatif)** — Sur étude (au lieu de 5 000 € HT minimum).
+
+Spécialités associations : sécurisation des dons via Stripe (sans commission intermédiaire), gestion des adhérents, conformité RGPD renforcée.
+
 ## Stack technique
 
 Next.js, React, TypeScript, NestJS, Node.js, PostgreSQL, Tailwind CSS, Vercel.
@@ -30,6 +40,8 @@ Next.js, React, TypeScript, NestJS, Node.js, PostgreSQL, Tailwind CSS, Vercel.
 ## Pages
 
 - https://lechoppeducode.com/fr — Page d'accueil (français)
+- https://lechoppeducode.com/fr/echoppe-solidaire — L'Échoppe Solidaire — tarification associative (français)
+- https://lechoppeducode.com/en/echoppe-solidaire — L'Échoppe Solidaire — non-profit pricing (English)
 - https://lechoppeducode.com/en — Homepage (English)
 - https://lechoppeducode.com/fr/mentions-legales — Mentions légales
 - https://lechoppeducode.com/fr/politique-de-confidentialite — Politique de confidentialité

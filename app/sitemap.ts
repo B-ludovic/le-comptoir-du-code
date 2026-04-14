@@ -11,6 +11,7 @@ const legalPages = [
   'conditions-generales',
 ]
 
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const homepages = locales.map((locale) => ({
     url: `${BASE_URL}/${locale}`,
@@ -44,5 +45,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   )
 
-  return [...homepages, ...blogListings, ...blogArticles, ...legalRoutes]
+  const solidaireRoutes = locales.map((locale) => ({
+    url: `${BASE_URL}/${locale}/echoppe-solidaire`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  return [...homepages, ...solidaireRoutes, ...blogListings, ...blogArticles, ...legalRoutes]
 }
