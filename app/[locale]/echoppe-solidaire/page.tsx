@@ -24,8 +24,8 @@ export async function generateMetadata({
       ? "L'Échoppe Solidaire — Développement Web pour Associations | L'Echoppe du Code"
       : "L'Échoppe Solidaire — Web Development for Non-Profits | L'Echoppe du Code",
     description: isFr
-      ? "Création de sites internet et d'outils numériques sur-mesure pour les associations. Mécénat de compétences 50 %, même exigence technique, zéro concession sur la qualité."
-      : "Custom websites and digital tools for non-profit organisations. 50% skills sponsorship, same technical standards, no compromise on quality.",
+      ? "Création de sites internet et d'outils numériques sur-mesure pour les associations, en priorité LGBTQ+. Mécénat de compétences 50 %, même exigence technique, zéro concession sur la qualité."
+      : "Custom websites and digital tools for non-profit organisations, with a priority focus on LGBTQ+ causes. 50% skills sponsorship, same technical standards, no compromise on quality.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/echoppe-solidaire`,
       languages: {
@@ -174,8 +174,8 @@ export default async function EchoppeSolidairePage({
               <div className={styles.headerRight}>
                 <p className={styles.intro}>
                   {isFr
-                    ? "Militer, informer, rassembler — ça demande une énergie colossale. Vous ne devriez pas en perdre une seule once à vous battre contre des outils numériques inadaptés. L'Échoppe Solidaire, c'est la même exigence technique, le même code sur-mesure, le même artisan — avec une tarification pensée pour le monde associatif."
-                    : "Campaigning, informing, bringing people together — it takes enormous energy. You should not waste a single ounce of it fighting inadequate digital tools. L'Échoppe Solidaire is the same technical standards, the same custom code, the same craftsman — with pricing built for the non-profit world."}
+                    ? "Militer, informer, rassembler — ça demande une énergie colossale. Vous ne devriez pas en perdre une seule once à vous battre contre des outils numériques inadaptés. L'Échoppe Solidaire s'adresse en priorité aux associations LGBTQ+, et plus largement à toutes les structures engagées. La même exigence technique, le même code sur-mesure, le même artisan — avec une tarification pensée pour le monde associatif."
+                    : "Campaigning, informing, bringing people together — it takes enormous energy. You should not waste a single ounce of it fighting inadequate digital tools. L'Échoppe Solidaire works primarily with LGBTQ+ organisations, and more broadly with any committed non-profit. The same technical standards, the same custom code, the same craftsman — with pricing built for the non-profit world."}
                 </p>
               </div>
             </div>
