@@ -13,15 +13,21 @@ function fmt(val: string): string {
 }
 
 function calcTotals(data: DevisData) {
-  const ht = data.services.reduce((sum, s) => sum + (parseFloat(s.amount) || 0), 0)
+  const isAsso = data.client_type === 'association'
+  const fullHt = data.services.reduce((sum, s) => sum + (parseFloat(s.amount) || 0), 0)
+  const ht = isAsso ? fullHt * 0.5 : fullHt
+  const remise = isAsso ? fullHt * 0.5 : 0
   const tva = ht * 0.20
   const ttc = ht + tva
   const acompte = ttc * 0.3
   return {
+    full_ht: fmt(String(fullHt)),
+    remise: fmt(String(remise)),
     total_ht: fmt(String(ht)),
     tva_amount: fmt(String(tva)),
     acompte_amount: fmt(String(acompte)),
     total_ttc: fmt(String(ttc)),
+    isAsso,
   }
 }
 
@@ -29,9 +35,15 @@ export default function DevisPreview({ data }: Props) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const totals = calcTotals(data)
 
+  const isAsso = data.client_type === 'association'
+
   const serviceRows = data.services
     .filter(s => s.name.trim() !== '')
-    .map(s => `
+    .map(s => {
+      const priceCell = isAsso
+        ? `<span class="price-original">${fmt(s.amount)}</span><span class="price-asso">${fmt(String(parseFloat(s.amount) * 0.5))}</span>`
+        : fmt(s.amount)
+      return `
         <tr>
           <td class="desc">
             ${s.name}
@@ -39,8 +51,9 @@ export default function DevisPreview({ data }: Props) {
           </td>
           <td>${s.type || '—'}</td>
           <td class="right">${s.delay || '—'}</td>
-          <td class="right">${fmt(s.amount)}</td>
-        </tr>`)
+          <td class="right">${priceCell}</td>
+        </tr>`
+    })
     .join('')
 
   const html = `<!DOCTYPE html>
@@ -102,6 +115,10 @@ export default function DevisPreview({ data }: Props) {
   .footer-left { font-size: 7px; color: #8A7D72; letter-spacing: 0.5px; display: block; margin-bottom: 1mm; }
   .footer-right { font-size: 7px; color: #8A7D72; }
   .footer-site { color: #C8A478; font-size: 7px; }
+  .price-original { text-decoration: line-through; opacity: 0.4; margin-right: 4px; }
+  .price-asso { color: #C8A478; }
+  .totaux-line.remise { color: #8A5A2A; }
+  .mecena-badge { display: inline-block; font-size: 7px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: #C8A478; border: 1px solid rgba(200,164,120,0.4); border-radius: 2px; padding: 0.5mm 2mm; margin-bottom: 3mm; }
 </style>
 </head>
 <body>
@@ -201,6 +218,8 @@ export default function DevisPreview({ data }: Props) {
 
   <div class="totaux">
     <div class="totaux-block">
+      ${totals.isAsso ? `<div class="totaux-line"><span>Tarif standard HT</span><span>${totals.full_ht}</span></div>` : ''}
+      ${totals.isAsso ? `<div class="totaux-line remise"><span>Mécénat de compétences (−50 %)</span><span>−${totals.remise}</span></div>` : ''}
       <div class="totaux-line"><span>Sous-total HT</span><span>${totals.total_ht}</span></div>
       <div class="totaux-line tva"><span>TVA (20 %)</span><span>${totals.tva_amount}</span></div>
       <div class="totaux-line total"><span>Total TTC</span><span class="amount">${totals.total_ttc}</span></div>
@@ -237,6 +256,7 @@ export default function DevisPreview({ data }: Props) {
   </div>
 
   <div class="mentions">
+    ${totals.isAsso ? `<span class="mecena-badge">L'Échoppe Solidaire — Mécénat de compétences LGBTQI+ &amp; Associations</span>` : ''}
     <p>Cette proposition commerciale est émise à titre indicatif. En cas d'accord, un devis officiel sera établi et transmis par Jump Green, société de portage salarial (SIRET 97761078100014 — RCS de Bobigny). Les droits de propriété intellectuelle sont transférés au client à réception du paiement intégral. Les présentes conditions sont soumises au droit français.</p>
   </div>
 

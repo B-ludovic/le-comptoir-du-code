@@ -62,6 +62,7 @@ export type DevisData = {
   maintenance_option: 'none' | 'offered' | 'paid'
   maintenance_rate: string
   infra_rate: string
+  client_type: 'standard' | 'association'
 }
 
 type Props = {
@@ -153,12 +154,22 @@ export default function DevisForm({ data, onChange }: Props) {
 
   return (
     <div className={styles.formPanel}>
-      <select className={styles.forfaitSelect} defaultValue="" onChange={e => applyForfait(e.target.value)}>
-        <option value="" disabled>— Choisir un forfait —</option>
-        {FORFAITS.map((f, i) => (
-          <option key={i} value={i}>{f.label}</option>
-        ))}
-      </select>
+      <div className={styles.topBar}>
+        <select className={styles.forfaitSelect} defaultValue="" onChange={e => applyForfait(e.target.value)}>
+          <option value="" disabled>— Choisir un forfait —</option>
+          {FORFAITS.map((f, i) => (
+            <option key={i} value={i}>{f.label}</option>
+          ))}
+        </select>
+        <select
+          className={`${styles.forfaitSelect} ${data.client_type === 'association' ? styles.assoSelect : ''}`}
+          value={data.client_type}
+          onChange={e => set('client_type', e.target.value as DevisData['client_type'])}
+        >
+          <option value="standard">Client standard</option>
+          <option value="association">Association — −50 %</option>
+        </select>
+      </div>
 
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>Devis & Client</h3>

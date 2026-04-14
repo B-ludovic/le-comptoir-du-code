@@ -24,6 +24,7 @@ const defaultData: DevisData = {
   maintenance_option: 'none',
   maintenance_rate: '',
   infra_rate: '',
+  client_type: 'standard',
 }
 
 export default function DevisPage() {
