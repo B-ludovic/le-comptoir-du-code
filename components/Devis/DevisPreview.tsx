@@ -212,7 +212,8 @@ export default function DevisPreview({ data }: Props) {
     <div class="condition-block">
       <div class="condition-title">Modalités de paiement</div>
       <div class="condition-text">
-        Acompte de 30 % du HT + TVA à la commande — solde à la livraison.<br>
+        Acompte de 30 % à la commande (facture d'acompte fournie).<br>
+        Solde de 70 % à la mise en ligne.<br>
         Règlement par virement bancaire uniquement.<br>
         Délai de paiement : 15 jours à compter de la facture.
       </div>

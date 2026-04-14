@@ -43,7 +43,7 @@ const articles = {
     {
       title: "2. Formation du contrat et Acompte",
       content:
-        "Un projet débute officiellement à réception de deux éléments : le devis daté, signé, et portant la mention \"Bon pour accord\", ainsi que le paiement d'un acompte de 30 % du montant total HT indiqué sur le devis, auquel s'ajoute la TVA applicable (sauf mention contraire sur le devis). La production ne démarrera qu'à réception de ces deux éléments. L'acompte valide la réservation du temps alloué au projet et n'est pas remboursable en cas d'annulation unilatérale par le Client.",
+        "Un projet débute officiellement à réception de deux éléments : le devis daté, signé, et portant la mention \"Bon pour accord\", ainsi que le paiement d'un acompte de 30 % du montant total HT, auquel s'ajoute la TVA applicable. Une facture d'acompte est émise et transmise au Client dès réception du paiement. Le solde de 70 % est exigible à la mise en ligne du projet. La production ne démarrera qu'à réception de ces deux éléments. L'acompte valide la réservation du temps alloué au projet et n'est pas remboursable en cas d'annulation unilatérale par le Client.",
     },
     {
       title: "3. Engagements du Client (Fourniture des contenus)",
