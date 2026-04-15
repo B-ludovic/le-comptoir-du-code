@@ -3,7 +3,7 @@
 import { Fragment } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FaLinkedin, FaGithub } from 'react-icons/fa'
+import { FaLinkedin, FaGithub, FaReact } from 'react-icons/fa'
 import styles from './Footer.module.css'
 
 type Props = {
@@ -64,6 +64,14 @@ export default function Footer({ locale, dict }: Props) {
               aria-label="GitHub"
             >
               <FaGithub size={18} />
+            </a>
+            <a
+              href="https://b-ludovic.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Portfolio React"
+            >
+              <FaReact size={18} />
             </a>
           </div>
 
