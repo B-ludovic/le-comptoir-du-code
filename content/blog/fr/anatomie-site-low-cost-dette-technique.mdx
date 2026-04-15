@@ -1,0 +1,65 @@
+---
+title: "Anatomie d'un site à 300 € : ce que vous trouverez sous le capot 6 mois plus tard"
+description: "Sur les plateformes de freelances, on trouve des sites web complets pour le prix d'un smartphone d'occasion. Autopsie technique d'un devis bradé."
+date: '2026-04-20'
+coverImage: '/images/blog/anatomie-site-low-cost.png'
+excerpt: "Vous avez reçu un devis à 300 € pour votre projet web ? Ce n'est pas forcément une arnaque. C'est simplement un produit très différent de ce que vous imaginez. Ouvrons le capot."
+alternate_slug: 'anatomy-cheap-website-technical-debt'
+---
+
+Si vous postez une annonce pour la création d'un site web sur une plateforme de mise en relation, vous allez recevoir des dizaines de réponses en quelques minutes. Parmi elles, des devis défiant toute logique économique : des sites complets, "clés en main", pour 300 ou 500 €.
+
+Ce n'est pas de la magie, et ce n'est généralement pas de l'escroquerie. C'est simplement de la production à la chaîne.
+
+En tant que développeur, je suis régulièrement contacté pour "réparer" ou faire évoluer ce type de plateformes quelques mois après leur mise en ligne. Voici très exactement ce que je trouve quand j'ouvre le capot.
+
+## 1. Le syndrome de Frankenstein (Les 45 plugins)
+
+Pour être rentable à 300 €, un prestataire ne peut pas passer du temps à coder. La méthode standard consiste donc à installer un CMS (généralement WordPress), d'y greffer un thème visuel lourd, et d'ajouter un plugin pour chaque fonctionnalité demandée.
+
+- Un plugin pour le formulaire de contact.
+- Un plugin pour accélérer le site (qui est ralenti par le thème).
+- Un plugin pour la sécurité.
+- Un plugin pour lier vos réseaux sociaux.
+
+Le résultat à 6 mois : votre site est un château de cartes. À la première mise à jour majeure du noyau ou de la base de données, l'un de ces plugins devient incompatible. Une page blanche apparaît, ou pire, une faille de sécurité s'ouvre. Et le prestataire initial, lui, est déjà passé à ses 20 projets suivants.
+
+## 2. Le code "généré" (L'illusion visuelle)
+
+Aujourd'hui, il existe des outils qui permettent de dessiner une maquette (sur Figma, par exemple) et d'exporter automatiquement le code HTML/CSS en cliquant sur un bouton. C'est souvent l'arme secrète des devis express.
+
+Visuellement, sur votre écran, le résultat est conforme à vos attentes.
+
+Techniquement, c'est une catastrophe. Là où un artisan développeur écrirait 50 lignes de code structurées pour afficher une section, l'export automatique en génère 800, positionnées de manière absolue, sans aucune logique de hiérarchie.
+
+Le résultat à 6 mois : Google déteste le code lourd et non sémantique. Votre référencement naturel ne décolle jamais. Pire, le jour où vous voulez simplement modifier l'alignement d'un texte ou l'adapter pour un nouveau format d'écran mobile, la structure s'effondre.
+
+## 3. Le mur de la dette technique
+
+C'est le point le plus critique. Supposons que votre activité fonctionne bien. Six mois après le lancement de votre site à 300 €, vous souhaitez ajouter un système de réservation personnalisé ou un espace client sécurisé.
+
+Vous contactez un développeur pour cette évolution. Il ouvre le code source, analyse l'architecture, pousse un soupir et vous annonce la sentence classique de notre industrie :
+
+> "Le code est tellement intriqué et instable qu'essayer de rajouter une fonctionnalité va tout casser. Ça nous coûtera moins cher de tout recoder de zéro."
+
+C'est ce qu'on appelle la dette technique. Vous pensiez avoir fait une affaire au lancement, mais vous vous retrouvez à payer deux fois le développement de votre outil métier.
+
+## Le verdict : Prototype vs Fondation
+
+Un devis ne définit pas seulement un prix. Il définit une méthodologie.
+
+Un site à 300 € est un prototype. Si votre objectif est simplement d'avoir une URL à mettre sur une carte de visite pendant un mois pour tester un nom de marque, c'est un choix parfaitement rationnel.
+
+Mais si ce site a pour vocation de générer du chiffre d'affaires, de capturer des leads, d'automatiser vos processus ou de durer plusieurs années, il vous faut des fondations.
+
+Créer des fondations demande de l'ingénierie :
+
+- Penser l'architecture de la base de données avant d'écrire la première ligne.
+- Cibler la performance absolue (Next.js, hébergements modernes).
+- Livrer un code source propre, documenté, qui pourra être repris par n'importe quel autre développeur dans 3 ans.
+
+La véritable question n'est pas de savoir combien coûte votre site aujourd'hui, mais combien il vous coûtera le jour où vous aurez besoin qu'il évolue.
+
+---
+
+_Vous lancez un projet sérieux et vous voulez l'appuyer sur des bases techniques solides ? [Parlons de votre architecture.](/fr#contact)_

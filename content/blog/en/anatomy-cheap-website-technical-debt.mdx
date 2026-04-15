@@ -1,0 +1,65 @@
+---
+title: "Anatomy of a €300 Website: What You'll Find Under the Hood 6 Months Later"
+description: "On freelance platforms, you can find complete websites for the price of a used smartphone. A technical autopsy of a bargain-basement quote."
+date: '2026-04-20'
+coverImage: '/images/blog/anatomie-site-low-cost.png'
+excerpt: "Did you get a €300 quote for your web project? It's not necessarily a scam. It's just a very different product from what you imagine. Let's open the hood."
+alternate_slug: 'anatomie-site-low-cost-dette-technique'
+---
+
+If you post an ad for a new website on a freelance marketplace, you'll receive dozens of replies within minutes. Among them, you'll find quotes that defy all economic logic: complete, "turnkey" websites for €300 or €500.
+
+It's not magic, and it's generally not a scam. It's simply assembly-line production.
+
+As a developer, I am regularly contacted to "fix" or upgrade these types of platforms a few months after they go live. Here is exactly what I find when I open the hood.
+
+## 1. The Frankenstein Syndrome (The 45 Plugins)
+
+To be profitable at €300, a contractor cannot afford to spend time coding. The standard method therefore consists of installing a CMS (usually WordPress), slapping on a heavy visual theme, and adding a third-party plugin for every single requested feature.
+
+- A plugin for the contact form.
+- A plugin to speed up the site (which is only slow because of the theme).
+- A plugin for security.
+- A plugin to link your social networks.
+
+The result 6 months later: your website is a house of cards. At the first major core or database update, one of these plugins becomes incompatible. A white screen of death appears, or worse, a security vulnerability opens up. Meanwhile, the original contractor has already moved on to their next 20 projects.
+
+## 2. "Generated" Code (The Visual Illusion)
+
+Today, there are tools that allow you to design a mockup (in Figma, for example) and automatically export the HTML/CSS code with the click of a button. This is often the secret weapon behind express quotes.
+
+Visually, on your screen, the result meets your expectations.
+
+Technically, it's a disaster. Where a software artisan would write 50 lines of well-structured code to display a section, an automatic export generates 800 lines of spaghetti code, using absolute positioning without any semantic hierarchy.
+
+The result 6 months later: Google hates bloated, non-semantic code. Your SEO never takes off. Even worse, the day you simply want to change a text alignment or adapt the layout for a new mobile screen size, the entire structure collapses.
+
+## 3. The Technical Debt Wall
+
+This is the most critical point. Let's assume your business is doing well. Six months after launching your €300 site, you want to add a custom booking system or a secure client portal.
+
+You contact a professional developer for this upgrade. They open the source code, analyze the architecture, heave a sigh, and deliver the classic verdict of our industry:
+
+> "The code is so tangled and unstable that trying to add a new feature will break everything. It will actually be cheaper to rebuild the whole thing from scratch."
+
+This is what we call **technical debt**. You thought you got a great deal at launch, but you end up paying twice for the development of your business tool.
+
+## The Verdict: Prototype vs. Foundation
+
+A quote doesn't just define a price. It defines a methodology.
+
+A €300 website is a **prototype**. If your goal is simply to have a URL to put on a business card for a month to test a brand name, it's a perfectly rational choice.
+
+But if this website is meant to generate revenue, capture leads, automate your processes, or last for several years, you need **foundations**.
+
+Building foundations requires engineering:
+
+- Architecting the database before writing the first line of code.
+- Targeting absolute performance (using Next.js and modern hosting).
+- Delivering clean, documented source code that can be easily picked up by any other developer 3 years from now.
+
+The real question isn't how much your website costs today, but how much it will cost you the day you need it to grow.
+
+---
+
+_Are you launching a serious project and want to build it on solid technical foundations? [Let's talk about your architecture.](/en#contact)_
