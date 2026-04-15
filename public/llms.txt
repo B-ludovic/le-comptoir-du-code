@@ -58,3 +58,5 @@ Articles pratiques sur la création de site internet, le coût réel des platefo
 - https://lechoppeducode.com/en/blog/wix-vs-freelance-real-cost-5-years — Wix, Framer, AI: The real cost of your website in 2026
 - https://lechoppeducode.com/fr/blog/budget-developpeur-freelance-ce-que-vous-pouvez-exiger — Ce que votre budget permet vraiment de construire en 2026
 - https://lechoppeducode.com/en/blog/what-your-budget-can-really-build-2026 — What Your Budget Can Really Build in 2026
+- https://lechoppeducode.com/fr/blog/anatomie-site-low-cost-dette-technique — Anatomie d'un site à 300 € : ce que vous trouverez sous le capot 6 mois plus tard
+- https://lechoppeducode.com/en/blog/anatomy-cheap-website-technical-debt — Anatomy of a €300 Website: What You'll Find Under the Hood 6 Months Later
