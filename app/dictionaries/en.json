@@ -24,7 +24,7 @@
     "intro": "Straightforward packages for real-world needs. No vague quotes, no budget creep halfway through.",
     "card1_title": "The Presence",
     "card1_subtitle": "Showcase Website",
-    "card1_price": "Starting at €1,500",
+    "card1_price": "Starting at €1,450",
     "card1_desc": "A high-speed, mobile-first site designed to turn casual browsers into loyal clients.",
     "card1_features": [
       "Bespoke design",
@@ -37,7 +37,7 @@
     "card1_delay": "3 to 4 days",
     "card2_title": "Commerce & Booking",
     "card2_subtitle": "Sales & Scheduling",
-    "card2_price": "Starting at €3,000",
+    "card2_price": "Starting at €2,850",
     "card2_desc": "Sell products via secure Stripe payments or sync your calendar for seamless appointment booking.",
     "card2_features": [
       "Full Showcase site included",
@@ -50,7 +50,7 @@
     "card2_delay": "7 to 12 days",
     "card3_title": "Custom Tools",
     "card3_subtitle": "Business Applications",
-    "card3_price": "Starting at €5,000",
+    "card3_price": "Starting at €4,800",
     "card3_desc": "Tailor-made back-office solutions: management dashboards, inventory tracking, and automated invoicing.",
     "card3_features": [
       "Advanced database architecture",
@@ -102,9 +102,9 @@
     "field_description_placeholder": "Keep it factual: what are the must-have features?",
     "field_budget": "Estimated budget",
     "field_budget_placeholder": "Select a budget range",
-    "budget_1": "€1,500 — €3,000 (Showcase)",
-    "budget_2": "€3,000 — €5,000 (E-commerce / Booking)",
-    "budget_3": "From €5,000 (Custom App)",
+    "budget_1": "€1,450 — €2,850 (Showcase)",
+    "budget_2": "€2,850 — €4,800 (E-commerce / Booking)",
+    "budget_3": "From €4,800 (Custom App)",
     "btn_submit": "Send request"
   },
   "footer": {

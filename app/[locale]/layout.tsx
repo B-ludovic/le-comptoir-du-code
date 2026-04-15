@@ -116,26 +116,26 @@ const jsonLd = {
       {
         '@type': 'Offer',
         name: 'La Présence — Site Vitrine',
-        price: '1500.00',
+        price: '1450.00',
         priceCurrency: 'EUR',
         description:
-          'Site vitrine sur-mesure à partir de 1 500 € HT. Idéal pour artisans, indépendants et petites entreprises.',
+          'Site vitrine sur-mesure à partir de 1 450 € HT. Idéal pour artisans, indépendants et petites entreprises.',
       },
       {
         '@type': 'Offer',
         name: "L'E-commerce & Réservation",
-        price: '3000.00',
+        price: '2850.00',
         priceCurrency: 'EUR',
         description:
-          'Boutique en ligne ou système de réservation à partir de 3 000 € HT. Inclut 1 an de maintenance.',
+          'Boutique en ligne ou système de réservation à partir de 2 850 € HT. Inclut 1 an de maintenance.',
       },
       {
         '@type': 'Offer',
         name: 'Les Outils Sur-Mesure',
-        price: '5000.00',
+        price: '4800.00',
         priceCurrency: 'EUR',
         description:
-          'Application web sur-mesure à partir de 5 000 € HT. Inclut 1 an de maintenance.',
+          'Application web sur-mesure à partir de 4 800 € HT. Inclut 1 an de maintenance.',
       },
     ],
   },

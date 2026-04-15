@@ -51,8 +51,8 @@ export default async function EchoppeSolidairePage({
       budgetParam: '1',
       title: isFr ? 'La Présence' : 'The Presence',
       subtitle: isFr ? 'Vitrine ou association locale' : 'Informational site for local non-profits',
-      originalPrice: '1 500 €',
-      price: isFr ? 'À partir de 750 €' : 'From €750',
+      originalPrice: '1 450 €',
+      price: isFr ? 'À partir de 725 €' : 'From €725',
       badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
       desc: isFr
         ? 'Un site professionnel, rapide et référencé. Votre présence en ligne, enfin à la hauteur de votre engagement.'
@@ -68,8 +68,8 @@ export default async function EchoppeSolidairePage({
       budgetParam: '2',
       title: isFr ? "L'E-commerce & Dons" : 'E-commerce & Donations',
       subtitle: isFr ? 'Dons, adhésions & espaces membres' : 'Donations, memberships & member areas',
-      originalPrice: '3 000 €',
-      price: isFr ? 'À partir de 1 500 €' : 'From €1,500',
+      originalPrice: '2 850 €',
+      price: isFr ? 'À partir de 1 425 €' : 'From €1,425',
       badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
       desc: isFr
         ? 'Gestion des dons Stripe, des adhésions récurrentes et des espaces membres sécurisés. Tout ce dont une association active a besoin.'
@@ -85,7 +85,7 @@ export default async function EchoppeSolidairePage({
       budgetParam: '3',
       title: isFr ? 'Les Outils Sur-Mesure' : 'Custom Tools',
       subtitle: isFr ? 'Fédérations & grosses infrastructures' : 'Federations & large infrastructures',
-      originalPrice: '5 000 €',
+      originalPrice: '4 800 €',
       price: isFr ? 'Sur étude budgétaire' : 'Custom quote',
       badge: isFr ? 'Remise calculée selon vos subventions' : 'Discount based on your grants',
       desc: isFr
@@ -381,8 +381,8 @@ export default async function EchoppeSolidairePage({
               : 'Describe your organisation, what you want to build, and what is blocking you today…',
             field_budget: isFr ? 'Forfait souhaité' : 'Desired package',
             field_budget_placeholder: isFr ? '— Choisir un forfait —' : '— Choose a package —',
-            budget_1: isFr ? 'La Présence — À partir de 750 € HT' : 'The Presence — From €750 excl. VAT',
-            budget_2: isFr ? 'L\'E-commerce & Dons — À partir de 1 500 € HT' : 'E-commerce & Donations — From €1,500 excl. VAT',
+            budget_1: isFr ? 'La Présence — À partir de 725 € HT' : 'The Presence — From €725 excl. VAT',
+            budget_2: isFr ? 'L\'E-commerce & Dons — À partir de 1 425 € HT' : 'E-commerce & Donations — From €1,425 excl. VAT',
             budget_3: isFr ? 'Les Outils Sur-Mesure — Sur étude budgétaire' : 'Custom Tools — On budget review',
             btn_submit: isFr ? 'Envoyer ma demande' : 'Send my request',
           }} />
