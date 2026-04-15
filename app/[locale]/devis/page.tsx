@@ -25,6 +25,7 @@ const defaultData: DevisData = {
   maintenance_rate: '',
   infra_rate: '',
   client_type: 'standard',
+  devis_locale: 'fr',
 }
 
 export default function DevisPage() {

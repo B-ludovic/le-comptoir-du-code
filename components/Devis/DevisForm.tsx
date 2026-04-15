@@ -63,6 +63,7 @@ export type DevisData = {
   maintenance_rate: string
   infra_rate: string
   client_type: 'standard' | 'association'
+  devis_locale: 'fr' | 'en'
 }
 
 type Props = {
@@ -169,6 +170,18 @@ export default function DevisForm({ data, onChange }: Props) {
           <option value="standard">Client standard</option>
           <option value="association">Association — −50 %</option>
         </select>
+        <div className={styles.localeToggle}>
+          <button
+            type="button"
+            className={`${styles.localeBtn} ${data.devis_locale === 'fr' ? styles.localeBtnActive : ''}`}
+            onClick={() => set('devis_locale', 'fr')}
+          >FR</button>
+          <button
+            type="button"
+            className={`${styles.localeBtn} ${data.devis_locale === 'en' ? styles.localeBtnActive : ''}`}
+            onClick={() => set('devis_locale', 'en')}
+          >EN</button>
+        </div>
       </div>
 
       <section className={styles.section}>

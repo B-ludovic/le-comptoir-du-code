@@ -6,14 +6,105 @@ import styles from './Devis.module.css'
 
 type Props = { data: DevisData }
 
-function fmt(val: string): string {
+function fmt(val: string, locale: 'fr' | 'en'): string {
   const n = parseFloat(val)
   if (!val || isNaN(n)) return '—'
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n)
+  const lang = locale === 'en' ? 'en-GB' : 'fr-FR'
+  return new Intl.NumberFormat(lang, { style: 'currency', currency: 'EUR' }).format(n)
+}
+
+const T = {
+  fr: {
+    docType: 'Proposition Commerciale',
+    docNo: 'N°',
+    issuedOn: (date: string) => `Émis le ${date} — Valable 30 jours`,
+    provider: 'Prestataire',
+    client: 'Client',
+    projectScope: 'Objet de la prestation',
+    thService: 'Prestation',
+    thDescription: 'Détail',
+    thTimeline: 'Délai',
+    thAmount: 'Montant',
+    maintOfferedName: 'Maintenance & sécurité — Année 1 offerte',
+    maintOfferedDesc: (rate: string) => `Dès la livraison : mises à jour de sécurité + correction de bugs bloquants. Puis engagement 1 an à ${rate}.`,
+    maintOfferedType: 'Offert',
+    maintOfferedDelay: '12 mois',
+    maintOfferedAmount: 'Offert',
+    maintPaidName: 'Maintenance & sécurité — Engagement 1 an',
+    maintPaidDesc: 'Dès la livraison : mises à jour de sécurité + correction de bugs bloquants. Engagement 1 an, facturation mensuelle.',
+    maintPaidType: 'Mensuel',
+    maintPaidDelay: '12 mois',
+    deployName: 'Mise en ligne & déploiement',
+    deployDesc: 'Configuration Vercel, nom de domaine, SSL',
+    deployType: 'Inclus',
+    infraName: 'Infrastructure & services tiers',
+    infraDesc: 'Hébergement front-end, back-end, base de données — facturés directement au client par les prestataires (Vercel, Render, Supabase, etc.)',
+    infraType: 'Client',
+    standardHT: 'Tarif standard HT',
+    mecenasDiscount: 'Mécénat de compétences (−50 %)',
+    subtotal: 'Sous-total HT',
+    tva: 'TVA (20 %)',
+    total: 'Total TTC',
+    deposit: 'Acompte à la signature (30 %)',
+    paymentTitle: 'Modalités de paiement',
+    paymentText: `Acompte de 30 % à la commande (facture d'acompte fournie).<br>Solde de 70 % à la mise en ligne.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
+    startTitle: 'Démarrage du projet',
+    startText: `Le projet démarre à réception du devis officiel<br>signé (émis par Jump Green) et du paiement<br>de l'acompte de 30 %.`,
+    validityTitle: 'Validité',
+    validityText: `Cette proposition est valable 30 jours<br>à compter de sa date d'émission.<br>Passé ce délai, les tarifs peuvent être révisés.`,
+    disclaimerTitle: null,
+    disclaimerText: `Cette proposition commerciale est émise à titre indicatif. En cas d'accord, un devis officiel sera établi et transmis par Jump Green, société de portage salarial (SIRET 97761078100014 — RCS de Bobigny). Les droits de propriété intellectuelle sont transférés au client à réception du paiement intégral. Les présentes conditions sont soumises au droit français.`,
+    mecenaBadge: "L'Échoppe Solidaire — Mécénat de compétences LGBTQI+ & Associations",
+    htmlLang: 'fr',
+  },
+  en: {
+    docType: 'Commercial Proposal',
+    docNo: 'No.',
+    issuedOn: (date: string) => `Issued on ${date} — Valid for 30 days`,
+    provider: 'Service Provider',
+    client: 'Client',
+    projectScope: 'Project scope',
+    thService: 'Service',
+    thDescription: 'Description',
+    thTimeline: 'Timeline',
+    thAmount: 'Amount',
+    maintOfferedName: 'Maintenance & Security — Year 1 Included',
+    maintOfferedDesc: (rate: string) => `From delivery: security updates + critical bug fixes. Then 1-year commitment at ${rate}.`,
+    maintOfferedType: 'Included',
+    maintOfferedDelay: '12 months',
+    maintOfferedAmount: 'Included',
+    maintPaidName: 'Maintenance & Security — 1-Year Commitment',
+    maintPaidDesc: 'From delivery: security updates + critical bug fixes. 1-year commitment, monthly billing.',
+    maintPaidType: 'Monthly',
+    maintPaidDelay: '12 months',
+    deployName: 'Deployment & Go-live',
+    deployDesc: 'Vercel configuration, domain name, SSL',
+    deployType: 'Included',
+    infraName: 'Infrastructure & Third-party Services',
+    infraDesc: 'Front-end, back-end, database hosting — billed directly to the client by service providers (Vercel, Render, Supabase, etc.)',
+    infraType: 'Client',
+    standardHT: 'Standard rate (excl. VAT)',
+    mecenasDiscount: 'Skills sponsorship (−50%)',
+    subtotal: 'Subtotal (excl. VAT)',
+    tva: 'VAT (20%)',
+    total: 'Total (incl. VAT)',
+    deposit: 'Deposit upon signing (30%)',
+    paymentTitle: 'Payment Terms',
+    paymentText: `30% deposit upon order (deposit invoice provided).<br>Balance of 70% upon go-live.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
+    startTitle: 'Project commencement',
+    startText: `The project starts upon receipt of the signed<br>official quote (issued by Jump Green) and the<br>30% deposit payment.`,
+    validityTitle: 'Validity',
+    validityText: `This proposal is valid for 30 days<br>from its issuance date.<br>After this period, rates may be revised.`,
+    disclaimerTitle: 'Disclaimer',
+    disclaimerText: `This proposal is provided for informational purposes. If agreed, an official quote will be issued and sent by Jump Green, a portage salarial company (SIRET 97761078100014 — RCS de Bobigny). Intellectual property rights are transferred to the client upon receipt of full payment. These terms are governed by French law.`,
+    mecenaBadge: "L'Échoppe Solidaire — Skills Sponsorship LGBTQI+ & Associations",
+    htmlLang: 'en',
+  },
 }
 
 function calcTotals(data: DevisData) {
   const isAsso = data.client_type === 'association'
+  const locale = data.devis_locale ?? 'fr'
   const fullHt = data.services.reduce((sum, s) => sum + (parseFloat(s.amount) || 0), 0)
   const ht = isAsso ? fullHt * 0.5 : fullHt
   const remise = isAsso ? fullHt * 0.5 : 0
@@ -21,12 +112,12 @@ function calcTotals(data: DevisData) {
   const ttc = ht + tva
   const acompte = ttc * 0.3
   return {
-    full_ht: fmt(String(fullHt)),
-    remise: fmt(String(remise)),
-    total_ht: fmt(String(ht)),
-    tva_amount: fmt(String(tva)),
-    acompte_amount: fmt(String(acompte)),
-    total_ttc: fmt(String(ttc)),
+    full_ht: fmt(String(fullHt), locale),
+    remise: fmt(String(remise), locale),
+    total_ht: fmt(String(ht), locale),
+    tva_amount: fmt(String(tva), locale),
+    acompte_amount: fmt(String(acompte), locale),
+    total_ttc: fmt(String(ttc), locale),
     isAsso,
   }
 }
@@ -34,6 +125,8 @@ function calcTotals(data: DevisData) {
 export default function DevisPreview({ data }: Props) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const totals = calcTotals(data)
+  const locale = data.devis_locale ?? 'fr'
+  const t = T[locale]
 
   const isAsso = data.client_type === 'association'
 
@@ -41,8 +134,8 @@ export default function DevisPreview({ data }: Props) {
     .filter(s => s.name.trim() !== '')
     .map(s => {
       const priceCell = isAsso
-        ? `<span class="price-original">${fmt(s.amount)}</span><span class="price-asso">${fmt(String(parseFloat(s.amount) * 0.5))}</span>`
-        : fmt(s.amount)
+        ? `<span class="price-original">${fmt(s.amount, locale)}</span><span class="price-asso">${fmt(String(parseFloat(s.amount) * 0.5), locale)}</span>`
+        : fmt(s.amount, locale)
       return `
         <tr>
           <td class="desc">
@@ -57,7 +150,7 @@ export default function DevisPreview({ data }: Props) {
     .join('')
 
   const html = `<!DOCTYPE html>
-<html lang="fr">
+<html lang="${t.htmlLang}">
 <head>
 <meta charset="UTF-8">
 <style>
@@ -110,6 +203,7 @@ export default function DevisPreview({ data }: Props) {
   .condition-title { font-size: 7px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: #8A5A2A; margin-bottom: 2mm; }
   .condition-text { font-size: 8px; color: #6A6460; line-height: 1.7; }
   .mentions { padding: 3mm 0; border-top: 1px solid rgba(184,148,112,0.15); margin-bottom: 4mm; }
+  .mentions-title { font-size: 7px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: #8A7D72; margin-bottom: 1.5mm; }
   .mentions p { font-size: 7px; color: #8A7D72; line-height: 1.6; }
   .footer { border-top: 1px solid rgba(184,148,112,0.15); padding-top: 3mm; text-align: center; }
   .footer-left { font-size: 7px; color: #8A7D72; letter-spacing: 0.5px; display: block; margin-bottom: 1mm; }
@@ -131,15 +225,15 @@ export default function DevisPreview({ data }: Props) {
       </div>
     </div>
     <div class="doc-meta">
-      <span class="doc-type">Proposition Commerciale</span>
-      <span class="doc-number">N° ${data.devis_number || '—'}</span>
-      <span class="doc-date">Émis le ${data.devis_date || '—'} — Valable 30 jours</span>
+      <span class="doc-type">${t.docType}</span>
+      <span class="doc-number">${t.docNo} ${data.devis_number || '—'}</span>
+      <span class="doc-date">${t.issuedOn(data.devis_date || '—')}</span>
     </div>
   </div>
 
   <div class="parties">
     <div class="party">
-      <div class="party-label">Prestataire</div>
+      <div class="party-label">${t.provider}</div>
       <span class="party-name">L'Echoppe du Code</span>
       <span class="party-detail">Ludovic BATAILLE (Entrepreneur-salarié)</span>
       <span class="party-detail">Hébergé par : Jump Green</span>
@@ -149,7 +243,7 @@ export default function DevisPreview({ data }: Props) {
       <span class="party-detail">contact@lechoppeducode.com</span>
     </div>
     <div class="party">
-      <div class="party-label">Client</div>
+      <div class="party-label">${t.client}</div>
       <span class="party-name">${data.client_company || '—'}</span>
       <span class="party-detail">${data.client_name || ''}</span>
       <span class="party-detail">${data.client_email || ''}</span>
@@ -158,7 +252,7 @@ export default function DevisPreview({ data }: Props) {
   </div>
 
   <div class="objet">
-    <div class="objet-label">Objet de la prestation</div>
+    <div class="objet-label">${t.projectScope}</div>
     <div class="objet-value">${data.project_description || '—'}</div>
   </div>
 
@@ -166,10 +260,10 @@ export default function DevisPreview({ data }: Props) {
     <table>
       <thead>
         <tr>
-          <th style="width:45%">Prestation</th>
-          <th style="width:25%">Détail</th>
-          <th style="width:15%">Délai</th>
-          <th style="width:15%">Montant</th>
+          <th style="width:45%">${t.thService}</th>
+          <th style="width:25%">${t.thDescription}</th>
+          <th style="width:15%">${t.thTimeline}</th>
+          <th style="width:15%">${t.thAmount}</th>
         </tr>
       </thead>
       <tbody>
@@ -177,38 +271,38 @@ export default function DevisPreview({ data }: Props) {
         ${data.maintenance_option === 'offered' ? `
         <tr>
           <td class="desc">
-            Maintenance &amp; sécurité — Année 1 offerte
-            <span class="desc-sub">Dès la livraison : mises à jour de sécurité + correction de bugs bloquants. Puis engagement 1 an à ${data.maintenance_rate}.</span>
+            ${t.maintOfferedName}
+            <span class="desc-sub">${t.maintOfferedDesc(data.maintenance_rate)}</span>
           </td>
-          <td>Offert</td>
-          <td class="right">12 mois</td>
-          <td class="right">Offert</td>
+          <td>${t.maintOfferedType}</td>
+          <td class="right">${t.maintOfferedDelay}</td>
+          <td class="right">${t.maintOfferedAmount}</td>
         </tr>` : ''}
         ${data.maintenance_option === 'paid' ? `
         <tr>
           <td class="desc">
-            Maintenance &amp; sécurité — Engagement 1 an
-            <span class="desc-sub">Dès la livraison : mises à jour de sécurité + correction de bugs bloquants. Engagement 1 an, facturation mensuelle.</span>
+            ${t.maintPaidName}
+            <span class="desc-sub">${t.maintPaidDesc}</span>
           </td>
-          <td>Mensuel</td>
-          <td class="right">12 mois</td>
+          <td>${t.maintPaidType}</td>
+          <td class="right">${t.maintPaidDelay}</td>
           <td class="right">${data.maintenance_rate}</td>
         </tr>` : ''}
         <tr>
           <td class="desc">
-            Mise en ligne &amp; déploiement
-            <span class="desc-sub">Configuration Vercel, nom de domaine, SSL</span>
+            ${t.deployName}
+            <span class="desc-sub">${t.deployDesc}</span>
           </td>
-          <td>Inclus</td>
+          <td>${t.deployType}</td>
           <td class="right">—</td>
           <td class="right">—</td>
         </tr>
         <tr>
           <td class="desc">
-            Infrastructure &amp; services tiers
-            <span class="desc-sub">Hébergement front-end, back-end, base de données — facturés directement au client par les prestataires (Vercel, Render, Supabase, etc.)</span>
+            ${t.infraName}
+            <span class="desc-sub">${t.infraDesc}</span>
           </td>
-          <td>Client</td>
+          <td>${t.infraType}</td>
           <td class="right">—</td>
           <td class="right">${data.infra_rate || '~50–100 € HT/mois'}</td>
         </tr>
@@ -218,46 +312,34 @@ export default function DevisPreview({ data }: Props) {
 
   <div class="totaux">
     <div class="totaux-block">
-      ${totals.isAsso ? `<div class="totaux-line"><span>Tarif standard HT</span><span>${totals.full_ht}</span></div>` : ''}
-      ${totals.isAsso ? `<div class="totaux-line remise"><span>Mécénat de compétences (−50 %)</span><span>−${totals.remise}</span></div>` : ''}
-      <div class="totaux-line"><span>Sous-total HT</span><span>${totals.total_ht}</span></div>
-      <div class="totaux-line tva"><span>TVA (20 %)</span><span>${totals.tva_amount}</span></div>
-      <div class="totaux-line total"><span>Total TTC</span><span class="amount">${totals.total_ttc}</span></div>
-      <div class="totaux-line acompte"><span>Acompte à la signature (30 %)</span><span>${totals.acompte_amount}</span></div>
+      ${totals.isAsso ? `<div class="totaux-line"><span>${t.standardHT}</span><span>${totals.full_ht}</span></div>` : ''}
+      ${totals.isAsso ? `<div class="totaux-line remise"><span>${t.mecenasDiscount}</span><span>−${totals.remise}</span></div>` : ''}
+      <div class="totaux-line"><span>${t.subtotal}</span><span>${totals.total_ht}</span></div>
+      <div class="totaux-line tva"><span>${t.tva}</span><span>${totals.tva_amount}</span></div>
+      <div class="totaux-line total"><span>${t.total}</span><span class="amount">${totals.total_ttc}</span></div>
+      <div class="totaux-line acompte"><span>${t.deposit}</span><span>${totals.acompte_amount}</span></div>
     </div>
   </div>
 
   <div class="conditions">
     <div class="condition-block">
-      <div class="condition-title">Modalités de paiement</div>
-      <div class="condition-text">
-        Acompte de 30 % à la commande (facture d'acompte fournie).<br>
-        Solde de 70 % à la mise en ligne.<br>
-        Règlement par virement bancaire uniquement.<br>
-        Délai de paiement : 15 jours à compter de la facture.
-      </div>
+      <div class="condition-title">${t.paymentTitle}</div>
+      <div class="condition-text">${t.paymentText}</div>
     </div>
     <div class="condition-block">
-      <div class="condition-title">Démarrage du projet</div>
-      <div class="condition-text">
-        Le projet démarre à réception du devis officiel<br>
-        signé (émis par Jump Green) et du paiement<br>
-        de l'acompte de 30 %.
-      </div>
+      <div class="condition-title">${t.startTitle}</div>
+      <div class="condition-text">${t.startText}</div>
     </div>
     <div class="condition-block">
-      <div class="condition-title">Validité</div>
-      <div class="condition-text">
-        Cette proposition est valable 30 jours<br>
-        à compter de sa date d'émission.<br>
-        Passé ce délai, les tarifs peuvent être révisés.
-      </div>
+      <div class="condition-title">${t.validityTitle}</div>
+      <div class="condition-text">${t.validityText}</div>
     </div>
   </div>
 
   <div class="mentions">
-    ${totals.isAsso ? `<span class="mecena-badge">L'Échoppe Solidaire — Mécénat de compétences LGBTQI+ &amp; Associations</span>` : ''}
-    <p>Cette proposition commerciale est émise à titre indicatif. En cas d'accord, un devis officiel sera établi et transmis par Jump Green, société de portage salarial (SIRET 97761078100014 — RCS de Bobigny). Les droits de propriété intellectuelle sont transférés au client à réception du paiement intégral. Les présentes conditions sont soumises au droit français.</p>
+    ${totals.isAsso ? `<span class="mecena-badge">${t.mecenaBadge}</span>` : ''}
+    ${t.disclaimerTitle ? `<div class="mentions-title">${t.disclaimerTitle}</div>` : ''}
+    <p>${t.disclaimerText}</p>
   </div>
 
   <div class="footer">

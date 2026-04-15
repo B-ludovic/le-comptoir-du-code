@@ -121,4 +121,4 @@ Les variables d'environnement sont à renseigner dans les settings du projet Ver
 
 ---
 
-*Ludovic BATAILLE — [lechoppeducode.com](https://lechoppeducode.com)*
+*Ludovic BATAILLE ❤️ — [lechoppeducode.com](https://lechoppeducode.com)*
