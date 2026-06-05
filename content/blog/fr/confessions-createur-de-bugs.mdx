@@ -1,0 +1,38 @@
+---
+title: "Confessions d'un créateur de bugs : l'enfer du « dernier pour cent »"
+description: "Quand on construit une architecture complexe, boucher une fuite crée souvent une pression ailleurs. Comment j'ai failli paralyser mon propre projet en voulant trop le réparer."
+date: '2026-06-06'
+coverImage: '/images/blog/createur-de-bugs.png'
+excerpt: "Quand on construit une architecture complexe, boucher une fuite crée souvent une pression ailleurs. Comment j'ai failli paralyser mon propre projet en voulant trop le réparer."
+alternate_slug: 'confessions-bug-creator-last-percent'
+---
+
+Je suis en train de finaliser la construction de M.U.S.E. Sur le papier, l'architecture est solide, les flux de paiements sont en place, le système de gestion des offres tourne. C'est ce moment précis où le cerveau se relâche en se disant : « C'est bon, j'ai fini. »
+
+Puis, on teste une dernière fois. Et le château de cartes vacille. Un bug.
+
+On ouvre le capot, on colmate la brèche. On se frotte les mains. Mais le lendemain, dans un autre coin de l'application, un nouveau trou s'est formé. Face à mon écran, une pensée terrible m'a traversé l'esprit : et si mon véritable métier n'était pas « Développeur », mais « Créateur de bugs » ?
+
+## Le syndrome de la rustine et les 41 commits
+
+Dans une plateforme e-commerce premium, tout est interconnecté. La base de données parle au système de paiement, qui déclenche une file d'attente, qui met à jour un inventaire.
+
+Récemment, j'ai vécu cette paralysie de plein fouet. J'ai empilé les correctifs les uns sur les autres pour boucher des failles, persuadé d'avoir bouclé le sujet. Je pensais avoir réparé la chose de manière stricte. Mais en prenant un peu de recul, l'évidence m'a frappé : le fix était tellement restrictif qu'il s'était transformé en prison sur lui-même.
+
+En voulant sécuriser l'entrée, j'avais bloqué tout le flux du code. L'architecture était devenue si rigide qu'elle en était paralysée. Je n'ai même pas eu besoin de lancer les tests pour comprendre l'ampleur de mon erreur.
+
+Heureusement, une petite intuition m'a sauvé : je n'avais rien poussé sur mon dépôt GitHub. Avec 41 commits d'avance restés sagement en local, j'ai conservé la liberté de tout détricoter. Cet espace de manœuvre va me permettre de repenser le flux global et de nettoyer cette logique étouffante avant qu'elle n'infecte la branche principale.
+
+## La leçon de l'Artisan
+
+C'est ici qu'il faut ravaler son ego. Construire une application robuste, ce n'est pas empiler des briques jusqu'à ce que plus rien ne bouge. C'est faire de la plomberie dans un système à haute pression.
+
+> La vérité que l'on n'apprend pas dans les tutoriels, c'est qu'un projet web n'est jamais "fini". C'est un organisme vivant qui respire, qui frotte, et qui craque.
+
+Mon métier n'est pas de créer un code parfait du premier coup. Mon métier est d'avoir la patience de suivre l'eau qui coule dans les tuyaux, de comprendre la pression globale du système, et d'accepter que la réparation d'aujourd'hui ne doit pas devenir le goulot d'étranglement de demain.
+
+L'excellence ne réside pas dans l'absence de bugs. Elle réside dans notre capacité à ne jamais sacrifier la fluidité globale sur l'autel de la panique locale.
+
+---
+
+_Vous construisez un projet ambitieux et vous voulez éviter ces pièges architecturaux ? [Parlons de votre projet.](/fr#contact)_

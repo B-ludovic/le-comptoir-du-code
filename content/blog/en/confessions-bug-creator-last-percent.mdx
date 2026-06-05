@@ -1,0 +1,38 @@
+---
+title: "Confessions of a bug creator: the hell of the \"last percent\""
+description: "When building complex architecture, plugging a leak often creates pressure elsewhere. How I almost paralyzed my own project by trying too hard to fix it."
+date: '2026-06-06'
+coverImage: '/images/blog/createur-de-bugs.png'
+excerpt: "When building complex architecture, plugging a leak often creates pressure elsewhere. How I almost paralyzed my own project by trying too hard to fix it."
+alternate_slug: 'confessions-createur-de-bugs'
+---
+
+I am currently finalizing the build of M.U.S.E. On paper, the architecture is solid, the payment flows are in place, the offer management system is running. It's that precise moment when your brain relaxes and tells you: "That's it, I'm done."
+
+Then, you test it one last time. And the house of cards wobbles. A bug.
+
+You pop the hood, plug the leak. You rub your hands together. But the next day, in another corner of the application, a new hole has formed. Staring at my screen, a terrible thought crossed my mind: what if my real job isn't "Developer," but "Bug Creator"?
+
+## The patch syndrome and the 41 commits
+
+In a premium e-commerce platform, everything is interconnected. The database talks to the payment system, which triggers a queue, which updates an inventory.
+
+Recently, I experienced this paralysis head-on. I stacked patches on top of each other to plug vulnerabilities, convinced I had wrapped the whole thing up. I thought I had fixed it strictly. But taking a step back, the obvious hit me: the fix was so restrictive that it had turned into a prison of its own making.
+
+By trying to secure the input, I had blocked the entire code flow. The architecture had become so rigid that it was paralyzed. I didn't even need to run the tests to understand the scale of my mistake.
+
+Fortunately, a small intuition saved me: I hadn't pushed anything to my GitHub repository. With 41 commits sitting safely on my local machine, I kept the freedom to unravel everything. This breathing room will allow me to rethink the global flow and clean up this suffocating logic before it infects the main branch.
+
+## The Artisan's lesson
+
+This is where you have to swallow your ego. Building a robust application isn't about stacking bricks until nothing moves anymore. It's like doing plumbing in a high-pressure system.
+
+> The truth they don't teach you in tutorials is that a web project is never "finished". It's a living organism that breathes, creates friction, and sometimes cracks.
+
+My job isn't to create perfect code on the first try. My job is to have the patience to follow the water flowing through the pipes, to understand the global pressure of the system, and to accept that today's repair must not become tomorrow's bottleneck.
+
+Excellence doesn't lie in the absence of bugs. It lies in our ability to never sacrifice global fluidity on the altar of local panic.
+
+---
+
+_Building an ambitious project and want to avoid these architectural pitfalls? [Let's talk about your project.](/en#contact)_
