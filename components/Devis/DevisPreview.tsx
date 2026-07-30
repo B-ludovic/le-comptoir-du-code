@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import { useParams, useRouter } from 'next/navigation'
 import type { DevisData } from './DevisForm'
 import styles from './Devis.module.css'
 
@@ -178,6 +179,8 @@ function calcTotals(data: DevisData) {
 
 export default function DevisPreview({ data }: Props) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const router = useRouter()
+  const params = useParams()
   const totals = calcTotals(data)
   const locale = data.devis_locale ?? 'fr'
   const t = T[locale]
@@ -417,13 +420,25 @@ export default function DevisPreview({ data }: Props) {
     iframe.contentWindow.print()
   }
 
+  async function handleLogout() {
+    await fetch('/api/devis-logout', { method: 'POST' })
+    const uiLocale = params.locale === 'en' ? 'en' : 'fr'
+    router.push(`/${uiLocale}/devis/login`)
+    router.refresh()
+  }
+
   return (
     <div className={styles.previewPanel}>
       <div className={styles.previewHeader}>
         <h2 className={styles.panelTitle}>Aperçu</h2>
-        <button className={styles.printBtn} onClick={handlePrint}>
-          Imprimer / PDF
-        </button>
+        <div className={styles.previewActions}>
+          <button type="button" className={styles.logoutBtn} onClick={handleLogout}>
+            Quitter
+          </button>
+          <button type="button" className={styles.printBtn} onClick={handlePrint}>
+            Imprimer / PDF
+          </button>
+        </div>
       </div>
       <div className={styles.iframeWrapper}>
         <iframe

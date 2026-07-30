@@ -16,12 +16,12 @@ function getLocale(request: NextRequest): string {
   return defaultLocale
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
   // Protection de la page /devis (sauf /devis/login)
   if (isDevisPath(pathname)) {
-    if (!verifyDevisToken(request.cookies.get('devis_auth')?.value)) {
+    if (!(await verifyDevisToken(request.cookies.get('devis_auth')?.value))) {
       const locale =
         locales.find(l => pathname.toLowerCase().startsWith(`/${l}/`)) ?? defaultLocale
       return NextResponse.redirect(new URL(`/${locale}/devis/login`, request.url))

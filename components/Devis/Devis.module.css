@@ -268,6 +268,32 @@
   flex-shrink: 0;
 }
 
+.previewActions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Déconnexion : volontairement en retrait du bouton d'impression, qui reste
+   l'action principale de l'écran. */
+.logoutBtn {
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: color var(--transition-base);
+}
+
+.logoutBtn:hover {
+  color: var(--accent-primary);
+}
+
 .printBtn {
   padding: 0.5rem 1.25rem;
   background-color: transparent;

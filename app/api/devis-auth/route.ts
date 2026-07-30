@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { timingSafeEqual } from 'crypto'
 import { clientIp, sameOrigin } from '@/lib/http'
 import { createRateLimiter } from '@/lib/rate-limit'
+import { issueDevisToken, TOKEN_TTL_SECONDS } from '@/lib/devis-auth'
 
 // Rate limiting en mémoire — max 5 tentatives / 15 min par IP
 const attempts = createRateLimiter(5, 15 * 60 * 1000)
@@ -53,11 +54,13 @@ export async function POST(request: NextRequest) {
   attempts.reset(ip)
 
   const response = NextResponse.json({ success: true })
-  response.cookies.set('devis_auth', process.env.DEVIS_TOKEN!, {
+  response.cookies.set('devis_auth', await issueDevisToken(), {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
-    maxAge: 60 * 60 * 8,
+    // Le navigateur oublie le cookie au même moment où le serveur cesserait
+    // de l'accepter : les deux échéances ne peuvent pas diverger.
+    maxAge: TOKEN_TTL_SECONDS,
     path: '/',
   })
 

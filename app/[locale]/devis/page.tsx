@@ -14,7 +14,7 @@ export default async function DevisPage({
   const { locale } = await params
 
   const token = (await cookies()).get('devis_auth')?.value
-  if (!verifyDevisToken(token)) {
+  if (!(await verifyDevisToken(token))) {
     redirect(`/${locale === 'en' ? 'en' : 'fr'}/devis/login`)
   }
 
