@@ -15,6 +15,13 @@ const dictionaries = { fr, en }
 
 export const dynamicParams = true
 
+/* Coût assumé du nonce : une page mise en cache sert le HTML tel qu'il a été
+   rendu la première fois, nonce compris, alors que le middleware pose un
+   nonce neuf à chaque requête. Les deux ne concordent plus dès le second
+   appel et le navigateur bloque tous les scripts de la page.
+   Les articles sont donc rendus à la demande. */
+export const dynamic = 'force-dynamic'
+
 export async function generateStaticParams({
   params,
 }: {

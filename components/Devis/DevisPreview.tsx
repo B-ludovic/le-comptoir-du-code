@@ -7,6 +7,23 @@ import styles from './Devis.module.css'
 
 type Props = { data: DevisData }
 
+/* Le document est assemblé par concaténation de chaînes : toute valeur venant
+   du formulaire doit passer par ici avant d'entrer dans le template. Les
+   libellés du dictionnaire T en sont exemptés, eux contiennent des <br> voulus.
+
+   Aujourd'hui l'état ne provient que de la saisie locale, donc le risque tient
+   surtout au rendu — une raison sociale contenant « & » ou « < » casserait le
+   PDF envoyé au client. Le jour où le devis sera prérempli depuis le
+   questionnaire, ces mêmes valeurs viendront d'un tiers non authentifié. */
+function esc(value: unknown): string {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function fmt(val: string, locale: 'fr' | 'en'): string {
   const n = parseFloat(val)
   if (!val || isNaN(n)) return '—'
@@ -197,11 +214,11 @@ export default function DevisPreview({ data }: Props) {
       return `
         <tr>
           <td class="desc">
-            ${s.name}
-            <span class="desc-sub">${s.description || ''}</span>
+            ${esc(s.name)}
+            <span class="desc-sub">${esc(s.description || '')}</span>
           </td>
-          <td>${s.type || '—'}</td>
-          <td class="right">${s.delay || '—'}</td>
+          <td>${esc(s.type || '—')}</td>
+          <td class="right">${esc(s.delay || '—')}</td>
           <td class="right">${priceCell}</td>
         </tr>`
     })
@@ -288,8 +305,8 @@ export default function DevisPreview({ data }: Props) {
     </div>
     <div class="doc-meta">
       <span class="doc-type">${t.docType} — ${schedule.label}</span>
-      <span class="doc-number">${t.docNo} ${data.devis_number || '—'}</span>
-      <span class="doc-date">${t.issuedOn(data.devis_date || '—')}</span>
+      <span class="doc-number">${t.docNo} ${esc(data.devis_number || '—')}</span>
+      <span class="doc-date">${t.issuedOn(esc(data.devis_date || '—'))}</span>
     </div>
   </div>
 
@@ -306,16 +323,16 @@ export default function DevisPreview({ data }: Props) {
     </div>
     <div class="party">
       <div class="party-label">${t.client}</div>
-      <span class="party-name">${data.client_company || '—'}</span>
-      <span class="party-detail">${data.client_name || ''}</span>
-      <span class="party-detail">${data.client_email || ''}</span>
-      <span class="party-detail">${data.client_address || ''}</span>
+      <span class="party-name">${esc(data.client_company || '—')}</span>
+      <span class="party-detail">${esc(data.client_name || '')}</span>
+      <span class="party-detail">${esc(data.client_email || '')}</span>
+      <span class="party-detail">${esc(data.client_address || '')}</span>
     </div>
   </div>
 
   <div class="objet">
     <div class="objet-label">${t.projectScope}</div>
-    <div class="objet-value">${data.project_description || '—'}</div>
+    <div class="objet-value">${esc(data.project_description || '—')}</div>
   </div>
 
   <div class="table-wrap">
@@ -334,7 +351,7 @@ export default function DevisPreview({ data }: Props) {
         <tr>
           <td class="desc">
             ${t.maintOfferedName}
-            <span class="desc-sub">${t.maintOfferedDesc(data.maintenance_rate)}</span>
+            <span class="desc-sub">${t.maintOfferedDesc(esc(data.maintenance_rate))}</span>
           </td>
           <td>${t.maintOfferedType}</td>
           <td class="right">${t.maintOfferedDelay}</td>
@@ -348,7 +365,7 @@ export default function DevisPreview({ data }: Props) {
           </td>
           <td>${t.maintPaidType}</td>
           <td class="right">${t.maintPaidDelay}</td>
-          <td class="right">${data.maintenance_rate}</td>
+          <td class="right">${esc(data.maintenance_rate)}</td>
         </tr>` : ''}
         <tr>
           <td class="desc">
@@ -366,7 +383,7 @@ export default function DevisPreview({ data }: Props) {
           </td>
           <td>${t.infraType}</td>
           <td class="right">—</td>
-          <td class="right">${data.infra_rate || '~50–100 € HT/mois'}</td>
+          <td class="right">${esc(data.infra_rate || '~50–100 € HT/mois')}</td>
         </tr>
       </tbody>
     </table>
@@ -441,9 +458,16 @@ export default function DevisPreview({ data }: Props) {
         </div>
       </div>
       <div className={styles.iframeWrapper}>
+        {/* Sans allow-scripts, un script qui se glisserait dans le document ne
+            s'exécute pas — ce qui vaut plus que l'échappement lui-même, car
+            cette garantie ne dépend d'aucune interpolation oubliée.
+            allow-same-origin permet au parent d'atteindre contentWindow, et
+            allow-modals d'ouvrir la boîte d'impression. Vérifié : print()
+            fonctionne et la feuille de polices se charge. */}
         <iframe
           ref={iframeRef}
           srcDoc={html}
+          sandbox="allow-same-origin allow-modals"
           className={styles.iframe}
           title="Aperçu de la proposition commerciale"
         />

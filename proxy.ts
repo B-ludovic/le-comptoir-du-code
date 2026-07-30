@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { isDevisPath, verifyDevisToken } from '@/lib/devis-auth'
+import { buildCsp, generateNonce } from '@/lib/csp'
 
 const locales = ['fr', 'en']
 const defaultLocale = 'fr'
@@ -16,15 +17,28 @@ function getLocale(request: NextRequest): string {
   return defaultLocale
 }
 
+function withCsp(response: NextResponse, csp: string): NextResponse {
+  response.headers.set('Content-Security-Policy', csp)
+  return response
+}
+
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname
+
+  /* Un nonce neuf par requête : c'est toute la raison pour laquelle la CSP a
+     quitté next.config.ts, qui ne peut produire que des valeurs constantes. */
+  const nonce = generateNonce()
+  const csp = buildCsp(nonce)
 
   // Protection de la page /devis (sauf /devis/login)
   if (isDevisPath(pathname)) {
     if (!(await verifyDevisToken(request.cookies.get('devis_auth')?.value))) {
       const locale =
         locales.find(l => pathname.toLowerCase().startsWith(`/${l}/`)) ?? defaultLocale
-      return NextResponse.redirect(new URL(`/${locale}/devis/login`, request.url))
+      return withCsp(
+        NextResponse.redirect(new URL(`/${locale}/devis/login`, request.url)),
+        csp,
+      )
     }
   }
 
@@ -32,10 +46,22 @@ export async function proxy(request: NextRequest) {
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
 
-  if (pathnameHasLocale) return
+  if (!pathnameHasLocale) {
+    const locale = getLocale(request)
+    return withCsp(
+      NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url)),
+      csp,
+    )
+  }
 
-  const locale = getLocale(request)
-  return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url))
+  /* Next.js relit la politique dans les en-têtes de la requête pour apposer
+     lui-même le nonce aux scripts qu'il injecte : elle doit donc voyager à
+     l'aller comme au retour. */
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set('Content-Security-Policy', csp)
+  requestHeaders.set('x-nonce', nonce)
+
+  return withCsp(NextResponse.next({ request: { headers: requestHeaders } }), csp)
 }
 
 export const config = {

@@ -1,36 +1,17 @@
 import type { NextConfig } from 'next'
 
-const CSP = [
-  "default-src 'self'",
-  // Next.js a besoin de unsafe-inline pour l'hydratation côté client
-  // React dev mode a besoin de unsafe-eval (jamais utilisé en production)
-  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''}`,
-  // Styles inline (aperçu devis) — plus aucun domaine tiers autorisé
-  "style-src 'self' 'unsafe-inline'",
-  // Polices auto-hébergées uniquement (public/fonts.css)
-  "font-src 'self'",
-  // Images locales + data URI (portraits, logos)
-  "img-src 'self' data: https:",
-  // Requêtes API uniquement vers le même domaine
-  "connect-src 'self'",
-  // iframe srcDoc du devis (blob: pour le rendu interne)
-  "frame-src 'self' blob:",
-  // Formulaires uniquement vers le même domaine
-  "form-action 'self'",
-  // Empêche l'injection de balise <base>
-  "base-uri 'self'",
-  // Aucun plugin (Flash, etc.)
-  "object-src 'none'",
-  // Empêche l'intégration de ce site dans un iframe externe
-  "frame-ancestors 'none'",
-].join('; ')
+/* La Content-Security-Policy n'est plus ici : elle a besoin d'un nonce neuf à
+   chaque requête, que ce fichier ne peut pas produire. Elle est construite
+   dans lib/csp.ts et posée par le middleware (proxy.ts).
 
+   Les en-têtes ci-dessous sont constants et restent à ce niveau, ce qui leur
+   permet de couvrir aussi les réponses que le matcher du middleware exclut :
+   assets statiques, images, polices et routes d'API. */
 const nextConfig: NextConfig = {
   headers: async () => [
     {
       source: '/(.*)',
       headers: [
-        { key: 'Content-Security-Policy', value: CSP },
         // HSTS : force HTTPS pendant 1 an, sous-domaines inclus, preload
         { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
         // Isole la fenêtre des popups cross-origin

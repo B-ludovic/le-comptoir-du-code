@@ -28,6 +28,12 @@ export function getPostSlugs(locale: string): string[] {
 }
 
 export function getPost(slug: string, locale: string): Post | null {
+  /* Le slug et la locale viennent de l'URL et sont concaténés dans un chemin
+     de fichier. La plateforme rejette aujourd'hui les séparateurs encodés,
+     mais c'est elle qui nous protège, pas nous : on refuse ici tout ce qui
+     n'est pas un segment simple avant de toucher au système de fichiers. */
+  if (!/^[a-z0-9-]+$/.test(slug) || !/^[a-z]{2}$/.test(locale)) return null
+
   const filePath = path.join(contentDir, locale, `${slug}.mdx`)
   if (!fs.existsSync(filePath)) return null
   const raw = fs.readFileSync(filePath, 'utf-8')
