@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { ChevronDown } from 'lucide-react'
 import styles from './Contact.module.css'
@@ -16,6 +16,7 @@ type Props = {
     field_description_placeholder: string
     field_budget: string
     field_budget_placeholder: string
+    budget_scoping: string
     budget_1: string
     budget_2: string
     budget_3: string
@@ -28,15 +29,21 @@ type Status = 'idle' | 'sending' | 'success' | 'error'
 export default function Contact({ dict }: Props) {
   const formRef = useRef<HTMLFormElement>(null)
   const [status, setStatus] = useState<Status>('idle')
-  const [selectedBudget, setSelectedBudget] = useState('')
   const searchParams = useSearchParams()
 
-  useEffect(() => {
-    const budget = searchParams.get('budget')
-    if (budget === '1') setSelectedBudget(dict.budget_1)
-    else if (budget === '2') setSelectedBudget(dict.budget_2)
-    else if (budget === '3') setSelectedBudget(dict.budget_3)
-  }, [searchParams, dict.budget_1, dict.budget_2, dict.budget_3])
+  // Valeur dérivée de l'URL, calculée au rendu : pas d'effet, donc pas de
+  // rendu à vide avant que le budget ne s'affiche.
+  const budgetParam = searchParams.get('budget')
+  const budgetFromUrl =
+    budgetParam === 'cadrage' ? dict.budget_scoping :
+    budgetParam === '1' ? dict.budget_1 :
+    budgetParam === '2' ? dict.budget_2 :
+    budgetParam === '3' ? dict.budget_3 :
+    ''
+
+  // Dès que l'utilisateur choisit lui-même, son choix prend le pas sur l'URL.
+  const [budgetOverride, setBudgetOverride] = useState<string | null>(null)
+  const selectedBudget = budgetOverride ?? budgetFromUrl
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -62,7 +69,7 @@ export default function Contact({ dict }: Props) {
 
       setStatus('success')
       formRef.current.reset()
-      setSelectedBudget('')
+      setBudgetOverride('')
     } catch {
       setStatus('error')
     }
@@ -116,9 +123,10 @@ export default function Contact({ dict }: Props) {
                 required
                 className={styles.select}
                 value={selectedBudget}
-                onChange={(e) => setSelectedBudget(e.target.value)}
+                onChange={(e) => setBudgetOverride(e.target.value)}
               >
                 <option value="" disabled>{dict.field_budget_placeholder}</option>
+                <option value={dict.budget_scoping}>{dict.budget_scoping}</option>
                 <option value={dict.budget_1}>{dict.budget_1}</option>
                 <option value={dict.budget_2}>{dict.budget_2}</option>
                 <option value={dict.budget_3}>{dict.budget_3}</option>

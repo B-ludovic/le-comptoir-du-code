@@ -381,6 +381,7 @@ export default async function EchoppeSolidairePage({
               : 'Describe your organisation, what you want to build, and what is blocking you today…',
             field_budget: isFr ? 'Forfait souhaité' : 'Desired package',
             field_budget_placeholder: isFr ? '— Choisir un forfait —' : '— Choose a package —',
+            budget_scoping: isFr ? 'Cadrage — À partir de 145 € HT' : 'Scoping — From €145 excl. VAT',
             budget_1: isFr ? 'La Présence — À partir de 725 € HT' : 'The Presence — From €725 excl. VAT',
             budget_2: isFr ? 'L\'E-commerce & Dons — À partir de 1 425 € HT' : 'E-commerce & Donations — From €1,425 excl. VAT',
             budget_3: isFr ? 'Les Outils Sur-Mesure — Sur étude budgétaire' : 'Custom Tools — On budget review',

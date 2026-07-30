@@ -67,11 +67,9 @@ export default function Scoping({ locale, dict }: Props) {
             {tiers.map((tier) => (
               <div key={tier.number} className={styles.tier}>
                 <span className={styles.tierGhost} aria-hidden="true">{tier.number}</span>
-                <div className={styles.tierBody}>
-                  <h3 className={styles.tierTitle}>{tier.title}</h3>
-                  <p className={styles.tierLabel}>{tier.label}</p>
-                  <p className={styles.tierPrice}>{tier.price}</p>
-                </div>
+                <h3 className={styles.tierTitle}>{tier.title}</h3>
+                <p className={styles.tierLabel}>{tier.label}</p>
+                <p className={styles.tierPrice}>{tier.price}</p>
               </div>
             ))}
           </div>
@@ -95,7 +93,7 @@ export default function Scoping({ locale, dict }: Props) {
             </div>
 
             <div className={styles.action}>
-              <a href="#contact" className={styles.btn}>{dict.cta}</a>
+              <a href="?budget=cadrage#contact" className={styles.btn}>{dict.cta}</a>
               <p className={styles.notice}>
                 <span className={styles.star}>✦</span>
                 {dict.vat_notice}{' '}

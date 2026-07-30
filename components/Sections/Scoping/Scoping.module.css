@@ -85,15 +85,26 @@
 
 /* — Les trois paliers — */
 
+/* Trois pistes (titre / label / prix) partagées par les trois colonnes :
+   le prix retombe donc sur la même ligne, quelle que soit la hauteur du
+   titre. Même dispositif que les cartes Solutions. */
 .tiers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3.5rem;
+  grid-template-rows: auto auto auto;
+  /* Écart entre colonnes seulement : les lignes sont des pistes du subgrid,
+     leur espacement est géré par les marges de chaque élément. */
+  column-gap: 3.5rem;
+  row-gap: 0;
 }
 
 .tier {
   position: relative;
-  padding: 0.25rem 0 0.25rem 2rem;
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  align-content: start;
+  padding: 4.375rem 0 0.25rem 2rem;
 }
 
 /* Filet vertical repris des cartes Solutions — dégradé + halo */
@@ -138,12 +149,8 @@
   user-select: none;
 }
 
-.tierBody {
-  position: relative;
-  padding-top: 4.125rem;
-}
-
 .tierTitle {
+  position: relative;
   margin: 0;
   font-family: var(--font-heading);
   font-style: italic;
@@ -325,17 +332,22 @@
     padding: 2.5rem 1.75rem 2.25rem;
   }
 
+  /* Une seule colonne : plus rien à aligner entre paliers, on sort du
+     subgrid pour laisser chaque bloc se dimensionner librement. */
   .tiers {
     grid-template-columns: 1fr;
-    gap: 2.75rem;
+    grid-template-rows: none;
+    column-gap: 0;
+    row-gap: 2.75rem;
+  }
+
+  .tier {
+    display: block;
+    padding-top: 3.25rem;
   }
 
   .tierGhost {
     font-size: 5.5rem;
-  }
-
-  .tierBody {
-    padding-top: 3rem;
   }
 
   .rule {
