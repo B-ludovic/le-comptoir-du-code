@@ -1,29 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { z } from 'zod'
+import { clientIp, sameOrigin } from '@/lib/http'
+import { createRateLimiter } from '@/lib/rate-limit'
 
 // Rate limiting : 3 requêtes max par IP sur 15 minutes
-const rateLimit = new Map<string, { count: number; reset: number }>()
-const LIMIT = 3
-const WINDOW_MS = 15 * 60 * 1000
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now()
-  const entry = rateLimit.get(ip)
-
-  if (!entry || now > entry.reset) {
-    rateLimit.set(ip, { count: 1, reset: now + WINDOW_MS })
-    return true
-  }
-
-  if (entry.count >= LIMIT) return false
-
-  entry.count++
-  return true
-}
+const rateLimit = createRateLimiter(3, 15 * 60 * 1000)
 
 const schema = z.object({
-  from_name: z.string().min(1).max(100),
+  // Pas de retour à la ligne : cette valeur finit dans l'en-tête Subject.
+  from_name: z.string().min(1).max(100).regex(/^[^\r\n]+$/),
   reply_to: z.email().max(200),
   budget: z.string().max(200).optional(),
   message: z.string().min(10).max(5000),
@@ -41,16 +27,25 @@ const transporter = nodemailer.createTransport({
 })
 
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+  // Avant tout comptage : une vague de CSRF ne doit pas remplir le limiteur.
+  if (!sameOrigin(req)) {
+    return NextResponse.json({ error: 'Origine non autorisée' }, { status: 403 })
+  }
 
-  if (!checkRateLimit(ip)) {
+  if (!rateLimit.consume(clientIp(req))) {
     return NextResponse.json(
       { error: 'Trop de tentatives. Réessayez dans 15 minutes.' },
       { status: 429 }
     )
   }
 
-  const body = await req.json()
+  let body: unknown
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Données invalides' }, { status: 400 })
+  }
+
   const result = schema.safeParse(body)
 
   if (!result.success) {

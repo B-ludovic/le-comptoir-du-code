@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { timingSafeEqual } from 'crypto'
+import { clientIp, sameOrigin } from '@/lib/http'
+import { createRateLimiter } from '@/lib/rate-limit'
 
 // Rate limiting en mémoire — max 5 tentatives / 15 min par IP
-const attempts = new Map<string, { count: number; resetAt: number }>()
-const MAX_ATTEMPTS = 5
-const WINDOW_MS = 15 * 60 * 1000
+const attempts = createRateLimiter(5, 15 * 60 * 1000)
 
 function safeCompare(a: string, b: string): boolean {
   try {
@@ -22,21 +22,23 @@ function safeCompare(a: string, b: string): boolean {
 }
 
 export async function POST(request: NextRequest) {
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
-  const now = Date.now()
-
-  // Vérification rate limit
-  const entry = attempts.get(ip)
-  if (entry) {
-    if (now < entry.resetAt && entry.count >= MAX_ATTEMPTS) {
-      return NextResponse.json({ error: 'Trop de tentatives. Réessayez dans 15 minutes.' }, { status: 429 })
-    }
-    if (now >= entry.resetAt) {
-      attempts.delete(ip)
-    }
+  if (!sameOrigin(request)) {
+    return NextResponse.json({ error: 'Origine non autorisée' }, { status: 403 })
   }
 
-  const { password } = await request.json()
+  const ip = clientIp(request)
+
+  // Vérification rate limit
+  if (attempts.exceeded(ip)) {
+    return NextResponse.json({ error: 'Trop de tentatives. Réessayez dans 15 minutes.' }, { status: 429 })
+  }
+
+  let password: unknown
+  try {
+    ;({ password } = await request.json())
+  } catch {
+    return NextResponse.json({ error: 'Mot de passe incorrect' }, { status: 401 })
+  }
 
   const isValid =
     typeof password === 'string' &&
@@ -44,16 +46,11 @@ export async function POST(request: NextRequest) {
     safeCompare(password, process.env.DEVIS_PASSWORD)
 
   if (!isValid) {
-    const current = attempts.get(ip)
-    if (current && now < current.resetAt) {
-      current.count++
-    } else {
-      attempts.set(ip, { count: 1, resetAt: now + WINDOW_MS })
-    }
+    attempts.fail(ip)
     return NextResponse.json({ error: 'Mot de passe incorrect' }, { status: 401 })
   }
 
-  attempts.delete(ip)
+  attempts.reset(ip)
 
   const response = NextResponse.json({ success: true })
   response.cookies.set('devis_auth', process.env.DEVIS_TOKEN!, {

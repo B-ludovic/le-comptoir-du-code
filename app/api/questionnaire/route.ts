@@ -1,33 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { z } from 'zod'
+import { clientIp, sameOrigin } from '@/lib/http'
+import { createRateLimiter } from '@/lib/rate-limit'
 
 // Rate limiting : 3 envois max par IP sur 60 minutes.
 // Le questionnaire est long : on ne s'attend pas à des envois répétés.
-const rateLimit = new Map<string, { count: number; reset: number }>()
-const LIMIT = 3
-const WINDOW_MS = 60 * 60 * 1000
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now()
-  const entry = rateLimit.get(ip)
-
-  if (!entry || now > entry.reset) {
-    rateLimit.set(ip, { count: 1, reset: now + WINDOW_MS })
-    return true
-  }
-
-  if (entry.count >= LIMIT) return false
-
-  entry.count++
-  return true
-}
+const rateLimit = createRateLimiter(3, 60 * 60 * 1000)
 
 /* Les réponses arrivent en paires libellé/valeur : le formulaire est la
    seule source de vérité sur l'ordre et l'intitulé des questions, l'API
    se contente de les mettre en forme. */
 const schema = z.object({
-  company: z.string().min(1).max(200),
+  // Pas de retour à la ligne : cette valeur finit dans l'en-tête Subject.
+  company: z.string().min(1).max(200).regex(/^[^\r\n]+$/),
   contact_email: z.email().max(200),
   answers: z
     .array(
@@ -53,16 +39,25 @@ const transporter = nodemailer.createTransport({
 })
 
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+  // Avant tout comptage : une vague de CSRF ne doit pas remplir le limiteur.
+  if (!sameOrigin(req)) {
+    return NextResponse.json({ error: 'Origine non autorisée' }, { status: 403 })
+  }
 
-  if (!checkRateLimit(ip)) {
+  if (!rateLimit.consume(clientIp(req))) {
     return NextResponse.json(
       { error: 'Trop de tentatives. Réessayez plus tard.' },
       { status: 429 }
     )
   }
 
-  const body = await req.json()
+  let body: unknown
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Données invalides' }, { status: 400 })
+  }
+
   const result = schema.safeParse(body)
 
   if (!result.success) {
