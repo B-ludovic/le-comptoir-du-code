@@ -93,6 +93,36 @@ export default function QuestionnaireForm({ locale }: { locale: Locale }) {
         </fieldset>
       ))}
 
+      <p className={styles.privacy}>
+        {isFr ? (
+          <>
+            Les informations recueillies servent uniquement à préparer l’atelier de
+            cadrage et la proposition commerciale associée. Elles me sont transmises
+            par email et conservées trois ans à compter de notre dernier échange. Si
+            vous renseignez le nom ou les coordonnées d’un tiers (interlocuteur,
+            décideur), il vous revient de l’informer que ces données me sont
+            transmises à cette fin et qu’il dispose des mêmes droits que vous.{' '}
+            <a href={`/${locale}/politique-de-confidentialite`} className={styles.privacyLink}>
+              Détail et exercice de vos droits
+            </a>
+            .
+          </>
+        ) : (
+          <>
+            The information collected is used solely to prepare the scoping workshop
+            and the related proposal. It is sent to me by email and kept for three
+            years from our last exchange. If you enter the name or contact details of
+            a third party (contact person, decision-maker), it is your responsibility
+            to inform them that this data is passed on to me for that purpose and
+            that they hold the same rights as you.{' '}
+            <a href={`/${locale}/politique-de-confidentialite`} className={styles.privacyLink}>
+              Details and how to exercise your rights
+            </a>
+            .
+          </>
+        )}
+      </p>
+
       <div className={styles.actions}>
         <button type="submit" className={styles.btn} disabled={status === 'sending'}>
           {status === 'sending'

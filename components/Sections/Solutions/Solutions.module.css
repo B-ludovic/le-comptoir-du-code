@@ -109,19 +109,27 @@
 }
 
 /* Numéro fantôme */
+/* Chiffre fantôme : même traitement que .tierGhost dans Scoping.module.css —
+   dégradé d'accent qui s'estompe vers le bas plutôt qu'un gris uniforme.
+   Le décalage top/left reste propre à la carte, dont la géométrie diffère. */
 .number {
   position: absolute;
   top: -1.5rem;
   left: -0.5rem;
   font-family: var(--font-heading);
-  font-size: 8rem;
-  font-weight: 600;
+  font-size: 7.25rem;
+  font-weight: 700;
   line-height: 1;
-  color: var(--text-muted);
-  opacity: 0.1;
+  background: linear-gradient(
+    180deg,
+    rgba(232, 196, 160, 0.14),
+    rgba(232, 196, 160, 0.015)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   pointer-events: none;
   user-select: none;
-  letter-spacing: -4px;
 }
 
 /* Contenu de la carte */

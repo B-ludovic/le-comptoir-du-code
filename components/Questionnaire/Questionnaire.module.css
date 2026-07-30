@@ -103,6 +103,29 @@
   pointer-events: none;
 }
 
+/* Mention d'information RGPD, affichée avant l'envoi : le questionnaire
+   collecte aussi des données de tiers (interlocuteur, décideur). */
+.privacy {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 2.5rem 0 2rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(232, 196, 160, 0.3);
+}
+
+.privacyLink {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-base);
+}
+
+.privacyLink:hover {
+  color: var(--accent-hover);
+}
+
 .actions {
   margin-top: 1rem;
 }

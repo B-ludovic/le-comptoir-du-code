@@ -47,9 +47,14 @@ const articles = {
         "Lorsque vous déposez un brief, je collecte uniquement les informations nécessaires pour vous répondre : votre nom, votre adresse email, votre estimation budgétaire et le détail de votre projet. Ces données servent exclusivement à étudier votre demande et à vous recontacter.",
     },
     {
+      title: "Le questionnaire de cadrage",
+      content:
+        "Avant un atelier de cadrage, je peux vous adresser un questionnaire de pré-qualification. Il collecte des informations sur votre entreprise (raison sociale, SIRET, adresse), sur votre projet (objectifs, fonctionnalités, budget, contraintes réglementaires) et sur vos interlocuteurs : nom de la personne référente et identité du décideur. Ces réponses me sont transmises par email et servent uniquement à préparer l'atelier et la proposition commerciale associée. Lorsque vous y renseignez les coordonnées d'un tiers, c'est à vous de l'informer que ces données me sont communiquées à cette fin ; il dispose auprès de moi des mêmes droits que vous, décrits plus bas.",
+    },
+    {
       title: "Base légale",
       content:
-        "Le traitement repose sur l'exécution de mesures précontractuelles prises à votre demande (article 6.1.b du RGPD) et, pour le suivi de nos échanges, sur mon intérêt légitime à répondre aux sollicitations professionnelles (article 6.1.f).",
+        "Le traitement repose sur l'exécution de mesures précontractuelles prises à votre demande (article 6.1.b du RGPD) et, pour le suivi de nos échanges, sur mon intérêt légitime à répondre aux sollicitations professionnelles (article 6.1.f). Les données de tiers renseignées dans le questionnaire de cadrage relèvent de ce même intérêt légitime, limité à la préparation de la prestation.",
     },
     {
       title: "Durée de conservation",
@@ -94,9 +99,14 @@ const articles = {
         "When you submit a brief, I only collect what is needed to reply: your name, email address, budget estimate and project details. This data is used solely to review your request and get back to you.",
     },
     {
+      title: "The scoping questionnaire",
+      content:
+        "Ahead of a scoping workshop, I may send you a pre-qualification questionnaire. It collects information about your company (legal name, registration number, address), about your project (objectives, features, budget, regulatory constraints) and about the people involved: the name of the main contact and the identity of the decision-maker. These answers reach me by email and are used solely to prepare the workshop and the related proposal. Where you enter a third party's details, it is for you to inform them that this data is passed on to me for that purpose; they hold the same rights towards me as you do, as set out below.",
+    },
+    {
       title: "Legal basis",
       content:
-        "Processing is based on pre-contractual steps taken at your request (Article 6.1.b GDPR) and, for following up our exchanges, on my legitimate interest in responding to professional enquiries (Article 6.1.f).",
+        "Processing is based on pre-contractual steps taken at your request (Article 6.1.b GDPR) and, for following up our exchanges, on my legitimate interest in responding to professional enquiries (Article 6.1.f). Third-party data entered in the scoping questionnaire falls under that same legitimate interest, limited to preparing the engagement.",
     },
     {
       title: "Retention period",

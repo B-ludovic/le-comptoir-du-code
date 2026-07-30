@@ -101,7 +101,7 @@ export default function Solutions({ dict }: Props) {
           {cards.map((card, index) => (
             <div key={card.number} className={styles.card}>
 
-              <span className={styles.number}>{card.number}</span>
+              <span className={styles.number} aria-hidden="true">{card.number}</span>
 
               <div className={styles.cardContent}>
                 <div className={styles.cardHeader}>

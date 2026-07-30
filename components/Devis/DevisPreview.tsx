@@ -208,8 +208,11 @@ export default function DevisPreview({ data }: Props) {
 <html lang="${t.htmlLang}">
 <head>
 <meta charset="UTF-8">
+<!-- Un document srcDoc ne voit pas les styles de sa page parente, mais il en
+     partage l'origine : ce chemin absolu résout donc vers notre propre domaine
+     et charge les mêmes polices auto-hébergées que le site. -->
+<link rel="stylesheet" href="/fonts.css">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
   @page { size: A4 portrait; margin: 0; }
   body {

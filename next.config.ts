@@ -5,10 +5,10 @@ const CSP = [
   // Next.js a besoin de unsafe-inline pour l'hydratation côté client
   // React dev mode a besoin de unsafe-eval (jamais utilisé en production)
   `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''}`,
-  // Styles inline + Google Fonts (utilisés dans l'aperçu devis)
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  // Polices Google Fonts
-  "font-src 'self' https://fonts.gstatic.com",
+  // Styles inline (aperçu devis) — plus aucun domaine tiers autorisé
+  "style-src 'self' 'unsafe-inline'",
+  // Polices auto-hébergées uniquement (public/fonts.css)
+  "font-src 'self'",
   // Images locales + data URI (portraits, logos)
   "img-src 'self' data: https:",
   // Requêtes API uniquement vers le même domaine

@@ -191,6 +191,29 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <head>
+        {/* Polices auto-hébergées (voir public/fonts.css). Le préchargement
+            des deux familles visibles au premier écran compense la disparition
+            du preconnect vers Google. L'attribut crossOrigin est obligatoire
+            sur un preload de police, y compris en same-origin. */}
+        <link
+          rel="preload"
+          href="/fonts/dm-sans-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/cormorant-garamond-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        {/* eslint-disable-next-line @next/next/no-css-tags --
+            Feuille délibérément non bundlée : l'iframe d'aperçu du devis a
+            besoin d'une URL stable pour charger les mêmes @font-face, ce qu'un
+            import bundlé au nom haché ne permet pas. */}
+        <link rel="stylesheet" href="/fonts.css" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

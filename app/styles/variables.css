@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@700&display=swap');
+/* Les @font-face vivent dans public/fonts.css, chargé par le <head> du layout :
+   un <link> se télécharge en parallèle, là où un @import bloque le rendu le
+   temps d'aller chercher la feuille distante. */
 
 :root {
   /* Fonds */
@@ -18,6 +20,7 @@
   /* Polices */
   --font-heading: 'Cormorant Garamond', serif;
   --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   /* Espacements */
   --section-padding: 8rem 2rem;
