@@ -1,6 +1,7 @@
 {
   "nav": {
     "method": "Process",
+    "scoping": "Scoping",
     "solutions": "Services",
     "portfolio": "Work",
     "about": "The Dev",

@@ -19,10 +19,28 @@
     border-bottom: var(--border-subtle);
 }
 
+/* Le header sort volontairement du .container : il occupe toute la largeur
+   de l'écran et porte ses propres marges, alignées sur celles du container. */
 .inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .inner {
+        padding: 0 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .inner {
+        padding: 0 1rem;
+    }
 }
 
 /* Logo */

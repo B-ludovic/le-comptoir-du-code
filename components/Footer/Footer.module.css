@@ -5,12 +5,31 @@
   border-top: var(--border-subtle);
 }
 
+/* Comme le header, le footer sort du .container : pleine largeur d'écran,
+   avec ses propres marges pour ne pas coller aux bords. */
+.wrap {
+  width: 100%;
+  padding: 0 2.5rem;
+}
+
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 0 1rem;
+  }
 }
 
 .copyright {

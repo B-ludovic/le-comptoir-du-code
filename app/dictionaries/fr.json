@@ -1,6 +1,7 @@
 {
   "nav": {
     "method": "Méthode",
+    "scoping": "Cadrage",
     "solutions": "Solutions",
     "portfolio": "Réalisations",
     "about": "Le Codeur",

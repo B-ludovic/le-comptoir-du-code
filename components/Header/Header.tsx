@@ -9,6 +9,7 @@ type Props = {
   locale: string
   nav: {
     method: string
+    scoping: string
     solutions: string
     portfolio: string
     about: string
@@ -32,7 +33,7 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
   }, [])
 
   useEffect(() => {
-    const ids = ['method', 'solutions', 'portfolio', 'about', 'contact']
+    const ids = ['method', 'cadrage', 'solutions', 'portfolio', 'about', 'contact']
     const observers: IntersectionObserver[] = []
 
     ids.forEach((id) => {
@@ -67,6 +68,7 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
 
   const navLinks = [
     { href: `/${locale}#method`, label: nav.method, section: 'method' },
+    { href: `/${locale}#cadrage`, label: nav.scoping, section: 'cadrage' },
     { href: `/${locale}#solutions`, label: nav.solutions, section: 'solutions' },
     { href: `/${locale}#portfolio`, label: nav.portfolio, section: 'portfolio' },
     { href: `/${locale}#about`, label: nav.about, section: 'about' },
@@ -76,7 +78,7 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={`container ${styles.inner}`}>
+      <div className={styles.inner}>
         {/* Logo */}
         <Link href={`/${locale}`} className={styles.logo}>
           <span className={styles.logoMark}>E/C</span>

@@ -29,7 +29,7 @@ export default function Footer({ locale, dict }: Props) {
 
   return (
     <footer className={styles.footer}>
-      <div className="container">
+      <div className={styles.wrap}>
         <div className={styles.inner}>
 
           <p className={styles.copyright}>{dict.copyright}</p>
