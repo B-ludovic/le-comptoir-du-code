@@ -53,18 +53,24 @@ const T = {
     schedules: {
       dev: {
         rate: 0.3,
+        label: 'Développement',
+        terms: 'Conditions générales de vente et de prestation : lechoppeducode.com/fr/conditions-generales',
         deposit: 'Acompte à la signature (30 %)',
         paymentText: `Acompte de 30 % à la commande (facture d'acompte fournie).<br>Solde de 70 % à la mise en ligne.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
         startText: `Le projet démarre à réception du devis officiel<br>signé (émis par Jump Green) et du paiement<br>de l'acompte de 30 %.`,
       },
       cadrage_full: {
         rate: 1,
+        label: 'Cadrage',
+        terms: 'Conditions générales de la prestation de cadrage : lechoppeducode.com/fr/conditions-cadrage',
         deposit: 'Règlement intégral à la commande',
         paymentText: `Règlement intégral à la commande.<br>Règlement par virement bancaire uniquement.<br>Aucune date d'atelier n'est réservée<br>avant réception du paiement.`,
         startText: `L'atelier est planifié à réception du devis<br>officiel signé (émis par Jump Green), du<br>paiement et du questionnaire complété.`,
       },
       cadrage_split: {
         rate: 0.5,
+        label: 'Cadrage & Conception',
+        terms: 'Conditions générales de la prestation de cadrage : lechoppeducode.com/fr/conditions-cadrage',
         deposit: 'Acompte à la signature (50 %)',
         paymentText: `Acompte de 50 % à la commande (facture d'acompte fournie).<br>Solde de 50 % à la remise du dossier.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
         startText: `L'atelier est planifié à réception du devis<br>officiel signé (émis par Jump Green), de<br>l'acompte et du questionnaire complété.`,
@@ -116,18 +122,24 @@ const T = {
     schedules: {
       dev: {
         rate: 0.3,
+        label: 'Development',
+        terms: 'General terms of sale and service: lechoppeducode.com/en/conditions-generales',
         deposit: 'Deposit upon signing (30%)',
         paymentText: `30% deposit upon order (deposit invoice provided).<br>Balance of 70% upon go-live.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
         startText: `The project starts upon receipt of the signed<br>official quote (issued by Jump Green) and the<br>30% deposit payment.`,
       },
       cadrage_full: {
         rate: 1,
+        label: 'Scoping',
+        terms: 'General terms for scoping services: lechoppeducode.com/en/conditions-cadrage',
         deposit: 'Payment in full upon order',
         paymentText: `Payment in full upon order.<br>Bank transfer only.<br>No workshop date is reserved<br>before payment is received.`,
         startText: `The workshop is scheduled upon receipt of the<br>signed official quote (issued by Jump Green),<br>payment, and the completed questionnaire.`,
       },
       cadrage_split: {
         rate: 0.5,
+        label: 'Scoping & Product Design',
+        terms: 'General terms for scoping services: lechoppeducode.com/en/conditions-cadrage',
         deposit: 'Deposit upon signing (50%)',
         paymentText: `50% deposit upon order (deposit invoice provided).<br>Balance of 50% upon delivery of the report.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
         startText: `The workshop is scheduled upon receipt of the<br>signed official quote (issued by Jump Green),<br>the deposit, and the completed questionnaire.`,
@@ -248,6 +260,7 @@ export default function DevisPreview({ data }: Props) {
   .mentions { padding: 3mm 0; border-top: 1px solid rgba(184,148,112,0.15); margin-bottom: 4mm; }
   .mentions-title { font-size: 7px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: #8A7D72; margin-bottom: 1.5mm; }
   .mentions p { font-size: 7px; color: #8A7D72; line-height: 1.6; }
+  .mentions p.terms-ref { margin-top: 1.5mm; color: #8A5A2A; }
   .footer { border-top: 1px solid rgba(184,148,112,0.15); padding-top: 3mm; text-align: center; }
   .footer-left { font-size: 7px; color: #8A7D72; letter-spacing: 0.5px; display: block; margin-bottom: 1mm; }
   .footer-right { font-size: 7px; color: #8A7D72; }
@@ -268,7 +281,7 @@ export default function DevisPreview({ data }: Props) {
       </div>
     </div>
     <div class="doc-meta">
-      <span class="doc-type">${t.docType}</span>
+      <span class="doc-type">${t.docType} — ${schedule.label}</span>
       <span class="doc-number">${t.docNo} ${data.devis_number || '—'}</span>
       <span class="doc-date">${t.issuedOn(data.devis_date || '—')}</span>
     </div>
@@ -383,6 +396,7 @@ export default function DevisPreview({ data }: Props) {
     ${totals.isAsso ? `<span class="mecena-badge">${t.mecenaBadge}</span>` : ''}
     ${t.disclaimerTitle ? `<div class="mentions-title">${t.disclaimerTitle}</div>` : ''}
     <p>${t.disclaimerText}</p>
+    <p class="terms-ref">${schedule.terms}</p>
   </div>
 
   <div class="footer">

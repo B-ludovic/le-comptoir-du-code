@@ -180,6 +180,16 @@
   color: var(--accent-primary);
 }
 
+/* Même traitement que .cardPriceHT des cartes Solutions */
+.priceHT {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 /* — La mention conditionnelle — */
 
 .condition {

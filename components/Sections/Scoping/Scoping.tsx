@@ -69,7 +69,9 @@ export default function Scoping({ locale, dict }: Props) {
                 <span className={styles.tierGhost} aria-hidden="true">{tier.number}</span>
                 <h3 className={styles.tierTitle}>{tier.title}</h3>
                 <p className={styles.tierLabel}>{tier.label}</p>
-                <p className={styles.tierPrice}>{tier.price}</p>
+                <p className={styles.tierPrice}>
+                  {tier.price}&nbsp;<span className={styles.priceHT}>HT</span>
+                </p>
               </div>
             ))}
           </div>
@@ -85,7 +87,7 @@ export default function Scoping({ locale, dict }: Props) {
               <div className={styles.designHead}>
                 <span className={styles.designTitle}>{dict.design_title}</span>
                 <span className={styles.designPrice}>
-                  {dict.design_price}
+                  {dict.design_price}&nbsp;<span className={styles.priceHT}>HT</span>
                   <span className={styles.designUnit}>{dict.design_unit}</span>
                 </span>
               </div>
