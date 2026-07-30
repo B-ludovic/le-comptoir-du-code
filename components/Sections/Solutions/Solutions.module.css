@@ -136,7 +136,10 @@
 .cardContent {
   position: relative;
   z-index: 1;
-  padding-top: 2rem;
+  /* Dégage le haut du chiffre fantôme comme dans Scoping : le titre y commence
+     5rem sous le sommet du chiffre (top -0.625rem, padding 4.375rem). Ici le
+     chiffre déborde de 1.5rem, d'où 3.5rem de padding pour le même écart. */
+  padding-top: 3.5rem;
   display: grid;
   grid-row: span 6;
   grid-template-rows: subgrid;
