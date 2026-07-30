@@ -75,8 +75,43 @@ export default async function GestionDesCookies({
             </p>
             <p className={styles.text}>
               {isFr
-                ? "Les seuls cookies ou stockages locaux qui pourraient être sollicités sont d'ordre strictement technique (nécessaires à la sécurité du formulaire ou à la fluidité de l'interface)."
-                : "The only cookies or local storage that may be used are strictly technical in nature (necessary for form security or interface smoothness)."}
+                ? "Aucun stockage local (localStorage, sessionStorage) n'est utilisé. Un seul cookie existe sur ce site, et il n'est déposé qu'après une connexion volontaire à l'espace privé réservé au prestataire. En tant que simple visiteur, vous n'en recevez aucun."
+                : "No local storage (localStorage, sessionStorage) is used. A single cookie exists on this site, and it is only set after a deliberate login to the provider's private area. As an ordinary visitor, you receive none."}
+            </p>
+
+            <div className={styles.tableWrap}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>{isFr ? 'Nom' : 'Name'}</th>
+                    <th>{isFr ? 'Finalité' : 'Purpose'}</th>
+                    <th>{isFr ? 'Durée' : 'Duration'}</th>
+                    <th>{isFr ? 'Consentement' : 'Consent'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>devis_auth</code></td>
+                    <td>
+                      {isFr
+                        ? "Authentification de l'espace privé de génération de propositions commerciales"
+                        : 'Authentication for the private quote-generation area'}
+                    </td>
+                    <td>{isFr ? '8 heures' : '8 hours'}</td>
+                    <td>
+                      {isFr
+                        ? 'Non requis — strictement nécessaire'
+                        : 'Not required — strictly necessary'}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className={styles.text}>
+              {isFr
+                ? "Ce cookie étant strictement nécessaire à la fourniture d'un service expressément demandé, il est exempté de consentement au titre de l'article 82 de la loi Informatique et Libertés. C'est la raison pour laquelle aucun bandeau ne vous est imposé."
+                : 'As this cookie is strictly necessary for the provision of a service expressly requested by the user, it is exempt from consent under Article 82 of the French Data Protection Act. That is why no banner is imposed on you.'}
             </p>
             <p className={styles.text}>
               <strong>
