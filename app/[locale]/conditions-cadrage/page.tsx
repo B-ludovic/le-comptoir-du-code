@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
+import { linkifyEmails } from '@/components/Legal/linkify'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -38,12 +39,12 @@ const articles = {
     {
       title: "1. Objet et champ d'application",
       content:
-        "Les présentes conditions régissent les prestations de cadrage et de conception produit réalisées par Ludovic BATAILLE, opérant sous la marque commerciale \"L'Échoppe du Code\", ci-après désigné \"le Prestataire\", agissant en qualité de salarié porté et hébergé juridiquement par la société de portage salarial Jump Green.\n\nLa prestation de cadrage est une prestation d'étude et de conseil aboutissant à la remise d'un dossier écrit. Elle est distincte de toute prestation de développement, laquelle fait l'objet d'un contrat et de conditions séparés. La validation du devis de cadrage par la personne physique ou morale ayant passé commande, ci-après désignée \"le Client\", implique l'acceptation sans réserve des présentes conditions.",
+        "Les présentes conditions régissent les prestations de cadrage et de conception produit réalisées par Ludovic BATAILLE, opérant sous la marque commerciale \"L'Échoppe du Code\", ci-après désigné \"le Prestataire\", agissant en qualité de salarié porté par la société de portage salarial JUMP GREEN (SAS).\n\nLa prestation de cadrage est une prestation d'étude et de conseil aboutissant à la remise d'un dossier écrit. Elle est distincte de toute prestation de développement, laquelle fait l'objet d'un contrat et de conditions séparés. La validation du devis de cadrage par la personne physique ou morale ayant passé commande, ci-après désignée \"le Client\", implique l'acceptation sans réserve des présentes conditions.",
     },
     {
       title: "2. Formation du contrat et paiement",
       content:
-        "La prestation débute à réception du devis daté, signé et portant la mention \"Bon pour accord\", accompagné du règlement dû à la commande. Aucune date d'atelier n'est réservée avant réception de ce règlement.\n\nPour les paliers 01 et 02, le règlement intégral du montant HT, majoré de la TVA applicable, est exigible à la commande. Pour le palier 03 ainsi que pour les prestations de conception produit, 50 % du montant HT sont exigibles à la commande et le solde à la remise du dossier, payable sous quinze (15) jours. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel indiqué sur la facture.",
+        "La prestation débute à réception du devis daté, signé et portant la mention \"Bon pour accord\", accompagné du règlement dû à la commande. Aucune date d'atelier n'est réservée avant réception de ce règlement.\n\nPour les paliers 01 et 02, le règlement intégral du montant HT, majoré de la TVA applicable, est exigible à la commande. Pour le palier 03 ainsi que pour les prestations de conception produit, 50 % du montant HT sont exigibles à la commande et le solde à la remise du dossier, payable sous quinze (15) jours. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel indiqué sur la facture.\n\nPar dérogation expresse à la présomption posée par l'article L214-1 du code de la consommation, les sommes versées d'avance constituent un acompte au sens de l'article 1590 du code civil, et non des arrhes. Elles engagent définitivement les deux parties et valent réservation du créneau d'atelier. Cette stipulation est sans incidence sur le droit de rétractation du Client consommateur, régi par l'article 3.",
     },
     {
       title: "3. Droit de rétractation",
@@ -96,21 +97,21 @@ const articles = {
         "Le Prestataire est autorisé à mentionner le projet à titre de référence sur ses supports de communication, dans les conditions prévues à l'article 6 bis de ses Conditions Générales de Vente et de Prestation de Services, sauf opposition écrite du Client formulée avant la remise du dossier.",
     },
     {
-      title: "13. Litiges",
+      title: "13. Règlement des litiges, médiation et juridiction compétente",
       content:
-        "Les présentes conditions sont soumises au droit français. En cas de litige entre le Client et le Prestataire, les parties s'efforceront de trouver une solution amiable. À défaut d'accord, le tribunal compétent sera celui du ressort du siège social de la Société de Portage.",
+        "Les présentes conditions sont soumises au droit français. En cas de différend, les parties s'efforcent d'abord de trouver une solution amiable.\n\nLorsque le Client est un consommateur, il peut recourir gratuitement, après réclamation écrite préalable, au médiateur de la consommation : [MÉDIATEUR — nom], [adresse], [site internet] (articles L612-1 et suivants du code de la consommation). Il conserve la faculté de saisir la juridiction de son lieu de domicile.\n\nLorsque le Client est un professionnel, tout litige non résolu amiablement relève de la compétence exclusive du tribunal dans le ressort du siège social de la Société de Portage.",
     },
   ],
   en: [
     {
       title: "1. Purpose and Scope",
       content:
-        "These terms govern the scoping and product design services provided by Ludovic BATAILLE, operating under the trade name \"L'Échoppe du Code\", hereinafter referred to as \"the Service Provider\", acting as an autonomous consultant (portage salarial) and legally hosted by the umbrella company Jump Green.\n\nThe scoping service is a study and advisory service resulting in the delivery of a written report. It is distinct from any development service, which is governed by a separate contract and separate terms. Validation of the scoping quote by the individual or legal entity placing the order, hereinafter referred to as \"the Client\", implies unconditional acceptance of these terms.",
+        "These terms govern the scoping and product design services provided by Ludovic BATAILLE, operating under the trade name \"L'Échoppe du Code\", hereinafter referred to as \"the Service Provider\", acting as an employee of the umbrella company JUMP GREEN (SAS) under a \"portage salarial\" arrangement.\n\nThe scoping service is a study and advisory service resulting in the delivery of a written report. It is distinct from any development service, which is governed by a separate contract and separate terms. Validation of the scoping quote by the individual or legal entity placing the order, hereinafter referred to as \"the Client\", implies unconditional acceptance of these terms.",
     },
     {
       title: "2. Contract Formation and Payment",
       content:
-        "The service begins upon receipt of the quote — dated, signed and bearing the handwritten note \"Bon pour accord\" — together with the payment due on order. No workshop date is reserved before that payment is received.\n\nFor tiers 01 and 02, the full amount excl. VAT, plus applicable VAT, is due on order. For tier 03 and for product design services, 50% of the amount excl. VAT is due on order and the balance upon delivery of the report, payable within fifteen (15) days. Payment is made exclusively by bank transfer to the professional account indicated on the invoice.",
+        "The service begins upon receipt of the quote — dated, signed and bearing the handwritten note \"Bon pour accord\" — together with the payment due on order. No workshop date is reserved before that payment is received.\n\nFor tiers 01 and 02, the full amount excl. VAT, plus applicable VAT, is due on order. For tier 03 and for product design services, 50% of the amount excl. VAT is due on order and the balance upon delivery of the report, payable within fifteen (15) days. Payment is made exclusively by bank transfer to the professional account indicated on the invoice.\n\nBy express derogation from the presumption set out in Article L214-1 of the French Consumer Code, sums paid in advance constitute a deposit (acompte) within the meaning of Article 1590 of the French Civil Code, and not arrhes. They bind both parties definitively and secure the workshop slot. This stipulation does not affect the right of withdrawal of a consumer Client, governed by Article 3.",
     },
     {
       title: "3. Right of Withdrawal",
@@ -163,9 +164,9 @@ const articles = {
         "The Service Provider is authorised to mention the project as a reference across their communication materials, under the conditions set out in Article 6b of their General Terms and Conditions of Sale and Service, unless the Client objects in writing before the report is delivered.",
     },
     {
-      title: "13. Disputes",
+      title: "13. Disputes, Mediation and Jurisdiction",
       content:
-        "These terms are governed by French law. In the event of a dispute between the Client and the Service Provider, the parties will endeavour to reach an amicable resolution. Failing that, the competent jurisdiction will be that of the registered office of the umbrella company.",
+        "These terms are governed by French law. The parties first seek an amicable solution.\n\nWhere the Client is a consumer, they may, after a prior written complaint, use the consumer mediator free of charge: [MEDIATOR — name], [address], [website] (Articles L612-1 et seq. of the French Consumer Code), and remain free to bring the matter before the court of their place of residence.\n\nWhere the Client is a professional, any dispute not resolved amicably falls within the exclusive jurisdiction of the court in the district of the umbrella company's registered office.",
     },
   ],
 }
@@ -205,7 +206,7 @@ export default async function ConditionsCadrage({
               <h2 className={styles.heading}>{article.title}</h2>
               {article.content.split('\n\n').map((paragraph, index) => (
                 <p key={index} className={styles.text}>
-                  {paragraph}
+                  {linkifyEmails(paragraph)}
                 </p>
               ))}
             </div>

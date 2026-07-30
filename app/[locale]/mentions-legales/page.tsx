@@ -60,26 +60,20 @@ export default async function MentionsLegales({
             <h2 className={styles.heading}>
               {isFr ? 'Éditeur du site' : 'Site Publisher'}
             </h2>
-            <p className={styles.text}>Ludovic BATAILLE</p>
             <p className={styles.text}>
               {isFr
-                ? "Statut : Entrepreneur-salarié (L'Echoppe du Code)"
-                : "Status: Employee-entrepreneur (L'Echoppe du Code)"}
+                ? 'Ludovic BATAILLE — salarié porté de la société JUMP GREEN'
+                : 'Ludovic BATAILLE — operating under an umbrella-company employment contract (portage salarial)'}
             </p>
             <p className={styles.text}>
               {isFr
-                ? <>Hébergé juridiquement par la coopérative : <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">Jump Green</a></>
-                : <>Legally hosted by the cooperative: <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">Jump Green</a></>}
+                ? <>Le site et l&apos;activité de développement web sont exploités par Ludovic BATAILLE dans le cadre d&apos;un contrat de portage salarial conclu avec la société <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">JUMP GREEN</a>, société par actions simplifiée (SAS), immatriculée au RCS de Bobigny sous le numéro 977 610 781, dont le siège social est situé 7 Place de l&apos;Hôtel de Ville, 93600 Aulnay-sous-Bois, France.</>
+                : <>The website and the web development activity are operated by Ludovic BATAILLE under a &laquo;&nbsp;portage salarial&nbsp;&raquo; employment contract with <a href="https://www.join-jump.com" target="_blank" rel="noopener noreferrer">JUMP GREEN</a>, a French simplified joint-stock company (SAS), registered with the Bobigny Trade &amp; Companies Register under no. 977 610 781, registered office at 7 Place de l&apos;Hôtel de Ville, 93600 Aulnay-sous-Bois, France.</>}
             </p>
             <p className={styles.text}>
               {isFr
-                ? "Adresse : 7 Place de l'Hôtel de Ville, 93600 Aulnay-sous-Bois, France"
-                : "Address: 7 Place de l'Hôtel de Ville, 93600 Aulnay-sous-Bois, France"}
-            </p>
-            <p className={styles.text}>
-              {isFr
-                ? 'SIRET : 97761078100014 — RCS de Bobigny — NAF : 7022Z — TVA : FR10977610781'
-                : 'SIRET: 97761078100014 — Trade Register (RCS) of Bobigny — NAF: 7022Z — VAT: FR10977610781'}
+                ? 'SIRET : 977 610 781 00014 — NAF : 7022Z — TVA intracommunautaire : FR10 977 610 781'
+                : 'SIRET: 977 610 781 00014 — NAF: 7022Z — VAT: FR10 977 610 781'}
             </p>
             <p className={styles.text}>
               {isFr ? 'Email : ' : 'Email: '}
@@ -100,8 +94,8 @@ export default async function MentionsLegales({
             </h2>
             <p className={styles.text}>
               {isFr
-                ? <>Ce site est hébergé par <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>, dont le siège social est situé au 340 S Lemon Ave, Walnut, CA 91789, USA.</>
-                : <>This website is hosted by <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>, headquartered at 340 S Lemon Ave, Walnut, CA 91789, USA.</>}
+                ? <>Ce site est hébergé par <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>, 340 S Lemon Avenue #4133, Walnut, CA 91789, États-Unis. Contact : <a href="mailto:privacy@vercel.com">privacy@vercel.com</a> — <a href="https://vercel.com/help" target="_blank" rel="noopener noreferrer">vercel.com/help</a></>
+                : <>This website is hosted by <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>, 340 S Lemon Avenue #4133, Walnut, CA 91789, USA. Contact: <a href="mailto:privacy@vercel.com">privacy@vercel.com</a> — <a href="https://vercel.com/help" target="_blank" rel="noopener noreferrer">vercel.com/help</a></>}
             </p>
           </div>
 

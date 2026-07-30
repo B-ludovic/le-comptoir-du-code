@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
+import { linkifyEmails } from '@/components/Legal/linkify'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -38,17 +39,22 @@ const articles = {
     {
       title: "1. Objet et champ d'application",
       content:
-        "Les présentes conditions régissent les prestations de développement web et de conseil réalisées par Ludovic BATAILLE, opérant sous la marque commerciale \"L'Échoppe du Code\", ci-après désigné \"le Prestataire\", agissant en qualité de salarié porté et hébergé juridiquement par la société de portage salarial Jump Green, ci-après désignée \"la Société de Portage\". Toute validation d'une proposition commerciale ou d'un devis par la personne physique ou morale ayant passé commande, ci-après désignée \"le Client\", implique l'acceptation sans réserve des présentes conditions.",
+        "Les présentes conditions régissent les prestations de développement web et de conseil réalisées par Ludovic BATAILLE, opérant sous la marque commerciale \"L'Échoppe du Code\", ci-après désigné \"le Prestataire\", agissant en qualité de salarié porté par la société de portage salarial JUMP GREEN (SAS), ci-après désignée \"la Société de Portage\". Toute validation d'une proposition commerciale ou d'un devis par la personne physique ou morale ayant passé commande, ci-après désignée \"le Client\", implique l'acceptation sans réserve des présentes conditions.",
     },
     {
-      title: "2. Formation du contrat et Acompte",
+      title: "2. Formation du contrat et acompte",
       content:
-        "Un projet débute officiellement à réception de deux éléments : le devis daté, signé, et portant la mention \"Bon pour accord\", ainsi que le paiement d'un acompte de 30 % du montant total HT, auquel s'ajoute la TVA applicable. Une facture d'acompte est émise et transmise au Client dès réception du paiement. Le solde de 70 % est exigible à la mise en ligne du projet. La production ne démarrera qu'à réception de ces deux éléments. L'acompte valide la réservation du temps alloué au projet et n'est pas remboursable en cas d'annulation unilatérale par le Client.",
+        "Un projet débute officiellement à réception de deux éléments : le devis daté, signé et portant la mention « Bon pour accord », ainsi que le versement d'un acompte de 30 % du montant total HT, majoré de la TVA applicable. Une facture d'acompte est émise et transmise au Client dès réception du paiement. Le solde de 70 % est exigible à la mise en ligne du projet. La production ne démarre qu'à réception de ces deux éléments.\n\nPar dérogation expresse à la présomption posée par l'article L214-1 du code de la consommation, les sommes versées d'avance constituent un acompte au sens de l'article 1590 du code civil, et non des arrhes. Elles engagent définitivement les deux parties : aucune faculté de dédit n'est ouverte, et l'annulation unilatérale du Client demeure régie par l'article 8. L'acompte n'est pas remboursable et vaut réservation du temps de production alloué au projet.\n\nCette stipulation est sans incidence sur le droit de rétractation du Client consommateur, qui demeure régi par l'article 2 ter.",
     },
     {
       title: "2 bis. Tarification solidaire — Associations",
       content:
         "L'Échoppe du Code propose une tarification réduite, dite \"tarification solidaire\", aux structures à but non lucratif reconnues, en priorité aux associations LGBTQI+. Pour en bénéficier, le Client doit justifier de son statut associatif en fournissant, avant la signature du devis, l'un des documents suivants : récépissé de déclaration en préfecture, statuts déposés et enregistrés, ou extrait du Répertoire National des Associations (RNA). La réduction s'applique sur le montant HT indiqué sur le devis spécifique établi dans le cadre de cette offre. Tout Client ne pouvant produire ce justificatif sera facturé aux tarifs standards. Le Prestataire se réserve le droit de vérifier la validité des documents fournis et de refuser l'application de la tarification solidaire en cas de doute ou de non-conformité.",
+    },
+    {
+      title: "2 ter. Droit de rétractation (Client consommateur)",
+      content:
+        "Lorsque le Client est un consommateur au sens du code de la consommation et conclut le contrat à distance ou hors établissement, il dispose d'un délai de quatorze (14) jours à compter de la conclusion du contrat pour exercer son droit de rétractation, sans avoir à motiver sa décision. Il peut l'exercer au moyen du formulaire type mis à sa disposition ou par toute déclaration écrite dénuée d'ambiguïté adressée à contact@lechoppeducode.com.\n\nLe Client peut demander expressément l'exécution de la prestation avant l'expiration de ce délai, en cochant et paraphant la mention prévue à cet effet sur le devis. Conformément à l'article L221-25 du code de la consommation, le Client ayant formulé cette demande et dont la prestation a été pleinement exécutée avant la fin du délai perd son droit de rétractation ; en cas d'exécution partielle, il demeure redevable du montant correspondant à la prestation déjà fournie.",
     },
     {
       title: "3. Engagements du Client (Fourniture des contenus)",
@@ -71,9 +77,9 @@ const articles = {
         "Tout retard de paiement du Client entraînera de plein droit, dès le premier jour de retard, l'application de pénalités de retard égales à 3 fois le taux d'intérêt légal en vigueur, ainsi qu'une indemnité forfaitaire pour frais de recouvrement de 40 €. Le Prestataire se réserve également le droit de suspendre la mise en ligne ou la livraison du site jusqu'au règlement intégral.",
     },
     {
-      title: "6. Propriété Intellectuelle",
+      title: "6. Propriété intellectuelle et cession des droits",
       content:
-        "Le transfert des droits de propriété intellectuelle sur le code sur-mesure et le design ne s'opère qu'au moment du paiement intégral de la facture finale par le Client. Tant que le solde n'est pas réglé, l'œuvre demeure la propriété exclusive du Prestataire. Une fois le paiement intégral effectué, la propriété du code est définitivement cédée au Client.",
+        "Le code développé sur mesure et les créations graphiques originales réalisés spécifiquement pour le Client demeurent la propriété exclusive du Prestataire jusqu'au paiement intégral du prix. À compter de l'encaissement du solde, le Prestataire cède au Client, à titre exclusif et pour la durée légale de protection des droits d'auteur, les droits patrimoniaux sur ces éléments : droits de reproduction, de représentation, d'adaptation et de modification, pour tous les usages liés à l'exploitation du site livré, pour le monde entier et sur tout support numérique.\n\nSont expressément exclus de cette cession les composants, bibliothèques et briques logicielles réutilisables préexistants du Prestataire, ainsi que les logiciels et dépendances tiers, notamment open source, qui demeurent régis par leurs licences respectives. Sur ces éléments, le Prestataire concède au Client, dans la mesure nécessaire à l'exploitation du site, un droit d'usage non exclusif, cessible avec le site et sans limitation de durée.\n\nLe droit moral de l'auteur, inaliénable, demeure réservé dans les conditions de l'article 6 bis.",
     },
     {
       title: "6 bis. Paternité, mention et droit de référence",
@@ -91,26 +97,41 @@ const articles = {
         "En cas de rupture du contrat avant son terme par le Client, l'acompte versé reste acquis au Prestataire à titre de dédommagement. De plus, les heures de production déjà réalisées au-delà du montant de l'acompte seront facturées au Client sur la base du taux journalier indiqué sur le devis ou, à défaut, sur la base d'un taux journalier communiqué par le Prestataire.",
     },
     {
-      title: "9. Litiges",
+      title: "8 bis. Responsabilité",
       content:
-        "Les présentes conditions sont soumises au droit français. En cas de litige entre le Client et le Prestataire, les parties s'efforceront de trouver une solution amiable. À défaut d'accord, le tribunal compétent sera celui du ressort du siège social de la Société de Portage (Tribunal de Commerce compétent).",
+        "Le Prestataire est tenu d'une obligation de moyens : il met en œuvre les compétences et diligences propres à sa profession, sans garantir un résultat commercial, un niveau de référencement, de trafic ou de chiffre d'affaires. La responsabilité du Prestataire, tous préjudices confondus, est limitée au montant HT effectivement payé par le Client au titre de la prestation concernée.\n\nLe Prestataire ne répond pas des dommages indirects, tels que perte d'exploitation, perte de données, perte de chiffre d'affaires, de clientèle ou d'image, ni des défaillances imputables au Client, aux contenus qu'il fournit, à ses propres manipulations, aux services tiers (hébergement, services externes) ou à un cas de force majeure. Les présentes limitations ne s'appliquent ni en cas de faute lourde ou dolosive, ni lorsque la loi les prohibe, notamment à l'égard d'un Client consommateur.",
+    },
+    {
+      title: "8 ter. Données personnelles et sous-traitance (RGPD)",
+      content:
+        "Lorsque la prestation conduit le Prestataire à traiter des données à caractère personnel pour le compte du Client (hébergement, maintenance, base de données, formulaires), le Prestataire agit en qualité de sous-traitant au sens de l'article 28 du RGPD et n'intervient que sur instruction documentée du Client, responsable de traitement. Les parties concluent à cet effet un accord de traitement des données (DPA) précisant l'objet, la durée, la nature et la finalité du traitement, les catégories de données et de personnes concernées, les mesures de sécurité et le sort des données en fin de contrat.\n\nLe Prestataire s'engage à la confidentialité, à ne recourir qu'à des sous-traitants ultérieurs présentant des garanties suffisantes et à assister le Client dans le respect de ses propres obligations (sécurité, violations de données, exercice des droits des personnes).",
+    },
+    {
+      title: "9. Règlement des litiges, médiation et juridiction compétente",
+      content:
+        "Les présentes conditions sont soumises au droit français. En cas de différend, les parties s'efforcent d'abord de trouver une solution amiable.\n\nClient consommateur : conformément aux articles L612-1 et suivants du code de la consommation, le Client consommateur peut recourir gratuitement à un médiateur de la consommation en vue de la résolution amiable du litige, après réclamation écrite préalable auprès du Prestataire. Le médiateur compétent est [MÉDIATEUR — nom], [adresse], [site internet]. Le Client consommateur conserve la faculté de saisir la juridiction de son choix dans les conditions du droit commun ; aucune clause ne le prive de la compétence des tribunaux de son lieu de domicile.\n\nClient professionnel : à défaut de résolution amiable, tout litige relève de la compétence exclusive du tribunal dans le ressort du siège social de la Société de Portage, y compris en cas de pluralité de défendeurs ou d'appel en garantie.",
     },
   ],
   en: [
     {
       title: "1. Purpose and Scope",
       content:
-        "These Terms and Conditions govern the web development and consulting services provided by Ludovic BATAILLE (operating under the trade name \"L'Échoppe du Code\"), acting as an autonomous consultant (portage salarial) and legally hosted by the umbrella company Jump Green, hereinafter referred to as \"the Service Provider\". Signing or validating a commercial proposal or quote implies unconditional acceptance of these terms by the client.",
+        "These Terms and Conditions govern the web development and consulting services provided by Ludovic BATAILLE (operating under the trade name \"L'Échoppe du Code\"), acting as an employee of the umbrella company JUMP GREEN (SAS) under a \"portage salarial\" arrangement, hereinafter referred to as \"the Service Provider\". Signing or validating a commercial proposal or quote implies unconditional acceptance of these terms by the client.",
     },
     {
       title: "2. Contract Formation and Deposit",
       content:
-        'A project officially begins upon receipt of two items: the quote—dated, signed, and bearing the handwritten note "Accepted" (Bon pour accord)—and the payment of a 30% deposit of the total amount excl. VAT, plus applicable VAT. A deposit invoice is issued and sent to the Client upon receipt of payment. The remaining balance of 70% is due upon the project going live. Production will not begin until both elements are received. This deposit secures the time allocated to the project and is non-refundable should the Client unilaterally cancel.',
+        "A project officially begins upon receipt of two items: the quote — dated, signed and bearing the note « Bon pour accord » — and the payment of a 30 % deposit of the total amount excl. VAT, plus applicable VAT. A deposit invoice is issued and sent to the Client upon receipt of payment. The remaining 70 % balance is due when the project goes live. Production begins only once both items are received.\n\nBy express derogation from the presumption set out in Article L214-1 of the French Consumer Code, sums paid in advance constitute a deposit (acompte) within the meaning of Article 1590 of the French Civil Code, and not arrhes. They bind both parties definitively: neither party has a right of withdrawal by forfeiture, and any unilateral cancellation by the Client remains governed by Article 8. The deposit is non-refundable and secures the production time allocated to the project.\n\nThis stipulation does not affect the right of withdrawal of a consumer Client, which remains governed by Article 2 ter.",
     },
     {
       title: "2b. Solidarity Pricing — Non-Profit Organisations",
       content:
         "L'Échoppe du Code offers a reduced rate, referred to as \"solidarity pricing\", to recognised non-profit organisations, with a priority focus on LGBTQI+ associations. To qualify, the Client must provide proof of non-profit status before signing the quote, by submitting one of the following documents: official registration receipt from the relevant authority, filed and registered articles of association, or an extract from the National Register of Associations (RNA) or equivalent. The discount applies to the excl. VAT amount shown on the specific quote issued under this scheme. Any Client unable to provide such documentation will be invoiced at standard rates. The Service Provider reserves the right to verify the validity of submitted documents and to refuse solidarity pricing in the event of doubt or non-compliance.",
+    },
+    {
+      title: "2 ter. Right of Withdrawal (consumer Clients)",
+      content:
+        "Where the Client is a consumer within the meaning of the French Consumer Code and concludes the contract at a distance or off-premises, they have fourteen (14) days from the conclusion of the contract to withdraw, without giving reasons, using the model withdrawal form provided or any clear written statement sent to contact@lechoppeducode.com.\n\nThe Client may expressly request performance before the end of that period by ticking and initialling the corresponding statement on the quote. Under Article L221-25 of the French Consumer Code, a Client who has made such a request and whose service has been fully performed before the end of the period loses the right of withdrawal; in the event of partial performance, they remain liable for the amount corresponding to the service already provided.",
     },
     {
       title: "3. Client Commitments (Content Delivery)",
@@ -133,9 +154,9 @@ const articles = {
         "Any late payment will automatically trigger, from the very first day of delay, late payment penalties equal to 3 times the applicable legal interest rate, along with a flat-rate recovery indemnity of €40. The Service Provider also reserves the right to suspend the delivery or launch of the website until the balance is paid in full.",
     },
     {
-      title: "6. Intellectual Property",
+      title: "6. Intellectual Property and Assignment of Rights",
       content:
-        "The transfer of intellectual property rights over the custom code and design takes place only upon full payment of the final invoice. Until the balance is settled, the work remains the exclusive property of the Service Provider. Once full payment is received, ownership of the code is permanently transferred to the client.",
+        "The custom-developed code and the original graphic works produced specifically for the Client remain the exclusive property of the Service Provider until full payment. Upon receipt of the balance, the Service Provider assigns to the Client, exclusively and for the legal term of copyright protection, the economic rights in those elements: rights of reproduction, representation, adaptation and modification, for all uses related to operating the delivered website, worldwide and on any digital medium.\n\nExpressly excluded from this assignment are the Service Provider's pre-existing reusable components, libraries and software building blocks, as well as third-party and open-source software and dependencies, which remain governed by their respective licences. On those elements, the Service Provider grants the Client, to the extent necessary to operate the website, a non-exclusive right of use, transferable with the website and unlimited in time.\n\nThe author's moral right, being inalienable, is reserved under the conditions of Article 6b.",
     },
     {
       title: "6b. Attribution, Credit and Right of Reference",
@@ -153,9 +174,19 @@ const articles = {
         "If the Client terminates the contract before its completion, the deposit paid is forfeited and retained by the Service Provider as compensation. Furthermore, any production hours already completed beyond the value of the deposit will be invoiced at the daily rate indicated on the quote or, failing that, at a daily rate communicated by the Service Provider.",
     },
     {
-      title: "9. Disputes",
+      title: "8 bis. Liability",
       content:
-        "These terms are governed by French law. In the event of a dispute, the parties will endeavour to reach an amicable resolution. Failing that, the competent jurisdiction will be the Commercial Court with authority over the registered office of the umbrella company.",
+        "The Service Provider is bound by a best-efforts obligation and does not guarantee any commercial outcome, search-ranking, traffic or revenue level. The Service Provider's liability, for all losses combined, is limited to the amount excl. VAT actually paid by the Client for the service concerned.\n\nThe Service Provider is not liable for indirect damages (loss of business, data, revenue, clientele or reputation), nor for failures attributable to the Client, the content it supplies, its own handling, third-party services (hosting, external services) or force majeure. These limitations do not apply in the event of gross negligence or wilful misconduct, nor where the law prohibits them, in particular towards a consumer Client.",
+    },
+    {
+      title: "8 ter. Personal Data and Sub-processing (GDPR)",
+      content:
+        "Where the service leads the Service Provider to process personal data on behalf of the Client (hosting, maintenance, database, forms), the Service Provider acts as a processor within the meaning of Article 28 GDPR and only on the documented instructions of the Client, who is the controller. The parties enter into a Data Processing Agreement (DPA) setting out the subject-matter, duration, nature and purpose of the processing, the categories of data and data subjects, the security measures and the fate of the data at the end of the contract.\n\nThe Service Provider undertakes to maintain confidentiality, to use only sub-processors offering sufficient guarantees, and to assist the Client with its own obligations (security, data breaches, handling of data-subject requests).",
+    },
+    {
+      title: "9. Disputes, Mediation and Jurisdiction",
+      content:
+        "These terms are governed by French law. In the event of a dispute, the parties first seek an amicable solution.\n\nConsumer Client: under Articles L612-1 et seq. of the French Consumer Code, a consumer Client may, after a prior written complaint to the Service Provider, use a consumer mediator free of charge. The competent mediator is [MEDIATOR — name], [address], [website]. The consumer Client remains free to bring the matter before the court of their choice under ordinary law and cannot be deprived of the jurisdiction of the courts of their place of residence.\n\nProfessional Client: failing an amicable resolution, any dispute falls within the exclusive jurisdiction of the court in the district of the umbrella company's registered office, including where there are multiple defendants or third-party claims.",
     },
   ],
 }
@@ -195,7 +226,7 @@ export default async function ConditionsGenerales({
               <h2 className={styles.heading}>{article.title}</h2>
               {article.content.split('\n\n').map((paragraph, index) => (
                 <p key={index} className={styles.text}>
-                  {paragraph}
+                  {linkifyEmails(paragraph)}
                 </p>
               ))}
             </div>
