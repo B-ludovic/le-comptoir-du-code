@@ -1,41 +1,22 @@
-'use client'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+import { verifyDevisToken } from '@/lib/devis-auth'
+import DevisClient from './DevisClient'
 
-import { useState } from 'react'
-import DevisForm, { type DevisData } from '@/components/Devis/DevisForm'
-import DevisPreview from '@/components/Devis/DevisPreview'
-import styles from '@/components/Devis/Devis.module.css'
+/* Second verrou, indépendant du middleware : celui-ci s'appuie sur un matcher
+   dont chaque exclusion (_next, api, extensions) est un contournement en
+   puissance. Ici le cookie est vérifié au moment du rendu de la page. */
+export default async function DevisPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
 
-function today(): string {
-  return new Date().toISOString().split('T')[0]
-}
+  const token = (await cookies()).get('devis_auth')?.value
+  if (!verifyDevisToken(token)) {
+    redirect(`/${locale === 'en' ? 'en' : 'fr'}/devis/login`)
+  }
 
-const defaultData: DevisData = {
-  devis_number: '',
-  devis_date: today(),
-  siret: '',
-  client_company: '',
-  client_name: '',
-  client_email: '',
-  client_address: '',
-  project_description: '',
-  services: [
-    { name: '', description: '', type: 'Forfait', delay: '', amount: '' },
-  ],
-  maintenance_option: 'none',
-  maintenance_rate: '',
-  infra_rate: '',
-  client_type: 'standard',
-  devis_locale: 'fr',
-  prestation_type: 'dev',
-}
-
-export default function DevisPage() {
-  const [data, setData] = useState<DevisData>(defaultData)
-
-  return (
-    <div className={styles.page}>
-      <DevisForm data={data} onChange={setData} />
-      <DevisPreview data={data} />
-    </div>
-  )
+  return <DevisClient />
 }
