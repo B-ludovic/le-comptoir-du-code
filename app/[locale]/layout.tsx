@@ -111,7 +111,7 @@ const jsonLd = {
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Prestations de développement web',
+    name: 'Prestations de cadrage et de développement web',
     itemListElement: [
       {
         '@type': 'Offer',
@@ -136,6 +136,44 @@ const jsonLd = {
         priceCurrency: 'EUR',
         description:
           'Application web sur-mesure à partir de 4 800 € HT. Inclut 1 an de maintenance.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Cadrage Vitrine',
+        price: '290.00',
+        priceCurrency: 'EUR',
+        description:
+          "Atelier de cadrage et dossier écrit pour un site vitrine : choix de solution, arborescence, conformité RGPD, périmètre de la V1. 290 € HT.",
+      },
+      {
+        '@type': 'Offer',
+        name: 'Cadrage E-commerce & Business',
+        price: '590.00',
+        priceCurrency: 'EUR',
+        description:
+          "Atelier de cadrage et dossier écrit pour un projet de vente en ligne ou de réservation : tunnel de vente, solution de paiement, workflows, conformité RGPD e-commerce. 590 € HT.",
+      },
+      {
+        '@type': 'Offer',
+        name: 'Cadrage Architecture Métier',
+        price: '1190.00',
+        priceCurrency: 'EUR',
+        description:
+          "Atelier de cadrage et dossier d'architecture pour une application métier : modèle de données, back-office, rôles et permissions, sécurité, modèle économique. 1 190 € HT.",
+      },
+      {
+        '@type': 'Offer',
+        name: 'Conception produit',
+        price: '650.00',
+        priceCurrency: 'EUR',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: '650.00',
+          priceCurrency: 'EUR',
+          unitCode: 'DAY',
+        },
+        description:
+          "Conception de produit à la journée, lorsque le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique. 650 € HT par jour.",
       },
     ],
   },

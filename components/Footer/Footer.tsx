@@ -13,6 +13,7 @@ type Props = {
     legal: string
     privacy: string
     cookies: string
+    cgp_scoping: string
     cgps: string
   }
 }
@@ -25,6 +26,7 @@ export default function Footer({ locale, dict }: Props) {
     { href: `/${locale}/politique-de-confidentialite`, label: dict.privacy },
     { href: `/${locale}/gestion-des-cookies`, label: dict.cookies },
     { href: `/${locale}/conditions-generales`, label: dict.cgps },
+    { href: `/${locale}/conditions-cadrage`, label: dict.cgp_scoping },
   ]
 
   return (

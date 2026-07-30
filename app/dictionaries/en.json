@@ -13,7 +13,7 @@
     "section_title": "Three steps. No filler.",
     "intro": "No endless meetings, no guesswork. Every stage comes with a clear deliverable, a firm deadline, and a fixed price.",
     "block1_title": "The Counter Brief.",
-    "block1_text": "You pitch your business needs. I tell you straight away if it's doable, which tech fits best, and exactly what it costs.",
+    "block1_text": "You pitch your business needs. I tell you straight away if it's doable, which tech fits best, and exactly what it costs. If the project is still to be defined, we start with a scoping session.",
     "block2_title": "In the Workshop.",
     "block2_text": "I design, I code. You stay focused on your business while I build. No time-wasting syncs — just tangible progress.",
     "block3_title": "The Handover.",
@@ -135,6 +135,7 @@
     "legal": "Legal Notice",
     "privacy": "Privacy Policy",
     "cookies": "Cookie Policy",
-    "cgps": "Terms of Service"
+    "cgps": "Terms of Service",
+    "cgp_scoping": "Scoping Terms"
   }
 }

@@ -151,6 +151,16 @@
   font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.7;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+/* Colonne trop étroite pour justifier proprement, même avec césure. */
+@media (max-width: 480px) {
+  .blockText {
+    text-align: left;
+  }
 }
 
 /* Responsive */

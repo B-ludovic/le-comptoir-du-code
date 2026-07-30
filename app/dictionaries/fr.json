@@ -13,7 +13,7 @@
     "section_title": "Trois étapes. Pas une de plus.",
     "intro": "Pas de réunions inutiles, pas d'approximations. Chaque étape a un livrable, un délai, un prix.",
     "block1_title": "Le brief à l'echoppe.",
-    "block1_text": "Vous m'exposez votre besoin métier. Je vous dis immédiatement si c'est réalisable, avec quelle technologie, et à quel prix.",
+    "block1_text": "Vous m'exposez votre besoin métier. Je vous dis immédiatement si c'est réalisable, avec quelle technologie, et à quel prix. Si le projet reste à définir, on passe d’abord par un cadrage.",
     "block2_title": "L'arrière-boutique.",
     "block2_text": "Je conçois et je code. Vous continuez à gérer votre entreprise sans perdre de temps dans des réunions interminables. L'avancement est factuel.",
     "block3_title": "La livraison.",
@@ -135,6 +135,7 @@
     "legal": "Mentions Légales",
     "privacy": "Politique de Confidentialité",
     "cookies": "Gestion des Cookies",
-    "cgps": "CGP de Services"
+    "cgps": "CGP de Services",
+    "cgp_scoping": "CGP Cadrage"
   }
 }
