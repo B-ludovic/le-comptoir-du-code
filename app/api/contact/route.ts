@@ -38,9 +38,6 @@ const transporter = nodemailer.createTransport({
     user: process.env.ICLOUD_SMTP_USER,
     pass: process.env.ICLOUD_SMTP_PASSWORD,
   },
-  tls: {
-    rejectUnauthorized: false,
-  },
 })
 
 export async function POST(req: NextRequest) {
