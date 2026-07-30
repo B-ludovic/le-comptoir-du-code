@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import Header from '@/components/Header/Header'
 import Method from '@/components/Sections/Method/Method'
+import Scoping from '@/components/Sections/Scoping/Scoping'
 import Solutions from '@/components/Sections/Solutions/Solutions'
 import Portfolio from '@/components/Sections/Portfolio/Portfolio'
 import About from '@/components/Sections/About/About'
@@ -25,7 +26,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* Section 2 — Méthode */}
       <Method dict={dict.method} />
 
-      {/* Section 3 — Solutions */}
+      {/* Section 3 — Cadrage (étape 0) + Solutions */}
+      <Scoping locale={locale} dict={dict.scoping} />
       <Solutions dict={dict.solutions} />
 
       {/* Section 4 — Réalisations */}

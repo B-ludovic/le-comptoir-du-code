@@ -18,6 +18,28 @@
     "block3_title": "The Handover.",
     "block3_text": "A battle-tested, secure tool that is 100% yours. I walk you through the essentials, then get out of your way."
   },
+  "scoping": {
+    "eyebrow": "Before we build",
+    "section_title": "Define the project\nbefore building it",
+    "intro": "A poorly scoped project always costs more to fix than to design. Before the first line of code, we settle the architecture, the scope, the compliance requirements and the business model. You leave with a report that belongs to you — one any developer can execute, including someone other than me.",
+    "tier1_title": "Brochure Site Scoping",
+    "tier1_label": "Brochure site",
+    "tier1_price": "€290",
+    "tier2_title": "E-commerce & Business Scoping",
+    "tier2_label": "Sales & accounts",
+    "tier2_price": "€590",
+    "tier3_title": "Business Architecture Scoping",
+    "tier3_label": "Business application",
+    "tier3_price": "€1,190",
+    "condition": "Optional for a brochure site. Required as soon as there are user accounts, online payment or sensitive data: I cannot quote seriously without it.",
+    "design_title": "Product design",
+    "design_price": "€650",
+    "design_unit": "/ day",
+    "design_note": "For projects still to be invented: features, business rules, content structure, economic model. The number of days is set by the scoping work.",
+    "cta": "Book a scoping session",
+    "terms_link": "Terms of service",
+    "vat_notice": "Prices excl. VAT. Scoping is not deducted from development: the report is yours."
+  },
   "solutions": {
     "eyebrow": "Scale your ambition.",
     "section_title": "Three tiers. Zero surprises.",
