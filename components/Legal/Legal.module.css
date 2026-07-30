@@ -48,8 +48,23 @@
   font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.8;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.1rem;
   max-width: 680px;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.text:last-child {
+  margin-bottom: 0;
+}
+
+/* Colonne trop étroite : la justification creuse des blancs même avec
+   césure. On repasse au fer à gauche sous 480px. */
+@media (max-width: 480px) {
+  .text {
+    text-align: left;
+  }
 }
 
 .text strong {
