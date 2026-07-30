@@ -26,6 +26,7 @@ const defaultData: DevisData = {
   infra_rate: '',
   client_type: 'standard',
   devis_locale: 'fr',
+  prestation_type: 'dev',
 }
 
 export default function DevisPage() {

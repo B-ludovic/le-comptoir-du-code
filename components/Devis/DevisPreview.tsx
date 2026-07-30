@@ -50,6 +50,26 @@ const T = {
     paymentText: `Acompte de 30 % à la commande (facture d'acompte fournie).<br>Solde de 70 % à la mise en ligne.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
     startTitle: 'Démarrage du projet',
     startText: `Le projet démarre à réception du devis officiel<br>signé (émis par Jump Green) et du paiement<br>de l'acompte de 30 %.`,
+    schedules: {
+      dev: {
+        rate: 0.3,
+        deposit: 'Acompte à la signature (30 %)',
+        paymentText: `Acompte de 30 % à la commande (facture d'acompte fournie).<br>Solde de 70 % à la mise en ligne.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
+        startText: `Le projet démarre à réception du devis officiel<br>signé (émis par Jump Green) et du paiement<br>de l'acompte de 30 %.`,
+      },
+      cadrage_full: {
+        rate: 1,
+        deposit: 'Règlement intégral à la commande',
+        paymentText: `Règlement intégral à la commande.<br>Règlement par virement bancaire uniquement.<br>Aucune date d'atelier n'est réservée<br>avant réception du paiement.`,
+        startText: `L'atelier est planifié à réception du devis<br>officiel signé (émis par Jump Green), du<br>paiement et du questionnaire complété.`,
+      },
+      cadrage_split: {
+        rate: 0.5,
+        deposit: 'Acompte à la signature (50 %)',
+        paymentText: `Acompte de 50 % à la commande (facture d'acompte fournie).<br>Solde de 50 % à la remise du dossier.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
+        startText: `L'atelier est planifié à réception du devis<br>officiel signé (émis par Jump Green), de<br>l'acompte et du questionnaire complété.`,
+      },
+    },
     validityTitle: 'Validité',
     validityText: `Cette proposition est valable 30 jours<br>à compter de sa date d'émission.<br>Passé ce délai, les tarifs peuvent être révisés.`,
     disclaimerTitle: null,
@@ -93,6 +113,26 @@ const T = {
     paymentText: `30% deposit upon order (deposit invoice provided).<br>Balance of 70% upon go-live.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
     startTitle: 'Project commencement',
     startText: `The project starts upon receipt of the signed<br>official quote (issued by Jump Green) and the<br>30% deposit payment.`,
+    schedules: {
+      dev: {
+        rate: 0.3,
+        deposit: 'Deposit upon signing (30%)',
+        paymentText: `30% deposit upon order (deposit invoice provided).<br>Balance of 70% upon go-live.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
+        startText: `The project starts upon receipt of the signed<br>official quote (issued by Jump Green) and the<br>30% deposit payment.`,
+      },
+      cadrage_full: {
+        rate: 1,
+        deposit: 'Payment in full upon order',
+        paymentText: `Payment in full upon order.<br>Bank transfer only.<br>No workshop date is reserved<br>before payment is received.`,
+        startText: `The workshop is scheduled upon receipt of the<br>signed official quote (issued by Jump Green),<br>payment, and the completed questionnaire.`,
+      },
+      cadrage_split: {
+        rate: 0.5,
+        deposit: 'Deposit upon signing (50%)',
+        paymentText: `50% deposit upon order (deposit invoice provided).<br>Balance of 50% upon delivery of the report.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
+        startText: `The workshop is scheduled upon receipt of the<br>signed official quote (issued by Jump Green),<br>the deposit, and the completed questionnaire.`,
+      },
+    },
     validityTitle: 'Validity',
     validityText: `This proposal is valid for 30 days<br>from its issuance date.<br>After this period, rates may be revised.`,
     disclaimerTitle: 'Disclaimer',
@@ -110,7 +150,9 @@ function calcTotals(data: DevisData) {
   const remise = isAsso ? fullHt * 0.5 : 0
   const tva = ht * 0.20
   const ttc = ht + tva
-  const acompte = ttc * 0.3
+  // Le taux d'acompte dépend du contrat : CGV développement ou CGP cadrage.
+  const rate = T[locale].schedules[data.prestation_type ?? 'dev'].rate
+  const acompte = ttc * rate
   return {
     full_ht: fmt(String(fullHt), locale),
     remise: fmt(String(remise), locale),
@@ -127,6 +169,7 @@ export default function DevisPreview({ data }: Props) {
   const totals = calcTotals(data)
   const locale = data.devis_locale ?? 'fr'
   const t = T[locale]
+  const schedule = t.schedules[data.prestation_type ?? 'dev']
 
   const isAsso = data.client_type === 'association'
 
@@ -317,18 +360,18 @@ export default function DevisPreview({ data }: Props) {
       <div class="totaux-line"><span>${t.subtotal}</span><span>${totals.total_ht}</span></div>
       <div class="totaux-line tva"><span>${t.tva}</span><span>${totals.tva_amount}</span></div>
       <div class="totaux-line total"><span>${t.total}</span><span class="amount">${totals.total_ttc}</span></div>
-      <div class="totaux-line acompte"><span>${t.deposit}</span><span>${totals.acompte_amount}</span></div>
+      <div class="totaux-line acompte"><span>${schedule.deposit}</span><span>${totals.acompte_amount}</span></div>
     </div>
   </div>
 
   <div class="conditions">
     <div class="condition-block">
       <div class="condition-title">${t.paymentTitle}</div>
-      <div class="condition-text">${t.paymentText}</div>
+      <div class="condition-text">${schedule.paymentText}</div>
     </div>
     <div class="condition-block">
       <div class="condition-title">${t.startTitle}</div>
-      <div class="condition-text">${t.startText}</div>
+      <div class="condition-text">${schedule.startText}</div>
     </div>
     <div class="condition-block">
       <div class="condition-title">${t.validityTitle}</div>

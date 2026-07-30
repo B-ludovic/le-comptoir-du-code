@@ -8,7 +8,7 @@
 
 /* Panneau formulaire (La Sidebar) */
 .formPanel {
-  width: 420px;
+  width: clamp(420px, 34vw, 620px);
   flex-shrink: 0;
   height: 100%;
   overflow-y: auto;

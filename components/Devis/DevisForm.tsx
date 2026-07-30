@@ -22,6 +22,7 @@ const FORFAITS = [
     } as Service,
     maintenance_option: 'none' as const,
     maintenance_rate: '80\u00A0\u20AC\u2060/\u2060mois',
+    prestation_type: 'dev' as const,
   },
   {
     label: "L'E-commerce & Réservation",
@@ -34,6 +35,7 @@ const FORFAITS = [
     } as Service,
     maintenance_option: 'offered' as const,
     maintenance_rate: '100\u00A0\u20AC\u2060/\u2060mois',
+    prestation_type: 'dev' as const,
   },
   {
     label: 'Les Outils Sur-Mesure',
@@ -46,6 +48,63 @@ const FORFAITS = [
     } as Service,
     maintenance_option: 'offered' as const,
     maintenance_rate: '165\u00A0\u20AC\u2060/\u2060mois HT',
+    prestation_type: 'dev' as const,
+  },
+  {
+    label: 'Cadrage 01 \u2014 Vitrine',
+    service: {
+      name: 'Cadrage Vitrine',
+      description:
+        "Atelier 1 h 30 puis dossier \u00E9crit : choix de solution argument\u00E9, arborescence, checklist RGPD, p\u00E9rim\u00E8tre de la V1, trames l\u00E9gales \u00E0 faire valider par un avocat.",
+      type: 'Cadrage',
+      delay: '48 h apr\u00E8s l\u2019atelier',
+      amount: '290',
+    } as Service,
+    maintenance_option: 'none' as const,
+    maintenance_rate: '',
+    prestation_type: 'cadrage_full' as const,
+  },
+  {
+    label: 'Cadrage 02 \u2014 E-commerce & Business',
+    service: {
+      name: 'Cadrage E-commerce & Business',
+      description:
+        "Atelier 1 h 30 puis dossier \u00E9crit : tunnel de vente et solution de paiement, workflows de r\u00E9servation et synchronisation, cartographie RGPD e-commerce, trame de CGV, p\u00E9rim\u00E8tre de la V1.",
+      type: 'Cadrage',
+      delay: '48 h apr\u00E8s l\u2019atelier',
+      amount: '590',
+    } as Service,
+    maintenance_option: 'none' as const,
+    maintenance_rate: '',
+    prestation_type: 'cadrage_full' as const,
+  },
+  {
+    label: 'Cadrage 03 \u2014 Architecture M\u00E9tier',
+    service: {
+      name: 'Cadrage Architecture M\u00E9tier',
+      description:
+        "Atelier 2 h puis dossier d\u2019architecture : mod\u00E8le de donn\u00E9es et sch\u00E9ma BDD, architecture applicative, sp\u00E9cification du back-office, matrice r\u00F4les et permissions, s\u00E9curit\u00E9, mod\u00E8le \u00E9conomique, MVP d\u00E9coup\u00E9 en phases.",
+      type: 'Cadrage',
+      delay: '5 jours ouvr\u00E9s',
+      amount: '1190',
+    } as Service,
+    maintenance_option: 'none' as const,
+    maintenance_rate: '',
+    prestation_type: 'cadrage_split' as const,
+  },
+  {
+    label: 'Conception produit \u2014 \u00E0 la journ\u00E9e',
+    service: {
+      name: 'Conception produit',
+      description:
+        "Conception du produit lorsqu\u2019il reste \u00E0 inventer : fonctionnalit\u00E9s, r\u00E8gles de gestion, structure des contenus, mod\u00E8le \u00E9conomique. 650 \u20AC HT par jour \u2014 nombre de jours fix\u00E9 par le cadrage.",
+      type: 'R\u00E9gie',
+      delay: '\u00C0 d\u00E9finir',
+      amount: '',
+    } as Service,
+    maintenance_option: 'none' as const,
+    maintenance_rate: '',
+    prestation_type: 'cadrage_split' as const,
   },
 ]
 
@@ -64,6 +123,11 @@ export type DevisData = {
   infra_rate: string
   client_type: 'standard' | 'association'
   devis_locale: 'fr' | 'en'
+  /* Échéancier applicable — dépend du contrat dont relève la prestation.
+     dev            → CGV développement : 30 % à la commande, 70 % à la mise en ligne
+     cadrage_full   → CGP cadrage, paliers 01 et 02 : 100 % à la commande
+     cadrage_split  → CGP cadrage, palier 03 et conception : 50 % / 50 % */
+  prestation_type: 'dev' | 'cadrage_full' | 'cadrage_split'
 }
 
 type Props = {
@@ -150,6 +214,7 @@ export default function DevisForm({ data, onChange }: Props) {
       services: [forfait.service, ...data.services.slice(1)],
       maintenance_option: forfait.maintenance_option,
       maintenance_rate: forfait.maintenance_rate,
+      prestation_type: forfait.prestation_type,
     })
   }
 
@@ -169,6 +234,16 @@ export default function DevisForm({ data, onChange }: Props) {
         >
           <option value="standard">Client standard</option>
           <option value="association">Association — −50 %</option>
+        </select>
+        <select
+          className={styles.forfaitSelect}
+          value={data.prestation_type}
+          onChange={e => set('prestation_type', e.target.value as DevisData['prestation_type'])}
+          title="Échéancier de paiement applicable"
+        >
+          <option value="dev">Développement — 30 % / 70 %</option>
+          <option value="cadrage_full">Cadrage 01-02 — 100 % à la commande</option>
+          <option value="cadrage_split">Cadrage 03 & conception — 50 % / 50 %</option>
         </select>
         <div className={styles.localeToggle}>
           <button
