@@ -27,13 +27,18 @@ Conditions détaillées : https://lechoppeducode.com/fr/conditions-generales
 
 ## L'Échoppe Solidaire — tarification associative
 
-Offre dédiée aux associations loi 1901 et structures à but non lucratif, en priorité LGBTQI+. Mécénat de compétences de 50 % sur l'ensemble des forfaits de développement, sur justificatif de statut associatif. Même exigence technique, zéro concession sur la qualité.
+Offre dédiée aux associations loi 1901 et structures à but non lucratif, en priorité LGBTQI+. Mécénat de compétences de 50 % sur les forfaits de développement, conditionné à la fourniture d'un récépissé de déclaration en préfecture ou équivalent. Même exigence technique, zéro concession sur la qualité.
 
-- **La Présence (associative)** — à partir de 725 € HT au lieu de 1 450 € HT.
-- **L'E-commerce & Réservation (associatif)** — à partir de 1 425 € HT au lieu de 2 850 € HT.
-- **Les Outils Sur-Mesure (associatif)** — sur étude, au lieu de 4 800 € HT minimum.
+- **Cadrage (associatif)** — à partir de 145 € HT.
+- **La Présence (associative)** — à partir de 725 € HT au lieu de 1 450 € HT. Maintenance solidaire à partir de 40 € HT/mois.
+- **L'E-commerce & Dons (associatif)** — à partir de 1 425 € HT au lieu de 2 850 € HT. Maintenance solidaire à partir de 50 € HT/mois.
+- **Les Outils Sur-Mesure (associatif)** — sur étude budgétaire, au lieu de 4 800 € HT minimum. Maintenance sur étude.
 
-Spécialités associations : sécurisation des dons via Stripe (sans commission intermédiaire), gestion des adhérents, conformité RGPD renforcée.
+La maintenance associative suit un barème solidaire dédié : elle n'est pas automatiquement à moitié prix du tarif standard, mais reste très en dessous du marché.
+
+Spécialités associations : sécurisation des dons via Stripe (sans commission intermédiaire), gestion des adhérents, conformité RGPD renforcée. À la livraison, l'infrastructure est mise au nom de l'association et le code source lui appartient.
+
+Paiement : 30 % à la signature (facture d'acompte émise par Jump Green), 70 % à la mise en ligne, par virement uniquement.
 
 ## Stack technique
 
@@ -109,7 +114,14 @@ An optional first step, billed separately, for projects that are not yet defined
 
 ## Non-profit pricing
 
-50 % skills sponsorship on all development packages for registered non-profits, with priority given to LGBTQI+ organisations. Same technical standard, no compromise on quality.
+50 % skills sponsorship on development packages for registered non-profits, with priority given to LGBTQI+ organisations, subject to proof of registration. Same technical standard, no compromise on quality.
+
+- **Scoping (non-profit)** — from €145.
+- **La Présence (non-profit)** — from €725 instead of €1,450. Solidarity maintenance from €40/month.
+- **E-commerce & Donations (non-profit)** — from €1,425 instead of €2,850. Solidarity maintenance from €50/month.
+- **Les Outils Sur-Mesure (non-profit)** — on budget review, instead of €4,800 minimum.
+
+Maintenance for non-profits follows a dedicated solidarity rate: it is not automatically half the standard price, but stays well below market rates. At delivery the infrastructure is registered in the organisation's name and the source code belongs to it.
 
 ## Contact
 
