@@ -1,35 +1,55 @@
 # L'Echoppe du Code
 
-> Développeur Web Indépendant — Sites vitrines, e-commerce et applications sur-mesure.
+> Développeur web indépendant à Paris / Île-de-France — cadrage de projet, sites vitrines, e-commerce et applications sur-mesure.
 
-Ludovic BATAILLE est développeur web freelance basé en France, spécialisé en Next.js, React, TypeScript et NestJS. Il conçoit et livre des applications web performantes, accessibles et maintenables pour des entrepreneurs, des PME et des startups.
+Ludovic BATAILLE est développeur web freelance basé en Île-de-France, spécialisé en Next.js, React, TypeScript et NestJS. Il conçoit et livre des applications web performantes, accessibles et maintenables pour des entrepreneurs, des PME, des associations et des startups. Interlocuteur unique du cadrage à la mise en production.
 
-## Services
+Statut : entrepreneur-salarié hébergé par Jump Green (SIRET 97761078100014, RCS de Bobigny, TVA FR10977610781). Prestations en français et en anglais. Tous les prix sont indiqués hors taxes.
 
-- **La Présence** — Site vitrine professionnel à partir de 1 450 € HT. Design soigné, performances optimisées, SEO technique inclus.
-- **L'E-commerce & Réservation** — Boutique en ligne ou système de réservation à partir de 2 850 € HT. Inclut 1 an de maintenance offerte, puis engagement 1 an à 85 € HT/mois.
-- **Les Outils Sur-Mesure** — Application métier, tableau de bord, outil interne à partir de 4 800 € HT. Inclut 1 an de maintenance offerte, puis engagement 1 an à 165 € HT/mois.
+## Cadrage et conception
 
-## L'Échoppe Solidaire — Tarification associative
+Étape préalable facultative, facturée séparément, pour les projets qui ne sont pas encore définis. Le livrable est un dossier écrit qui appartient au client, qu'il poursuive ou non avec L'Echoppe du Code.
 
-Offre dédiée aux associations loi 1901 et structures à but non lucratif, en priorité LGBTQI+. Mécénat de compétences 50 % sur l'ensemble des forfaits, sur justificatif de statut associatif. Même exigence technique, zéro concession sur la qualité.
+- **Cadrage Vitrine — 290 € HT** — Atelier et dossier écrit pour un site vitrine : choix de solution, arborescence, conformité RGPD, périmètre de la V1.
+- **Cadrage E-commerce & Business — 590 € HT** — Atelier et dossier écrit pour un projet de vente en ligne ou de réservation : tunnel de vente, solution de paiement, workflows, conformité RGPD e-commerce.
+- **Cadrage Architecture Métier — 1 190 € HT** — Atelier et dossier d'architecture pour une application métier : modèle de données, back-office, rôles et permissions, sécurité, modèle économique.
+- **Conception produit — 650 € HT par jour** — Lorsque le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique.
 
-- **La Présence (associative)** — À partir de 725 € HT (au lieu de 1 450 €).
-- **L'E-commerce & Réservation (associatif)** — À partir de 1 425 € HT (au lieu de 2 850 €).
-- **Les Outils Sur-Mesure (associatif)** — Sur étude (au lieu de 4 800 € HT minimum).
+Conditions détaillées : https://lechoppeducode.com/fr/conditions-cadrage
+
+## Développement
+
+- **La Présence — à partir de 1 450 € HT** — Site vitrine sur-mesure. Design soigné, performances optimisées, SEO technique inclus. Maintenance optionnelle (mises à jour de sécurité) à 70 € HT/mois.
+- **L'E-commerce & Réservation — à partir de 2 850 € HT** — Boutique en ligne ou système de réservation. Un an de mises à jour de sécurité inclus, puis 85 € HT/mois.
+- **Les Outils Sur-Mesure — à partir de 4 800 € HT** — Application métier, tableau de bord, outil interne. Un an de mises à jour de sécurité inclus, puis à partir de 165 € HT/mois.
+
+Conditions détaillées : https://lechoppeducode.com/fr/conditions-generales
+
+## L'Échoppe Solidaire — tarification associative
+
+Offre dédiée aux associations loi 1901 et structures à but non lucratif, en priorité LGBTQI+. Mécénat de compétences de 50 % sur l'ensemble des forfaits de développement, sur justificatif de statut associatif. Même exigence technique, zéro concession sur la qualité.
+
+- **La Présence (associative)** — à partir de 725 € HT au lieu de 1 450 € HT.
+- **L'E-commerce & Réservation (associatif)** — à partir de 1 425 € HT au lieu de 2 850 € HT.
+- **Les Outils Sur-Mesure (associatif)** — sur étude, au lieu de 4 800 € HT minimum.
 
 Spécialités associations : sécurisation des dons via Stripe (sans commission intermédiaire), gestion des adhérents, conformité RGPD renforcée.
 
 ## Stack technique
 
-Next.js, React, TypeScript, NestJS, Node.js, PostgreSQL, Tailwind CSS, Vercel.
+Next.js, React, TypeScript, NestJS, Node.js, PostgreSQL, Stripe, Vercel. CSS Modules et design tokens plutôt que frameworks utilitaires.
 
 ## Engagements
 
 - Code propre et documenté, livré avec les sources
-- Maintenance offerte 1 an sur les forfaits E-commerce et Sur-Mesure, puis engagement 1 an (70/85/165 € HT/mois selon forfait)
-- Interlocuteur unique du brief à la mise en production
+- Interlocuteur unique du cadrage à la mise en production
 - Pas de template revendu : chaque projet est développé sur-mesure
+- Droits de propriété intellectuelle transférés au client à réception du paiement intégral
+- Devis officiel émis par Jump Green, société de portage salarial
+
+## Zone d'intervention
+
+Paris et Île-de-France en présentiel, reste de la France et international à distance.
 
 ## Contact
 
@@ -40,23 +60,59 @@ Next.js, React, TypeScript, NestJS, Node.js, PostgreSQL, Tailwind CSS, Vercel.
 ## Pages
 
 - https://lechoppeducode.com/fr — Page d'accueil (français)
-- https://lechoppeducode.com/fr/echoppe-solidaire — L'Échoppe Solidaire — tarification associative (français)
-- https://lechoppeducode.com/en/echoppe-solidaire — L'Échoppe Solidaire — non-profit pricing (English)
 - https://lechoppeducode.com/en — Homepage (English)
+- https://lechoppeducode.com/fr/echoppe-solidaire — L'Échoppe Solidaire, tarification associative (français)
+- https://lechoppeducode.com/en/echoppe-solidaire — L'Échoppe Solidaire, non-profit pricing (English)
+- https://lechoppeducode.com/fr/conditions-cadrage — Conditions générales de la prestation de cadrage
+- https://lechoppeducode.com/fr/conditions-generales — Conditions générales de vente et de prestation
 - https://lechoppeducode.com/fr/mentions-legales — Mentions légales
 - https://lechoppeducode.com/fr/politique-de-confidentialite — Politique de confidentialité
 - https://lechoppeducode.com/fr/gestion-des-cookies — Gestion des cookies
-- https://lechoppeducode.com/fr/conditions-generales — Conditions générales de prestation
 
-## Le Carnet (Blog)
+## Le Carnet (blog)
 
 Articles pratiques sur la création de site internet, le coût réel des plateformes et l'artisanat numérique.
 
 - https://lechoppeducode.com/fr/blog — Le Carnet (français)
 - https://lechoppeducode.com/en/blog — Journal (English)
 - https://lechoppeducode.com/fr/blog/wix-vs-freelance-vrai-cout-5-ans — Wix, Framer, IA : le vrai coût de votre site en 2026
-- https://lechoppeducode.com/en/blog/wix-vs-freelance-real-cost-5-years — Wix, Framer, AI: The real cost of your website in 2026
+- https://lechoppeducode.com/en/blog/wix-vs-freelance-real-cost-5-years — Wix, Framer, AI: the real cost of your website in 2026
 - https://lechoppeducode.com/fr/blog/budget-developpeur-freelance-ce-que-vous-pouvez-exiger — Ce que votre budget permet vraiment de construire en 2026
-- https://lechoppeducode.com/en/blog/what-your-budget-can-really-build-2026 — What Your Budget Can Really Build in 2026
+- https://lechoppeducode.com/en/blog/what-your-budget-can-really-build-2026 — What your budget can really build in 2026
 - https://lechoppeducode.com/fr/blog/anatomie-site-low-cost-dette-technique — Anatomie d'un site à 300 € : ce que vous trouverez sous le capot 6 mois plus tard
-- https://lechoppeducode.com/en/blog/anatomy-cheap-website-technical-debt — Anatomy of a €300 Website: What You'll Find Under the Hood 6 Months Later
+- https://lechoppeducode.com/en/blog/anatomy-cheap-website-technical-debt — Anatomy of a €300 website: what you'll find under the hood 6 months later
+- https://lechoppeducode.com/fr/blog/confessions-createur-de-bugs — Confessions d'un créateur de bugs : l'enfer du « dernier pour cent »
+- https://lechoppeducode.com/en/blog/confessions-bug-creator-last-percent — Confessions of a bug creator: the hell of the last percent
+
+---
+
+# L'Echoppe du Code (English)
+
+> Independent web developer in Paris / Île-de-France — project scoping, marketing websites, e-commerce and custom web applications.
+
+Ludovic BATAILLE is a freelance web developer based in the Paris region of France, specialising in Next.js, React, TypeScript and NestJS. He designs and ships performant, accessible and maintainable web applications for entrepreneurs, small businesses, non-profits and startups. A single point of contact from scoping to production. All prices exclude VAT.
+
+## Scoping and product design
+
+An optional first step, billed separately, for projects that are not yet defined. The written report belongs to the client whether or not they go on to work with L'Echoppe du Code.
+
+- **Marketing site scoping — €290** — Workshop and written report: solution choice, site structure, GDPR compliance, scope of the first version.
+- **E-commerce & business scoping — €590** — Workshop and written report: sales funnel, payment provider, workflows, e-commerce GDPR compliance.
+- **Business architecture scoping — €1,190** — Workshop and architecture report: data model, back office, roles and permissions, security, business model.
+- **Product design — €650 per day** — When the product is still to be invented: features, business rules, content structure, business model.
+
+## Development
+
+- **La Présence — from €1,450** — Custom marketing website. Careful design, optimised performance, technical SEO included. Optional security maintenance at €70/month.
+- **L'E-commerce & Réservation — from €2,850** — Online shop or booking system. One year of security updates included, then €85/month.
+- **Les Outils Sur-Mesure — from €4,800** — Business application, dashboard or internal tool. One year of security updates included, then from €165/month.
+
+## Non-profit pricing
+
+50 % skills sponsorship on all development packages for registered non-profits, with priority given to LGBTQI+ organisations. Same technical standard, no compromise on quality.
+
+## Contact
+
+- Website: https://lechoppeducode.com/en
+- Email: contact@lechoppeducode.com
+- GitHub: https://github.com/B-ludovic

@@ -9,6 +9,7 @@ import styles from './Article.module.css'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 import { getPost, getPostSlugs } from '@/lib/blog'
+import { blogPostingJsonLd, breadcrumbJsonLd } from '@/lib/structured-data'
 
 const BASE_URL = 'https://lechoppeducode.com'
 const dictionaries = { fr, en }
@@ -77,8 +78,23 @@ export default async function ArticlePage({
   const altSlug = post.alternate_slug ?? slug
   const switchLocaleHref = `/${altLocale}/blog/${altSlug}`
 
+  const jsonLd = [
+    blogPostingJsonLd(post, locale),
+    breadcrumbJsonLd([
+      { name: isFr ? 'Accueil' : 'Home', path: `/${locale}` },
+      { name: isFr ? 'Le Carnet' : 'Journal', path: `/${locale}/blog` },
+      { name: post.title, path: `/${locale}/blog/${slug}` },
+    ]),
+  ]
+
   return (
     <>
+      {/* Bloc de données et non de script : type="application/ld+json" n'est
+          pas soumis à la directive script-src de la CSP, donc pas de nonce. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header locale={locale} nav={dict.nav} switchLocaleHref={switchLocaleHref} />
       <main className={styles.main}>
         <div className="container">

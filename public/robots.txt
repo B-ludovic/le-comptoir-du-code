@@ -1,14 +1,66 @@
 User-agent: *
 Allow: /
 
-# Bots IA
+# Moteurs génératifs et robots d'IA, autorisés explicitement.
+# La règle « * » ci-dessus les couvre déjà : ces groupes documentent
+# l'intention et resteront le seul endroit à modifier si l'un d'eux
+# devait un jour être refusé.
+
+# OpenAI — GPTBot sert à l'entraînement, OAI-SearchBot à l'indexation
+# pour ChatGPT Search, ChatGPT-User aux consultations déclenchées par
+# un utilisateur. Ce sont trois robots distincts.
 User-agent: GPTBot
 Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: ChatGPT-User
 Allow: /
+
+# Anthropic — ClaudeBot a remplacé l'ancien identifiant « anthropic-ai ».
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Google — Google-Extended ne concerne que Gemini et les réponses
+# génératives ; l'indexation classique passe par Googlebot, couvert par « * ».
 User-agent: Google-Extended
 Allow: /
-User-agent: anthropic-ai
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Microsoft Copilot
+User-agent: Bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# Common Crawl — corpus public repris par de nombreux entraînements
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://lechoppeducode.com/sitemap.xml

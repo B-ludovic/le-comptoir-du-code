@@ -19,8 +19,8 @@ export async function generateMetadata({
     : "Freelance Web Developer Paris | Custom Websites & Apps | L'Echoppe du Code"
 
   const description = isFr
-    ? 'Développeur web freelance basé en Île-de-France. Création de sites vitrines, e-commerce et applications web sur-mesure. Code propre et performant, avec 1 an de maintenance technique incluse.'
-    : 'Paris-based freelance web developer. Custom websites, e-commerce and tailored web applications. Clean, performant code with 1 year of technical maintenance included.'
+    ? "Développeur web freelance basé en Île-de-France. Cadrage de projet à partir de 290 € HT, sites vitrines, e-commerce et applications web sur-mesure. Code propre, performant et livré avec ses sources."
+    : 'Paris-based freelance web developer. Project scoping from €290, custom websites, e-commerce and tailored web applications. Clean, performant code, delivered with its sources.'
 
   const keywords = isFr
     ? 'création site internet freelance, développeur web Paris, site vitrine sur-mesure, e-commerce freelance, application web sur-mesure, Next.js, développeur indépendant Île-de-France'
@@ -68,7 +68,7 @@ const jsonLd = {
   '@type': 'ProfessionalService',
   name: "L'Echoppe du Code",
   description:
-    'Développeur web freelance basé en Île-de-France. Création de sites vitrines, e-commerce et applications web sur-mesure. Code propre et performant, avec 1 an de maintenance technique incluse.',
+    "Développeur web freelance basé en Île-de-France. Cadrage de projet, création de sites vitrines, e-commerce et applications web sur-mesure. Code propre et performant, livré avec ses sources. Un an de mises à jour de sécurité inclus sur les forfaits E-commerce et Sur-Mesure.",
   url: 'https://lechoppeducode.com',
   email: 'contact@lechoppeducode.com',
   image: 'https://lechoppeducode.com/og-image.png',
@@ -214,6 +214,15 @@ export default async function RootLayout({
             besoin d'une URL stable pour charger les mêmes @font-face, ce qu'un
             import bundlé au nom haché ne permet pas. */}
         <link rel="stylesheet" href="/fonts.css" />
+        {/* Rend llms.txt découvrable autrement qu'en devinant son adresse.
+            La convention est encore peu suivie par les robots ; le lien coûte
+            une ligne et ne fait de mal à personne. */}
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="/llms.txt"
+          title="Résumé du site au format Markdown"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
