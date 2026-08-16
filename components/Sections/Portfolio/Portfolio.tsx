@@ -89,7 +89,7 @@ export default function Portfolio({ dict }: Props) {
         '/images/recette-auxptitspois.png',
         '/images/abonnement-auxptitspois.png',
       ],
-      url: 'https://github.com/B-ludovic/amap-website',
+      url: 'https://www.auxptitspois.fr/',
     },
     {
       number: '05',
