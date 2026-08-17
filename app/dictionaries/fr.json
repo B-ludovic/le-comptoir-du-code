@@ -39,7 +39,7 @@
     "design_note": "Quand le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique. Le nombre de jours est fixé par le cadrage.",
     "cta": "Réserver un cadrage",
     "terms_link": "Conditions de la prestation",
-    "vat_notice": "Le cadrage n’est pas déduit du développement : le dossier vous appartient."
+    "vat_notice": "Le dossier vous appartient dans tous les cas. En cas de signature d’un devis de développement dans les trois mois, 50 % du cadrage viennent en déduction."
   },
   "solutions": {
     "eyebrow": "Choisissez votre niveau d'ambition.",
@@ -133,6 +133,7 @@
   },
   "footer": {
     "copyright": "© 2026 L'Echoppe du Code. Tous droits réservés.",
+    "faq": "Questions Fréquentes",
     "legal": "Mentions Légales",
     "privacy": "Politique de Confidentialité",
     "cookies": "Gestion des Cookies",

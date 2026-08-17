@@ -31,6 +31,7 @@ export async function generateMetadata({
       languages: {
         fr: `${BASE_URL}/fr/echoppe-solidaire`,
         en: `${BASE_URL}/en/echoppe-solidaire`,
+        'x-default': `${BASE_URL}/fr/echoppe-solidaire`,
       },
     },
   }

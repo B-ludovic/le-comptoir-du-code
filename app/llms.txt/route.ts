@@ -1,4 +1,33 @@
-# L'Echoppe du Code
+import { getAllPosts, type PostMeta } from '@/lib/blog'
+import { BASE_URL } from '@/lib/structured-data'
+
+export const dynamic = 'force-static'
+
+function postLines(locale: string): string {
+  return getAllPosts(locale)
+    .map(
+      (post: PostMeta) =>
+        `- ${BASE_URL}/${locale}/blog/${post.slug} — ${post.title} (${post.date})`,
+    )
+    .join('\n')
+}
+
+const legalPages = [
+  ['conditions-cadrage', 'Conditions générales de la prestation de cadrage', 'Terms of the scoping engagement'],
+  ['conditions-generales', 'Conditions générales de vente et de prestation', 'Terms and conditions of sale'],
+  ['mentions-legales', 'Mentions légales', 'Legal notice'],
+  ['politique-de-confidentialite', 'Politique de confidentialité', 'Privacy policy'],
+  ['gestion-des-cookies', 'Gestion des cookies', 'Cookie settings'],
+] as const
+
+function legalLines(locale: 'fr' | 'en'): string {
+  return legalPages
+    .map(([slug, fr, en]) => `- ${BASE_URL}/${locale}/${slug} — ${locale === 'fr' ? fr : en}`)
+    .join('\n')
+}
+
+function body(): string {
+  return `# L'Echoppe du Code
 
 > Développeur web indépendant à Paris / Île-de-France — cadrage de projet, sites vitrines, e-commerce et applications sur-mesure.
 
@@ -15,7 +44,9 @@ Statut : entrepreneur-salarié hébergé par Jump Green (SIRET 97761078100014, R
 - **Cadrage Architecture Métier — 1 190 € HT** — Atelier et dossier d'architecture pour une application métier : modèle de données, back-office, rôles et permissions, sécurité, modèle économique.
 - **Conception produit — 650 € HT par jour** — Lorsque le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique.
 
-Conditions détaillées : https://lechoppeducode.com/fr/conditions-cadrage
+Imputation : lorsque le client signe un devis de développement dans les trois mois suivant la remise du dossier, 50 % du montant HT réglé au titre du cadrage viennent en déduction du prix du développement. L'imputation ne s'applique ni à la conception produit facturée à la journée, ni aux heures d'atelier complémentaires.
+
+Conditions détaillées : ${BASE_URL}/fr/conditions-cadrage
 
 ## Développement
 
@@ -23,7 +54,7 @@ Conditions détaillées : https://lechoppeducode.com/fr/conditions-cadrage
 - **L'E-commerce & Réservation — à partir de 2 850 € HT** — Boutique en ligne ou système de réservation. Un an de mises à jour de sécurité inclus, puis 85 € HT/mois.
 - **Les Outils Sur-Mesure — à partir de 4 800 € HT** — Application métier, tableau de bord, outil interne. Un an de mises à jour de sécurité inclus, puis à partir de 165 € HT/mois.
 
-Conditions détaillées : https://lechoppeducode.com/fr/conditions-generales
+Conditions détaillées : ${BASE_URL}/fr/conditions-generales
 
 ## L'Échoppe Solidaire — tarification associative
 
@@ -58,36 +89,23 @@ Paris et Île-de-France en présentiel, reste de la France et international à d
 
 ## Contact
 
-- Site : https://lechoppeducode.com
+- Site : ${BASE_URL}
 - Email : contact@lechoppeducode.com
 - GitHub : https://github.com/B-ludovic
 
 ## Pages
 
-- https://lechoppeducode.com/fr — Page d'accueil (français)
-- https://lechoppeducode.com/en — Homepage (English)
-- https://lechoppeducode.com/fr/echoppe-solidaire — L'Échoppe Solidaire, tarification associative (français)
-- https://lechoppeducode.com/en/echoppe-solidaire — L'Échoppe Solidaire, non-profit pricing (English)
-- https://lechoppeducode.com/fr/conditions-cadrage — Conditions générales de la prestation de cadrage
-- https://lechoppeducode.com/fr/conditions-generales — Conditions générales de vente et de prestation
-- https://lechoppeducode.com/fr/mentions-legales — Mentions légales
-- https://lechoppeducode.com/fr/politique-de-confidentialite — Politique de confidentialité
-- https://lechoppeducode.com/fr/gestion-des-cookies — Gestion des cookies
+- ${BASE_URL}/fr — Page d'accueil
+- ${BASE_URL}/fr/echoppe-solidaire — L'Échoppe Solidaire, tarification associative
+- ${BASE_URL}/fr/faq — Questions fréquentes : prix, propriété du code, paiement, maintenance, tarif associatif
+${legalLines('fr')}
 
 ## Le Carnet (blog)
 
 Articles pratiques sur la création de site internet, le coût réel des plateformes et l'artisanat numérique.
 
-- https://lechoppeducode.com/fr/blog — Le Carnet (français)
-- https://lechoppeducode.com/en/blog — Journal (English)
-- https://lechoppeducode.com/fr/blog/wix-vs-freelance-vrai-cout-5-ans — Wix, Framer, IA : le vrai coût de votre site en 2026
-- https://lechoppeducode.com/en/blog/wix-vs-freelance-real-cost-5-years — Wix, Framer, AI: the real cost of your website in 2026
-- https://lechoppeducode.com/fr/blog/budget-developpeur-freelance-ce-que-vous-pouvez-exiger — Ce que votre budget permet vraiment de construire en 2026
-- https://lechoppeducode.com/en/blog/what-your-budget-can-really-build-2026 — What your budget can really build in 2026
-- https://lechoppeducode.com/fr/blog/anatomie-site-low-cost-dette-technique — Anatomie d'un site à 300 € : ce que vous trouverez sous le capot 6 mois plus tard
-- https://lechoppeducode.com/en/blog/anatomy-cheap-website-technical-debt — Anatomy of a €300 website: what you'll find under the hood 6 months later
-- https://lechoppeducode.com/fr/blog/confessions-createur-de-bugs — Confessions d'un créateur de bugs : l'enfer du « dernier pour cent »
-- https://lechoppeducode.com/en/blog/confessions-bug-creator-last-percent — Confessions of a bug creator: the hell of the last percent
+- ${BASE_URL}/fr/blog — Le Carnet, sommaire
+${postLines('fr')}
 
 ---
 
@@ -105,6 +123,8 @@ An optional first step, billed separately, for projects that are not yet defined
 - **E-commerce & business scoping — €590** — Workshop and written report: sales funnel, payment provider, workflows, e-commerce GDPR compliance.
 - **Business architecture scoping — €1,190** — Workshop and architecture report: data model, back office, roles and permissions, security, business model.
 - **Product design — €650 per day** — When the product is still to be invented: features, business rules, content structure, business model.
+
+Set-off: where the client signs a development quote within three months of the scoping report being delivered, 50 % of the amount paid for the scoping engagement is set off against the development price. The set-off covers neither product design billed by the day nor additional workshop hours.
 
 ## Development
 
@@ -125,6 +145,32 @@ Maintenance for non-profits follows a dedicated solidarity rate: it is not autom
 
 ## Contact
 
-- Website: https://lechoppeducode.com/en
+- Website: ${BASE_URL}/en
 - Email: contact@lechoppeducode.com
 - GitHub: https://github.com/B-ludovic
+- Portfolio: https://b-ludovic.dev
+
+## Pages
+
+- ${BASE_URL}/en — Homepage
+- ${BASE_URL}/en/echoppe-solidaire — L'Échoppe Solidaire, non-profit pricing
+- ${BASE_URL}/en/faq — Frequently asked questions: pricing, code ownership, payment, maintenance, non-profit rates
+${legalLines('en')}
+
+## Journal (blog)
+
+Practical articles on building a website, the real cost of website platforms and digital craftsmanship.
+
+- ${BASE_URL}/en/blog — Journal, index
+${postLines('en')}
+`
+}
+
+export function GET() {
+  return new Response(body(), {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400',
+    },
+  })
+}

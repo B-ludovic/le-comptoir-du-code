@@ -29,6 +29,7 @@ export async function generateMetadata({
       languages: {
         fr: `${BASE_URL}/fr/${slug}`,
         en: `${BASE_URL}/en/${slug}`,
+        'x-default': `${BASE_URL}/fr/${slug}`,
       },
     },
   }
@@ -45,6 +46,11 @@ const articles = {
       title: "2. Formation du contrat et paiement",
       content:
         "La prestation débute à réception du devis daté, signé et portant la mention \"Bon pour accord\", accompagné du règlement dû à la commande. Aucune date d'atelier n'est réservée avant réception de ce règlement.\n\nPour les paliers 01 et 02, le règlement intégral du montant HT, majoré de la TVA applicable, est exigible à la commande. Pour le palier 03 ainsi que pour les prestations de conception produit, 50 % du montant HT sont exigibles à la commande et le solde à la remise du dossier, payable sous quinze (15) jours. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel indiqué sur la facture.\n\nLes sommes versées d'avance constituent un acompte, et non des arrhes au sens de l'article 1590 du code civil. Elles engagent définitivement les deux parties et valent réservation du créneau d'atelier.",
+    },
+    {
+      title: "2 bis. Imputation en cas de poursuite en développement",
+      content:
+        "La prestation de cadrage est autonome et due en totalité, quelle que soit la suite que le Client décide de lui donner. Le dossier lui appartient dans les conditions de l'article 7 et il demeure libre d'en confier la réalisation au prestataire de son choix.\n\nLorsque le Client signe auprès du Prestataire un devis de développement dans un délai de trois (3) mois à compter de la remise du dossier, cinquante pour cent (50 %) du montant HT effectivement réglé au titre du cadrage s'imputent sur le prix HT de cette prestation de développement, dans les conditions prévues à l'article 4 bis des conditions générales de prestation de services.\n\nCette imputation suppose le paiement intégral préalable du cadrage. Elle s'applique une seule fois par dossier, ne peut donner lieu à aucun remboursement et ne concerne ni les prestations de conception produit facturées à la journée, ni les heures d'atelier complémentaires visées à l'article 10.",
     },
     {
       title: "3. Faculté de rétractation du Client professionnel (article L221-3)",
@@ -112,6 +118,11 @@ const articles = {
       title: "2. Contract Formation and Payment",
       content:
         "The service begins upon receipt of the quote — dated, signed and bearing the handwritten note \"Bon pour accord\" — together with the payment due on order. No workshop date is reserved before that payment is received.\n\nFor tiers 01 and 02, the full amount excl. VAT, plus applicable VAT, is due on order. For tier 03 and for product design services, 50% of the amount excl. VAT is due on order and the balance upon delivery of the report, payable within fifteen (15) days. Payment is made exclusively by bank transfer to the professional account indicated on the invoice.\n\nSums paid in advance constitute a deposit (acompte), not arrhes within the meaning of Article 1590 of the French Civil Code. They bind both parties definitively and secure the workshop slot.",
+    },
+    {
+      title: "2 bis. Set-Off Where the Project Proceeds to Development",
+      content:
+        "The scoping engagement stands on its own and is payable in full, whatever the Client decides to do next. The report belongs to the Client under the terms of Article 7, and the Client remains free to have it carried out by the provider of their choice.\n\nWhere the Client signs a development quote with the Service Provider within three (3) months of the delivery of the report, fifty per cent (50%) of the amount actually paid, excluding VAT, in respect of the scoping engagement is set off against the price, excluding VAT, of those development services, under the terms of Article 4 bis of the general terms and conditions of service.\n\nThe set-off is subject to prior payment in full of the scoping engagement. It applies once per report, may not give rise to any refund, and covers neither product design services billed by the day nor the additional workshop hours referred to in Article 10.",
     },
     {
       title: "3. Professional Client's Right of Withdrawal (Article L221-3)",

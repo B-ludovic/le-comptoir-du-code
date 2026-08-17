@@ -42,22 +42,38 @@ export async function generateMetadata({
   const { locale, slug } = await params
   const post = getPost(slug, locale)
   if (!post) return {}
+
+  const frSlug = locale === 'fr' ? slug : (post.alternate_slug ?? slug)
+  const image = `${BASE_URL}${post.coverImage ?? '/og-image.png'}`
+
   return {
     title: `${post.title} | L'Echoppe du Code`,
     description: post.description,
+    authors: [{ name: 'Ludovic BATAILLE' }],
     alternates: {
       canonical: `${BASE_URL}/${locale}/blog/${slug}`,
       languages: {
-        fr: `${BASE_URL}/fr/blog/${locale === 'fr' ? slug : (post.alternate_slug ?? slug)}`,
+        fr: `${BASE_URL}/fr/blog/${frSlug}`,
         en: `${BASE_URL}/en/blog/${locale === 'en' ? slug : (post.alternate_slug ?? slug)}`,
+        'x-default': `${BASE_URL}/fr/blog/${frSlug}`,
       },
     },
     openGraph: {
       title: post.title,
       description: post.description,
+      siteName: "L'Echoppe du Code",
+      locale: locale === 'en' ? 'en_US' : 'fr_FR',
       type: 'article',
       publishedTime: post.date,
+      authors: ['Ludovic BATAILLE'],
       url: `${BASE_URL}/${locale}/blog/${slug}`,
+      images: [{ url: image, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: [image],
     },
   }
 }

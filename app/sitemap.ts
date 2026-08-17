@@ -77,6 +77,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   )
 
+  const faqRoutes = locales.map((locale) => ({
+    url: `${BASE_URL}/${locale}/faq`,
+    lastModified: CONTENT_LAST_REVIEWED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+    alternates: withAlternates('/faq'),
+  }))
+
   const solidaireRoutes = locales.map((locale) => ({
     url: `${BASE_URL}/${locale}/echoppe-solidaire`,
     lastModified: CONTENT_LAST_REVIEWED,
@@ -85,5 +93,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: withAlternates('/echoppe-solidaire'),
   }))
 
-  return [...homepages, ...solidaireRoutes, ...blogListings, ...blogArticles, ...legalRoutes]
+  return [
+    ...homepages,
+    ...solidaireRoutes,
+    ...faqRoutes,
+    ...blogListings,
+    ...blogArticles,
+    ...legalRoutes,
+  ]
 }

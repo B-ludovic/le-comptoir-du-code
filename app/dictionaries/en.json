@@ -39,7 +39,7 @@
     "design_note": "For projects still to be invented: features, business rules, content structure, economic model. The number of days is set by the scoping work.",
     "cta": "Book a scoping session",
     "terms_link": "Terms of service",
-    "vat_notice": "Scoping is not deducted from development: the report is yours."
+    "vat_notice": "The report is yours in every case. Where a development quote is signed within three months, 50 % of the scoping fee is set off against it."
   },
   "solutions": {
     "eyebrow": "Scale your ambition.",
@@ -133,6 +133,7 @@
   },
   "footer": {
     "copyright": "© 2026 L'Echoppe du Code. All rights reserved.",
+    "faq": "FAQ",
     "legal": "Legal Notice",
     "privacy": "Privacy Policy",
     "cookies": "Cookie Policy",

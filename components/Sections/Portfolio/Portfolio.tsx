@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './Portfolio.module.css'
 import ProjectCarousel from './ProjectCarousel'
+import { portfolioJsonLd } from '@/lib/structured-data'
 
 type Project = {
   number: string
@@ -13,6 +14,7 @@ type Project = {
 }
 
 type Props = {
+  locale: string
   dict: {
     eyebrow: string
     section_title: string
@@ -35,7 +37,7 @@ type Props = {
   }
 }
 
-export default function Portfolio({ dict }: Props) {
+export default function Portfolio({ locale, dict }: Props) {
   const projects: Project[] = [
     {
       number: '01',
@@ -107,6 +109,12 @@ export default function Portfolio({ dict }: Props) {
 
   return (
     <section id="portfolio" className={styles.section}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(portfolioJsonLd(projects, locale)),
+        }}
+      />
       <div className="container">
         <div className={styles.header}>
           <div className={styles.headerLeft}>

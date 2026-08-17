@@ -29,6 +29,7 @@ export async function generateMetadata({
       languages: {
         fr: `${BASE_URL}/fr/blog`,
         en: `${BASE_URL}/en/blog`,
+        'x-default': `${BASE_URL}/fr/blog`,
       },
     },
   }

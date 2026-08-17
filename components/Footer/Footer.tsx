@@ -10,6 +10,7 @@ type Props = {
   locale: string
   dict: {
     copyright: string
+    faq: string
     legal: string
     privacy: string
     cookies: string
@@ -22,6 +23,7 @@ export default function Footer({ locale, dict }: Props) {
   const pathname = usePathname()
 
   const legalLinks = [
+    { href: `/${locale}/faq`, label: dict.faq },
     { href: `/${locale}/mentions-legales`, label: dict.legal },
     { href: `/${locale}/politique-de-confidentialite`, label: dict.privacy },
     { href: `/${locale}/gestion-des-cookies`, label: dict.cookies },

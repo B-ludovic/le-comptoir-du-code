@@ -29,6 +29,7 @@ export async function generateMetadata({
       languages: {
         fr: `${BASE_URL}/fr/${slug}`,
         en: `${BASE_URL}/en/${slug}`,
+        'x-default': `${BASE_URL}/fr/${slug}`,
       },
     },
   }
@@ -70,6 +71,11 @@ const articles = {
       title: "4. Tarifs et Modalités de paiement",
       content:
         "Les prix figurant sur les devis sont indiqués en euros et Hors Taxes (HT). La Taxe sur la Valeur Ajoutée (TVA) au taux en vigueur s'applique en sus. Le solde de la facture est exigible à la livraison du projet (mise en ligne ou livraison du code source), avec un délai de paiement maximum de 15 jours à compter de la date d'émission de la facture. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel du Prestataire indiqué sur la facture.",
+    },
+    {
+      title: "4 bis. Imputation de la prestation de cadrage",
+      content:
+        "Lorsque le Client a fait réaliser par le Prestataire une prestation de cadrage et qu'il signe un devis de développement dans un délai de trois (3) mois à compter de la remise du dossier de cadrage, cinquante pour cent (50 %) du montant HT effectivement réglé au titre de ce cadrage s'imputent sur le prix HT de la prestation de développement.\n\nL'imputation est mentionnée sur le devis de développement et vient en diminution du solde exigible à la livraison. Elle ne peut donner lieu à aucun remboursement, ni excéder le montant de ce solde, ni être cédée à un tiers.\n\nLe bénéfice de cette imputation suppose le paiement intégral préalable de la prestation de cadrage. Elle s'applique une seule fois par dossier de cadrage et ne concerne ni les prestations de conception produit facturées à la journée, ni les heures d'atelier complémentaires, lesquelles demeurent dues en totalité.\n\nPassé le délai de trois (3) mois courant à compter de la remise du dossier, la prestation de cadrage demeure intégralement acquise au Prestataire, sans imputation possible.",
     },
     {
       title: "5. Retard de paiement",
@@ -147,6 +153,11 @@ const articles = {
       title: "4. Pricing and Payment Terms",
       content:
         "Prices on quotes are listed in euros, excluding VAT (HT). Value-Added Tax at the current applicable rate is added on top. The remaining balance is due upon delivery of the project (website launch or source code handover), with a maximum payment term of 15 days from the invoice issue date. Payments must be made exclusively by bank transfer to the professional account indicated on the invoice.",
+    },
+    {
+      title: "4 bis. Set-Off of the Scoping Engagement",
+      content:
+        "Where the Client has commissioned a scoping engagement from the Service Provider and signs a development quote within three (3) months of the delivery of the scoping report, fifty per cent (50%) of the amount actually paid, excluding VAT, in respect of that scoping engagement is set off against the price, excluding VAT, of the development services.\n\nThe set-off is stated on the development quote and applied as a reduction of the balance due on delivery. It may not give rise to any refund, exceed the amount of that balance, or be assigned to a third party.\n\nEntitlement to the set-off is subject to prior payment in full of the scoping engagement. It applies once per scoping report and covers neither product design services billed by the day nor additional workshop hours, which remain payable in full.\n\nAfter the three (3) month period running from delivery of the report, the scoping engagement remains fully acquired by the Service Provider, with no set-off available.",
     },
     {
       title: "5. Late Payment",

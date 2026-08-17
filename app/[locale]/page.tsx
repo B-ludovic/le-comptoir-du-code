@@ -31,7 +31,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <Solutions dict={dict.solutions} />
 
       {/* Section 4 — Réalisations */}
-      <Portfolio dict={dict.portfolio} />
+      <Portfolio locale={locale} dict={dict.portfolio} />
 
       {/* Section 5 — Le Codeur */}
       <About dict={dict.about} />
