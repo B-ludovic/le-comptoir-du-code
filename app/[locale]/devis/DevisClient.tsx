@@ -24,6 +24,7 @@ const defaultData: DevisData = {
   maintenance_option: 'none',
   maintenance_rate: '',
   infra_rate: '',
+  cadrage_paid: '',
   client_type: 'standard',
   devis_locale: 'fr',
   prestation_type: 'dev',

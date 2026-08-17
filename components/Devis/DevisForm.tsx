@@ -21,7 +21,7 @@ const FORFAITS = [
       amount: '1450',
     } as Service,
     maintenance_option: 'none' as const,
-    maintenance_rate: '80\u00A0\u20AC\u2060/\u2060mois',
+    maintenance_rate: '70\u00A0\u20AC HT\u2060/\u2060mois',
     prestation_type: 'dev' as const,
   },
   {
@@ -34,7 +34,7 @@ const FORFAITS = [
       amount: '2850',
     } as Service,
     maintenance_option: 'offered' as const,
-    maintenance_rate: '100\u00A0\u20AC\u2060/\u2060mois',
+    maintenance_rate: '85\u00A0\u20AC HT\u2060/\u2060mois',
     prestation_type: 'dev' as const,
   },
   {
@@ -47,7 +47,7 @@ const FORFAITS = [
       amount: '4800',
     } as Service,
     maintenance_option: 'offered' as const,
-    maintenance_rate: '165\u00A0\u20AC\u2060/\u2060mois HT',
+    maintenance_rate: '165\u00A0\u20AC HT\u2060/\u2060mois',
     prestation_type: 'dev' as const,
   },
   {
@@ -121,6 +121,7 @@ export type DevisData = {
   maintenance_option: 'none' | 'offered' | 'paid'
   maintenance_rate: string
   infra_rate: string
+  cadrage_paid: string
   client_type: 'standard' | 'association'
   devis_locale: 'fr' | 'en'
   /* Échéancier applicable — dépend du contrat dont relève la prestation.
@@ -148,7 +149,7 @@ function Field({ label, value, onChange, type = 'text', placeholder }: {
       <input
         type={type}
         className={styles.input}
-        value={value}
+        value={value ?? ''}
         placeholder={placeholder}
         onChange={e => onChange(e.target.value)}
       />
@@ -167,7 +168,7 @@ function TextareaField({ label, value, onChange, placeholder }: {
       <label className={styles.label}>{label}</label>
       <textarea
         className={styles.textarea}
-        value={value}
+        value={value ?? ''}
         placeholder={placeholder}
         onChange={e => onChange(e.target.value)}
         rows={1}
@@ -275,6 +276,15 @@ export default function DevisForm({ data, onChange }: Props) {
         </div>
         <TextareaField label="Adresse & Objet" value={data.client_address} onChange={v => set('client_address', v)} />
         <TextareaField label="Description du projet" value={data.project_description} onChange={v => set('project_description', v)} />
+        {data.prestation_type === 'dev' && (
+          <Field
+            label="Cadrage déjà réglé (€ HT) — 50 % imputés"
+            value={data.cadrage_paid}
+            onChange={v => set('cadrage_paid', v)}
+            type="number"
+            placeholder="0"
+          />
+        )}
       </section>
 
       {data.services.map((service, index) => (
@@ -311,8 +321,8 @@ export default function DevisForm({ data, onChange }: Props) {
                 onChange={e => set('maintenance_option', e.target.value as DevisData['maintenance_option'])}
               >
                 <option value="none">Aucune</option>
-                <option value="offered">Année 1 offerte — puis {data.maintenance_rate}/mois</option>
-                <option value="paid">Année 1 facturée à {data.maintenance_rate}/mois</option>
+                <option value="offered">Année 1 offerte — puis {data.maintenance_rate}</option>
+                <option value="paid">Année 1 facturée à {data.maintenance_rate}</option>
               </select>
             </div>
           )}

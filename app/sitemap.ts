@@ -16,7 +16,7 @@ const legalPages = [
    `new Date()` renverrait la date du build : le sitemap annoncerait alors une
    modification à chaque déploiement, y compris pour des pages inchangées. Un
    signal de fraîcheur qui se déclenche tout le temps ne signale plus rien. */
-const CONTENT_LAST_REVIEWED = new Date('2026-07-31')
+const CONTENT_LAST_REVIEWED = new Date('2026-08-17')
 
 /* hreflang dans le sitemap : indique aux moteurs que /fr et /en sont deux
    versions de la même page et non deux pages concurrentes. */

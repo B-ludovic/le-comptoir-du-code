@@ -41,7 +41,7 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Combien coûte un site internet sur-mesure ?',
       answer: [
-        "Un site vitrine démarre à 1 450 € HT, une boutique en ligne ou un système de réservation à 2 850 € HT, une application métier à 4 800 € HT. Le cadrage préalable, quand le projet en a besoin, va de 290 € à 1 190 € HT et se facture séparément.",
+        "Un site vitrine démarre à 1 450 € HT, une boutique en ligne ou un système de réservation à 2 850 € HT, une application métier à 4 800 € HT. Le cadrage préalable, quand le projet en a besoin, va de 290 € à 1 190 € HT et se facture séparément.",
         "Ces montants sont des planchers, pas des étiquettes. Un devis se construit une fois qu'on sait ce qu'on construit — c'est précisément le rôle du cadrage.",
       ],
     },
@@ -78,28 +78,28 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Comment se passe le paiement ?',
       answer: [
-        "Un acompte de 30 % du montant HT à la signature du devis, le solde de 70 % à la mise en ligne. Règlement par virement bancaire uniquement, sous quinze jours à compter de l'émission de la facture. Tous les prix sont indiqués hors taxes ; la TVA au taux en vigueur s'ajoute.",
+        "Un acompte de 30 % du montant HT à la signature du devis, le solde de 70 % à la mise en ligne. Règlement par virement bancaire uniquement, sous quinze jours à compter de l'émission de la facture. Tous les prix sont indiqués hors taxes ; la TVA au taux en vigueur s'ajoute.",
         "La production ne démarre qu'à réception du devis signé et de l'acompte. Cet acompte réserve le temps d'atelier qui vous est alloué : il n'est pas remboursable.",
       ],
     },
     {
       question: 'Qui émet le devis et la facture ?',
       answer: [
-        "La société de portage salarial JUMP GREEN (SAS), immatriculée au RCS de Bobigny sous le numéro 977 610 781, TVA FR10 977 610 781. Je suis salarié porté : vous contractez avec une structure établie, avec toutes les garanties qui vont avec.",
+        "La société de portage salarial JUMP GREEN (SAS), immatriculée au RCS de Bobigny sous le numéro 977 610 781, TVA FR10 977 610 781. Je suis salarié porté : vous contractez avec une structure établie, avec toutes les garanties qui vont avec.",
         "Concrètement, rien ne change pour vous côté interlocuteur. Le devis porte l'en-tête de Jump Green, mais c'est la même personne qui vous répond, du premier atelier à la mise en ligne.",
       ],
     },
     {
       question: 'Que couvre exactement la maintenance ?',
       answer: [
-        "Les mises à jour de sécurité et la correction des bugs bloquants liés au code que j'ai livré. Douze mois sont inclus sur les forfaits E-commerce et Sur-Mesure, puis 85 € HT/mois pour l'E-commerce et à partir de 165 € HT/mois pour le Sur-Mesure. Pour un site vitrine, c'est une option à 70 € HT/mois.",
+        "Les mises à jour de sécurité et la correction des bugs bloquants liés au code que j'ai livré. Douze mois sont inclus sur les forfaits E-commerce et Sur-Mesure, puis 85 € HT/mois pour l'E-commerce et à partir de 165 € HT/mois pour le Sur-Mesure. Pour un site vitrine, c'est une option à 70 € HT/mois.",
         "Elle ne couvre pas les nouvelles fonctionnalités, les changements de contenu ni les refontes de design : ce sont des chantiers, pas de l'entretien. Les coûts d'hébergement, de nom de domaine et de services tiers restent à votre charge directe. Le contrat mensuel se résilie à tout moment avec un mois de préavis, sans pénalité.",
       ],
     },
     {
       question: 'Mon association peut-elle bénéficier du tarif solidaire ?',
       answer: [
-        "Oui, avec un mécénat de compétences de 50 % sur les forfaits de développement : le site vitrine passe à 725 € HT, l'e-commerce ou la collecte de dons à 1 425 € HT, le cadrage à 145 € HT. L'offre s'adresse aux structures à but non lucratif reconnues, en priorité LGBTQI+.",
+        "Oui, avec un mécénat de compétences de 50 % sur les forfaits de développement : le site vitrine passe à 725 € HT, l'e-commerce ou la collecte de dons à 1 425 € HT, le cadrage à 145 € HT. L'offre s'adresse aux structures à but non lucratif reconnues, en priorité LGBTQI+.",
         "Il faut fournir avant la signature un récépissé de déclaration en préfecture, des statuts enregistrés ou un extrait du RNA. La maintenance suit un barème solidaire dédié — pas la moitié du tarif standard, mais très en dessous du marché. L'exigence technique, elle, ne bouge pas d'un millimètre.",
       ],
     },
@@ -159,14 +159,14 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'How does payment work?',
       answer: [
-        'A 30 % deposit on the pre-VAT amount when the quote is signed, the remaining 70 % on go-live. Payment by bank transfer only, within fifteen days of the invoice date. All prices exclude VAT, which is added at the applicable rate.',
+        'A 30 % deposit on the pre-VAT amount when the quote is signed, the remaining 70 % on go-live. Payment by bank transfer only, within fifteen days of the invoice date. All prices exclude VAT, which is added at the applicable rate.',
         'Production starts only once the signed quote and the deposit are both in. That deposit reserves the workshop time set aside for you, and is non-refundable.',
       ],
     },
     {
       question: 'Who issues the quote and the invoice?',
       answer: [
-        'JUMP GREEN (SAS), an umbrella employment company registered with the Bobigny Trade & Companies Register under no. 977 610 781, VAT FR10 977 610 781. I work under a portage salarial contract, so you contract with an established company and every guarantee that comes with it.',
+        'JUMP GREEN (SAS), an umbrella employment company registered with the Bobigny Trade & Companies Register under no. 977 610 781, VAT FR10 977 610 781. I work under a portage salarial contract, so you contract with an established company and every guarantee that comes with it.',
         'In practice nothing changes on your side. The quote carries the Jump Green letterhead, but the same person answers you, from the first workshop to go-live.',
       ],
     },
@@ -180,7 +180,7 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Can my non-profit get the solidarity rate?',
       answer: [
-        'Yes, with 50 % skills sponsorship on development packages: a marketing website drops to €725, an online shop or donation platform to €1,425, scoping to €145. The offer is for registered non-profits, with priority given to LGBTQI+ organisations.',
+        'Yes, with 50 % skills sponsorship on development packages: a marketing website drops to €725, an online shop or donation platform to €1,425, scoping to €145. The offer is for registered non-profits, with priority given to LGBTQI+ organisations.',
         'Proof of registration must be provided before signing. Maintenance follows a dedicated solidarity scale — not half the standard rate, but well below market. The technical standard does not move an inch.',
       ],
     },

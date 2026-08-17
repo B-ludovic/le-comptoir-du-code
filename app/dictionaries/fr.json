@@ -17,7 +17,7 @@
     "block2_title": "L'arrière-boutique.",
     "block2_text": "Je conçois et je code. Vous continuez à gérer votre entreprise sans perdre de temps dans des réunions interminables. L'avancement est factuel.",
     "block3_title": "La livraison.",
-    "block3_text": "Un outil testé, sécurisé, et qui vous appartient à 100 %. Je vous forme à son utilisation et je m'efface."
+    "block3_text": "Un outil testé, sécurisé, et qui vous appartient à 100 %. Je vous forme à son utilisation et je m'efface."
   },
   "scoping": {
     "eyebrow": "Le préalable",
@@ -25,21 +25,21 @@
     "intro": "Un projet mal cadré coûte toujours plus cher à réparer qu'à concevoir. Avant la première ligne de code, on décide de l'architecture, du périmètre, de la conformité et du modèle économique. Vous repartez avec un dossier qui vous appartient — exécutable par n'importe quel développeur, y compris un autre que moi.",
     "tier1_title": "Cadrage Vitrine",
     "tier1_label": "Site vitrine",
-    "tier1_price": "290 €",
+    "tier1_price": "290 €",
     "tier2_title": "Cadrage E-commerce & Business",
     "tier2_label": "Vente & comptes",
-    "tier2_price": "590 €",
+    "tier2_price": "590 €",
     "tier3_title": "Cadrage Architecture Métier",
     "tier3_label": "Application métier",
-    "tier3_price": "1 190 €",
+    "tier3_price": "1 190 €",
     "condition": "Facultatif pour un site vitrine. Nécessaire dès qu’il y a des comptes utilisateurs, du paiement en ligne ou des données sensibles : je ne peux pas chiffrer sérieusement sans.",
     "design_title": "Conception produit",
-    "design_price": "650 €",
+    "design_price": "650 €",
     "design_unit": "/ jour",
     "design_note": "Quand le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique. Le nombre de jours est fixé par le cadrage.",
     "cta": "Réserver un cadrage",
     "terms_link": "Conditions de la prestation",
-    "vat_notice": "Le dossier vous appartient dans tous les cas. En cas de signature d’un devis de développement dans les trois mois, 50 % du cadrage viennent en déduction."
+    "vat_notice": "Le dossier vous appartient dans tous les cas. En cas de signature d’un devis de développement dans les trois mois, 50 % du cadrage viennent en déduction."
   },
   "solutions": {
     "eyebrow": "Choisissez votre niveau d'ambition.",
@@ -47,7 +47,7 @@
     "intro": "Des offres calibrées pour des besoins réels. Pas de devis flou, pas de tarif qui s'envole en cours de route.",
     "card1_title": "La Présence",
     "card1_subtitle": "Site Vitrine",
-    "card1_price": "À partir de 1 450 €",
+    "card1_price": "À partir de 1 450 €",
     "card1_desc": "Un site rapide, optimisé pour les mobiles et conçu pour convertir vos visiteurs en clients.",
     "card1_features": [
       "Design sur-mesure",
@@ -60,7 +60,7 @@
     "card1_delay": "3 à 4 jours",
     "card2_title": "L'E-commerce & Réservation",
     "card2_subtitle": "Vente & Réservation",
-    "card2_price": "À partir de 2 850 €",
+    "card2_price": "À partir de 2 850 €",
     "card2_desc": "Vente en ligne de vos produits (paiements sécurisés Stripe) ou prise de rendez-vous synchronisée avec votre agenda.",
     "card2_features": [
       "Site vitrine inclus",
@@ -73,7 +73,7 @@
     "card2_delay": "7 à 12 jours",
     "card3_title": "Les Outils Sur-Mesure",
     "card3_subtitle": "Applications métiers",
-    "card3_price": "À partir de 4 800 €",
+    "card3_price": "À partir de 4 800 €",
     "card3_desc": "Développement de votre back-office. Tableaux de bord de gestion, suivi des stocks, automatisation de factures PDF.",
     "card3_features": [
       "Base de données complexe",
@@ -85,7 +85,7 @@
     "card3_maintenance": "1 an de mises à jour de sécurité inclus, puis à partir de 165 €⁠/⁠mois HT",
     "card3_delay": "3 semaines et +",
     "cta": "Démarrer ce projet",
-    "vat_notice": "Tous nos tarifs sont indiqués hors taxes. Une TVA de 20 % s'applique en sus."
+    "vat_notice": "Tous nos tarifs sont indiqués hors taxes. Une TVA de 20 % s'applique en sus."
   },
   "portfolio": {
     "eyebrow": "Archives de l'Echoppe.",
@@ -125,10 +125,10 @@
     "field_description_placeholder": "Soyez factuel : quelles sont les fonctionnalités indispensables ?",
     "field_budget": "Enveloppe budgétaire estimée",
     "field_budget_placeholder": "Sélectionner une enveloppe",
-    "budget_scoping": "290 € — 1 190 € (Cadrage / Conception)",
-    "budget_1": "1 450 € — 2 850 € (Site Vitrine)",
-    "budget_2": "2 850 € — 4 800 € (E-commerce / Réservation)",
-    "budget_3": "À partir de 4 800 € (Application Sur-Mesure)",
+    "budget_scoping": "290 € — 1 190 € (Cadrage / Conception)",
+    "budget_1": "1 450 € — 2 850 € (Site Vitrine)",
+    "budget_2": "2 850 € — 4 800 € (E-commerce / Réservation)",
+    "budget_3": "À partir de 4 800 € (Application Sur-Mesure)",
     "btn_submit": "Envoyer la demande"
   },
   "footer": {

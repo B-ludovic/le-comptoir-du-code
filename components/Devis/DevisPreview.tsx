@@ -60,6 +60,8 @@ const T = {
     infraType: 'Client',
     standardHT: 'Tarif standard HT',
     mecenasDiscount: 'Mécénat de compétences (−50 %)',
+    imputationLabel: 'Imputation cadrage (−50 %)',
+    baseHT: 'Base HT',
     subtotal: 'Sous-total HT',
     tva: 'TVA (20 %)',
     total: 'Total TTC',
@@ -72,6 +74,7 @@ const T = {
       dev: {
         rate: 0.3,
         label: 'Développement',
+        imputationNote: '',
         terms: 'Conditions générales de vente et de prestation : lechoppeducode.com/fr/conditions-generales',
         deposit: 'Acompte à la signature (30 %)',
         paymentText: `Acompte de 30 % à la commande (facture d'acompte fournie).<br>Solde de 70 % à la mise en ligne.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
@@ -80,6 +83,7 @@ const T = {
       cadrage_full: {
         rate: 1,
         label: 'Cadrage',
+        imputationNote: "50 % du montant du cadrage s'imputent sur le prix d'un développement signé dans les trois mois suivant la remise du dossier (article 4 bis des conditions générales de prestation de services).",
         terms: 'Conditions générales de la prestation de cadrage : lechoppeducode.com/fr/conditions-cadrage',
         deposit: 'Règlement intégral à la commande',
         paymentText: `Règlement intégral à la commande.<br>Règlement par virement bancaire uniquement.<br>Aucune date d'atelier n'est réservée<br>avant réception du paiement.`,
@@ -88,6 +92,7 @@ const T = {
       cadrage_split: {
         rate: 0.5,
         label: 'Cadrage & Conception',
+        imputationNote: "50 % du montant du cadrage s'imputent sur le prix d'un développement signé dans les trois mois suivant la remise du dossier (article 4 bis des conditions générales de prestation de services).",
         terms: 'Conditions générales de la prestation de cadrage : lechoppeducode.com/fr/conditions-cadrage',
         deposit: 'Acompte à la signature (50 %)',
         paymentText: `Acompte de 50 % à la commande (facture d'acompte fournie).<br>Solde de 50 % à la remise du dossier.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
@@ -129,6 +134,8 @@ const T = {
     infraType: 'Client',
     standardHT: 'Standard rate (excl. VAT)',
     mecenasDiscount: 'Skills sponsorship (−50%)',
+    imputationLabel: 'Scoping set-off (−50%)',
+    baseHT: 'Taxable base (excl. VAT)',
     subtotal: 'Subtotal (excl. VAT)',
     tva: 'VAT (20%)',
     total: 'Total (incl. VAT)',
@@ -141,6 +148,7 @@ const T = {
       dev: {
         rate: 0.3,
         label: 'Development',
+        imputationNote: '',
         terms: 'General terms of sale and service: lechoppeducode.com/en/conditions-generales',
         deposit: 'Deposit upon signing (30%)',
         paymentText: `30% deposit upon order (deposit invoice provided).<br>Balance of 70% upon go-live.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
@@ -149,6 +157,7 @@ const T = {
       cadrage_full: {
         rate: 1,
         label: 'Scoping',
+        imputationNote: '50% of the scoping fee is set off against the price of development services signed within three months of the report being delivered (Article 4 bis of the general terms and conditions of service).',
         terms: 'General terms for scoping services: lechoppeducode.com/en/conditions-cadrage',
         deposit: 'Payment in full upon order',
         paymentText: `Payment in full upon order.<br>Bank transfer only.<br>No workshop date is reserved<br>before payment is received.`,
@@ -157,6 +166,7 @@ const T = {
       cadrage_split: {
         rate: 0.5,
         label: 'Scoping & Product Design',
+        imputationNote: '50% of the scoping fee is set off against the price of development services signed within three months of the report being delivered (Article 4 bis of the general terms and conditions of service).',
         terms: 'General terms for scoping services: lechoppeducode.com/en/conditions-cadrage',
         deposit: 'Deposit upon signing (50%)',
         paymentText: `50% deposit upon order (deposit invoice provided).<br>Balance of 50% upon delivery of the report.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
@@ -175,18 +185,27 @@ const T = {
 function calcTotals(data: DevisData) {
   const isAsso = data.client_type === 'association'
   const locale = data.devis_locale ?? 'fr'
+  const prestation = data.prestation_type ?? 'dev'
   const fullHt = data.services.reduce((sum, s) => sum + (parseFloat(s.amount) || 0), 0)
   const ht = isAsso ? fullHt * 0.5 : fullHt
   const remise = isAsso ? fullHt * 0.5 : 0
-  const tva = ht * 0.20
-  const ttc = ht + tva
+  const imputation =
+    prestation === 'dev'
+      ? Math.min((parseFloat(data.cadrage_paid) || 0) * 0.5, ht)
+      : 0
+  const baseHt = ht - imputation
+  const tva = baseHt * 0.20
+  const ttc = baseHt + tva
   // Le taux d'acompte dépend du contrat : CGV développement ou CGP cadrage.
-  const rate = T[locale].schedules[data.prestation_type ?? 'dev'].rate
+  const rate = T[locale].schedules[prestation].rate
   const acompte = ttc * rate
   return {
     full_ht: fmt(String(fullHt), locale),
     remise: fmt(String(remise), locale),
     total_ht: fmt(String(ht), locale),
+    imputation: fmt(String(imputation), locale),
+    base_ht: fmt(String(baseHt), locale),
+    hasImputation: imputation > 0,
     tva_amount: fmt(String(tva), locale),
     acompte_amount: fmt(String(acompte), locale),
     total_ttc: fmt(String(ttc), locale),
@@ -394,6 +413,8 @@ export default function DevisPreview({ data }: Props) {
       ${totals.isAsso ? `<div class="totaux-line"><span>${t.standardHT}</span><span>${totals.full_ht}</span></div>` : ''}
       ${totals.isAsso ? `<div class="totaux-line remise"><span>${t.mecenasDiscount}</span><span>−${totals.remise}</span></div>` : ''}
       <div class="totaux-line"><span>${t.subtotal}</span><span>${totals.total_ht}</span></div>
+      ${totals.hasImputation ? `<div class="totaux-line remise"><span>${t.imputationLabel}</span><span>−${totals.imputation}</span></div>` : ''}
+      ${totals.hasImputation ? `<div class="totaux-line"><span>${t.baseHT}</span><span>${totals.base_ht}</span></div>` : ''}
       <div class="totaux-line tva"><span>${t.tva}</span><span>${totals.tva_amount}</span></div>
       <div class="totaux-line total"><span>${t.total}</span><span class="amount">${totals.total_ttc}</span></div>
       <div class="totaux-line acompte"><span>${schedule.deposit}</span><span>${totals.acompte_amount}</span></div>
@@ -419,6 +440,7 @@ export default function DevisPreview({ data }: Props) {
     ${totals.isAsso ? `<span class="mecena-badge">${t.mecenaBadge}</span>` : ''}
     ${t.disclaimerTitle ? `<div class="mentions-title">${t.disclaimerTitle}</div>` : ''}
     <p>${t.disclaimerText}</p>
+    ${schedule.imputationNote ? `<p class="terms-ref">${schedule.imputationNote}</p>` : ''}
     <p class="terms-ref">${schedule.terms}</p>
   </div>
 

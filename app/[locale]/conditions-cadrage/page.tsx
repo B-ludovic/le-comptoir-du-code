@@ -45,12 +45,12 @@ const articles = {
     {
       title: "2. Formation du contrat et paiement",
       content:
-        "La prestation débute à réception du devis daté, signé et portant la mention \"Bon pour accord\", accompagné du règlement dû à la commande. Aucune date d'atelier n'est réservée avant réception de ce règlement.\n\nPour les paliers 01 et 02, le règlement intégral du montant HT, majoré de la TVA applicable, est exigible à la commande. Pour le palier 03 ainsi que pour les prestations de conception produit, 50 % du montant HT sont exigibles à la commande et le solde à la remise du dossier, payable sous quinze (15) jours. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel indiqué sur la facture.\n\nLes sommes versées d'avance constituent un acompte, et non des arrhes au sens de l'article 1590 du code civil. Elles engagent définitivement les deux parties et valent réservation du créneau d'atelier.",
+        "La prestation débute à réception du devis daté, signé et portant la mention \"Bon pour accord\", accompagné du règlement dû à la commande. Aucune date d'atelier n'est réservée avant réception de ce règlement.\n\nPour les paliers 01 et 02, le règlement intégral du montant HT, majoré de la TVA applicable, est exigible à la commande. Pour le palier 03 ainsi que pour les prestations de conception produit, 50 % du montant HT sont exigibles à la commande et le solde à la remise du dossier, payable sous quinze (15) jours. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel indiqué sur la facture.\n\nLes sommes versées d'avance constituent un acompte, et non des arrhes au sens de l'article 1590 du code civil. Elles engagent définitivement les deux parties et valent réservation du créneau d'atelier.",
     },
     {
       title: "2 bis. Imputation en cas de poursuite en développement",
       content:
-        "La prestation de cadrage est autonome et due en totalité, quelle que soit la suite que le Client décide de lui donner. Le dossier lui appartient dans les conditions de l'article 7 et il demeure libre d'en confier la réalisation au prestataire de son choix.\n\nLorsque le Client signe auprès du Prestataire un devis de développement dans un délai de trois (3) mois à compter de la remise du dossier, cinquante pour cent (50 %) du montant HT effectivement réglé au titre du cadrage s'imputent sur le prix HT de cette prestation de développement, dans les conditions prévues à l'article 4 bis des conditions générales de prestation de services.\n\nCette imputation suppose le paiement intégral préalable du cadrage. Elle s'applique une seule fois par dossier, ne peut donner lieu à aucun remboursement et ne concerne ni les prestations de conception produit facturées à la journée, ni les heures d'atelier complémentaires visées à l'article 10.",
+        "La prestation de cadrage est autonome et due en totalité, quelle que soit la suite que le Client décide de lui donner. Le dossier lui appartient dans les conditions de l'article 7 et il demeure libre d'en confier la réalisation au prestataire de son choix.\n\nLorsque le Client signe auprès du Prestataire un devis de développement dans un délai de trois (3) mois à compter de la remise du dossier, cinquante pour cent (50 %) du montant HT effectivement réglé au titre du cadrage s'imputent sur le prix HT de cette prestation de développement, dans les conditions prévues à l'article 4 bis des conditions générales de prestation de services.\n\nCette imputation suppose le paiement intégral préalable du cadrage. Elle s'applique une seule fois par dossier, ne peut donner lieu à aucun remboursement et ne concerne ni les prestations de conception produit facturées à la journée, ni les heures d'atelier complémentaires visées à l'article 10.",
     },
     {
       title: "3. Faculté de rétractation du Client professionnel (article L221-3)",
@@ -70,7 +70,7 @@ const articles = {
     {
       title: "6. Livrable et corrections",
       content:
-        "Le Prestataire remet un dossier au format PDF comprenant les sections listées au devis, dans le délai qui y est indiqué, courant à compter de la date de l'atelier.\n\nLe Client dispose de quinze (15) jours à compter de la remise pour transmettre, en un seul envoi, une série unique de corrections limitée à dix (10) points. Ces corrections portent exclusivement sur des erreurs factuelles ou des omissions au regard des éléments communiqués lors de l'atelier.\n\nTout changement d'orientation, tout élément nouveau non évoqué lors de l'atelier et tout nouvel arbitrage constituent une prestation complémentaire, facturée 150 € HT de l'heure et soumise à devis préalable.",
+        "Le Prestataire remet un dossier au format PDF comprenant les sections listées au devis, dans le délai qui y est indiqué, courant à compter de la date de l'atelier.\n\nLe Client dispose de quinze (15) jours à compter de la remise pour transmettre, en un seul envoi, une série unique de corrections limitée à dix (10) points. Ces corrections portent exclusivement sur des erreurs factuelles ou des omissions au regard des éléments communiqués lors de l'atelier.\n\nTout changement d'orientation, tout élément nouveau non évoqué lors de l'atelier et tout nouvel arbitrage constituent une prestation complémentaire, facturée 150 € HT de l'heure et soumise à devis préalable.",
     },
     {
       title: "7. Propriété du dossier",
@@ -90,7 +90,7 @@ const articles = {
     {
       title: "10. Dépassement et prestations complémentaires",
       content:
-        "Toute heure d'atelier au-delà de la durée incluse au devis est facturée 150 € HT.\n\nLorsque le cadrage établit que le projet n'est pas défini et requiert un travail de conception produit — définition des fonctionnalités, des règles de gestion, de la structure des contenus ou du modèle économique — cette prestation est distincte du cadrage. Elle fait l'objet d'un devis séparé, établi en jours, au tarif journalier en vigueur. Elle n'est en aucun cas incluse dans le prix du cadrage.",
+        "Toute heure d'atelier au-delà de la durée incluse au devis est facturée 150 € HT.\n\nLorsque le cadrage établit que le projet n'est pas défini et requiert un travail de conception produit — définition des fonctionnalités, des règles de gestion, de la structure des contenus ou du modèle économique — cette prestation est distincte du cadrage. Elle fait l'objet d'un devis séparé, établi en jours, au tarif journalier en vigueur. Elle n'est en aucun cas incluse dans le prix du cadrage.",
     },
     {
       title: "11. Confidentialité",
@@ -209,7 +209,7 @@ export default async function ConditionsCadrage({
           </h1>
 
           <p className={styles.text} style={{ opacity: 0.6, fontSize: '0.85rem', marginBottom: '2rem' }}>
-            {isFr ? 'Dernière mise à jour : 30 juillet 2026 (v1)' : 'Last updated: July 30, 2026 (v1)'}
+            {isFr ? 'Dernière mise à jour : 17 août 2026 (v2)' : 'Last updated: August 17, 2026 (v2)'}
           </p>
 
           {content.map((article) => (

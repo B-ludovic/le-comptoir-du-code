@@ -135,7 +135,7 @@ const standardOffers: OfferSpec[] = [
     name: 'La Présence — Site Vitrine',
     price: '1450.00',
     description: {
-      fr: 'Site vitrine sur-mesure à partir de 1 450 € HT. Idéal pour artisans, indépendants et petites entreprises.',
+      fr: 'Site vitrine sur-mesure à partir de 1 450 € HT. Idéal pour artisans, indépendants et petites entreprises.',
       en: 'Custom marketing website from €1,450 excluding VAT. Suited to craftspeople, freelancers and small businesses.',
     },
   },
@@ -143,7 +143,7 @@ const standardOffers: OfferSpec[] = [
     name: "L'E-commerce & Réservation",
     price: '2850.00',
     description: {
-      fr: 'Boutique en ligne ou système de réservation à partir de 2 850 € HT. Inclut 1 an de maintenance.',
+      fr: 'Boutique en ligne ou système de réservation à partir de 2 850 € HT. Inclut 1 an de maintenance.',
       en: 'Online shop or booking system from €2,850 excluding VAT. Includes one year of maintenance.',
     },
   },
@@ -151,7 +151,7 @@ const standardOffers: OfferSpec[] = [
     name: 'Les Outils Sur-Mesure',
     price: '4800.00',
     description: {
-      fr: 'Application web sur-mesure à partir de 4 800 € HT. Inclut 1 an de maintenance.',
+      fr: 'Application web sur-mesure à partir de 4 800 € HT. Inclut 1 an de maintenance.',
       en: 'Custom web application from €4,800 excluding VAT. Includes one year of maintenance.',
     },
   },
@@ -159,24 +159,24 @@ const standardOffers: OfferSpec[] = [
     name: 'Cadrage Vitrine',
     price: '290.00',
     description: {
-      fr: "Atelier de cadrage et dossier écrit pour un site vitrine : choix de solution, arborescence, conformité RGPD, périmètre de la V1. 290 € HT. 50 % imputables sur le développement en cas de signature sous trois mois.",
-      en: 'Scoping workshop and written report for a marketing website: solution choice, site structure, GDPR compliance, scope of the first version. €290 excluding VAT. 50 % set off against development if a quote is signed within three months.',
+      fr: "Atelier de cadrage et dossier écrit pour un site vitrine : choix de solution, arborescence, conformité RGPD, périmètre de la V1. 290 € HT. 50 % imputables sur le développement en cas de signature sous trois mois.",
+      en: 'Scoping workshop and written report for a marketing website: solution choice, site structure, GDPR compliance, scope of the first version. €290 excluding VAT. 50 % set off against development if a quote is signed within three months.',
     },
   },
   {
     name: 'Cadrage E-commerce & Business',
     price: '590.00',
     description: {
-      fr: "Atelier de cadrage et dossier écrit pour un projet de vente en ligne ou de réservation : tunnel de vente, solution de paiement, workflows, conformité RGPD e-commerce. 590 € HT. 50 % imputables sur le développement en cas de signature sous trois mois.",
-      en: 'Scoping workshop and written report for an online sales or booking project: sales funnel, payment provider, workflows, e-commerce GDPR compliance. €590 excluding VAT. 50 % set off against development if a quote is signed within three months.',
+      fr: "Atelier de cadrage et dossier écrit pour un projet de vente en ligne ou de réservation : tunnel de vente, solution de paiement, workflows, conformité RGPD e-commerce. 590 € HT. 50 % imputables sur le développement en cas de signature sous trois mois.",
+      en: 'Scoping workshop and written report for an online sales or booking project: sales funnel, payment provider, workflows, e-commerce GDPR compliance. €590 excluding VAT. 50 % set off against development if a quote is signed within three months.',
     },
   },
   {
     name: 'Cadrage Architecture Métier',
     price: '1190.00',
     description: {
-      fr: "Atelier de cadrage et dossier d'architecture pour une application métier : modèle de données, back-office, rôles et permissions, sécurité, modèle économique. 1 190 € HT. 50 % imputables sur le développement en cas de signature sous trois mois.",
-      en: 'Scoping workshop and architecture report for a business application: data model, back office, roles and permissions, security, business model. €1,190 excluding VAT. 50 % set off against development if a quote is signed within three months.',
+      fr: "Atelier de cadrage et dossier d'architecture pour une application métier : modèle de données, back-office, rôles et permissions, sécurité, modèle économique. 1 190 € HT. 50 % imputables sur le développement en cas de signature sous trois mois.",
+      en: 'Scoping workshop and architecture report for a business application: data model, back office, roles and permissions, security, business model. €1,190 excluding VAT. 50 % set off against development if a quote is signed within three months.',
     },
   },
   {
@@ -184,7 +184,7 @@ const standardOffers: OfferSpec[] = [
     price: '650.00',
     unit: 'DAY',
     description: {
-      fr: "Conception de produit à la journée, lorsque le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique. 650 € HT par jour.",
+      fr: "Conception de produit à la journée, lorsque le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique. 650 € HT par jour.",
       en: 'Product design billed by the day, when the product is still to be invented: features, business rules, content structure, business model. €650 per day excluding VAT.',
     },
   },
@@ -193,7 +193,7 @@ const standardOffers: OfferSpec[] = [
     price: '70.00',
     unit: 'MON',
     description: {
-      fr: 'Mises à jour de sécurité et correction des bugs bloquants pour un site vitrine. Option facultative, 70 € HT par mois.',
+      fr: 'Mises à jour de sécurité et correction des bugs bloquants pour un site vitrine. Option facultative, 70 € HT par mois.',
       en: 'Security updates and blocking-bug fixes for a marketing website. Optional, €70 per month excluding VAT.',
     },
   },
@@ -202,7 +202,7 @@ const standardOffers: OfferSpec[] = [
     price: '85.00',
     unit: 'MON',
     description: {
-      fr: "Mises à jour de sécurité et correction des bugs bloquants. Un an inclus à la livraison du forfait E-commerce & Réservation, puis 85 € HT par mois.",
+      fr: "Mises à jour de sécurité et correction des bugs bloquants. Un an inclus à la livraison du forfait E-commerce & Réservation, puis 85 € HT par mois.",
       en: 'Security updates and blocking-bug fixes. One year included with the E-commerce & Booking package, then €85 per month excluding VAT.',
     },
   },
@@ -211,7 +211,7 @@ const standardOffers: OfferSpec[] = [
     price: '165.00',
     unit: 'MON',
     description: {
-      fr: "Mises à jour de sécurité et correction des bugs bloquants. Un an inclus à la livraison du forfait Outils Sur-Mesure, puis à partir de 165 € HT par mois.",
+      fr: "Mises à jour de sécurité et correction des bugs bloquants. Un an inclus à la livraison du forfait Outils Sur-Mesure, puis à partir de 165 € HT par mois.",
       en: 'Security updates and blocking-bug fixes. One year included with the Custom Tools package, then from €165 per month excluding VAT.',
     },
   },
@@ -222,7 +222,7 @@ const solidaireOffers: OfferSpec[] = [
     name: 'Cadrage (tarif associatif)',
     price: '145.00',
     description: {
-      fr: 'Atelier de cadrage et dossier écrit au tarif associatif, à partir de 145 € HT.',
+      fr: 'Atelier de cadrage et dossier écrit au tarif associatif, à partir de 145 € HT.',
       en: 'Scoping workshop and written report at the non-profit rate, from €145 excluding VAT.',
     },
   },
@@ -230,7 +230,7 @@ const solidaireOffers: OfferSpec[] = [
     name: 'La Présence — Site Vitrine (tarif associatif)',
     price: '725.00',
     description: {
-      fr: 'Site vitrine sur-mesure à partir de 725 € HT au lieu de 1 450 € HT. Maintenance solidaire à partir de 40 € HT par mois.',
+      fr: 'Site vitrine sur-mesure à partir de 725 € HT au lieu de 1 450 € HT. Maintenance solidaire à partir de 40 € HT par mois.',
       en: 'Custom marketing website from €725 instead of €1,450 excluding VAT. Solidarity maintenance from €40 per month.',
     },
   },
@@ -238,7 +238,7 @@ const solidaireOffers: OfferSpec[] = [
     name: "L'E-commerce & Dons (tarif associatif)",
     price: '1425.00',
     description: {
-      fr: "Boutique en ligne ou collecte de dons à partir de 1 425 € HT au lieu de 2 850 € HT. Sécurisation des dons via Stripe, sans commission intermédiaire. Maintenance solidaire à partir de 50 € HT par mois.",
+      fr: "Boutique en ligne ou collecte de dons à partir de 1 425 € HT au lieu de 2 850 € HT. Sécurisation des dons via Stripe, sans commission intermédiaire. Maintenance solidaire à partir de 50 € HT par mois.",
       en: 'Online shop or donation collection from €1,425 instead of €2,850 excluding VAT. Donations secured through Stripe with no intermediary commission. Solidarity maintenance from €50 per month.',
     },
   },
@@ -256,7 +256,7 @@ const solidaireOffers: OfferSpec[] = [
     price: '40.00',
     unit: 'MON',
     description: {
-      fr: "Mises à jour de sécurité au tarif solidaire, à partir de 40 € HT par mois. Ce tarif n'est pas la moitié du tarif standard mais un barème dédié.",
+      fr: "Mises à jour de sécurité au tarif solidaire, à partir de 40 € HT par mois. Ce tarif n'est pas la moitié du tarif standard mais un barème dédié.",
       en: 'Security updates at the solidarity rate, from €40 per month excluding VAT. This is a dedicated rate, not half the standard price.',
     },
   },
@@ -265,7 +265,7 @@ const solidaireOffers: OfferSpec[] = [
     price: '50.00',
     unit: 'MON',
     description: {
-      fr: "Mises à jour de sécurité au tarif solidaire, à partir de 50 € HT par mois. Ce tarif n'est pas la moitié du tarif standard mais un barème dédié.",
+      fr: "Mises à jour de sécurité au tarif solidaire, à partir de 50 € HT par mois. Ce tarif n'est pas la moitié du tarif standard mais un barème dédié.",
       en: 'Security updates at the solidarity rate, from €50 per month excluding VAT. This is a dedicated rate, not half the standard price.',
     },
   },
@@ -333,8 +333,8 @@ const catalogNames: Record<Locale, { standard: string; solidaire: string }> = {
 }
 
 const solidaireDescription: Bilingual = {
-  fr: "Mécénat de compétences de 50 % sur les forfaits de développement, réservé aux associations loi 1901 et structures à but non lucratif, en priorité LGBTQI+. Conditionné à la fourniture d'un récépissé de déclaration en préfecture ou équivalent.",
-  en: '50 % skills sponsorship on development packages, reserved for registered non-profits, with priority given to LGBTQI+ organisations. Subject to proof of registration.',
+  fr: "Mécénat de compétences de 50 % sur les forfaits de développement, réservé aux associations loi 1901 et structures à but non lucratif, en priorité LGBTQI+. Conditionné à la fourniture d'un récépissé de déclaration en préfecture ou équivalent.",
+  en: '50 % skills sponsorship on development packages, reserved for registered non-profits, with priority given to LGBTQI+ organisations. Subject to proof of registration.',
 }
 
 export function siteGraphJsonLd(rawLocale: string) {

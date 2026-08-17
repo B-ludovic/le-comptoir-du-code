@@ -24,7 +24,7 @@ export async function generateMetadata({
       ? "L'Échoppe Solidaire — Développement Web pour Associations | L'Echoppe du Code"
       : "L'Échoppe Solidaire — Web Development for Non-Profits | L'Echoppe du Code",
     description: isFr
-      ? "Création de sites internet et d'outils numériques sur-mesure pour les associations, en priorité LGBTQI+. Mécénat de compétences 50 %, même exigence technique, zéro concession sur la qualité."
+      ? "Création de sites internet et d'outils numériques sur-mesure pour les associations, en priorité LGBTQI+. Mécénat de compétences 50 %, même exigence technique, zéro concession sur la qualité."
       : "Custom websites and digital tools for non-profit organisations, with a priority focus on LGBTQI+ causes. 50% skills sponsorship, same technical standards, no compromise on quality.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/echoppe-solidaire`,
@@ -52,16 +52,16 @@ export default async function EchoppeSolidairePage({
       budgetParam: '1',
       title: isFr ? 'La Présence' : 'The Presence',
       subtitle: isFr ? 'Vitrine ou association locale' : 'Informational site for local non-profits',
-      originalPrice: '1 450 €',
-      price: isFr ? 'À partir de 725 €' : 'From €725',
-      badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
+      originalPrice: '1 450 €',
+      price: isFr ? 'À partir de 725 €' : 'From €725',
+      badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
       desc: isFr
         ? 'Un site professionnel, rapide et référencé. Votre présence en ligne, enfin à la hauteur de votre engagement.'
         : 'A professional, fast and SEO-ready website. Your online presence, finally matching your commitment.',
       features: isFr
         ? ['Design sur-mesure responsive', 'SEO local inclus', 'Formulaire de contact sécurisé', 'Mise en ligne incluse']
         : ['Responsive custom design', 'Local SEO included', 'Secure contact form', 'Deployment included'],
-      maintenance: isFr ? 'Maintenance à partir de 40 €\u00A0HT/mois' : 'Maintenance from €40 excl. VAT/month',
+      maintenance: isFr ? 'Maintenance à partir de 40 €\u00A0HT/mois' : 'Maintenance from €40 excl. VAT/month',
       delay: isFr ? '3 à 4 jours' : '3 to 4 days',
     },
     {
@@ -69,16 +69,16 @@ export default async function EchoppeSolidairePage({
       budgetParam: '2',
       title: isFr ? "L'E-commerce & Dons" : 'E-commerce & Donations',
       subtitle: isFr ? 'Dons, adhésions & espaces membres' : 'Donations, memberships & member areas',
-      originalPrice: '2 850 €',
-      price: isFr ? 'À partir de 1 425 €' : 'From €1,425',
-      badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
+      originalPrice: '2 850 €',
+      price: isFr ? 'À partir de 1 425 €' : 'From €1,425',
+      badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
       desc: isFr
         ? 'Gestion des dons Stripe, des adhésions récurrentes et des espaces membres sécurisés. Tout ce dont une association active a besoin.'
         : 'Stripe donation management, recurring memberships and secure member areas. Everything an active non-profit needs.',
       features: isFr
         ? ['Paiements Stripe sécurisés', 'Adhésions récurrentes', 'Espace membres privé', 'Reçus fiscaux PDF']
         : ['Secure Stripe payments', 'Recurring memberships', 'Private member portal', 'Automated PDF tax receipts'],
-      maintenance: isFr ? 'Maintenance à partir de 50 €\u00A0HT/mois' : 'Maintenance from €50 excl. VAT/month',
+      maintenance: isFr ? 'Maintenance à partir de 50 €\u00A0HT/mois' : 'Maintenance from €50 excl. VAT/month',
       delay: isFr ? '7 à 12 jours' : '7 to 12 days',
     },
     {
@@ -86,7 +86,7 @@ export default async function EchoppeSolidairePage({
       budgetParam: '3',
       title: isFr ? 'Les Outils Sur-Mesure' : 'Custom Tools',
       subtitle: isFr ? 'Fédérations & grosses infrastructures' : 'Federations & large infrastructures',
-      originalPrice: '4 800 €',
+      originalPrice: '4 800 €',
       price: isFr ? 'Sur étude budgétaire' : 'Custom quote',
       badge: isFr ? 'Remise calculée selon vos subventions' : 'Discount based on your grants',
       desc: isFr
@@ -122,7 +122,7 @@ export default async function EchoppeSolidairePage({
       icon: KeyRound,
       title: isFr ? "L'indépendance totale" : 'Total independence',
       text: isFr
-        ? "Le code vous appartient. Point. À la livraison, je vous remets les clés de la maison : l'infrastructure est à votre nom, le code source est le vôtre, conçu pour durer sans moi. Je vous forme à son utilisation. Vous êtes 100 % libres — et si vous avez besoin de moi plus tard, je suis là."
+        ? "Le code vous appartient. Point. À la livraison, je vous remets les clés de la maison : l'infrastructure est à votre nom, le code source est le vôtre, conçu pour durer sans moi. Je vous forme à son utilisation. Vous êtes 100 % libres — et si vous avez besoin de moi plus tard, je suis là."
         : "The code is yours. Full stop. At delivery, I hand over the keys: the infrastructure is in your name, the source code is yours, built to last without me. I train you on how to use it. You are 100% free — and if you need me later, I am here.",
     },
   ]
@@ -325,9 +325,9 @@ export default async function EchoppeSolidairePage({
                     : "A registration receipt from the relevant authority, your filed articles of association, or an RNA extract are sufficient. I ask for these before signing the quote — no last-minute paperwork.",
                 },
                 {
-                  q: isFr ? 'La remise de 50 % s\'applique aussi à la maintenance ?' : 'Does the 50% discount apply to maintenance too?',
+                  q: isFr ? 'La remise de 50 % s\'applique aussi à la maintenance ?' : 'Does the 50% discount apply to maintenance too?',
                   a: isFr
-                    ? "La maintenance post-livraison est calculée sur un tarif solidaire dédié, indiqué sur chaque forfait. Elle n'est pas automatiquement à −50 % du tarif standard, mais reste très en dessous du marché."
+                    ? "La maintenance post-livraison est calculée sur un tarif solidaire dédié, indiqué sur chaque forfait. Elle n'est pas automatiquement à −50 % du tarif standard, mais reste très en dessous du marché."
                     : "Post-delivery maintenance is calculated at a dedicated solidarity rate, shown on each plan. It is not automatically 50% off the standard rate, but remains well below market price.",
                 },
                 {
@@ -345,7 +345,7 @@ export default async function EchoppeSolidairePage({
                 {
                   q: isFr ? 'Comment se passe le paiement avec l\'acompte ?' : 'How does payment work with the deposit?',
                   a: isFr
-                    ? "30 % à la signature (une facture d'acompte officielle est émise par Jump Green), 70 % à la mise en ligne. Règlement par virement uniquement. Aucun paiement avant que vous ayez validé le devis officiel."
+                    ? "30 % à la signature (une facture d'acompte officielle est émise par Jump Green), 70 % à la mise en ligne. Règlement par virement uniquement. Aucun paiement avant que vous ayez validé le devis officiel."
                     : "30% on signing (an official deposit invoice is issued by Jump Green), 70% on go-live. Bank transfer only. No payment before you have validated the official quote.",
                 },
                 {
@@ -382,9 +382,9 @@ export default async function EchoppeSolidairePage({
               : 'Describe your organisation, what you want to build, and what is blocking you today…',
             field_budget: isFr ? 'Forfait souhaité' : 'Desired package',
             field_budget_placeholder: isFr ? '— Choisir un forfait —' : '— Choose a package —',
-            budget_scoping: isFr ? 'Cadrage — À partir de 145 € HT' : 'Scoping — From €145 excl. VAT',
-            budget_1: isFr ? 'La Présence — À partir de 725 € HT' : 'The Presence — From €725 excl. VAT',
-            budget_2: isFr ? 'L\'E-commerce & Dons — À partir de 1 425 € HT' : 'E-commerce & Donations — From €1,425 excl. VAT',
+            budget_scoping: isFr ? 'Cadrage — À partir de 145 € HT' : 'Scoping — From €145 excl. VAT',
+            budget_1: isFr ? 'La Présence — À partir de 725 € HT' : 'The Presence — From €725 excl. VAT',
+            budget_2: isFr ? 'L\'E-commerce & Dons — À partir de 1 425 € HT' : 'E-commerce & Donations — From €1,425 excl. VAT',
             budget_3: isFr ? 'Les Outils Sur-Mesure — Sur étude budgétaire' : 'Custom Tools — On budget review',
             btn_submit: isFr ? 'Envoyer ma demande' : 'Send my request',
           }} />
