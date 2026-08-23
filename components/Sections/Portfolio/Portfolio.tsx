@@ -9,6 +9,8 @@ type Project = {
   desc: string
   stack: string
   builds: string[]
+  features: string[]
+  challenge?: string
   statValue?: string
   statLabel?: string
   image?: string
@@ -89,8 +91,11 @@ const projectMedia: { images: string[]; url: string | null }[] = [
 export default function Portfolio({ locale, dict }: Props) {
   const projects: Project[] = projectMedia.map((media, index) => {
     const n = index + 1
-    const builds = [1, 2, 3, 4]
+    const builds = [1, 2, 3, 4, 5, 6]
       .map((b) => dict[`project${n}_build${b}`])
+      .filter((text): text is string => Boolean(text))
+    const features = [1, 2, 3, 4, 5, 6]
+      .map((f) => dict[`project${n}_feat${f}`])
       .filter((text): text is string => Boolean(text))
 
     return {
@@ -99,6 +104,8 @@ export default function Portfolio({ locale, dict }: Props) {
       desc: dict[`project${n}_desc`],
       stack: dict[`project${n}_stack`],
       builds,
+      features,
+      challenge: dict[`project${n}_challenge`],
       statValue: dict[`project${n}_stat_value`],
       statLabel: dict[`project${n}_stat_label`],
       ...media,
@@ -127,30 +134,54 @@ export default function Portfolio({ locale, dict }: Props) {
         {projects.map((project, index) => (
           <div key={project.number} className={styles.projectWrapper}>
             <div className={styles.projectRow}>
-              <div className={styles.projectImage}>
-                {project.images ? (
-                  <ProjectCarousel images={project.images} alt={project.title} />
-                ) : (
-                  <Image
-                    src={project.image!}
-                    alt={project.title}
-                    width={800}
-                    height={500}
-                    className={styles.screenshot}
-                  />
+              <div className={styles.projectMedia}>
+                <div className={styles.projectImage}>
+                  {project.images ? (
+                    <ProjectCarousel images={project.images} alt={project.title} />
+                  ) : (
+                    <Image
+                      src={project.image!}
+                      alt={project.title}
+                      width={800}
+                      height={500}
+                      className={styles.screenshot}
+                    />
+                  )}
+                </div>
+
+                <div className={styles.tags}>
+                  {project.stack.split(' · ').map((tag) => (
+                    <span key={tag} className={styles.tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {project.features.length > 0 && (
+                  <div className={styles.features}>
+                    <p className={styles.featuresLabel}>{dict.features_label}</p>
+                    <p className={styles.featuresList}>{project.features.join(' · ')}</p>
+                  </div>
+                )}
+
+                {project.challenge && (
+                  <div className={styles.challenge}>
+                    <p className={styles.challengeLabel}>{dict.challenge_label}</p>
+                    <p className={styles.challengeText}>{project.challenge}</p>
+                  </div>
+                )}
+
+                {project.statValue && project.statLabel && (
+                  <p className={styles.stat}>
+                    <span className={styles.statValue}>{project.statValue}</span>
+                    <span className={styles.statLabel}>{project.statLabel}</span>
+                  </p>
                 )}
               </div>
 
               <div className={styles.projectText}>
                 <span className={styles.number}>{project.number}</span>
                 <div className={styles.textContent}>
-                  <div className={styles.tags}>
-                    {project.stack.split(' · ').map((tag) => (
-                      <span key={tag} className={styles.tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                   {project.url ? (
                     <a
                       href={project.url}
@@ -176,13 +207,6 @@ export default function Portfolio({ locale, dict }: Props) {
                         ))}
                       </ul>
                     </div>
-                  )}
-
-                  {project.statValue && project.statLabel && (
-                    <p className={styles.stat}>
-                      <span className={styles.statValue}>{project.statValue}</span>
-                      <span className={styles.statLabel}>{project.statLabel}</span>
-                    </p>
                   )}
                 </div>
               </div>
