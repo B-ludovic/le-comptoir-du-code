@@ -61,16 +61,6 @@ const projectMedia: { images: string[]; url: string | null }[] = [
   },
   {
     images: [
-      '/images/page-meavita.png',
-      '/images/mea-accueil.png',
-      '/images/mea-sacs.png',
-      '/images/mea-presentation.png',
-      '/images/mea-inscription.png',
-    ],
-    url: 'https://github.com/B-ludovic/mea-vita-creation',
-  },
-  {
-    images: [
       '/images/accueil-okanime.png',
       '/images/bibliotheque-okanime.png',
       '/images/detail-okanime.png',
@@ -85,6 +75,16 @@ const projectMedia: { images: string[]; url: string | null }[] = [
       '/images/req-footer.png',
     ],
     url: 'https://www.larequeyrie.fr',
+  },
+  {
+    images: [
+      '/images/page-meavita.png',
+      '/images/mea-accueil.png',
+      '/images/mea-sacs.png',
+      '/images/mea-presentation.png',
+      '/images/mea-inscription.png',
+    ],
+    url: 'https://github.com/B-ludovic/mea-vita-creation',
   },
 ]
 
