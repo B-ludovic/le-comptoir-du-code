@@ -72,6 +72,18 @@ function CarouselInner({
 export default function ProjectCarousel({ images, alt }: Props) {
   const [current, setCurrent] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+
+  // Défilement automatique de la miniature — en pause au survol, modale ouverte,
+  // ou si le visiteur préfère réduire les animations
+  useEffect(() => {
+    if (isOpen || isHovered) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % images.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [isOpen, isHovered, current, images.length])
 
   useEffect(() => {
     if (!isOpen) return
@@ -90,7 +102,15 @@ export default function ProjectCarousel({ images, alt }: Props) {
   return (
     <>
       {/* Inline thumbnail */}
-      <div className={styles.thumbnailWrapper} onClick={() => setIsOpen(true)} role="button" tabIndex={0} aria-label="Ouvrir la galerie">
+      <div
+        className={styles.thumbnailWrapper}
+        onClick={() => setIsOpen(true)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        role="button"
+        tabIndex={0}
+        aria-label="Ouvrir la galerie"
+      >
         <CarouselInner images={images} alt={alt} current={current} setCurrent={setCurrent} variant="inline" />
         <div className={styles.hoverOverlay}>
         </div>
