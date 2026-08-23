@@ -185,6 +185,8 @@
   color: var(--text-muted);
   line-height: 1.8;
   max-width: 440px;
+  text-align: justify;
+  hyphens: auto;
 }
 
 /* Gros œuvre — les constructions marquantes du chantier */
@@ -216,6 +218,8 @@
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.7;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .buildItem::before {

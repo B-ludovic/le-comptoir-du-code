@@ -40,6 +40,15 @@ const projectMedia: { images: string[]; url: string | null }[] = [
   },
   {
     images: [
+      '/images/accueil-auxptitspois.png',
+      '/images/product-auxptitspois.png',
+      '/images/recette-auxptitspois.png',
+      '/images/abonnement-auxptitspois.png',
+    ],
+    url: 'https://www.auxptitspois.fr/',
+  },
+  {
+    images: [
       '/images/page-salon.png',
       '/images/fcs-drawer.png',
       '/images/fcs-bijoux.png',
@@ -66,15 +75,6 @@ const projectMedia: { images: string[]; url: string | null }[] = [
       '/images/base-okanime.png',
     ],
     url: 'https://okanime.live/',
-  },
-  {
-    images: [
-      '/images/accueil-auxptitspois.png',
-      '/images/product-auxptitspois.png',
-      '/images/recette-auxptitspois.png',
-      '/images/abonnement-auxptitspois.png',
-    ],
-    url: 'https://www.auxptitspois.fr/',
   },
   {
     images: [
