@@ -187,6 +187,73 @@
   max-width: 440px;
 }
 
+/* Gros œuvre — les constructions marquantes du chantier */
+.builds {
+  max-width: 480px;
+}
+
+.buildsLabel {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--accent-primary);
+  margin-bottom: 0.75rem;
+}
+
+.buildsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.buildItem {
+  position: relative;
+  padding: 0.7rem 0 0.7rem 1.15rem;
+  border-top: 1px solid rgba(232, 196, 160, 0.12);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.buildItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.4em;
+  width: 7px;
+  height: 1px;
+  background: var(--accent-primary);
+}
+
+/* Chiffre-preuve */
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent-primary);
+}
+
+.statLabel {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  max-width: 220px;
+  line-height: 1.6;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .header {
@@ -224,6 +291,10 @@
   }
 
   .projectDesc {
+    max-width: 100%;
+  }
+
+  .builds {
     max-width: 100%;
   }
 }

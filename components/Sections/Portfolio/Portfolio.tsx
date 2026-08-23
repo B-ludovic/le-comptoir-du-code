@@ -8,6 +8,9 @@ type Project = {
   title: string
   desc: string
   stack: string
+  builds: string[]
+  statValue?: string
+  statLabel?: string
   image?: string
   images?: string[]
   url: string | null
@@ -19,93 +22,88 @@ type Props = {
     eyebrow: string
     section_title: string
     intro: string
-    project1_title: string
-    project1_desc: string
-    project1_stack: string
-    project2_title: string
-    project2_desc: string
-    project2_stack: string
-    project3_title: string
-    project3_desc: string
-    project3_stack: string
-    project4_title: string
-    project4_desc: string
-    project4_stack: string
-    project5_title: string
-    project5_desc: string
-    project5_stack: string
-  }
+    builds_label: string
+  } & Record<string, string>
 }
 
+// Médias et liens de chaque chantier ; les textes (titre, desc, gros œuvre,
+// chiffre-preuve) vivent dans les dictionnaires sous project{n}_*.
+const projectMedia: { images: string[]; url: string | null }[] = [
+  {
+    images: [
+      '/images/accueil-miabe.png',
+      '/images/inscription-miabe.png',
+      '/images/onboarding-miabe.png',
+      '/images/admin-miabe.png',
+    ],
+    url: null,
+  },
+  {
+    images: [
+      '/images/page-salon.png',
+      '/images/fcs-drawer.png',
+      '/images/fcs-bijoux.png',
+      '/images/fcs-accordeon.png',
+      '/images/fcs-coeur.png',
+    ],
+    url: 'https://fairychairstudio.com/fr',
+  },
+  {
+    images: [
+      '/images/page-meavita.png',
+      '/images/mea-accueil.png',
+      '/images/mea-sacs.png',
+      '/images/mea-presentation.png',
+      '/images/mea-inscription.png',
+    ],
+    url: 'https://github.com/B-ludovic/mea-vita-creation',
+  },
+  {
+    images: [
+      '/images/accueil-okanime.png',
+      '/images/bibliotheque-okanime.png',
+      '/images/detail-okanime.png',
+      '/images/base-okanime.png',
+    ],
+    url: 'https://okanime.live/',
+  },
+  {
+    images: [
+      '/images/accueil-auxptitspois.png',
+      '/images/product-auxptitspois.png',
+      '/images/recette-auxptitspois.png',
+      '/images/abonnement-auxptitspois.png',
+    ],
+    url: 'https://www.auxptitspois.fr/',
+  },
+  {
+    images: [
+      '/images/req-appartements.png',
+      '/images/req-around.png',
+      '/images/req-footer.png',
+    ],
+    url: 'https://www.larequeyrie.fr',
+  },
+]
+
 export default function Portfolio({ locale, dict }: Props) {
-  const projects: Project[] = [
-    {
-      number: '01',
-      title: dict.project1_title,
-      desc: dict.project1_desc,
-      stack: dict.project1_stack,
-      images: [
-        '/images/page-salon.png',
-        '/images/fcs-drawer.png',
-        '/images/fcs-bijoux.png',
-        '/images/fcs-accordeon.png',
-        '/images/fcs-coeur.png',
-      ],
-      url: 'https://fairychairstudio.com/fr',
-    },
-    {
-      number: '02',
-      title: dict.project2_title,
-      desc: dict.project2_desc,
-      stack: dict.project2_stack,
-      images: [
-        '/images/page-meavita.png',
-        '/images/mea-accueil.png',
-        '/images/mea-sacs.png',
-        '/images/mea-presentation.png',
-        '/images/mea-inscription.png',
-      ],
-      url: 'https://github.com/B-ludovic/mea-vita-creation',
-    },
-    {
-      number: '03',
-      title: dict.project3_title,
-      desc: dict.project3_desc,
-      stack: dict.project3_stack,
-      images: [
-        '/images/accueil-okanime.png',
-        '/images/bibliotheque-okanime.png',
-        '/images/detail-okanime.png',
-        '/images/base-okanime.png',
-      ],
-      url: 'https://okanime.live/',
-    },
-    {
-      number: '04',
-      title: dict.project4_title,
-      desc: dict.project4_desc,
-      stack: dict.project4_stack,
-      images: [
-        '/images/accueil-auxptitspois.png',
-        '/images/product-auxptitspois.png',
-        '/images/recette-auxptitspois.png',
-        '/images/abonnement-auxptitspois.png',
-      ],
-      url: 'https://www.auxptitspois.fr/',
-    },
-    {
-      number: '05',
-      title: dict.project5_title,
-      desc: dict.project5_desc,
-      stack: dict.project5_stack,
-      images: [
-        '/images/req-appartements.png',
-        '/images/req-around.png',
-        '/images/req-footer.png',
-      ],
-      url: 'https://www.larequeyrie.fr',
-    },
-  ]
+  const projects: Project[] = projectMedia.map((media, index) => {
+    const n = index + 1
+    const builds = [1, 2, 3, 4]
+      .map((b) => dict[`project${n}_build${b}`])
+      .filter((text): text is string => Boolean(text))
+
+    return {
+      number: String(n).padStart(2, '0'),
+      title: dict[`project${n}_title`],
+      desc: dict[`project${n}_desc`],
+      stack: dict[`project${n}_stack`],
+      builds,
+      statValue: dict[`project${n}_stat_value`],
+      statLabel: dict[`project${n}_stat_label`],
+      ...media,
+    }
+  })
 
   return (
     <section id="portfolio" className={styles.section}>
@@ -166,6 +164,26 @@ export default function Portfolio({ locale, dict }: Props) {
                     <h3 className={styles.projectTitle}>{project.title}</h3>
                   )}
                   <p className={styles.projectDesc}>{project.desc}</p>
+
+                  {project.builds.length > 0 && (
+                    <div className={styles.builds}>
+                      <p className={styles.buildsLabel}>{dict.builds_label}</p>
+                      <ul className={styles.buildsList}>
+                        {project.builds.map((build) => (
+                          <li key={build} className={styles.buildItem}>
+                            {build}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {project.statValue && project.statLabel && (
+                    <p className={styles.stat}>
+                      <span className={styles.statValue}>{project.statValue}</span>
+                      <span className={styles.statLabel}>{project.statLabel}</span>
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
