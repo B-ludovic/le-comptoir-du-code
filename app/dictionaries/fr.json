@@ -1,6 +1,11 @@
 {
-  "home": {
-    "h1": "Développeur web freelance à Paris et en Île-de-France — sites vitrines, e-commerce et applications sur-mesure"
+  "hero": {
+    "eyebrow": "Sites vitrines · E-commerce · Applications métier",
+    "h1": "Développeur web freelance à Paris et en Île-de-France",
+    "lead": "L'Echoppe du Code est l'atelier de Ludovic Bataille, développeur web indépendant. Un seul interlocuteur du cadrage à la mise en ligne, du code sur-mesure livré avec ses sources, et un site qui vous appartient entièrement.",
+    "facts": "Site vitrine à partir de 1 450 € HT, e-commerce et réservation à partir de 2 850 € HT, application métier à partir de 4 800 € HT. Cadrage préalable optionnel à partir de 290 € HT, imputable à 50 % sur le développement. Tarif associatif : 50 % de remise sur les forfaits de développement.",
+    "cta": "Demander un devis",
+    "cta_secondary": "Voir les forfaits"
   },
   "nav": {
     "method": "Méthode",

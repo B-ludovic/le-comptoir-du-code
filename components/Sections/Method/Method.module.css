@@ -2,12 +2,6 @@
   padding: var(--section-padding);
 }
 
-@media (max-width: 768px) {
-  .section {
-    padding-top: 7rem;
-  }
-}
-
 .header {
   display: grid;
   grid-template-columns: 5fr 4fr;

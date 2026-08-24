@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import Header from '@/components/Header/Header'
+import Hero from '@/components/Sections/Hero/Hero'
 import Method from '@/components/Sections/Method/Method'
 import Scoping from '@/components/Sections/Scoping/Scoping'
 import Solutions from '@/components/Sections/Solutions/Solutions'
@@ -21,10 +22,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <main>
       <Header locale={locale} nav={dict.nav} />
       <ScrollToHash />
-      {/* Le H1 porte le service et la zone, pas la marque : celle-ci est déjà
-          dans le <title>, le graphe schema.org, l'en-tête et le pied de page.
-          Il vient du dictionnaire, sinon la page anglaise sert un titre français. */}
-      <h1 className="sr-only">{dict.home.h1}</h1>
+      {/* Section 1 — Accroche. Porte le H1, visible : le titre le plus lourd de
+          la page ne peut pas être celui que personne ne voit. */}
+      <Hero dict={dict.hero} />
 
       {/* Section 2 — Méthode */}
       <Method dict={dict.method} />
