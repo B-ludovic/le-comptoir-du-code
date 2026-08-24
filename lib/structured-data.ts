@@ -163,6 +163,51 @@ export function blogIndexJsonLd(
   }
 }
 
+/* Les avis clients, en entités autonomes rattachées à l'entreprise. Ils sont
+   déclarés sur la page d'accueil, là où le bandeau les affiche.
+
+   Chacun porte l'URL de sa source publique : c'est ce qui le rend vérifiable
+   et le distingue d'un texte qu'on aurait pu écrire soi-même. `publisher`
+   désigne la plateforme où l'avis a d'abord paru, pas celui qui le republie.
+
+   Pas de reviewRating ni d'aggregateRating : la source n'affiche aucune note
+   chiffrée, et Google n'accorde de toute façon plus de rich result aux avis
+   qu'un site publie sur lui-même. La valeur est ailleurs — un moteur génératif
+   y trouve des phrases attribuées à des personnes nommées et vérifiables. */
+export function reviewsJsonLd(
+  reviews: {
+    id: string
+    author: string
+    organisation: string
+    datePublished: string
+    body: string
+  }[],
+  rawLocale: string,
+  source: { url: string; name: string },
+) {
+  const locale: Locale = rawLocale === 'en' ? 'en' : 'fr'
+  const pageUrl = `${BASE_URL}/${locale}`
+
+  return reviews.map((review) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    '@id': `${pageUrl}#${review.id}`,
+    author: {
+      '@type': 'Person',
+      name: review.author,
+      worksFor: { '@type': 'Organization', name: review.organisation },
+    },
+    datePublished: review.datePublished,
+    reviewBody: review.body,
+    /* Les avis ont été écrits en français : le déclarer évite qu'un moteur les
+       attribue à la version anglaise du site. */
+    inLanguage: 'fr',
+    itemReviewed: { '@id': ORGANIZATION_ID },
+    url: source.url,
+    publisher: { '@type': 'Organization', name: source.name, url: source.url },
+  }))
+}
+
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   return {
     '@context': 'https://schema.org',

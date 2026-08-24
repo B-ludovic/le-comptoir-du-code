@@ -1,0 +1,161 @@
+.ticker {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+/* Fenêtre de lecture : le rail défile derrière, et le masque efface ses bords
+   pour que les cartes n'apparaissent pas tranchées net en haut et en bas. */
+.viewport {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 14%,
+    black 86%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 14%,
+    black 86%,
+    transparent 100%
+  );
+}
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: scroll 48s linear infinite;
+}
+
+.clone {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  /* Le gap du rail ne s'applique pas à l'intérieur du clone : on le rétablit
+     au-dessus pour que le raccord soit rigoureusement identique aux autres. */
+  padding-top: 0;
+}
+
+/* La moitié exacte : le rail contient deux fois la même liste, donc à -50 % le
+   second exemplaire occupe la position de départ du premier. */
+@keyframes scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+/* Un texte qui bouge est un texte qu'on ne peut pas finir de lire : le survol
+   met le rail en pause. */
+.viewport:hover .rail,
+.viewport:focus-within .rail {
+  animation-play-state: paused;
+}
+
+.card {
+  margin: 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(232, 196, 160, 0.08);
+  border-radius: var(--card-radius);
+}
+
+.quote {
+  margin: 0 0 1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text-main);
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(232, 196, 160, 0.08);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.author {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.org {
+  color: var(--accent-primary);
+}
+
+.sector {
+  width: 100%;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.source {
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.sourceLink {
+  color: var(--accent-primary);
+  border-bottom: 1px solid rgba(232, 196, 160, 0.25);
+  transition: border-color var(--transition-base);
+}
+
+.sourceLink:hover {
+  border-color: var(--accent-primary);
+}
+
+/* Un défilement automatique est un déclencheur connu de gêne vestibulaire.
+   Quand le système demande moins d'animation, le rail s'arrête et la fenêtre
+   s'ouvre pour laisser lire la liste normalement. */
+@media (prefers-reduced-motion: reduce) {
+  .rail {
+    animation: none;
+  }
+
+  .viewport {
+    height: auto;
+    max-height: 420px;
+    overflow-y: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .clone {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .viewport {
+    height: 300px;
+  }
+}

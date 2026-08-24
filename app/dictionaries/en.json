@@ -5,7 +5,9 @@
     "lead": "L'Échoppe du Code is my independent web development workshop. I'm Ludovic Bataille, your single point of contact from scoping to launch: custom code, delivered with its sources, and a site that belongs to you outright.",
     "facts": "Marketing websites from €2,600, online shops from €6,500, business applications from €9,500. Each package is a foundation priced in days; specific needs are added as modules. Optional scoping from €290, half of which is set off against development. Registered non-profits get 50 % off. All prices exclude VAT.",
     "cta": "Request a quote",
-    "cta_secondary": "See the packages"
+    "cta_secondary": "See the packages",
+    "reviews_label": "They pushed the door open",
+    "reviews_source": "Reviews published on"
   },
   "nav": {
     "method": "Process",

@@ -12,6 +12,27 @@
   }
 }
 
+/* L'accroche garde la largeur de lecture confortable, le bandeau prend une
+   colonne plus étroite. En dessous de 1024px la preuve passe sous le discours
+   plutôt que de l'écraser. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 4rem;
+  align-items: center;
+}
+
+.pitch {
+  min-width: 0;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
 .eyebrow {
   font-family: var(--font-body);
   font-size: 0.72rem;

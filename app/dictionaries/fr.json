@@ -5,7 +5,9 @@
     "lead": "L'Échoppe du Code est mon atelier de développement web indépendant. Je suis Ludovic Bataille, votre seul interlocuteur du cadrage à la mise en ligne : du code sur-mesure, livré avec ses sources, et un site qui vous appartient entièrement.",
     "facts": "Site vitrine à partir de 2 600 € HT, boutique en ligne à partir de 6 500 € HT, application métier à partir de 9 500 € HT. Chaque offre est un socle chiffré en jours ; les besoins spécifiques s'ajoutent en modules. Cadrage préalable optionnel à partir de 290 € HT, imputable à 50 % sur le développement. Tarif associatif : 50 % de remise.",
     "cta": "Demander un devis",
-    "cta_secondary": "Voir les forfaits"
+    "cta_secondary": "Voir les forfaits",
+    "reviews_label": "Ils ont ouvert la porte",
+    "reviews_source": "Avis publiés sur"
   },
   "nav": {
     "method": "Méthode",

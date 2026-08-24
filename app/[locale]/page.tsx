@@ -1,4 +1,6 @@
 import { Suspense } from 'react'
+import { reviewsJsonLd } from '@/lib/structured-data'
+import { TESTIMONIALS, REVIEWS_SOURCE, REVIEWS_SOURCE_NAME } from '@/lib/testimonials'
 import Header from '@/components/Header/Header'
 import Hero from '@/components/Sections/Hero/Hero'
 import Method from '@/components/Sections/Method/Method'
@@ -22,9 +24,21 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <main>
       <Header locale={locale} nav={dict.nav} />
       <ScrollToHash />
+      {/* Les avis sont déclarés là où ils sont affichés : sur la page d'accueil. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            reviewsJsonLd(TESTIMONIALS, locale, {
+              url: REVIEWS_SOURCE,
+              name: REVIEWS_SOURCE_NAME,
+            }),
+          ),
+        }}
+      />
       {/* Section 1 — Accroche. Porte le H1, visible : le titre le plus lourd de
           la page ne peut pas être celui que personne ne voit. */}
-      <Hero dict={dict.hero} />
+      <Hero locale={locale} dict={dict.hero} />
 
       {/* Section 2 — Méthode */}
       <Method dict={dict.method} />
