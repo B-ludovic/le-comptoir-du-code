@@ -17,7 +17,12 @@ import {
    permet à un moteur — génératif ou non — d'attribuer une citation à
    quelqu'un plutôt que de reprendre un texte anonyme. */
 
-export const BASE_URL = 'https://lechoppeducode.com'
+/* Domaine canonique : la forme avec www, parce que c'est celle que Vercel sert
+   réellement — https://lechoppeducode.com répond 308 vers elle. Déclarer
+   l'autre revenait à faire pointer chaque canonical, chaque @id et chaque URL
+   du sitemap vers une redirection, ce qu'un moteur ignore purement et
+   simplement. */
+export const BASE_URL = 'https://www.lechoppeducode.com'
 
 export const ORGANIZATION_ID = `${BASE_URL}/#organization`
 export const PERSON_ID = `${BASE_URL}/#person`

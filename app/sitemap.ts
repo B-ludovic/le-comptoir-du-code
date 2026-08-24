@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
+import { BASE_URL } from '@/lib/structured-data'
 import { getAllPosts } from '@/lib/blog'
 
-const BASE_URL = 'https://lechoppeducode.com'
 const locales = ['fr', 'en']
 
 const legalPages = [

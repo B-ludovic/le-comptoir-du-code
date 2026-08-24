@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { BASE_URL } from '@/lib/structured-data'
 import { Suspense } from 'react'
 import { Check, FilePen, Handshake, KeyRound, HeartHandshake, BadgeCheck, LockKeyhole } from 'lucide-react'
 import Header from '@/components/Header/Header'
@@ -10,7 +11,6 @@ import { tier, formatPrice, formatMonthly } from '@/lib/pricing'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
-const BASE_URL = 'https://lechoppeducode.com'
 const dictionaries = { fr, en }
 
 export async function generateMetadata({

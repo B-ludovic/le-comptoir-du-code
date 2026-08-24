@@ -9,9 +9,8 @@ import styles from './Article.module.css'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 import { getPost, getPostSlugs } from '@/lib/blog'
-import { blogPostingJsonLd, breadcrumbJsonLd } from '@/lib/structured-data'
+import { BASE_URL, blogPostingJsonLd, breadcrumbJsonLd } from '@/lib/structured-data'
 
-const BASE_URL = 'https://lechoppeducode.com'
 const dictionaries = { fr, en }
 
 export const dynamicParams = true

@@ -22,6 +22,17 @@ function withCsp(response: NextResponse, csp: string): NextResponse {
   return response
 }
 
+/* La redirection vers /fr ou /en dépend de l'en-tête Accept-Language : la même
+   URL ne renvoie donc pas tout le monde au même endroit. Sans `Vary`, un cache
+   partagé — CDN, proxy d'entreprise, navigateur — sert au visiteur suivant la
+   langue du précédent, et un moteur indexe la première version qu'il a vue en
+   croyant que c'est la seule. L'en-tête dit : cette réponse dépend de cet
+   en-tête-là, ne la réutilise pas pour une requête différente. */
+function withLanguageVary(response: NextResponse): NextResponse {
+  response.headers.set('Vary', 'Accept-Language')
+  return response
+}
+
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
@@ -48,9 +59,15 @@ export async function proxy(request: NextRequest) {
 
   if (!pathnameHasLocale) {
     const locale = getLocale(request)
-    return withCsp(
-      NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url)),
-      csp,
+    /* 307 et non 308 : la destination dépend de la langue du visiteur, donc la
+       redirection ne peut pas être permanente. Un 308 serait mis en cache par
+       le navigateur et enfermerait ensuite l'utilisateur dans la langue de sa
+       première visite, y compris après avoir cliqué sur FR/EN. */
+    return withLanguageVary(
+      withCsp(
+        NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url), 307),
+        csp,
+      ),
     )
   }
 

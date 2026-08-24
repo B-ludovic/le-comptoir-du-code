@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { BASE_URL } from '@/lib/structured-data'
 import Link from 'next/link'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
@@ -7,7 +8,6 @@ import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 import { getAllPosts } from '@/lib/blog'
 
-const BASE_URL = 'https://lechoppeducode.com'
 const dictionaries = { fr, en }
 
 export async function generateMetadata({

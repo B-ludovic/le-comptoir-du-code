@@ -116,9 +116,9 @@ public/
 
 ## 🌐 Déploiement
 
-Déployé sur [Vercel](https://vercel.com/) — [lechoppeducode.com](https://lechoppeducode.com).
+Déployé sur [Vercel](https://vercel.com/) — [lechoppeducode.com](https://www.lechoppeducode.com).
 Les variables d'environnement sont à renseigner dans les settings du projet Vercel.
 
 ---
 
-*Ludovic BATAILLE ❤️ — [lechoppeducode.com](https://lechoppeducode.com)*
+*Ludovic BATAILLE ❤️ — [lechoppeducode.com](https://www.lechoppeducode.com)*

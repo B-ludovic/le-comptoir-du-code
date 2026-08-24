@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { BASE_URL } from '@/lib/structured-data'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
@@ -6,7 +7,6 @@ import { linkifyEmails } from '@/components/Legal/linkify'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
-const BASE_URL = 'https://lechoppeducode.com'
 const slug = 'conditions-cadrage'
 const dictionaries = { fr, en }
 
