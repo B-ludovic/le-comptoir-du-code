@@ -48,7 +48,10 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto auto auto 1fr auto auto;
+  /* header · prix · description · features · modules · détente · maintenance · pied.
+     La rangée en 1fr reste l'avant-dernière avant la maintenance : c'est elle
+     qui absorbe les différences de hauteur et garde les trois boutons alignés. */
+  grid-template-rows: auto auto auto auto auto 1fr auto auto;
   gap: 0;
 }
 
@@ -57,7 +60,7 @@
   padding: 0 2.5rem;
   overflow: visible;
   display: grid;
-  grid-row: span 7;
+  grid-row: span 8;
   grid-template-rows: subgrid;
   transition: transform var(--transition-base);
 }
@@ -141,7 +144,7 @@
      chiffre déborde de 1.5rem, d'où 3.5rem de padding pour le même écart. */
   padding-top: 3.5rem;
   display: grid;
-  grid-row: span 6;
+  grid-row: span 7;
   grid-template-rows: subgrid;
   gap: 1.5rem;
 }

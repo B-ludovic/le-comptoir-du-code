@@ -55,7 +55,7 @@
     "intro": "Each package is a foundation with a defined scope, priced in working days. Specific needs are added as modules billed by the day: you know exactly what you are paying for, and you can take things out.",
     "from": "From",
     "maintenance_included": "{months} months of security updates included, then {rate}",
-    "modules_label": "As modules",
+    "modules_label": "Extra, priced separately",
     "cards": {
       "presence": {
         "subtitle": "Marketing Website",

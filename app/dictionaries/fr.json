@@ -55,7 +55,7 @@
     "intro": "Chaque offre est un socle au périmètre défini, chiffré en jours de travail. Les besoins spécifiques s'ajoutent en modules facturés à la journée : vous savez exactement ce que vous payez, et vous pouvez en retirer.",
     "from": "À partir de",
     "maintenance_included": "{months} mois de mises à jour de sécurité inclus, puis {rate}",
-    "modules_label": "En modules",
+    "modules_label": "En supplément, chiffrés à part",
     "cards": {
       "presence": {
         "subtitle": "Site Vitrine",

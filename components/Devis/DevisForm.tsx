@@ -1,7 +1,14 @@
 'use client'
 
 import styles from './Devis.module.css'
-import { TIERS, ADDONS, ENGINEERING_DAY_RATE, formatMonthly, type TierId } from '@/lib/pricing'
+import {
+  TIERS,
+  ENGINEERING_DAY_RATE,
+  addonsFor,
+  formatPrice,
+  formatMonthly,
+  type TierId,
+} from '@/lib/pricing'
 
 export type Service = {
   name: string
@@ -42,19 +49,6 @@ const FORFAITS = [
     } as Service,
     maintenance_option: 'offered' as const,
     maintenance_rate: formatMonthly(t.maintenance.price, 'fr'),
-    prestation_type: 'dev' as const,
-  })),
-  ...ADDONS.map((a) => ({
-    label: `Module — ${a.label.fr}`,
-    service: {
-      name: a.label.fr,
-      description: `Module optionnel, ${a.days} jour${a.days > 1 ? 's' : ''} de travail au taux de ${ENGINEERING_DAY_RATE}\u00A0\u20AC HT par jour.`,
-      type: 'Module',
-      delay: 'Selon planning du socle',
-      amount: String(a.price),
-    } as Service,
-    maintenance_option: 'none' as const,
-    maintenance_rate: '',
     prestation_type: 'dev' as const,
   })),
   {
@@ -184,6 +178,28 @@ function TextareaField({ label, value, onChange, placeholder }: {
   )
 }
 
+/* Les modules ne sont pas des forfaits : choisir un socle définit la première
+   ligne du devis, alors qu'un module vient s'ajouter à la suite. D'où deux
+   sélecteurs distincts plutôt qu'une liste unique où l'un écrase l'autre. */
+const MODULES = TIERS.map((t) => ({
+  tier: t,
+  items: addonsFor(t.id).map((a) => ({
+    id: a.id,
+    label: `${a.label.fr} — ${formatPrice(a.price, 'fr')} HT`,
+    service: {
+      name: a.label.fr,
+      description: `Module optionnel du socle ${t.name}. ${a.days} jour${a.days > 1 ? 's' : ''} de travail au taux de ${formatPrice(ENGINEERING_DAY_RATE, 'fr')} HT par jour.`,
+      type: 'Module',
+      delay: 'Selon le planning du socle',
+      amount: String(a.price),
+    } as Service,
+  })),
+}))
+
+const MODULE_BY_ID = new Map(
+  MODULES.flatMap((group) => group.items.map((item) => [item.id, item.service])),
+)
+
 const emptyService = (): Service => ({
   name: '',
   description: '',
@@ -213,6 +229,14 @@ export default function DevisForm({ data, onChange }: Props) {
     set('services', data.services.filter((_, i) => i !== index))
   }
 
+  function addModule(id: string) {
+    const service = MODULE_BY_ID.get(id)
+    if (!service) return
+    /* Copie du service : deux modules identiques ne doivent pas partager le
+       même objet, sinon éditer l'un modifie l'autre. */
+    set('services', [...data.services, { ...service }])
+  }
+
   function applyForfait(index: string) {
     const i = parseInt(index)
     const forfait = FORFAITS[i]
@@ -233,6 +257,23 @@ export default function DevisForm({ data, onChange }: Props) {
           <option value="" disabled>— Choisir un forfait —</option>
           {FORFAITS.map((f, i) => (
             <option key={i} value={i}>{f.label}</option>
+          ))}
+        </select>
+        {/* Reste sur la valeur vide : le même module doit pouvoir être ajouté
+            deux fois, et le menu doit se rouvrir sur son intitulé. */}
+        <select
+          className={styles.forfaitSelect}
+          value=""
+          onChange={e => addModule(e.target.value)}
+          title="Ajouter un module à la suite des prestations"
+        >
+          <option value="" disabled>+ Ajouter un module</option>
+          {MODULES.map((group) => (
+            <optgroup key={group.tier.id} label={group.tier.name}>
+              {group.items.map((item) => (
+                <option key={item.id} value={item.id}>{item.label}</option>
+              ))}
+            </optgroup>
           ))}
         </select>
         <select
