@@ -21,7 +21,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <main>
       <Header locale={locale} nav={dict.nav} />
       <ScrollToHash />
-      <h1 className="sr-only">L&apos;Echoppe du Code — Développeur Web Indépendant</h1>
+      {/* Le H1 porte le service et la zone, pas la marque : celle-ci est déjà
+          dans le <title>, le graphe schema.org, l'en-tête et le pied de page.
+          Il vient du dictionnaire, sinon la page anglaise sert un titre français. */}
+      <h1 className="sr-only">{dict.home.h1}</h1>
 
       {/* Section 2 — Méthode */}
       <Method dict={dict.method} />
