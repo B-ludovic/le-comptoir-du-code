@@ -64,3 +64,9 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://lechoppeducode.com/sitemap.xml
+
+# Résumé du site pour les moteurs génératifs, et sa version intégrale avec le
+# texte complet des articles. Ce n'est pas une directive robots.txt reconnue :
+# c'est un commentaire, lu par les humains et par les robots qui les cherchent.
+# LLM-Index: https://lechoppeducode.com/llms.txt
+# LLM-Full: https://lechoppeducode.com/llms-full.txt

@@ -8,6 +8,17 @@ import type { NextConfig } from 'next'
    permet de couvrir aussi les réponses que le matcher du middleware exclut :
    assets statiques, images, polices et routes d'API. */
 const nextConfig: NextConfig = {
+  /* « La même URL, en .md » : la convention que suivent les crawlers de moteurs
+     génératifs pour récupérer la source d'une page. Le point ne pouvant pas
+     figurer dans un nom de segment dynamique, la contrainte sur :slug l'exclut
+     explicitement — sinon le paramètre avalerait le « .md » et rien ne
+     correspondrait. */
+  rewrites: async () => [
+    {
+      source: '/:locale(fr|en)/blog/:slug([a-z0-9-]+).md',
+      destination: '/api/markdown/:locale/:slug',
+    },
+  ],
   headers: async () => [
     {
       source: '/(.*)',

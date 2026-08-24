@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { tier, formatPrice, ENGINEERING_DAY_RATE, SCOPING_NON_PROFIT_FROM } from '@/lib/pricing'
+import { tier, formatPrice, formatMonthly, ENGINEERING_DAY_RATE, SCOPING_NON_PROFIT_FROM } from '@/lib/pricing'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
@@ -93,7 +93,7 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Que couvre exactement la maintenance ?',
       answer: [
-        "Les mises à jour de sécurité et la correction des bugs bloquants liés au code que j'ai livré. Douze mois sont inclus sur les forfaits E-commerce et Sur-Mesure, puis 85 € HT/mois pour l'E-commerce et à partir de 165 € HT/mois pour le Sur-Mesure. Pour un site vitrine, c'est une option à 70 € HT/mois.",
+        `Les mises à jour de sécurité et la correction des bugs bloquants liés au code que j'ai livré. Douze mois sont inclus sur La Boutique et Les Outils Sur-Mesure, puis ${formatMonthly(tier('boutique').maintenance.price, 'fr')} et ${formatMonthly(tier('outils').maintenance.price, 'fr')}. La Présence en inclut trois, puis ${formatMonthly(tier('presence').maintenance.price, 'fr')}.`,
         "Elle ne couvre pas les nouvelles fonctionnalités, les changements de contenu ni les refontes de design : ce sont des chantiers, pas de l'entretien. Les coûts d'hébergement, de nom de domaine et de services tiers restent à votre charge directe. Le contrat mensuel se résilie à tout moment avec un mois de préavis, sans pénalité.",
       ],
     },
@@ -174,7 +174,7 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'What exactly does maintenance cover?',
       answer: [
-        'Security updates and fixes for blocking bugs in the code I delivered. Twelve months are included with the E-commerce and Custom Tools packages, then €85/month for E-commerce and from €165/month for Custom Tools. For a marketing website it is an option at €70/month.',
+        `Security updates and fixes for blocking bugs in the code I delivered. Twelve months are included with La Boutique and Les Outils Sur-Mesure, then ${formatMonthly(tier('boutique').maintenance.price, 'en')} and ${formatMonthly(tier('outils').maintenance.price, 'en')}. La Présence includes three, then ${formatMonthly(tier('presence').maintenance.price, 'en')}.`,
         'It does not cover new features, content changes or design overhauls: those are building work, not upkeep. Hosting, domain names and third-party services stay on your own account. The monthly contract can be cancelled at any time with one month of notice, with no penalty.',
       ],
     },

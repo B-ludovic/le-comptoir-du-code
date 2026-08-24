@@ -111,6 +111,14 @@ export default async function ArticlePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {/* Même adresse, en .md : la source de l'article sans navigation ni
+          styles, pour les crawlers qui préfèrent le texte au HTML. */}
+      <link
+        rel="alternate"
+        type="text/markdown"
+        href={`/${locale}/blog/${slug}.md`}
+        title={`${post.title} — source Markdown`}
+      />
       <Header locale={locale} nav={dict.nav} switchLocaleHref={switchLocaleHref} />
       <main className={styles.main}>
         <div className="container">
