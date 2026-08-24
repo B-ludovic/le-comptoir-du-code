@@ -18,8 +18,8 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? "Questions Fréquentes | L'Echoppe du Code"
-      : "Frequently Asked Questions | L'Echoppe du Code",
+      ? "Questions Fréquentes | L'Échoppe du Code"
+      : "Frequently Asked Questions | L'Échoppe du Code",
     description: isFr
       ? "Prix, propriété du code, paiement, maintenance, tarif associatif : les réponses aux questions qu'on me pose avant de signer un devis."
       : "Pricing, code ownership, payment, maintenance, non-profit rates: answers to the questions I get asked before a quote is signed.",

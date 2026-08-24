@@ -1,4 +1,4 @@
-# Design System — L'Echoppe du Code
+# Design System — L'Échoppe du Code
 
 > Charte graphique complète. Référence unique pour toute décision visuelle sur le site, le blog, et les documents PDF.
 

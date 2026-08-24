@@ -18,11 +18,11 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? "Gestion des Cookies | L'Echoppe du Code"
-      : "Cookie Policy | L'Echoppe du Code",
+      ? "Gestion des Cookies | L'Échoppe du Code"
+      : "Cookie Policy | L'Échoppe du Code",
     description: isFr
-      ? "Gestion des cookies du site L'Echoppe du Code — types de cookies utilisés et paramétrage."
-      : "Cookie policy for L'Echoppe du Code — types of cookies used and configuration.",
+      ? "Gestion des cookies du site L'Échoppe du Code — types de cookies utilisés et paramétrage."
+      : "Cookie policy for L'Échoppe du Code — types of cookies used and configuration.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/${slug}`,
       languages: {
@@ -71,8 +71,8 @@ export default async function GestionDesCookies({
           <div className={styles.block}>
             <p className={styles.text}>
               {isFr
-                ? "L'Echoppe du Code a été conçu pour être rapide, propre et respectueux de votre navigation. Par conséquent, ce site n'utilise aucun cookie de ciblage publicitaire ou de tracking marketing (pas de Google Analytics, pas de Pixel Facebook)."
-                : "L'Echoppe du Code was designed to be fast, clean and respectful of your browsing. As a result, this site uses no advertising or marketing tracking cookies (no Google Analytics, no Facebook Pixel)."}
+                ? "L'Échoppe du Code a été conçu pour être rapide, propre et respectueux de votre navigation. Par conséquent, ce site n'utilise aucun cookie de ciblage publicitaire ou de tracking marketing (pas de Google Analytics, pas de Pixel Facebook)."
+                : "L'Échoppe du Code was designed to be fast, clean and respectful of your browsing. As a result, this site uses no advertising or marketing tracking cookies (no Google Analytics, no Facebook Pixel)."}
             </p>
             <p className={styles.text}>
               {isFr

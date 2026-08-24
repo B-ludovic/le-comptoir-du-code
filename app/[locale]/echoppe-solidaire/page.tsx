@@ -21,8 +21,8 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? "L'Échoppe Solidaire — Développement Web pour Associations | L'Echoppe du Code"
-      : "L'Échoppe Solidaire — Web Development for Non-Profits | L'Echoppe du Code",
+      ? "L'Échoppe Solidaire — Développement Web pour Associations | L'Échoppe du Code"
+      : "L'Échoppe Solidaire — Web Development for Non-Profits | L'Échoppe du Code",
     description: isFr
       ? "Création de sites internet et d'outils numériques sur-mesure pour les associations, en priorité LGBTQI+. Mécénat de compétences 50 %, même exigence technique, zéro concession sur la qualité."
       : "Custom websites and digital tools for non-profit organisations, with a priority focus on LGBTQI+ causes. 50% skills sponsorship, same technical standards, no compromise on quality.",

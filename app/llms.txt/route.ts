@@ -27,7 +27,7 @@ function legalLines(locale: 'fr' | 'en'): string {
 }
 
 function body(): string {
-  return `# L'Echoppe du Code
+  return `# L'Échoppe du Code
 
 > Développeur web indépendant à Paris / Île-de-France — cadrage de projet, sites vitrines, e-commerce et applications sur-mesure.
 
@@ -37,7 +37,7 @@ Statut : entrepreneur-salarié hébergé par Jump Green (SIRET 97761078100014, R
 
 ## Cadrage et conception
 
-Étape préalable facultative, facturée séparément, pour les projets qui ne sont pas encore définis. Le livrable est un dossier écrit qui appartient au client, qu'il poursuive ou non avec L'Echoppe du Code.
+Étape préalable facultative, facturée séparément, pour les projets qui ne sont pas encore définis. Le livrable est un dossier écrit qui appartient au client, qu'il poursuive ou non avec L'Échoppe du Code.
 
 - **Cadrage Vitrine — 290 € HT** — Atelier et dossier écrit pour un site vitrine : choix de solution, arborescence, conformité RGPD, périmètre de la V1.
 - **Cadrage E-commerce & Business — 590 € HT** — Atelier et dossier écrit pour un projet de vente en ligne ou de réservation : tunnel de vente, solution de paiement, workflows, conformité RGPD e-commerce.
@@ -109,7 +109,7 @@ ${postLines('fr')}
 
 ---
 
-# L'Echoppe du Code (English)
+# L'Échoppe du Code (English)
 
 > Independent web developer in Paris / Île-de-France — project scoping, marketing websites, e-commerce and custom web applications.
 
@@ -117,7 +117,7 @@ Ludovic BATAILLE is a freelance web developer based in the Paris region of Franc
 
 ## Scoping and product design
 
-An optional first step, billed separately, for projects that are not yet defined. The written report belongs to the client whether or not they go on to work with L'Echoppe du Code.
+An optional first step, billed separately, for projects that are not yet defined. The written report belongs to the client whether or not they go on to work with L'Échoppe du Code.
 
 - **Marketing site scoping — €290** — Workshop and written report: solution choice, site structure, GDPR compliance, scope of the first version.
 - **E-commerce & business scoping — €590** — Workshop and written report: sales funnel, payment provider, workflows, e-commerce GDPR compliance.

@@ -47,7 +47,7 @@ export async function generateMetadata({
   const image = `${BASE_URL}${post.coverImage ?? '/og-image.png'}`
 
   return {
-    title: `${post.title} | L'Echoppe du Code`,
+    title: `${post.title} | L'Échoppe du Code`,
     description: post.description,
     authors: [{ name: 'Ludovic BATAILLE' }],
     alternates: {
@@ -61,7 +61,7 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: post.description,
-      siteName: "L'Echoppe du Code",
+      siteName: "L'Échoppe du Code",
       locale: locale === 'en' ? 'en_US' : 'fr_FR',
       type: 'article',
       publishedTime: post.date,

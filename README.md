@@ -1,4 +1,4 @@
-# 🛖 L'Echoppe du Code
+# 🛖 L'Échoppe du Code
 
 Portfolio freelance de développement web. Bilingue FR/EN, sans framework CSS tiers, sans template.
 

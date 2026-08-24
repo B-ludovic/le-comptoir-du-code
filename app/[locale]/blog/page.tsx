@@ -19,8 +19,8 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? "Blog — Conseils Web & Développement | L'Echoppe du Code"
-      : "Blog — Web Tips & Development | L'Echoppe du Code",
+      ? "Blog — Conseils Web & Développement | L'Échoppe du Code"
+      : "Blog — Web Tips & Development | L'Échoppe du Code",
     description: isFr
       ? "Articles pratiques sur la création de site internet, le choix entre freelance et plateforme, et les coulisses du développement web sur-mesure."
       : "Practical articles about website creation, choosing between freelance and platforms, and the ins and outs of custom web development.",

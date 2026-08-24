@@ -14,8 +14,8 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
 
   const title = isFr
-    ? "Création Site Internet Freelance Paris | L'Echoppe du Code"
-    : "Freelance Web Developer Paris | Custom Websites & Apps | L'Echoppe du Code"
+    ? "Création Site Internet Freelance Paris | L'Échoppe du Code"
+    : "Freelance Web Developer Paris | Custom Websites & Apps | L'Échoppe du Code"
 
   const description = isFr
     ? "Développeur web freelance basé en Île-de-France. Cadrage de projet à partir de 290 € HT, sites vitrines, e-commerce et applications web sur-mesure. Code propre, performant et livré avec ses sources."
@@ -32,7 +32,7 @@ export async function generateMetadata({
     keywords,
     authors: [{ name: 'Ludovic BATAILLE' }],
     creator: 'Ludovic BATAILLE',
-    publisher: "L'Echoppe du Code",
+    publisher: "L'Échoppe du Code",
     alternates: {
       canonical: `${BASE_URL}/${locale}`,
       languages: {
@@ -56,7 +56,7 @@ export async function generateMetadata({
       title,
       description,
       url: `${BASE_URL}/${locale}`,
-      siteName: "L'Echoppe du Code",
+      siteName: "L'Échoppe du Code",
       locale: ogLocale,
       type: 'website',
       images: [
@@ -64,7 +64,7 @@ export async function generateMetadata({
           url: `${BASE_URL}/og-image.png`,
           width: 1200,
           height: 630,
-          alt: "L'Echoppe du Code — Développeur Web Freelance Paris",
+          alt: "L'Échoppe du Code — Développeur Web Freelance Paris",
         },
       ],
     },

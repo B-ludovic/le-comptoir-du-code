@@ -332,7 +332,7 @@ export default function DevisPreview({ data }: Props) {
   <div class="parties">
     <div class="party">
       <div class="party-label">${t.provider}</div>
-      <span class="party-name">L'Echoppe du Code</span>
+      <span class="party-name">L'Échoppe du Code</span>
       <span class="party-detail">Ludovic BATAILLE (Entrepreneur-salarié)</span>
       <span class="party-detail">Hébergé par : Jump Green</span>
       <span class="party-detail">7 Place de l'Hôtel de Ville, 93600 Aulnay-sous-Bois</span>
@@ -445,7 +445,7 @@ export default function DevisPreview({ data }: Props) {
   </div>
 
   <div class="footer">
-    <span class="footer-left">L'Echoppe du Code — Hébergé par Jump Green au capital de 18 501 € — SIRET 97761078100014 — RCS de Bobigny — TVA FR10977610781</span>
+    <span class="footer-left">L'Échoppe du Code — Hébergé par Jump Green au capital de 18 501 € — SIRET 97761078100014 — RCS de Bobigny — TVA FR10977610781</span>
     <div class="footer-right">
       <span class="footer-site">lechoppeducode.com</span> — contact@lechoppeducode.com
     </div>

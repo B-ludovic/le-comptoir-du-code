@@ -11,7 +11,7 @@ const dictionaries = { fr, en }
 /* Page privée : son URL est transmise au Client après commande.
    Pas de lien depuis la navigation, et pas d'indexation. */
 export const metadata: Metadata = {
-  title: "Questionnaire de cadrage | L'Echoppe du Code",
+  title: "Questionnaire de cadrage | L'Échoppe du Code",
   robots: { index: false, follow: false },
 }
 

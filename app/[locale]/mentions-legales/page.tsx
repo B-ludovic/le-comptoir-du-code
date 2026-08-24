@@ -18,11 +18,11 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? "Mentions Légales | L'Echoppe du Code"
-      : "Legal Notice | L'Echoppe du Code",
+      ? "Mentions Légales | L'Échoppe du Code"
+      : "Legal Notice | L'Échoppe du Code",
     description: isFr
-      ? "Mentions légales du site L'Echoppe du Code — éditeur, hébergement, propriété intellectuelle."
-      : "Legal notice for L'Echoppe du Code — publisher, hosting, intellectual property.",
+      ? "Mentions légales du site L'Échoppe du Code — éditeur, hébergement, propriété intellectuelle."
+      : "Legal notice for L'Échoppe du Code — publisher, hosting, intellectual property.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/${slug}`,
       languages: {

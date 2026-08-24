@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
 
   try {
     await transporter.sendMail({
-      from: `"L'Echoppe du Code" <contact@lechoppeducode.com>`,
+      from: `"L'Échoppe du Code" <contact@lechoppeducode.com>`,
       to: 'contact@lechoppeducode.com',
       replyTo: contact_email,
       subject: `Questionnaire de cadrage — ${company}`,

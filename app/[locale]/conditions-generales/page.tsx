@@ -19,11 +19,11 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? "Conditions Générales de Prestation | L'Echoppe du Code"
-      : "Terms of Service | L'Echoppe du Code",
+      ? "Conditions Générales de Prestation | L'Échoppe du Code"
+      : "Terms of Service | L'Échoppe du Code",
     description: isFr
-      ? "Conditions générales de prestation de services de L'Echoppe du Code — tarifs, délais, maintenance, propriété intellectuelle."
-      : "Terms of service for L'Echoppe du Code — pricing, timelines, maintenance, intellectual property.",
+      ? "Conditions générales de prestation de services de L'Échoppe du Code — tarifs, délais, maintenance, propriété intellectuelle."
+      : "Terms of service for L'Échoppe du Code — pricing, timelines, maintenance, intellectual property.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/${slug}`,
       languages: {

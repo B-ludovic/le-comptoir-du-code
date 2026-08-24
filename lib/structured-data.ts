@@ -63,8 +63,8 @@ export function faqJsonLd(
     inLanguage: locale,
     name:
       locale === 'en'
-        ? "Frequently asked questions — L'Echoppe du Code"
-        : "Questions fréquentes — L'Echoppe du Code",
+        ? "Frequently asked questions — L'Échoppe du Code"
+        : "Questions fréquentes — L'Échoppe du Code",
     publisher: publisherRef,
     author: authorRef,
     mainEntity: entries.map((entry) => ({
@@ -87,7 +87,7 @@ export function portfolioJsonLd(
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: locale === 'en' ? 'Selected work' : "Réalisations de L'Echoppe du Code",
+    name: locale === 'en' ? 'Selected work' : "Réalisations de L'Échoppe du Code",
     itemListElement: projects.map((project, index) => ({
       '@type': 'ListItem',
       position: index + 1,
@@ -365,7 +365,12 @@ export function siteGraphJsonLd(rawLocale: string) {
   const organization = {
     '@type': 'ProfessionalService',
     '@id': ORGANIZATION_ID,
-    name: "L'Echoppe du Code",
+    name: "L'Échoppe du Code",
+    /* Le nom s'écrit avec l'accent, comme dans les conditions générales. Les
+       variantes restent déclarées : le site a longtemps servi la graphie sans
+       accent, les moteurs l'ont mémorisée, et alternateName est ce qui les
+       rattache à la même entité au lieu d'en laisser flotter deux. */
+    alternateName: ["L'Echoppe du Code", 'Echoppe du Code', 'Échoppe du Code'],
     description: orgDescription[locale],
     url: BASE_URL,
     email: 'contact@lechoppeducode.com',
@@ -428,7 +433,7 @@ export function siteGraphJsonLd(rawLocale: string) {
     '@type': 'WebSite',
     '@id': `${siteUrl}/#website`,
     url: siteUrl,
-    name: "L'Echoppe du Code",
+    name: "L'Échoppe du Code",
     description: orgDescription[locale],
     inLanguage: locale,
     publisher: publisherRef,

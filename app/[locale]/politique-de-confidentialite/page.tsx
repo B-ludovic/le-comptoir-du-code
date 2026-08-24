@@ -19,11 +19,11 @@ export async function generateMetadata({
   const isFr = locale !== 'en'
   return {
     title: isFr
-      ? "Politique de Confidentialité | L'Echoppe du Code"
-      : "Privacy Policy | L'Echoppe du Code",
+      ? "Politique de Confidentialité | L'Échoppe du Code"
+      : "Privacy Policy | L'Échoppe du Code",
     description: isFr
-      ? "Politique de confidentialité du site L'Echoppe du Code — données personnelles, cookies, droits des utilisateurs."
-      : "Privacy policy for L'Echoppe du Code — personal data, cookies, user rights.",
+      ? "Politique de confidentialité du site L'Échoppe du Code — données personnelles, cookies, droits des utilisateurs."
+      : "Privacy policy for L'Échoppe du Code — personal data, cookies, user rights.",
     alternates: {
       canonical: `${BASE_URL}/${locale}/${slug}`,
       languages: {

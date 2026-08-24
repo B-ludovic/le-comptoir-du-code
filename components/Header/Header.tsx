@@ -83,7 +83,7 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
         <Link href={`/${locale}`} className={styles.logo}>
           <span className={styles.logoMark}>E/C</span>
           <span className={styles.logoText}>
-            <span className={styles.logoTop}>L&apos;ECHOPPE</span>
+            <span className={styles.logoTop}>L&apos;ÉCHOPPE</span>
             <span className={styles.logoBottom}>du Code</span>
           </span>
         </Link>
@@ -106,7 +106,7 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/ludovic.jpeg"
-            alt="Ludovic — L'Echoppe du Code"
+            alt="Ludovic — L'Échoppe du Code"
             width={32}
             height={32}
             className={styles.portraitImage}
