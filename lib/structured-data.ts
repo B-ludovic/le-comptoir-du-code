@@ -314,6 +314,80 @@ const solidaireDescription: Bilingual = {
   en: '50 % skills sponsorship on development packages, reserved for registered non-profits, with priority given to LGBTQI+ organisations. Subject to proof of registration.',
 }
 
+export const PROFILE_SLUG = 'a-propos'
+
+/* Biographie de l'entité, reprise de ce que le site dit déjà de lui — la
+   section « Le Codeur » et l'article sur le titre professionnel. Rien n'est
+   ajouté ici qui ne soit déjà publié ailleurs. */
+const personBio: Bilingual = {
+  fr: "Développeur web indépendant en Île-de-France. Après dix-huit ans à encadrer des équipes de terrain dans le retail aéroportuaire, il conçoit et livre seul des applications web sur-mesure : sites vitrines, boutiques en ligne et outils métier, en Next.js, TypeScript et NestJS.",
+  en: 'Independent web developer in the Paris region of France. After eighteen years managing frontline teams in airport retail, he designs and ships custom web applications single-handed: marketing sites, online shops and business tools, built with Next.js, TypeScript and NestJS.',
+}
+
+const profileName: Bilingual = {
+  fr: 'Ludovic BATAILLE — développeur web indépendant',
+  en: 'Ludovic BATAILLE — independent web developer',
+}
+
+/* ProfilePage plutôt que WebPage : le type dit explicitement « cette page a
+   pour sujet une personne ». C'est ce qui autorise un moteur à attribuer une
+   citation à quelqu'un au lieu de la rattacher à un site anonyme. */
+export function profilePageJsonLd(rawLocale: string) {
+  const locale: Locale = rawLocale === 'en' ? 'en' : 'fr'
+  const url = `${BASE_URL}/${locale}/${PROFILE_SLUG}`
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': url,
+    url,
+    inLanguage: locale,
+    name: profileName[locale],
+    isPartOf: { '@id': `${BASE_URL}/${locale}/#website` },
+    mainEntity: {
+      '@type': 'Person',
+      '@id': PERSON_ID,
+      name: 'Ludovic BATAILLE',
+      jobTitle: jobTitle[locale],
+      description: personBio[locale],
+      url,
+      image: `${BASE_URL}/ludovic.jpeg`,
+      email: 'contact@lechoppeducode.com',
+      knowsLanguage: ['fr', 'en'],
+      sameAs: SAME_AS,
+      worksFor: { '@id': ORGANIZATION_ID },
+      founder: { '@id': ORGANIZATION_ID },
+      knowsAbout: [
+        'Next.js',
+        'React',
+        'TypeScript',
+        'NestJS',
+        'Node.js',
+        'PostgreSQL',
+        'Prisma',
+        'Stripe',
+        locale === 'en' ? 'Web accessibility' : 'Accessibilité web',
+        locale === 'en' ? 'Technical SEO' : 'Référencement technique',
+      ],
+      hasOccupation: {
+        '@type': 'Occupation',
+        name: jobTitle[locale],
+        occupationLocation: [
+          { '@type': 'City', name: 'Paris' },
+          { '@type': 'AdministrativeArea', name: 'Île-de-France' },
+        ],
+        skills: serviceTypes[locale].join(', '),
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Aulnay-sous-Bois',
+        addressRegion: 'Île-de-France',
+        addressCountry: 'FR',
+      },
+    },
+  }
+}
+
 export function siteGraphJsonLd(rawLocale: string) {
   const locale: Locale = rawLocale === 'en' ? 'en' : 'fr'
   const siteUrl = `${BASE_URL}/${locale}`
@@ -323,7 +397,13 @@ export function siteGraphJsonLd(rawLocale: string) {
     '@id': PERSON_ID,
     name: 'Ludovic BATAILLE',
     jobTitle: jobTitle[locale],
-    url: siteUrl,
+    /* L'entité a désormais une page à elle. Tant que `url` pointait vers la
+       page d'accueil, la personne n'était qu'un attribut de l'entreprise :
+       rien ne permettait à un moteur de citer quelqu'un plutôt qu'un site. */
+    url: `${siteUrl}/${PROFILE_SLUG}`,
+    mainEntityOfPage: { '@id': `${siteUrl}/${PROFILE_SLUG}` },
+    image: `${BASE_URL}/ludovic.jpeg`,
+    description: personBio[locale],
     email: 'contact@lechoppeducode.com',
     knowsLanguage: ['fr', 'en'],
     sameAs: SAME_AS,

@@ -11,6 +11,7 @@ type Props = {
   dict: {
     copyright: string
     faq: string
+    about: string
     legal: string
     privacy: string
     cookies: string
@@ -24,6 +25,7 @@ export default function Footer({ locale, dict }: Props) {
 
   const legalLinks = [
     { href: `/${locale}/faq`, label: dict.faq },
+    { href: `/${locale}/a-propos`, label: dict.about },
     { href: `/${locale}/mentions-legales`, label: dict.legal },
     { href: `/${locale}/politique-de-confidentialite`, label: dict.privacy },
     { href: `/${locale}/gestion-des-cookies`, label: dict.cookies },

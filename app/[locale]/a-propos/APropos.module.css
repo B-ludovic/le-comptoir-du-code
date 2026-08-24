@@ -1,0 +1,146 @@
+/* Page auteur — même vocabulaire visuel que les articles du Carnet : une
+   colonne étroite, lisible, sans les sections plein écran de la page d'accueil. */
+.main {
+  padding: 10rem 0 6rem;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 8rem 0 4rem;
+  }
+}
+
+.article {
+  max-width: 720px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.portraitWrapper {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  border: 1px solid rgba(232, 196, 160, 0.2);
+}
+
+.portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* globals.css impose aux <section> d'être plein écran, centrées et généreusement
+   rembourrées : c'est le comportement voulu pour les sections de la page
+   d'accueil, pas pour les blocs d'un article. On le neutralise ici plutôt que
+   de renoncer à la balise, qui porte le sens du découpage. */
+.section {
+  min-height: 0;
+  display: block;
+  justify-content: normal;
+  padding: 0;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+}
+
+.text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tier {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(232, 196, 160, 0.08);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+}
+
+.tierName {
+  color: var(--text-main);
+}
+
+.tierPrice {
+  color: var(--accent-primary);
+  white-space: nowrap;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+}
+
+.link {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+  border-bottom: 1px solid rgba(232, 196, 160, 0.25);
+  padding-bottom: 0.2rem;
+  transition: border-color var(--transition-base);
+}
+
+.link:hover {
+  border-color: var(--accent-primary);
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

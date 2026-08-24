@@ -77,6 +77,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   )
 
+  const profileRoutes = locales.map((locale) => ({
+    url: `${BASE_URL}/${locale}/a-propos`,
+    lastModified: CONTENT_LAST_REVIEWED,
+    changeFrequency: 'yearly' as const,
+    priority: 0.7,
+    alternates: withAlternates('/a-propos'),
+  }))
+
   const faqRoutes = locales.map((locale) => ({
     url: `${BASE_URL}/${locale}/faq`,
     lastModified: CONTENT_LAST_REVIEWED,
@@ -95,6 +103,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...homepages,
+    ...profileRoutes,
     ...solidaireRoutes,
     ...faqRoutes,
     ...blogListings,

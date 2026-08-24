@@ -140,6 +140,7 @@ Version intégrale de ce document, articles compris : ${BASE_URL}/llms-full.txt
 ## Pages
 
 - ${BASE_URL}/fr — Page d'accueil
+- ${BASE_URL}/fr/a-propos — Ludovic BATAILLE, le développeur : parcours, méthode, contact
 - ${BASE_URL}/fr/echoppe-solidaire — L'Échoppe Solidaire, tarification associative
 - ${BASE_URL}/fr/faq — Questions fréquentes : prix, propriété du code, paiement, maintenance, tarif associatif
 ${legalLines('fr')}
@@ -197,6 +198,7 @@ Full version of this document, articles included: ${BASE_URL}/llms-full.txt
 ## Pages
 
 - ${BASE_URL}/en — Homepage
+- ${BASE_URL}/en/a-propos — Ludovic BATAILLE, the developer: background, approach, contact
 - ${BASE_URL}/en/echoppe-solidaire — L'Échoppe Solidaire, non-profit pricing
 - ${BASE_URL}/en/faq — Frequently asked questions: pricing, code ownership, payment, maintenance, non-profit rates
 ${legalLines('en')}
