@@ -150,6 +150,7 @@ ${legalLines('fr')}
 Articles pratiques sur la création de site internet, le coût réel des plateformes et l'artisanat numérique.
 
 - ${BASE_URL}/fr/blog — Le Carnet, sommaire
+- ${BASE_URL}/fr/blog/rss.xml — flux RSS du Carnet
 ${postLines('fr')}
 
 ---
@@ -208,6 +209,7 @@ ${legalLines('en')}
 Practical articles on building a website, the real cost of website platforms and digital craftsmanship.
 
 - ${BASE_URL}/en/blog — Journal, index
+- ${BASE_URL}/en/blog/rss.xml — Journal RSS feed
 ${postLines('en')}
 `
 }

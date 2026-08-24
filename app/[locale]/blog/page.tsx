@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { BASE_URL } from '@/lib/structured-data'
+import { BASE_URL, blogIndexJsonLd, breadcrumbJsonLd } from '@/lib/structured-data'
 import Link from 'next/link'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
@@ -45,8 +45,28 @@ export default async function BlogPage({
   const isFr = locale !== 'en'
   const posts = getAllPosts(locale)
 
+  const jsonLd = [
+    blogIndexJsonLd(posts, locale),
+    breadcrumbJsonLd([
+      { name: isFr ? 'Accueil' : 'Home', path: `/${locale}` },
+      { name: isFr ? 'Le Carnet' : 'Journal', path: `/${locale}/blog` },
+    ]),
+  ]
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* Le flux, déclaré là où les lecteurs de flux le cherchent : dans le
+          head de la page qui liste les articles. */}
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        href={`/${locale}/blog/rss.xml`}
+        title={isFr ? "Le Carnet — L'Échoppe du Code" : "Journal — L'Échoppe du Code"}
+      />
       <Header locale={locale} nav={dict.nav} />
       <main className={styles.main}>
         <div className="container">

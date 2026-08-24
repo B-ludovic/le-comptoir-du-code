@@ -85,6 +85,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: withAlternates('/a-propos'),
   }))
 
+  /* Le flux n'est pas une page à indexer, mais le lister le rend découvrable
+     par les agrégateurs qui explorent le sitemap. */
+  const feedRoutes = locales.map((locale) => ({
+    url: `${BASE_URL}/${locale}/blog/rss.xml`,
+    lastModified: CONTENT_LAST_REVIEWED,
+    changeFrequency: 'weekly' as const,
+    priority: 0.3,
+  }))
+
   const faqRoutes = locales.map((locale) => ({
     url: `${BASE_URL}/${locale}/faq`,
     lastModified: CONTENT_LAST_REVIEWED,
@@ -107,6 +116,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...solidaireRoutes,
     ...faqRoutes,
     ...blogListings,
+    ...feedRoutes,
     ...blogArticles,
     ...legalRoutes,
   ]

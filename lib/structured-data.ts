@@ -127,6 +127,42 @@ export function portfolioJsonLd(
   }
 }
 
+/* Index du Carnet. Sans ce nœud, la page de sommaire n'est qu'une liste de
+   liens : rien ne dit qu'elle est le point d'entrée d'un blog, ni que les
+   articles qu'elle recense ont un auteur et un éditeur communs. Le `Blog`
+   porte cette appartenance, et `blogPost` rattache chaque entrée à son URL. */
+export function blogIndexJsonLd(
+  posts: { slug: string; title: string; description: string; date: string }[],
+  rawLocale: string,
+) {
+  const locale: Locale = rawLocale === 'en' ? 'en' : 'fr'
+  const url = `${BASE_URL}/${locale}/blog`
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': url,
+    url,
+    name: locale === 'en' ? 'Journal' : 'Le Carnet',
+    description:
+      locale === 'en'
+        ? 'Articles on building a website, the real cost of platforms and digital craftsmanship.'
+        : "Articles sur la création de site internet, le coût réel des plateformes et l'artisanat numérique.",
+    inLanguage: locale,
+    author: authorRef,
+    publisher: publisherRef,
+    isPartOf: { '@id': `${BASE_URL}/${locale}/#website` },
+    blogPost: posts.map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date,
+      url: `${BASE_URL}/${locale}/blog/${post.slug}`,
+      author: authorRef,
+    })),
+  }
+}
+
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   return {
     '@context': 'https://schema.org',
