@@ -1,5 +1,13 @@
 import { getAllPosts, type PostMeta } from '@/lib/blog'
 import { BASE_URL } from '@/lib/structured-data'
+import {
+  TIERS,
+  ENGINEERING_DAY_RATE,
+  addonsFor,
+  formatPrice,
+  formatMonthly,
+  type Locale,
+} from '@/lib/pricing'
 
 export const dynamic = 'force-static'
 
@@ -26,6 +34,41 @@ function legalLines(locale: 'fr' | 'en'): string {
     .join('\n')
 }
 
+/* Les paliers et leurs modules sont rendus depuis lib/pricing.ts. Un moteur
+   génératif lit ce fichier comme une grille tarifaire : autant qu'elle soit
+   exactement celle du site, module par module, plutôt qu'un résumé rédigé une
+   fois puis oublié. */
+function tierLines(locale: Locale): string {
+  return TIERS.map((t) => {
+    const price = formatPrice(t.price, locale)
+    const upkeep = formatMonthly(t.maintenance.price, locale)
+    const included = t.maintenance.includedMonths
+    const heading =
+      locale === 'en'
+        ? `- **${t.name} — from ${price}** — Socle: ${t.days} days of engineering. ${included} months of security updates included, then ${upkeep}.`
+        : `- **${t.name} — à partir de ${price} HT** — Socle : ${t.days} jours d'ingénierie. ${included} mois de mises à jour de sécurité inclus, puis ${upkeep}.`
+    const modules = addonsFor(t.id)
+      .map((a) => {
+        const unit = locale === 'en' ? `${a.days} day${a.days > 1 ? 's' : ''}` : `${a.days} j`
+        const amount = locale === 'en' ? formatPrice(a.price, 'en') : `${formatPrice(a.price, 'fr')} HT`
+        return `  - ${a.label[locale]} — ${amount} (${unit})`
+      })
+      .join('\n')
+    return `${heading}\n${modules}`
+  }).join('\n\n')
+}
+
+function solidaireLines(locale: Locale): string {
+  return TIERS.map((t) => {
+    const price = formatPrice(t.nonProfitPrice, locale)
+    const full = formatPrice(t.price, locale)
+    const upkeep = formatMonthly(t.maintenance.nonProfitPrice, locale)
+    return locale === 'en'
+      ? `- **${t.name} (non-profit)** — from ${price} instead of ${full}. Solidarity maintenance from ${upkeep}.`
+      : `- **${t.name} (associatif)** — à partir de ${price} HT au lieu de ${full} HT. Maintenance solidaire à partir de ${upkeep}.`
+  }).join('\n')
+}
+
 function body(): string {
   return `# L'Échoppe du Code
 
@@ -50,9 +93,9 @@ Conditions détaillées : ${BASE_URL}/fr/conditions-cadrage
 
 ## Développement
 
-- **La Présence — à partir de 1 450 € HT** — Site vitrine sur-mesure. Design soigné, performances optimisées, SEO technique inclus. Maintenance optionnelle (mises à jour de sécurité) à 70 € HT/mois.
-- **L'E-commerce & Réservation — à partir de 2 850 € HT** — Boutique en ligne ou système de réservation. Un an de mises à jour de sécurité inclus, puis 85 € HT/mois.
-- **Les Outils Sur-Mesure — à partir de 4 800 € HT** — Application métier, tableau de bord, outil interne. Un an de mises à jour de sécurité inclus, puis à partir de 165 € HT/mois.
+Chaque offre est un socle au périmètre défini, chiffré en jours d'ingénierie au taux de ${ENGINEERING_DAY_RATE} € HT par jour. Les besoins spécifiques s'ajoutent en modules, eux aussi chiffrés en jours. Le client peut retirer un module : il compose un périmètre au lieu de négocier un prix.
+
+${tierLines('fr')}
 
 Conditions détaillées : ${BASE_URL}/fr/conditions-generales
 
@@ -61,9 +104,7 @@ Conditions détaillées : ${BASE_URL}/fr/conditions-generales
 Offre dédiée aux associations loi 1901 et structures à but non lucratif, en priorité LGBTQI+. Mécénat de compétences de 50 % sur les forfaits de développement, conditionné à la fourniture d'un récépissé de déclaration en préfecture ou équivalent. Même exigence technique, zéro concession sur la qualité.
 
 - **Cadrage (associatif)** — à partir de 145 € HT.
-- **La Présence (associative)** — à partir de 725 € HT au lieu de 1 450 € HT. Maintenance solidaire à partir de 40 € HT/mois.
-- **L'E-commerce & Dons (associatif)** — à partir de 1 425 € HT au lieu de 2 850 € HT. Maintenance solidaire à partir de 50 € HT/mois.
-- **Les Outils Sur-Mesure (associatif)** — sur étude budgétaire, au lieu de 4 800 € HT minimum. Maintenance sur étude.
+${solidaireLines('fr')}
 
 La maintenance associative suit un barème solidaire dédié : elle n'est pas automatiquement à moitié prix du tarif standard, mais reste très en dessous du marché.
 
@@ -128,18 +169,16 @@ Set-off: where the client signs a development quote within three months of the s
 
 ## Development
 
-- **La Présence — from €1,450** — Custom marketing website. Careful design, optimised performance, technical SEO included. Optional security maintenance at €70/month.
-- **L'E-commerce & Réservation — from €2,850** — Online shop or booking system. One year of security updates included, then €85/month.
-- **Les Outils Sur-Mesure — from €4,800** — Business application, dashboard or internal tool. One year of security updates included, then from €165/month.
+Each package is a foundation with a defined scope, priced in engineering days at €${ENGINEERING_DAY_RATE} excluding VAT per day. Specific needs are added as modules, also priced in days. A client can remove a module: they compose a scope rather than negotiate a price.
+
+${tierLines('en')}
 
 ## Non-profit pricing
 
 50 % skills sponsorship on development packages for registered non-profits, with priority given to LGBTQI+ organisations, subject to proof of registration. Same technical standard, no compromise on quality.
 
 - **Scoping (non-profit)** — from €145.
-- **La Présence (non-profit)** — from €725 instead of €1,450. Solidarity maintenance from €40/month.
-- **E-commerce & Donations (non-profit)** — from €1,425 instead of €2,850. Solidarity maintenance from €50/month.
-- **Les Outils Sur-Mesure (non-profit)** — on budget review, instead of €4,800 minimum.
+${solidaireLines('en')}
 
 Maintenance for non-profits follows a dedicated solidarity rate: it is not automatically half the standard price, but stays well below market rates. At delivery the infrastructure is registered in the organisation's name and the source code belongs to it.
 

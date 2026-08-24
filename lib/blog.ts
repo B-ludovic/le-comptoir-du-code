@@ -8,6 +8,10 @@ export type PostMeta = {
   description: string
   date: string
   excerpt: string
+  /* Résumé de l'article en deux ou trois phrases autonomes. Distinct de
+     `description` et d'`excerpt`, qui sont des accroches : celui-ci donne la
+     conclusion, pour être lisible — et citable — sans lire l'article. */
+  summary?: string[]
   coverImage?: string
   alternate_slug?: string
 }
@@ -44,6 +48,7 @@ export function getPost(slug: string, locale: string): Post | null {
     description: data.description ?? '',
     date: data.date ?? '',
     excerpt: data.excerpt ?? '',
+    summary: Array.isArray(data.summary) ? data.summary : undefined,
     coverImage: data.coverImage ?? null,
     alternate_slug: data.alternate_slug ?? null,
     content,
@@ -54,12 +59,13 @@ export function getAllPosts(locale: string): PostMeta[] {
   return getPostSlugs(locale)
     .map((slug) => getPost(slug, locale))
     .filter((p): p is Post => p !== null)
-    .map(({ slug, title, description, date, excerpt, alternate_slug }) => ({
+    .map(({ slug, title, description, date, excerpt, summary, alternate_slug }) => ({
       slug,
       title,
       description,
       date,
       excerpt,
+      summary,
       alternate_slug,
     }))
     .sort((a, b) => (a.date < b.date ? 1 : -1))

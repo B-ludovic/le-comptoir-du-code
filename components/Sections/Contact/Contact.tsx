@@ -34,11 +34,15 @@ export default function Contact({ dict }: Props) {
   // Valeur dérivée de l'URL, calculée au rendu : pas d'effet, donc pas de
   // rendu à vide avant que le budget ne s'affiche.
   const budgetParam = searchParams.get('budget')
+  /* Les cartes de la page d'accueil passent l'identifiant du palier
+     ('presence', 'boutique', 'outils'), la page associative passe encore les
+     anciens '1', '2', '3'. Les deux formes restent acceptées : un lien
+     enregistré ou envoyé par mail ne doit pas cesser de préremplir le champ. */
   const budgetFromUrl =
     budgetParam === 'cadrage' ? dict.budget_scoping :
-    budgetParam === '1' ? dict.budget_1 :
-    budgetParam === '2' ? dict.budget_2 :
-    budgetParam === '3' ? dict.budget_3 :
+    budgetParam === 'presence' || budgetParam === '1' ? dict.budget_1 :
+    budgetParam === 'boutique' || budgetParam === '2' ? dict.budget_2 :
+    budgetParam === 'outils' || budgetParam === '3' ? dict.budget_3 :
     ''
 
   // Dès que l'utilisateur choisit lui-même, son choix prend le pas sur l'URL.

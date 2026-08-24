@@ -6,6 +6,7 @@ import Footer from '@/components/Footer/Footer'
 import Contact from '@/components/Sections/Contact/Contact'
 import ScrollToHash from '@/components/ScrollToHash/ScrollToHash'
 import styles from './EchoppeSolidaire.module.css'
+import { tier, formatPrice, formatMonthly } from '@/lib/pricing'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -50,10 +51,10 @@ export default async function EchoppeSolidairePage({
     {
       number: '01',
       budgetParam: '1',
-      title: isFr ? 'La Présence' : 'The Presence',
+      title: tier('presence').name,
       subtitle: isFr ? 'Vitrine ou association locale' : 'Informational site for local non-profits',
-      originalPrice: '1 450 €',
-      price: isFr ? 'À partir de 725 €' : 'From €725',
+      originalPrice: formatPrice(tier('presence').price, isFr ? 'fr' : 'en'),
+      price: `${isFr ? 'À partir de' : 'From'} ${formatPrice(tier('presence').nonProfitPrice, isFr ? 'fr' : 'en')}`,
       badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
       desc: isFr
         ? 'Un site professionnel, rapide et référencé. Votre présence en ligne, enfin à la hauteur de votre engagement.'
@@ -61,16 +62,16 @@ export default async function EchoppeSolidairePage({
       features: isFr
         ? ['Design sur-mesure responsive', 'SEO local inclus', 'Formulaire de contact sécurisé', 'Mise en ligne incluse']
         : ['Responsive custom design', 'Local SEO included', 'Secure contact form', 'Deployment included'],
-      maintenance: isFr ? 'Maintenance à partir de 40 €\u00A0HT/mois' : 'Maintenance from €40 excl. VAT/month',
-      delay: isFr ? '3 à 4 jours' : '3 to 4 days',
+      maintenance: `${isFr ? 'Maintenance à partir de' : 'Maintenance from'} ${formatMonthly(tier('presence').maintenance.nonProfitPrice, isFr ? 'fr' : 'en')}`,
+      delay: isFr ? '2 à 3 semaines' : '2 to 3 weeks',
     },
     {
       number: '02',
       budgetParam: '2',
-      title: isFr ? "L'E-commerce & Dons" : 'E-commerce & Donations',
+      title: `${tier('boutique').name} & Dons`,
       subtitle: isFr ? 'Dons, adhésions & espaces membres' : 'Donations, memberships & member areas',
-      originalPrice: '2 850 €',
-      price: isFr ? 'À partir de 1 425 €' : 'From €1,425',
+      originalPrice: formatPrice(tier('boutique').price, isFr ? 'fr' : 'en'),
+      price: `${isFr ? 'À partir de' : 'From'} ${formatPrice(tier('boutique').nonProfitPrice, isFr ? 'fr' : 'en')}`,
       badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
       desc: isFr
         ? 'Gestion des dons Stripe, des adhésions récurrentes et des espaces membres sécurisés. Tout ce dont une association active a besoin.'
@@ -78,16 +79,16 @@ export default async function EchoppeSolidairePage({
       features: isFr
         ? ['Paiements Stripe sécurisés', 'Adhésions récurrentes', 'Espace membres privé', 'Reçus fiscaux PDF']
         : ['Secure Stripe payments', 'Recurring memberships', 'Private member portal', 'Automated PDF tax receipts'],
-      maintenance: isFr ? 'Maintenance à partir de 50 €\u00A0HT/mois' : 'Maintenance from €50 excl. VAT/month',
-      delay: isFr ? '7 à 12 jours' : '7 to 12 days',
+      maintenance: `${isFr ? 'Maintenance à partir de' : 'Maintenance from'} ${formatMonthly(tier('boutique').maintenance.nonProfitPrice, isFr ? 'fr' : 'en')}`,
+      delay: isFr ? '5 à 7 semaines' : '5 to 7 weeks',
     },
     {
       number: '03',
       budgetParam: '3',
-      title: isFr ? 'Les Outils Sur-Mesure' : 'Custom Tools',
+      title: tier('outils').name,
       subtitle: isFr ? 'Fédérations & grosses infrastructures' : 'Federations & large infrastructures',
-      originalPrice: '4 800 €',
-      price: isFr ? 'Sur étude budgétaire' : 'Custom quote',
+      originalPrice: formatPrice(tier('outils').price, isFr ? 'fr' : 'en'),
+      price: `${isFr ? 'À partir de' : 'From'} ${formatPrice(tier('outils').nonProfitPrice, isFr ? 'fr' : 'en')}`,
       badge: isFr ? 'Remise calculée selon vos subventions' : 'Discount based on your grants',
       desc: isFr
         ? 'Votre projet est unique. La remise est calculée sur-mesure en fonction de vos subventions, votre budget réel, et l\'ampleur de votre infrastructure.'
@@ -95,8 +96,8 @@ export default async function EchoppeSolidairePage({
       features: isFr
         ? ['Architecture sur-mesure', 'Gestion des rôles & sécurité', 'Base de données dédiée', 'RGPD renforcé (données sensibles)']
         : ['Custom architecture', 'Role management & security', 'Dedicated database', 'Enhanced GDPR (sensitive data)'],
-      maintenance: isFr ? 'Maintenance sur étude' : 'Maintenance on review',
-      delay: isFr ? 'À définir' : 'To be defined',
+      maintenance: `${isFr ? 'Maintenance à partir de' : 'Maintenance from'} ${formatMonthly(tier('outils').maintenance.nonProfitPrice, isFr ? 'fr' : 'en')}`,
+      delay: isFr ? '8 à 10 semaines' : '8 to 10 weeks',
     },
   ]
 
@@ -383,9 +384,9 @@ export default async function EchoppeSolidairePage({
             field_budget: isFr ? 'Forfait souhaité' : 'Desired package',
             field_budget_placeholder: isFr ? '— Choisir un forfait —' : '— Choose a package —',
             budget_scoping: isFr ? 'Cadrage — À partir de 145 € HT' : 'Scoping — From €145 excl. VAT',
-            budget_1: isFr ? 'La Présence — À partir de 725 € HT' : 'The Presence — From €725 excl. VAT',
-            budget_2: isFr ? 'L\'E-commerce & Dons — À partir de 1 425 € HT' : 'E-commerce & Donations — From €1,425 excl. VAT',
-            budget_3: isFr ? 'Les Outils Sur-Mesure — Sur étude budgétaire' : 'Custom Tools — On budget review',
+            budget_1: `${tier('presence').name} — ${isFr ? 'à partir de' : 'from'} ${formatPrice(tier('presence').nonProfitPrice, isFr ? 'fr' : 'en')}${isFr ? ' HT' : ' excl. VAT'}`,
+            budget_2: `${tier('boutique').name} — ${isFr ? 'à partir de' : 'from'} ${formatPrice(tier('boutique').nonProfitPrice, isFr ? 'fr' : 'en')}${isFr ? ' HT' : ' excl. VAT'}`,
+            budget_3: `${tier('outils').name} — ${isFr ? 'à partir de' : 'from'} ${formatPrice(tier('outils').nonProfitPrice, isFr ? 'fr' : 'en')}${isFr ? ' HT' : ' excl. VAT'}`,
             btn_submit: isFr ? 'Envoyer ma demande' : 'Send my request',
           }} />
         </Suspense>

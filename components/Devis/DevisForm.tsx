@@ -1,6 +1,7 @@
 'use client'
 
 import styles from './Devis.module.css'
+import { TIERS, ADDONS, ENGINEERING_DAY_RATE, formatMonthly, type TierId } from '@/lib/pricing'
 
 export type Service = {
   name: string
@@ -10,46 +11,52 @@ export type Service = {
   amount: string
 }
 
+/* Les montants et les libellés de palier viennent de la grille : le devis PDF
+   ne doit jamais pouvoir annoncer un prix que la page publique dément. Restent
+   ici les deux textes propres au devis — la description contractuelle et le
+   délai annoncé au client, qui n'ont pas leur place dans la grille. */
+const TIER_DESCRIPTIONS: Record<TierId, string> = {
+  presence:
+    'Design sur-mesure, jusqu\u2019\u00E0 5 pages, responsive, formulaire de contact, SEO technique et mise en ligne.',
+  boutique:
+    'Site vitrine inclus, catalogue et fiches produits, paiements Stripe, gestion des commandes, back-office et e-mails transactionnels.',
+  outils:
+    'Mod\u00E9lisation des donn\u00E9es, authentification, r\u00F4les et permissions, tableau de bord, back-office, d\u00E9ploiement.',
+}
+
+const TIER_DELAYS: Record<TierId, string> = {
+  presence: '2 \u00E0 3 semaines',
+  boutique: '5 \u00E0 7 semaines',
+  outils: '8 \u00E0 10 semaines',
+}
+
 const FORFAITS = [
-  {
-    label: 'La Présence — Site Vitrine',
+  ...TIERS.map((t) => ({
+    label: t.name,
     service: {
-      name: 'La Présence — Site Vitrine',
-      description: 'Design sur-mesure, responsive, formulaire de contact, mise en ligne incluse.',
+      name: t.name,
+      description: TIER_DESCRIPTIONS[t.id],
       type: 'Forfait',
-      delay: '3 à 4 jours',
-      amount: '1450',
+      delay: TIER_DELAYS[t.id],
+      amount: String(t.price),
+    } as Service,
+    maintenance_option: 'offered' as const,
+    maintenance_rate: formatMonthly(t.maintenance.price, 'fr'),
+    prestation_type: 'dev' as const,
+  })),
+  ...ADDONS.map((a) => ({
+    label: `Module — ${a.label.fr}`,
+    service: {
+      name: a.label.fr,
+      description: `Module optionnel, ${a.days} jour${a.days > 1 ? 's' : ''} de travail au taux de ${ENGINEERING_DAY_RATE}\u00A0\u20AC HT par jour.`,
+      type: 'Module',
+      delay: 'Selon planning du socle',
+      amount: String(a.price),
     } as Service,
     maintenance_option: 'none' as const,
-    maintenance_rate: '70\u00A0\u20AC HT\u2060/\u2060mois',
+    maintenance_rate: '',
     prestation_type: 'dev' as const,
-  },
-  {
-    label: "L'E-commerce & Réservation",
-    service: {
-      name: "L'E-commerce & Réservation",
-      description: 'Site vitrine inclus, boutique en ligne, paiements Stripe, synchronisation agenda.',
-      type: 'Forfait',
-      delay: '7 à 12 jours',
-      amount: '2850',
-    } as Service,
-    maintenance_option: 'offered' as const,
-    maintenance_rate: '85\u00A0\u20AC HT\u2060/\u2060mois',
-    prestation_type: 'dev' as const,
-  },
-  {
-    label: 'Les Outils Sur-Mesure',
-    service: {
-      name: 'Les Outils Sur-Mesure — Application Métier',
-      description: 'Développement sur-mesure, base de données, tableau de bord, API dédiée.',
-      type: 'Forfait',
-      delay: 'À définir',
-      amount: '4800',
-    } as Service,
-    maintenance_option: 'offered' as const,
-    maintenance_rate: '165\u00A0\u20AC HT\u2060/\u2060mois',
-    prestation_type: 'dev' as const,
-  },
+  })),
   {
     label: 'Cadrage 01 \u2014 Vitrine',
     service: {

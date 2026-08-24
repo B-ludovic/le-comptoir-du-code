@@ -1,4 +1,16 @@
 import type { Post } from '@/lib/blog'
+import {
+  TIERS,
+  SCOPING_TIERS,
+  SCOPING_NON_PROFIT_FROM,
+  SCOPING_SET_OFF,
+  PRODUCT_DESIGN_DAY_RATE,
+  addonsFor,
+  formatPrice,
+  formatMonthly,
+  type Tier,
+  type TierId,
+} from '@/lib/pricing'
 
 /* Sans BlogPosting, un article ne se distingue pas d'une page commerciale :
    ni auteur, ni date de publication, ni langue exploitables. C'est ce qui
@@ -34,6 +46,10 @@ export function blogPostingJsonLd(post: Post, locale: string) {
        publication : mieux vaut une valeur exacte qu'une fraîcheur simulée. */
     datePublished: post.date,
     dateModified: post.date,
+    /* `abstract` porte la synthèse affichée en tête d'article. description est
+       une accroche destinée au clic ; abstract est la réponse de l'article, et
+       c'est elle qu'un moteur peut restituer sans avoir à résumer lui-même. */
+    ...(post.summary?.length ? { abstract: post.summary.join(' ') } : {}),
     inLanguage: locale === 'en' ? 'en' : 'fr',
     author: authorRef,
     publisher: publisherRef,
@@ -119,180 +135,141 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   }
 }
 
-type OfferSpec = {
-  name: string
-  price?: string
-  unit?: 'MON' | 'DAY'
-  description: Bilingual
-}
-
 /* eligibleCustomerType porte le vocabulaire GoodRelations, seul moyen en
    schema.org de dire « réservé aux structures non commerciales ». */
 const NON_BUSINESS = 'http://purl.org/goodrelations/v1#NonBusinessEntity'
 
-const standardOffers: OfferSpec[] = [
-  {
-    name: 'La Présence — Site Vitrine',
-    price: '1450.00',
-    description: {
-      fr: 'Site vitrine sur-mesure à partir de 1 450 € HT. Idéal pour artisans, indépendants et petites entreprises.',
-      en: 'Custom marketing website from €1,450 excluding VAT. Suited to craftspeople, freelancers and small businesses.',
-    },
-  },
-  {
-    name: "L'E-commerce & Réservation",
-    price: '2850.00',
-    description: {
-      fr: 'Boutique en ligne ou système de réservation à partir de 2 850 € HT. Inclut 1 an de maintenance.',
-      en: 'Online shop or booking system from €2,850 excluding VAT. Includes one year of maintenance.',
-    },
-  },
-  {
-    name: 'Les Outils Sur-Mesure',
-    price: '4800.00',
-    description: {
-      fr: 'Application web sur-mesure à partir de 4 800 € HT. Inclut 1 an de maintenance.',
-      en: 'Custom web application from €4,800 excluding VAT. Includes one year of maintenance.',
-    },
-  },
-  {
-    name: 'Cadrage Vitrine',
-    price: '290.00',
-    description: {
-      fr: "Atelier de cadrage et dossier écrit pour un site vitrine : choix de solution, arborescence, conformité RGPD, périmètre de la V1. 290 € HT. 50 % imputables sur le développement en cas de signature sous trois mois.",
-      en: 'Scoping workshop and written report for a marketing website: solution choice, site structure, GDPR compliance, scope of the first version. €290 excluding VAT. 50 % set off against development if a quote is signed within three months.',
-    },
-  },
-  {
-    name: 'Cadrage E-commerce & Business',
-    price: '590.00',
-    description: {
-      fr: "Atelier de cadrage et dossier écrit pour un projet de vente en ligne ou de réservation : tunnel de vente, solution de paiement, workflows, conformité RGPD e-commerce. 590 € HT. 50 % imputables sur le développement en cas de signature sous trois mois.",
-      en: 'Scoping workshop and written report for an online sales or booking project: sales funnel, payment provider, workflows, e-commerce GDPR compliance. €590 excluding VAT. 50 % set off against development if a quote is signed within three months.',
-    },
-  },
-  {
-    name: 'Cadrage Architecture Métier',
-    price: '1190.00',
-    description: {
-      fr: "Atelier de cadrage et dossier d'architecture pour une application métier : modèle de données, back-office, rôles et permissions, sécurité, modèle économique. 1 190 € HT. 50 % imputables sur le développement en cas de signature sous trois mois.",
-      en: 'Scoping workshop and architecture report for a business application: data model, back office, roles and permissions, security, business model. €1,190 excluding VAT. 50 % set off against development if a quote is signed within three months.',
-    },
-  },
-  {
-    name: 'Conception produit',
-    price: '650.00',
-    unit: 'DAY',
-    description: {
-      fr: "Conception de produit à la journée, lorsque le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique. 650 € HT par jour.",
-      en: 'Product design billed by the day, when the product is still to be invented: features, business rules, content structure, business model. €650 per day excluding VAT.',
-    },
-  },
-  {
-    name: 'Maintenance & sécurité — Site vitrine',
-    price: '70.00',
-    unit: 'MON',
-    description: {
-      fr: 'Mises à jour de sécurité et correction des bugs bloquants pour un site vitrine. Option facultative, 70 € HT par mois.',
-      en: 'Security updates and blocking-bug fixes for a marketing website. Optional, €70 per month excluding VAT.',
-    },
-  },
-  {
-    name: 'Maintenance & sécurité — E-commerce & Réservation',
-    price: '85.00',
-    unit: 'MON',
-    description: {
-      fr: "Mises à jour de sécurité et correction des bugs bloquants. Un an inclus à la livraison du forfait E-commerce & Réservation, puis 85 € HT par mois.",
-      en: 'Security updates and blocking-bug fixes. One year included with the E-commerce & Booking package, then €85 per month excluding VAT.',
-    },
-  },
-  {
-    name: 'Maintenance & sécurité — Outils Sur-Mesure',
-    price: '165.00',
-    unit: 'MON',
-    description: {
-      fr: "Mises à jour de sécurité et correction des bugs bloquants. Un an inclus à la livraison du forfait Outils Sur-Mesure, puis à partir de 165 € HT par mois.",
-      en: 'Security updates and blocking-bug fixes. One year included with the Custom Tools package, then from €165 per month excluding VAT.',
-    },
-  },
-]
+/* Les offres ne sont plus recopiées ici : elles sont dérivées de la grille de
+   lib/pricing.ts, comme les cartes de la page d'accueil, le llms.txt et le
+   devis. Un seul endroit à modifier quand un prix bouge, donc plus de
+   catalogue qui annonce un montant que la page dément. */
 
-const solidaireOffers: OfferSpec[] = [
-  {
-    name: 'Cadrage (tarif associatif)',
-    price: '145.00',
-    description: {
-      fr: 'Atelier de cadrage et dossier écrit au tarif associatif, à partir de 145 € HT.',
-      en: 'Scoping workshop and written report at the non-profit rate, from €145 excluding VAT.',
-    },
+const tierPitch: Record<TierId, Bilingual> = {
+  presence: {
+    fr: 'Site vitrine sur-mesure : design, jusqu’à 5 pages, SEO technique et mise en ligne.',
+    en: 'Custom marketing website: design, up to 5 pages, technical SEO and launch.',
   },
-  {
-    name: 'La Présence — Site Vitrine (tarif associatif)',
-    price: '725.00',
-    description: {
-      fr: 'Site vitrine sur-mesure à partir de 725 € HT au lieu de 1 450 € HT. Maintenance solidaire à partir de 40 € HT par mois.',
-      en: 'Custom marketing website from €725 instead of €1,450 excluding VAT. Solidarity maintenance from €40 per month.',
-    },
+  boutique: {
+    fr: 'Boutique en ligne : catalogue, paiements Stripe sécurisés, gestion des commandes et back-office.',
+    en: 'Online shop: catalogue, secure Stripe payments, order management and back office.',
   },
-  {
-    name: "L'E-commerce & Dons (tarif associatif)",
-    price: '1425.00',
-    description: {
-      fr: "Boutique en ligne ou collecte de dons à partir de 1 425 € HT au lieu de 2 850 € HT. Sécurisation des dons via Stripe, sans commission intermédiaire. Maintenance solidaire à partir de 50 € HT par mois.",
-      en: 'Online shop or donation collection from €1,425 instead of €2,850 excluding VAT. Donations secured through Stripe with no intermediary commission. Solidarity maintenance from €50 per month.',
-    },
+  outils: {
+    fr: 'Application métier sur-mesure : modélisation des données, rôles et permissions, tableau de bord, back-office.',
+    en: 'Custom business application: data modelling, roles and permissions, dashboard, back office.',
   },
-  {
-    /* Pas de champ price : la page annonce « sur étude budgétaire », et
-       déduire la moitié du tarif standard serait inventer un chiffre. */
-    name: 'Les Outils Sur-Mesure (tarif associatif)',
-    description: {
-      fr: 'Application métier sur-mesure pour association, sur étude budgétaire. Maintenance sur étude.',
-      en: 'Custom business application for non-profits, on budget review. Maintenance on review.',
-    },
-  },
-  {
-    name: 'Maintenance solidaire — Site vitrine',
-    price: '40.00',
-    unit: 'MON',
-    description: {
-      fr: "Mises à jour de sécurité au tarif solidaire, à partir de 40 € HT par mois. Ce tarif n'est pas la moitié du tarif standard mais un barème dédié.",
-      en: 'Security updates at the solidarity rate, from €40 per month excluding VAT. This is a dedicated rate, not half the standard price.',
-    },
-  },
-  {
-    name: 'Maintenance solidaire — E-commerce & Dons',
-    price: '50.00',
-    unit: 'MON',
-    description: {
-      fr: "Mises à jour de sécurité au tarif solidaire, à partir de 50 € HT par mois. Ce tarif n'est pas la moitié du tarif standard mais un barème dédié.",
-      en: 'Security updates at the solidarity rate, from €50 per month excluding VAT. This is a dedicated rate, not half the standard price.',
-    },
-  },
-]
-
-function buildOffer(spec: OfferSpec, locale: Locale, nonProfit: boolean) {
-  const priceBlock = spec.unit
-    ? {
-        priceSpecification: {
-          '@type': 'UnitPriceSpecification',
-          price: spec.price,
-          priceCurrency: 'EUR',
-          unitCode: spec.unit,
-        },
-      }
-    : spec.price
-      ? { price: spec.price, priceCurrency: 'EUR' }
-      : { priceCurrency: 'EUR' }
-
-  return {
-    '@type': 'Offer',
-    name: spec.name,
-    ...priceBlock,
-    ...(nonProfit ? { eligibleCustomerType: NON_BUSINESS } : {}),
-    description: spec.description[locale],
-  }
 }
+
+const priceBlock = (price: number) => ({ price: price.toFixed(2), priceCurrency: 'EUR' })
+
+const monthlyBlock = (price: number) => ({
+  priceSpecification: {
+    '@type': 'UnitPriceSpecification',
+    price: price.toFixed(2),
+    priceCurrency: 'EUR',
+    unitCode: 'MON',
+  },
+})
+
+function sentence(parts: string[]): string {
+  return parts.filter(Boolean).join(' ')
+}
+
+/* Un socle et ses modules donnent deux offres distinctes : le socle porte un
+   prix ferme, chaque module porte le sien. Les noyer dans une seule offre
+   « à partir de » reviendrait à cacher ce que le client peut retirer. */
+function tierOffers(t: Tier, locale: Locale, nonProfit: boolean) {
+  const price = nonProfit ? t.nonProfitPrice : t.price
+  const maintenance = nonProfit ? t.maintenance.nonProfitPrice : t.maintenance.price
+  const suffix = nonProfit
+    ? locale === 'en'
+      ? ' Non-profit rate, 50 % skills sponsorship.'
+      : ' Tarif associatif, mécénat de compétences de 50 %.'
+    : ''
+
+  const socle = {
+    '@type': 'Offer',
+    name: nonProfit ? `${t.name} (tarif associatif)` : t.name,
+    ...priceBlock(price),
+    ...(nonProfit ? { eligibleCustomerType: NON_BUSINESS } : {}),
+    description: sentence([
+      tierPitch[t.id][locale],
+      locale === 'en'
+        ? `${t.days} days of engineering, ${formatPrice(price, 'en')} excluding VAT.`
+        : `${t.days} jours d’ingénierie, ${formatPrice(price, 'fr')} HT.`,
+      locale === 'en'
+        ? `${t.maintenance.includedMonths} months of security updates included, then ${formatMonthly(maintenance, 'en')}.`
+        : `${t.maintenance.includedMonths} mois de mises à jour de sécurité inclus, puis ${formatMonthly(maintenance, 'fr')}.`,
+      suffix.trim(),
+    ]),
+  }
+
+  const upkeep = {
+    '@type': 'Offer',
+    name: locale === 'en'
+      ? `Security maintenance — ${t.name}`
+      : `Maintenance & sécurité — ${t.name}`,
+    ...monthlyBlock(maintenance),
+    ...(nonProfit ? { eligibleCustomerType: NON_BUSINESS } : {}),
+    description: locale === 'en'
+      ? `Security updates and blocking-bug fixes. ${formatMonthly(maintenance, 'en')}.`
+      : `Mises à jour de sécurité et correction des bugs bloquants. ${formatMonthly(maintenance, 'fr')}.`,
+  }
+
+  /* Les modules ne sont pas déclinés au tarif associatif : la remise porte sur
+     le devis complet, et publier deux prix par module doublerait le catalogue
+     sans rien apprendre à un moteur. */
+  const modules = nonProfit
+    ? []
+    : addonsFor(t.id).map((addon) => ({
+        '@type': 'Offer',
+        name: `${t.name} — ${addon.label[locale]}`,
+        ...priceBlock(addon.price),
+        description: locale === 'en'
+          ? `Optional module: ${addon.label.en}. ${addon.days} day${addon.days > 1 ? 's' : ''} of work, ${formatPrice(addon.price, 'en')} excluding VAT.`
+          : `Module optionnel : ${addon.label.fr}. ${addon.days} jour${addon.days > 1 ? 's' : ''} de travail, ${formatPrice(addon.price, 'fr')} HT.`,
+      }))
+
+  return [socle, upkeep, ...modules]
+}
+
+function scopingOffers(locale: Locale) {
+  const setOff = Math.round(SCOPING_SET_OFF * 100)
+
+  const tiers = SCOPING_TIERS.map((s) => ({
+    '@type': 'Offer',
+    name: s.name[locale],
+    ...priceBlock(s.price),
+    description: locale === 'en'
+      ? `Scoping workshop and written report. ${formatPrice(s.price, 'en')} excluding VAT. ${setOff} % set off against development if a quote is signed within three months.`
+      : `Atelier de cadrage et dossier écrit. ${formatPrice(s.price, 'fr')} HT. ${setOff} % imputables sur le développement en cas de signature sous trois mois.`,
+  }))
+
+  const design = {
+    '@type': 'Offer',
+    name: locale === 'en' ? 'Product design' : 'Conception produit',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: PRODUCT_DESIGN_DAY_RATE.toFixed(2),
+      priceCurrency: 'EUR',
+      unitCode: 'DAY',
+    },
+    description: locale === 'en'
+      ? `Product design billed by the day, when the product is still to be invented: features, business rules, content structure, business model. ${formatPrice(PRODUCT_DESIGN_DAY_RATE, 'en')} per day excluding VAT.`
+      : `Conception de produit à la journée, lorsque le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique. ${formatPrice(PRODUCT_DESIGN_DAY_RATE, 'fr')} HT par jour.`,
+  }
+
+  return [...tiers, design]
+}
+
+const scopingNonProfitOffer = (locale: Locale) => ({
+  '@type': 'Offer',
+  name: locale === 'en' ? 'Scoping (non-profit rate)' : 'Cadrage (tarif associatif)',
+  ...priceBlock(SCOPING_NON_PROFIT_FROM),
+  eligibleCustomerType: NON_BUSINESS,
+  description: locale === 'en'
+    ? `Scoping workshop and written report at the non-profit rate, from ${formatPrice(SCOPING_NON_PROFIT_FROM, 'en')} excluding VAT.`
+    : `Atelier de cadrage et dossier écrit au tarif associatif, à partir de ${formatPrice(SCOPING_NON_PROFIT_FROM, 'fr')} HT.`,
+})
 
 const orgDescription: Bilingual = {
   fr: "Développeur web freelance basé en Île-de-France. Cadrage de projet, création de sites vitrines, e-commerce et applications web sur-mesure. Code propre et performant, livré avec ses sources. Un an de mises à jour de sécurité inclus sur les forfaits E-commerce et Sur-Mesure.",
@@ -415,7 +392,10 @@ export function siteGraphJsonLd(rawLocale: string) {
       {
         '@type': 'OfferCatalog',
         name: catalogNames[locale].standard,
-        itemListElement: standardOffers.map((o) => buildOffer(o, locale, false)),
+        itemListElement: [
+          ...scopingOffers(locale),
+          ...TIERS.flatMap((t) => tierOffers(t, locale, false)),
+        ],
       },
       /* Catalogue distinct plutôt que des offres marquées au sein du
          précédent : l'Échoppe Solidaire est une offre à part entière, avec ses
@@ -424,7 +404,10 @@ export function siteGraphJsonLd(rawLocale: string) {
         '@type': 'OfferCatalog',
         name: catalogNames[locale].solidaire,
         description: solidaireDescription[locale],
-        itemListElement: solidaireOffers.map((o) => buildOffer(o, locale, true)),
+        itemListElement: [
+          scopingNonProfitOffer(locale),
+          ...TIERS.flatMap((t) => tierOffers(t, locale, true)),
+        ],
       },
     ],
   }

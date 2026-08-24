@@ -4,6 +4,10 @@ description: "When building complex architecture, plugging a leak often creates 
 date: '2026-06-06'
 coverImage: '/images/blog/createur-de-bugs.png'
 excerpt: "When building complex architecture, plugging a leak often creates pressure elsewhere. How I almost paralyzed my own project by trying too hard to fix it."
+summary:
+  - "On M.U.S.E., a security fix that was too strict ended up blocking the entire application flow: in plugging one leak, I had put the system under pressure elsewhere."
+  - "What saved me was not a test, but having kept 41 commits local — and with them the freedom to unpick everything before that logic reached the main branch."
+  - "Excellence is not the absence of bugs: it is refusing to sacrifice the system's overall flow to local panic."
 alternate_slug: 'confessions-createur-de-bugs'
 ---
 

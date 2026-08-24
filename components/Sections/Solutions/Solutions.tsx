@@ -1,87 +1,41 @@
 import { Check } from 'lucide-react'
 import styles from './Solutions.module.css'
+import {
+  TIERS,
+  formatPrice,
+  formatMonthly,
+  type Locale,
+  type TierId,
+} from '@/lib/pricing'
 
-type Card = {
-  title: string
-  subtitle?: string
-  price: string
+type CardCopy = {
+  subtitle: string
   desc: string
   features: string[]
-  maintenance?: string
+  modules: string
   delay: string
-  cta: string
 }
 
 type Props = {
+  locale: string
   dict: {
     eyebrow: string
     section_title: string
     intro: string
-    card1_title: string
-    card1_subtitle?: string
-    card1_price: string
-    card1_desc: string
-    card1_features: string[]
-    card1_maintenance: string
-    card1_delay: string
-    card2_title: string
-    card2_subtitle?: string
-    card2_price: string
-    card2_desc: string
-    card2_features: string[]
-    card2_maintenance: string
-    card2_delay: string
-    card3_title: string
-    card3_subtitle?: string
-    card3_price: string
-    card3_desc: string
-    card3_features: string[]
-    card3_maintenance: string
-    card3_delay: string
+    from: string
+    maintenance_included: string
+    modules_label: string
+    cards: Record<TierId, CardCopy>
     cta: string
     vat_notice: string
   }
 }
 
-export default function Solutions({ dict }: Props) {
-  const cards: (Card & { number: string; budgetParam: string })[] = [
-    {
-      number: '01',
-      title: dict.card1_title,
-      subtitle: dict.card1_subtitle,
-      price: dict.card1_price,
-      desc: dict.card1_desc,
-      features: dict.card1_features,
-      maintenance: dict.card1_maintenance,
-      delay: dict.card1_delay,
-      cta: dict.cta,
-      budgetParam: '1',
-    },
-    {
-      number: '02',
-      title: dict.card2_title,
-      subtitle: dict.card2_subtitle,
-      price: dict.card2_price,
-      desc: dict.card2_desc,
-      features: dict.card2_features,
-      maintenance: dict.card2_maintenance,
-      delay: dict.card2_delay,
-      cta: dict.cta,
-      budgetParam: '2',
-    },
-    {
-      number: '03',
-      title: dict.card3_title,
-      subtitle: dict.card3_subtitle,
-      price: dict.card3_price,
-      desc: dict.card3_desc,
-      features: dict.card3_features,
-      maintenance: dict.card3_maintenance,
-      delay: dict.card3_delay,
-      cta: dict.cta,
-      budgetParam: '3',
-    },
-  ]
+/* Les montants ne vivent plus dans le dictionnaire : ils viennent de
+   lib/pricing.ts, comme ceux du graphe schema.org, du llms.txt et du devis.
+   Le dictionnaire ne porte plus que ce qui se traduit. */
+export default function Solutions({ locale, dict }: Props) {
+  const lang: Locale = locale === 'en' ? 'en' : 'fr'
 
   return (
     <section id="solutions" className={styles.section}>
@@ -98,49 +52,64 @@ export default function Solutions({ dict }: Props) {
         </div>
 
         <div className={styles.grid}>
-          {cards.map((card, index) => (
-            <div key={card.number} className={styles.card}>
+          {TIERS.map((tier, index) => {
+            const copy = dict.cards[tier.id]
+            const maintenance = dict.maintenance_included
+              .replace('{months}', String(tier.maintenance.includedMonths))
+              .replace('{rate}', formatMonthly(tier.maintenance.price, lang))
 
-              <span className={styles.number} aria-hidden="true">{card.number}</span>
+            return (
+              <div key={tier.id} className={styles.card}>
 
-              <div className={styles.cardContent}>
-                <div className={styles.cardHeader}>
-                  <h3 className={styles.cardTitle}>{card.title}</h3>
-                  {card.subtitle && (
-                    <span className={styles.cardSubtitle}>{card.subtitle}</span>
-                  )}
-                </div>
-                <p className={styles.cardPrice}>
-                  {card.price}&nbsp;<span className={styles.cardPriceHT}>HT</span>
-                </p>
+                <span className={styles.number} aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
 
-                <p className={styles.cardDesc}>{card.desc}</p>
+                <div className={styles.cardContent}>
+                  <div className={styles.cardHeader}>
+                    <h3 className={styles.cardTitle}>{tier.name}</h3>
+                    <span className={styles.cardSubtitle}>{copy.subtitle}</span>
+                  </div>
+                  <p className={styles.cardPrice}>
+                    {dict.from} {formatPrice(tier.price, lang)}&nbsp;
+                    <span className={styles.cardPriceHT}>HT</span>
+                  </p>
 
-                <ul className={styles.features}>
-                  {card.features.map((feature) => (
-                    <li key={feature} className={styles.feature}>
-                      <Check size={14} strokeWidth={2} className={styles.checkIcon} />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                  <p className={styles.cardDesc}>{copy.desc}</p>
 
-                {card.maintenance && (
+                  <ul className={styles.features}>
+                    {copy.features.map((feature) => (
+                      <li key={feature} className={styles.feature}>
+                        <Check size={14} strokeWidth={2} className={styles.checkIcon} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Annonce le système de modules sans l'étaler : le socle reste
+                      lisible d'un coup d'œil, et le client comprend qu'il compose. */}
+                  <p className={styles.modules}>
+                    <span className={styles.modulesLabel}>{dict.modules_label} — </span>
+                    {copy.modules}
+                  </p>
+
                   <div className={styles.warranty}>
                     <span className={styles.warrantyIcon}>✦</span>
-                    {card.maintenance}
+                    {maintenance}
                   </div>
-                )}
 
-                <div className={styles.cardFooter}>
-                  <span className={styles.delay}>{card.delay}</span>
-                  <a href={`?budget=${card.budgetParam}#contact`} className={styles.btn}>{card.cta}</a>
+                  <div className={styles.cardFooter}>
+                    <span className={styles.delay}>{copy.delay}</span>
+                    <a href={`?budget=${tier.id}#contact`} className={styles.btn}>
+                      {dict.cta}
+                    </a>
+                  </div>
                 </div>
-              </div>
 
-              {index < cards.length - 1 && <div className={styles.separator} />}
-            </div>
-          ))}
+                {index < TIERS.length - 1 && <div className={styles.separator} />}
+              </div>
+            )
+          })}
         </div>
 
         <p className={styles.vatNotice}>{dict.vat_notice}</p>

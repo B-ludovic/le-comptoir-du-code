@@ -162,3 +162,53 @@
 .content tr:last-child td {
   border-bottom: none;
 }
+
+/* ── Synthèse « En bref » ──
+   Volontairement distincte du blockquote du corps de texte, qui prend un filet
+   cuivré : ce bloc-ci est une carte, au vocabulaire du design system, pour
+   qu'on ne le confonde pas avec une citation de l'auteur. */
+.summary {
+  margin-bottom: 3.5rem;
+  padding: 1.75rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(232, 196, 160, 0.08);
+  border-radius: var(--card-radius);
+}
+
+.summaryLabel {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent-primary);
+  margin-bottom: 1.25rem;
+}
+
+.summaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.summaryItem {
+  position: relative;
+  padding-left: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text-main);
+}
+
+.summaryItem::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent-primary);
+}
+
+@media (max-width: 480px) {
+  .summary {
+    padding: 1.5rem 1.25rem;
+  }
+}

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { tier, formatPrice, ENGINEERING_DAY_RATE, SCOPING_NON_PROFIT_FROM } from '@/lib/pricing'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
@@ -41,7 +42,7 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Combien coûte un site internet sur-mesure ?',
       answer: [
-        "Un site vitrine démarre à 1 450 € HT, une boutique en ligne ou un système de réservation à 2 850 € HT, une application métier à 4 800 € HT. Le cadrage préalable, quand le projet en a besoin, va de 290 € à 1 190 € HT et se facture séparément.",
+        `Un site vitrine démarre à ${formatPrice(tier('presence').price, 'fr')} HT, une boutique en ligne à ${formatPrice(tier('boutique').price, 'fr')} HT, une application métier à ${formatPrice(tier('outils').price, 'fr')} HT. Ces montants couvrent un socle au périmètre défini ; les besoins spécifiques s'ajoutent en modules chiffrés à la journée, au taux de ${ENGINEERING_DAY_RATE} € HT. Le cadrage préalable, quand le projet en a besoin, va de 290 € à 1 190 € HT et se facture séparément.`,
         "Ces montants sont des planchers, pas des étiquettes. Un devis se construit une fois qu'on sait ce qu'on construit — c'est précisément le rôle du cadrage.",
       ],
     },
@@ -99,7 +100,7 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Mon association peut-elle bénéficier du tarif solidaire ?',
       answer: [
-        "Oui, avec un mécénat de compétences de 50 % sur les forfaits de développement : le site vitrine passe à 725 € HT, l'e-commerce ou la collecte de dons à 1 425 € HT, le cadrage à 145 € HT. L'offre s'adresse aux structures à but non lucratif reconnues, en priorité LGBTQI+.",
+        `Oui, avec un mécénat de compétences de 50 % sur les forfaits de développement : le site vitrine passe à ${formatPrice(tier('presence').nonProfitPrice, 'fr')} HT, la boutique ou la collecte de dons à ${formatPrice(tier('boutique').nonProfitPrice, 'fr')} HT, l'application métier à ${formatPrice(tier('outils').nonProfitPrice, 'fr')} HT, le cadrage à ${formatPrice(SCOPING_NON_PROFIT_FROM, 'fr')} HT. L'offre s'adresse aux structures à but non lucratif reconnues, en priorité LGBTQI+.`,
         "Il faut fournir avant la signature un récépissé de déclaration en préfecture, des statuts enregistrés ou un extrait du RNA. La maintenance suit un barème solidaire dédié — pas la moitié du tarif standard, mais très en dessous du marché. L'exigence technique, elle, ne bouge pas d'un millimètre.",
       ],
     },
@@ -122,7 +123,7 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'How much does a custom website cost?',
       answer: [
-        'A marketing website starts at €1,450, an online shop or booking system at €2,850, a business application at €4,800 — all excluding VAT. Scoping, when the project calls for it, runs from €290 to €1,190 and is billed separately.',
+        `A marketing website starts at ${formatPrice(tier('presence').price, 'en')}, an online shop at ${formatPrice(tier('boutique').price, 'en')}, a business application at ${formatPrice(tier('outils').price, 'en')} — all excluding VAT. Those figures cover a foundation with a defined scope; specific needs are added as modules priced by the day, at €${ENGINEERING_DAY_RATE} excluding VAT. Scoping, when the project calls for it, runs from €290 to €1,190 and is billed separately.`,
         "These are floors, not price tags. A quote takes shape once we know what we are building — which is exactly what scoping is for.",
       ],
     },
@@ -180,7 +181,7 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Can my non-profit get the solidarity rate?',
       answer: [
-        'Yes, with 50 % skills sponsorship on development packages: a marketing website drops to €725, an online shop or donation platform to €1,425, scoping to €145. The offer is for registered non-profits, with priority given to LGBTQI+ organisations.',
+        `Yes, with 50 % skills sponsorship on development packages: a marketing website drops to ${formatPrice(tier('presence').nonProfitPrice, 'en')}, an online shop or donation platform to ${formatPrice(tier('boutique').nonProfitPrice, 'en')}, a business application to ${formatPrice(tier('outils').nonProfitPrice, 'en')}, scoping to ${formatPrice(SCOPING_NON_PROFIT_FROM, 'en')}. The offer is for registered non-profits, with priority given to LGBTQI+ organisations.`,
         'Proof of registration must be provided before signing. Maintenance follows a dedicated solidarity scale — not half the standard rate, but well below market. The technical standard does not move an inch.',
       ],
     },

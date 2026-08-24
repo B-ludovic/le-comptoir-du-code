@@ -143,6 +143,20 @@ export default async function ArticlePage({
               )}
             </header>
 
+            {/* La synthèse est placée après l'en-tête et avant le récit : c'est
+                le premier bloc de texte que rencontrent un lecteur pressé et un
+                moteur génératif, et le seul qui se tienne hors contexte. */}
+            {post.summary?.length ? (
+              <aside className={styles.summary}>
+                <p className={styles.summaryLabel}>{isFr ? 'En bref' : 'In short'}</p>
+                <ul className={styles.summaryList}>
+                  {post.summary.map((line) => (
+                    <li key={line} className={styles.summaryItem}>{line}</li>
+                  ))}
+                </ul>
+              </aside>
+            ) : null}
+
             <div className={styles.content}>
               <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
             </div>

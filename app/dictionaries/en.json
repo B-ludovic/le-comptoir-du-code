@@ -3,7 +3,7 @@
     "eyebrow": "Websites · E-commerce · Custom applications",
     "h1": "Freelance web developer in Paris and Île-de-France",
     "lead": "L'Échoppe du Code is my independent web development workshop. I'm Ludovic Bataille, your single point of contact from scoping to launch: custom code, delivered with its sources, and a site that belongs to you outright.",
-    "facts": "Marketing websites from €1,450, e-commerce and booking systems from €2,850, business applications from €4,800. Optional scoping from €290, half of which is set off against development. Registered non-profits get 50 % off development packages. All prices exclude VAT.",
+    "facts": "Marketing websites from €2,600, online shops from €6,500, business applications from €9,500. Each package is a foundation priced in days; specific needs are added as modules. Optional scoping from €290, half of which is set off against development. Registered non-profits get 50 % off. All prices exclude VAT.",
     "cta": "Request a quote",
     "cta_secondary": "See the packages"
   },
@@ -50,50 +50,55 @@
     "vat_notice": "The report is yours in every case. Where a development quote is signed within three months, 50 % of the scoping fee is set off against it."
   },
   "solutions": {
-    "eyebrow": "Scale your ambition.",
-    "section_title": "Three tiers. Zero surprises.",
-    "intro": "Straightforward packages for real-world needs. No vague quotes, no budget creep halfway through.",
-    "card1_title": "The Presence",
-    "card1_subtitle": "Showcase Website",
-    "card1_price": "Starting at €1,450",
-    "card1_desc": "A high-speed, mobile-first site designed to turn casual browsers into loyal clients.",
-    "card1_features": [
-      "Bespoke design",
-      "3 to 5 pages",
-      "Fully responsive mobile UI",
-      "Lead generation form",
-      "Deployment included"
-    ],
-    "card1_maintenance": "Optional maintenance — Security updates: €70/mo excl. VAT",
-    "card1_delay": "3 to 4 days",
-    "card2_title": "Commerce & Booking",
-    "card2_subtitle": "Sales & Scheduling",
-    "card2_price": "Starting at €2,850",
-    "card2_desc": "Sell products via secure Stripe payments or sync your calendar for seamless appointment booking.",
-    "card2_features": [
-      "Full Showcase site included",
-      "Calendar synchronization",
-      "Online storefront",
-      "Secure Stripe integration",
-      "Product management"
-    ],
-    "card2_maintenance": "1 year of maintenance included, then €85/mo excl. VAT",
-    "card2_delay": "7 to 12 days",
-    "card3_title": "Custom Tools",
-    "card3_subtitle": "Business Applications",
-    "card3_price": "Starting at €4,800",
-    "card3_desc": "Tailor-made back-office solutions: management dashboards, inventory tracking, and automated invoicing.",
-    "card3_features": [
-      "Advanced database architecture",
-      "CRUD admin dashboards",
-      "Robust NestJS backend",
-      "Automated PDF generation",
-      "Custom internal panel"
-    ],
-    "card3_maintenance": "1 year of maintenance included, then from €165/mo excl. VAT",
-    "card3_delay": "3 weeks+",
-    "cta": "Start your project",
-    "vat_notice": "All prices are quoted excluding taxes. 20% VAT applies in addition."
+    "eyebrow": "Choose your level of ambition.",
+    "section_title": "Three foundations. No surprises.",
+    "intro": "Each package is a foundation with a defined scope, priced in working days. Specific needs are added as modules billed by the day: you know exactly what you are paying for, and you can take things out.",
+    "from": "From",
+    "maintenance_included": "{months} months of security updates included, then {rate}",
+    "modules_label": "As modules",
+    "cards": {
+      "presence": {
+        "subtitle": "Marketing Website",
+        "desc": "A fast, mobile-first website designed to turn visitors into customers.",
+        "features": [
+          "Custom design",
+          "Up to 5 pages",
+          "Flawless mobile responsiveness",
+          "Contact form",
+          "Technical SEO and launch"
+        ],
+        "modules": "booking with calendar, blog, multilingual, newsletter",
+        "delay": "2 to 3 weeks"
+      },
+      "boutique": {
+        "subtitle": "Online Sales",
+        "desc": "Sell your products online with secure Stripe payments, a catalogue you manage yourself and full order tracking.",
+        "features": [
+          "Marketing website included",
+          "Product catalogue and pages",
+          "Secure Stripe payments",
+          "Order management",
+          "Back office and transactional emails"
+        ],
+        "modules": "real-time stock, refunds, shipping, PDF invoicing, subscriptions",
+        "delay": "5 to 7 weeks"
+      },
+      "outils": {
+        "subtitle": "Business Applications",
+        "desc": "Your custom internal tool. Dashboards, stock tracking, automation of whatever costs you time every week.",
+        "features": [
+          "Data modelling",
+          "Authentication, roles and permissions",
+          "Dashboard and back office",
+          "Robust NestJS backend",
+          "Deployment included"
+        ],
+        "modules": "client area, payments, API integration, reporting, mobile app",
+        "delay": "8 to 10 weeks"
+      }
+    },
+    "cta": "Start this project",
+    "vat_notice": "All prices exclude VAT. French VAT at 20 % applies on top."
   },
   "portfolio": {
     "eyebrow": "The Counter Archives.",
@@ -222,9 +227,9 @@
     "field_budget": "Estimated budget",
     "field_budget_placeholder": "Select a budget range",
     "budget_scoping": "€290 — €1,190 (Scoping / Product design)",
-    "budget_1": "€1,450 — €2,850 (Showcase)",
-    "budget_2": "€2,850 — €4,800 (E-commerce / Booking)",
-    "budget_3": "From €4,800 (Custom App)",
+    "budget_1": "€2,600 — €5,000 (Marketing Website)",
+    "budget_2": "€6,500 — €15,000 (Online Shop)",
+    "budget_3": "From €9,500 (Custom Application)",
     "btn_submit": "Send request"
   },
   "footer": {
