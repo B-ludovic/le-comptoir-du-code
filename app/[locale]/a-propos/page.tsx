@@ -12,6 +12,7 @@ import {
   breadcrumbJsonLd,
 } from '@/lib/structured-data'
 import { TIERS, formatPrice } from '@/lib/pricing'
+import { getProjects } from '@/lib/projects'
 
 const dictionaries = { fr, en }
 
@@ -72,7 +73,8 @@ const copy = {
         title: 'Ce que je construis',
         paragraphs: [
           'Des sites vitrines, des boutiques en ligne et des applications métier, en Next.js, React, TypeScript et NestJS, sur PostgreSQL et Stripe. Pas de template revendu : chaque projet est écrit pour le besoin qu’il sert, et le code source appartient au client dès le paiement intégral.',
-          'Mon dernier projet livré est une boutique en ligne complète pour un salon de coiffure afro : stock en temps réel, paiements Stripe avec remboursements partiels et totaux, export des expéditions Colissimo, facturation PDF, espace d’administration. Portée seule, de l’analyse du besoin à la mise en production.',
+          'Mon dernier projet livré, Fairy Chair Studio, est une boutique en ligne complète pour un salon de coiffure afro : stock en temps réel, paiements Stripe avec remboursements partiels et totaux, export des expéditions Colissimo, facturation PDF, espace d’administration. Portée seule, de l’analyse du besoin à la mise en production.',
+          'Deux autres chantiers tournent aujourd’hui en production : Miabelangue, plateforme d’apprentissage du mina et de l’éwé pour la diaspora togolaise, qui encaisse en euros par carte et en francs CFA par mobile money ; et Aux P’tits Pois, l’outil complet d’une AMAP — paniers hebdomadaires, adhérents, trésorerie au chèque, contrats PDF — tenu au quotidien par un bureau bénévole.',
         ],
       },
       {
@@ -85,6 +87,7 @@ const copy = {
     ],
     workLabel: 'Où me trouver',
     priceIntro: 'Ce que je facture',
+    worksLabel: 'Chantiers en ligne',
   },
   en: {
     eyebrow: 'The craftsman behind the screen',
@@ -103,7 +106,8 @@ const copy = {
         title: 'What I build',
         paragraphs: [
           'Marketing websites, online shops and business applications, built with Next.js, React, TypeScript and NestJS, on PostgreSQL and Stripe. No resold template: every project is written for the need it serves, and the source code belongs to the client on final payment.',
-          'My most recent delivery is a complete online shop for an Afro hair salon: real-time stock, Stripe payments with partial and full refunds, Colissimo shipping exports, PDF invoicing and a full admin area. Carried end to end, alone, from requirements to production.',
+          'My most recent delivery, Fairy Chair Studio, is a complete online shop for an Afro hair salon: real-time stock, Stripe payments with partial and full refunds, Colissimo shipping exports, PDF invoicing and a full admin area. Carried end to end, alone, from requirements to production.',
+          'Two further builds are running in production today: Miabelangue, a Mina and Ewe learning platform for the Togolese diaspora, taking card payments in euros and mobile money in CFA francs; and Aux P’tits Pois, the full toolkit of a community-supported agriculture scheme — weekly baskets, members, cheque-based accounting, PDF contracts — run day to day by a volunteer committee.',
         ],
       },
       {
@@ -116,6 +120,7 @@ const copy = {
     ],
     workLabel: 'Where to find me',
     priceIntro: 'What I charge',
+    worksLabel: 'Live projects',
   },
 } as const
 
@@ -135,6 +140,13 @@ export default async function AProposPage({
   const isFr = locale !== 'en'
   const t = isFr ? copy.fr : copy.en
   const lang = isFr ? 'fr' : 'en'
+
+  /* Seuls les chantiers phares, et seulement s'ils répondent encore : une page
+     de référence qui pointe vers un domaine mort dessert la personne qu'elle
+     présente. */
+  const liveProjects = getProjects(
+    dict.portfolio as unknown as Record<string, string>,
+  ).filter((project) => project.flagship && project.url)
 
   const jsonLd = [
     profilePageJsonLd(locale),
@@ -195,6 +207,28 @@ export default async function AProposPage({
                       {isFr ? 'à partir de' : 'from'} {formatPrice(tier.price, lang)}
                       {isFr ? ' HT' : ''}
                     </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Les chantiers en production, nommés et liés depuis la page de
+                la personne. Sans ce bloc, l'entité « Ludovic Bataille » ne
+                pointait vers aucune réalisation : un moteur lisait un parcours
+                sans jamais pouvoir l'attacher à un site qui tourne. */}
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>{t.worksLabel}</h2>
+              <ul className={styles.links}>
+                {liveProjects.map((project) => (
+                  <li key={project.slug}>
+                    <a
+                      href={project.url!}
+                      className={styles.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {project.title}
+                    </a>
                   </li>
                 ))}
               </ul>

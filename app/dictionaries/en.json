@@ -199,7 +199,7 @@
     "project6_build2": "Partial and full refunds detected by webhook, with stock restored and an email to the customer — the mechanism Fairy Chair Studio would later refine with credit notes.",
     "project6_build3": "Dual-token sessions: a 15-minute access token, a 7-day refresh token with automatic rotation, and an anti-loop guard for requests expiring at the same moment.",
     "project6_build4": "Delivery tracking across eight carriers: numbers validated by pattern, tracking URLs generated, shipping and delivery dates set automatically, an animated timeline client-side.",
-    "project6_challenge": "This is where I learned. The colours and the interface date from my beginnings, and I own them: this build stays online as the starting point. The distance between this page and Miabelangue is the whole journey this portfolio documents.",
+    "project6_challenge": "This is where I learned. The colours and the interface date from my beginnings, and I own them: the shop is no longer served, but the build stays in the catalogue, source open, as the starting point. The distance between that repository and Miabelangue is the whole journey this portfolio documents.",
     "project6_stat_value": "31",
     "project6_stat_label": "files reworked in a full refactoring pass",
     "project6_feat1": "wishlist",

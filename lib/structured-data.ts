@@ -1,4 +1,5 @@
 import type { Post } from '@/lib/blog'
+import type { Project } from '@/lib/projects'
 import {
   TIERS,
   SCOPING_TIERS,
@@ -99,29 +100,63 @@ export function faqJsonLd(
   }
 }
 
+/* Les réalisations, en entités à part entière plutôt qu'en simple liste de
+   noms. Schema.org n'a aucun attribut « projet phare » : ce qui met un chantier
+   en avant, c'est qu'il porte une adresse qu'on peut ouvrir, des captures, ses
+   fonctionnalités et son enjeu — et qu'il arrive en tête de liste. Un item sans
+   `url` ni image reste un libellé ; un moteur génératif n'a rien à en citer.
+
+   L'@id de chaque chantier pointe vers son ancre réelle dans la page d'accueil,
+   celle que porte le bloc HTML correspondant : l'identifiant mène quelque part
+   au lieu de désigner un nœud flottant. */
 export function portfolioJsonLd(
-  projects: { title: string; desc: string; stack: string; url: string | null }[],
+  projects: Project[],
   rawLocale: string,
+  description?: string,
 ) {
   const locale: Locale = rawLocale === 'en' ? 'en' : 'fr'
+  const pageUrl = `${BASE_URL}/${locale}`
+  const listUrl = `${pageUrl}#portfolio`
 
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
+    '@id': listUrl,
+    url: listUrl,
     name: locale === 'en' ? 'Selected work' : "Réalisations de L'Échoppe du Code",
+    ...(description ? { description } : {}),
+    inLanguage: locale,
+    numberOfItems: projects.length,
+    /* L'ordre est signifiant : les chantiers en ligne et visitables d'abord. */
+    itemListOrder: 'https://schema.org/ItemListOrderAscending',
+    isPartOf: { '@id': `${pageUrl}/#website` },
     itemListElement: projects.map((project, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       item: {
         '@type': 'WebApplication',
+        '@id': `${pageUrl}#${project.slug}`,
         name: project.title,
         description: project.desc,
         applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web browser',
         inLanguage: locale,
         creator: authorRef,
         provider: publisherRef,
+        /* `creativeWorkStatus` dit ce que l'absence d'URL laisserait deviner :
+           le chantier a existé, il n'est simplement plus servi. */
+        creativeWorkStatus: project.status === 'online' ? 'Published' : 'Archived',
         ...(project.url ? { url: project.url } : {}),
+        ...(project.repo ? { codeRepository: project.repo } : {}),
+        image: project.images.map((image) => `${BASE_URL}${image}`),
         keywords: project.stack.split(' · ').join(', '),
+        ...(project.features.length
+          ? { featureList: project.features.join(', ') }
+          : {}),
+        /* `abstract` porte l'enjeu technique du chantier — la phrase qu'un
+           moteur peut restituer telle quelle quand on lui demande ce que ce
+           développeur sait résoudre. */
+        ...(project.challenge ? { abstract: project.challenge } : {}),
       },
     })),
   }

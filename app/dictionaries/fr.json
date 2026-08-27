@@ -199,7 +199,7 @@
     "project6_build2": "Remboursements partiels et totaux détectés par webhook, avec restauration du stock et email au client — le mécanisme que Fairy Chair Studio raffinera plus tard avec les avoirs.",
     "project6_build3": "Sessions à double jeton : accès de 15 minutes, rafraîchissement de 7 jours à rotation automatique, avec une garde anti-boucle quand plusieurs requêtes expirent au même moment.",
     "project6_build4": "Suivi de livraison chez huit transporteurs : numéro validé par motif, URL de tracking générée, dates d'expédition et de livraison posées automatiquement, timeline animée côté client.",
-    "project6_challenge": "C'est ici que j'ai appris. Les couleurs et l'interface datent de mes débuts, et je les assume : ce chantier reste en ligne comme point de départ. La distance entre cette page et Miabelangue, c'est tout le chemin que ce portfolio documente.",
+    "project6_challenge": "C'est ici que j'ai appris. Les couleurs et l'interface datent de mes débuts, et je les assume : la boutique n'est plus servie, mais le chantier reste au catalogue, code ouvert, comme point de départ. La distance entre ce dépôt et Miabelangue, c'est tout le chemin que ce portfolio documente.",
     "project6_stat_value": "31",
     "project6_stat_label": "fichiers repris lors d'un refactoring complet",
     "project6_feat1": "liste de souhaits",

@@ -1,22 +1,7 @@
-import Image from 'next/image'
 import styles from './Portfolio.module.css'
 import ProjectCarousel from './ProjectCarousel'
 import { portfolioJsonLd } from '@/lib/structured-data'
-
-type Project = {
-  number: string
-  title: string
-  desc: string
-  stack: string
-  builds: string[]
-  features: string[]
-  challenge?: string
-  statValue?: string
-  statLabel?: string
-  image?: string
-  images?: string[]
-  url: string | null
-}
+import { getProjects, projectHref } from '@/lib/projects'
 
 type Props = {
   locale: string
@@ -28,96 +13,17 @@ type Props = {
   } & Record<string, string>
 }
 
-// Médias et liens de chaque chantier ; les textes (titre, desc, gros œuvre,
-// chiffre-preuve) vivent dans les dictionnaires sous project{n}_*.
-const projectMedia: { images: string[]; url: string | null }[] = [
-  {
-    images: [
-      '/images/accueil-miabe.png',
-      '/images/inscription-miabe.png',
-      '/images/onboarding-miabe.png',
-      '/images/admin-miabe.png',
-    ],
-    url: null,
-  },
-  {
-    images: [
-      '/images/accueil-auxptitspois.png',
-      '/images/product-auxptitspois.png',
-      '/images/recette-auxptitspois.png',
-      '/images/abonnement-auxptitspois.png',
-    ],
-    url: 'https://www.auxptitspois.fr/',
-  },
-  {
-    images: [
-      '/images/page-salon.png',
-      '/images/fcs-drawer.png',
-      '/images/fcs-bijoux.png',
-      '/images/fcs-accordeon.png',
-      '/images/fcs-coeur.png',
-    ],
-    url: 'https://fairychairstudio.com/fr',
-  },
-  {
-    images: [
-      '/images/accueil-okanime.png',
-      '/images/bibliotheque-okanime.png',
-      '/images/detail-okanime.png',
-      '/images/base-okanime.png',
-    ],
-    url: 'https://okanime.live/',
-  },
-  {
-    images: [
-      '/images/req-appartements.png',
-      '/images/req-around.png',
-      '/images/req-footer.png',
-    ],
-    url: 'https://www.larequeyrie.fr',
-  },
-  {
-    images: [
-      '/images/page-meavita.png',
-      '/images/mea-accueil.png',
-      '/images/mea-sacs.png',
-      '/images/mea-presentation.png',
-      '/images/mea-inscription.png',
-    ],
-    url: 'https://github.com/B-ludovic/mea-vita-creation',
-  },
-]
-
 export default function Portfolio({ locale, dict }: Props) {
-  const projects: Project[] = projectMedia.map((media, index) => {
-    const n = index + 1
-    const builds = [1, 2, 3, 4, 5, 6]
-      .map((b) => dict[`project${n}_build${b}`])
-      .filter((text): text is string => Boolean(text))
-    const features = [1, 2, 3, 4, 5, 6]
-      .map((f) => dict[`project${n}_feat${f}`])
-      .filter((text): text is string => Boolean(text))
-
-    return {
-      number: String(n).padStart(2, '0'),
-      title: dict[`project${n}_title`],
-      desc: dict[`project${n}_desc`],
-      stack: dict[`project${n}_stack`],
-      builds,
-      features,
-      challenge: dict[`project${n}_challenge`],
-      statValue: dict[`project${n}_stat_value`],
-      statLabel: dict[`project${n}_stat_label`],
-      ...media,
-    }
-  })
+  // Médias, adresses et état de chaque chantier : lib/projects.ts. Les textes
+  // vivent dans les dictionnaires sous project{n}_*.
+  const projects = getProjects(dict)
 
   return (
     <section id="portfolio" className={styles.section}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(portfolioJsonLd(projects, locale)),
+          __html: JSON.stringify(portfolioJsonLd(projects, locale, dict.intro)),
         }}
       />
       <div className="container">
@@ -132,21 +38,14 @@ export default function Portfolio({ locale, dict }: Props) {
         </div>
 
         {projects.map((project, index) => (
-          <div key={project.number} className={styles.projectWrapper}>
+          /* L'ancre porte le nom du chantier plutôt qu'un numéro : c'est elle
+             que cite l'@id de l'entité JSON-LD, et elle reste valable même si
+             l'ordre de la liste change. */
+          <div key={project.slug} id={project.slug} className={styles.projectWrapper}>
             <div className={styles.projectRow}>
               <div className={styles.projectMedia}>
                 <div className={styles.projectImage}>
-                  {project.images ? (
-                    <ProjectCarousel images={project.images} alt={project.title} />
-                  ) : (
-                    <Image
-                      src={project.image!}
-                      alt={project.title}
-                      width={800}
-                      height={500}
-                      className={styles.screenshot}
-                    />
-                  )}
+                  <ProjectCarousel images={project.images} alt={project.title} />
                 </div>
 
                 <div className={styles.tags}>
@@ -182,9 +81,11 @@ export default function Portfolio({ locale, dict }: Props) {
               <div className={styles.projectText}>
                 <span className={styles.number}>{project.number}</span>
                 <div className={styles.textContent}>
-                  {project.url ? (
+                  {/* Le titre mène au site quand il tourne, au code sinon.
+                      Un chantier fermé garde ainsi une preuve consultable. */}
+                  {projectHref(project) ? (
                     <a
-                      href={project.url}
+                      href={projectHref(project)!}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.titleLink}

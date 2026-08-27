@@ -1,5 +1,8 @@
 import { getAllPosts, getPost, type PostMeta } from '@/lib/blog'
 import { BASE_URL } from '@/lib/structured-data'
+import fr from '@/app/dictionaries/fr.json'
+import en from '@/app/dictionaries/en.json'
+import { getProjects, type Project } from '@/lib/projects'
 import {
   TIERS,
   ENGINEERING_DAY_RATE,
@@ -59,6 +62,123 @@ function tierLines(locale: Locale): string {
   }).join('\n\n')
 }
 
+/* Les réalisations manquaient entièrement à ce fichier : un moteur génératif y
+   lisait une grille tarifaire sans une seule preuve de travail livré. Or c'est
+   exactement ce qu'on lui demande — « qui sait construire une boutique avec
+   remboursements partiels », « quel développeur a fait une plateforme de
+   langues togolaises ». Sans nom de chantier ni adresse, il n'a rien à citer.
+
+   Les chantiers en ligne sont détaillés, les autres tiennent en une ligne : ce
+   qu'on peut ouvrir et vérifier vaut mieux qu'une liste à plat. */
+const portfolioDict: Record<Locale, Record<string, string>> = {
+  fr: fr.portfolio as unknown as Record<string, string>,
+  en: en.portfolio as unknown as Record<string, string>,
+}
+
+const worksCopy = {
+  fr: {
+    heading: '## Réalisations',
+    intro:
+      'Applications conçues, développées et mises en production par Ludovic BATAILLE, du cadrage au déploiement. Les chantiers suivants sont en ligne et consultables — les adresses sont celles des sites en production, pas des démonstrations.',
+    site: 'Site en ligne',
+    stack: 'Stack',
+    builds: 'Le gros œuvre',
+    features: 'Livré avec',
+    challenge: 'Le défi',
+    others: '### Autres chantiers livrés',
+    archived: '### Archives',
+    archivedNote:
+      'Chantier conservé au catalogue : le site n’est plus servi, le code reste public.',
+    repo: 'Code',
+  },
+  en: {
+    heading: '## Selected work',
+    intro:
+      'Applications designed, built and shipped to production by Ludovic BATAILLE, from scoping to deployment. The following are live and can be visited — these are production addresses, not demos.',
+    site: 'Live site',
+    stack: 'Stack',
+    builds: 'The heavy lifting',
+    features: 'Ships with',
+    challenge: 'The hard part',
+    others: '### Other delivered projects',
+    archived: '### Archive',
+    archivedNote:
+      'Kept in the catalogue: the site is no longer served, the code remains public.',
+    repo: 'Code',
+  },
+} as const
+
+/* Espace insécable avant le deux-points en français, pas en anglais. */
+function label(text: string, locale: Locale): string {
+  return locale === 'fr' ? `${text} :` : `${text}:`
+}
+
+function flagshipBlock(project: Project, locale: Locale): string {
+  const t = worksCopy[locale]
+  const parts = [
+    `### ${project.title}`,
+    '',
+    `${label(t.site, locale)} ${project.url}`,
+    '',
+    project.desc,
+    '',
+    `${label(t.stack, locale)} ${project.stack.split(' · ').join(', ')}`,
+    '',
+    `${label(t.builds, locale)}`,
+    ...project.builds.map((build) => `- ${build}`),
+  ]
+
+  if (project.features.length) {
+    parts.push('', `${label(t.features, locale)} ${project.features.join(', ')}`)
+  }
+  if (project.challenge) {
+    parts.push('', `${label(t.challenge, locale)} ${project.challenge}`)
+  }
+  if (project.statValue && project.statLabel) {
+    parts.push('', `${project.statValue} ${project.statLabel}.`)
+  }
+
+  return parts.join('\n')
+}
+
+function worksSection(locale: Locale): string {
+  const t = worksCopy[locale]
+  const projects = getProjects(portfolioDict[locale])
+
+  const flagship = projects.filter((p) => p.flagship)
+  const others = projects.filter((p) => !p.flagship && p.status === 'online')
+  const archived = projects.filter((p) => p.status === 'archived')
+
+  /* Les blocs sont recollés par une ligne vide : les séparateurs sont posés
+     ici, pas dans chaque bloc, sinon les titres finissent noyés sous trois
+     lignes blanches. */
+  const blocks = [t.heading, t.intro, ...flagship.map((p) => flagshipBlock(p, locale))]
+
+  if (others.length) {
+    blocks.push(
+      t.others,
+      others
+        .map((p) => `- **${p.title}** — ${p.url} — ${p.desc} ${label(t.stack, locale)} ${p.stack.split(' · ').join(', ')}`)
+        .join('\n'),
+    )
+  }
+
+  if (archived.length) {
+    blocks.push(
+      t.archived,
+      t.archivedNote,
+      archived
+        .map((p) => {
+          const code = p.repo ? ` — ${label(t.repo, locale)} ${p.repo}` : ''
+          return `- **${p.title}**${code} — ${p.desc} ${label(t.stack, locale)} ${p.stack.split(' · ').join(', ')}`
+        })
+        .join('\n'),
+    )
+  }
+
+  return blocks.join('\n\n')
+}
+
 function solidaireLines(locale: Locale): string {
   return TIERS.map((t) => {
     const price = formatPrice(t.nonProfitPrice, locale)
@@ -112,6 +232,8 @@ La maintenance associative suit un barème solidaire dédié : elle n'est pas au
 Spécialités associations : sécurisation des dons via Stripe (sans commission intermédiaire), gestion des adhérents, conformité RGPD renforcée. À la livraison, l'infrastructure est mise au nom de l'association et le code source lui appartient.
 
 Paiement : 30 % à la signature (facture d'acompte émise par Jump Green), 70 % à la mise en ligne, par virement uniquement.
+
+${worksSection('fr')}
 
 ## Stack technique
 
@@ -186,6 +308,8 @@ ${tierLines('en')}
 ${solidaireLines('en')}
 
 Maintenance for non-profits follows a dedicated solidarity rate: it is not automatically half the standard price, but stays well below market rates. At delivery the infrastructure is registered in the organisation's name and the source code belongs to it.
+
+${worksSection('en')}
 
 ## Contact
 
