@@ -84,6 +84,10 @@
   padding-top: 2.5rem;
 }
 
+#aux-ptits-pois .projectMedia {
+  padding-top: 0;
+}
+
 /* Colonne média : photo, tags en légende, inventaire */
 .projectMedia {
   flex: 1.2;
