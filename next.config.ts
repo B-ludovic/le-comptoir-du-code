@@ -13,6 +13,15 @@ const nextConfig: NextConfig = {
      figurer dans un nom de segment dynamique, la contrainte sur :slug l'exclut
      explicitement — sinon le paramètre avalerait le « .md » et rien ne
      correspondrait. */
+  /* AVIF avant WebP. Sans cette ligne, Next ne propose que le WebP, même à un
+     navigateur qui annonce accepter l'AVIF — c'est son défaut. Le format est
+     plus lent à encoder la première fois, mais le résultat est mis en cache et
+     pèse vingt à trente pour cent de moins à qualité égale. L'ordre compte :
+     c'est le premier format accepté par le navigateur qui est servi. */
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+
   rewrites: async () => [
     {
       source: '/:locale(fr|en)/blog/:slug([a-z0-9-]+).md',

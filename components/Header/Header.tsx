@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import styles from './Header.module.css'
 
@@ -103,12 +104,17 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
 
         {/* Portrait — lien vers L'Échoppe Solidaire */}
         <a href={`/${locale}/echoppe-solidaire`} className={styles.portraitMedallion} aria-label="L'Échoppe Solidaire — tarification associative">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* Le fichier source fait 768 × 1024 pour un médaillon de 32 px :
+              servi tel quel, c'était 128 Ko sur chaque page du site. Passé à
+              l'optimiseur, il en pèse deux ou trois. `sizes` dit la taille
+              réelle d'affichage, sans quoi Next préparerait des variantes de
+              la largeur de l'écran. */}
+          <Image
             src="/ludovic.jpeg"
             alt="Ludovic — L'Échoppe du Code"
             width={32}
             height={32}
+            sizes="32px"
             className={styles.portraitImage}
           />
           <span className={styles.portraitTooltip}>

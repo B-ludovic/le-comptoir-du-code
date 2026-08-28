@@ -96,11 +96,6 @@ export default async function CaseStudyPage({
     ]),
   ]
 
-  /* Numéro de chapitre affiché en filigrane. Il court d'un bloc à l'autre :
-     ce n'est pas une donnée, c'est de la mise en page. */
-  let chapter = 0
-  const nextNumber = () => String(++chapter).padStart(2, '0')
-
   return (
     <>
       {/* Bloc de données, pas de script : type="application/ld+json" échappe à
@@ -191,7 +186,7 @@ export default async function CaseStudyPage({
 
           {/* ── La commande ───────────────────────────────────────────── */}
           <section className={styles.chapter}>
-            <span className={styles.ghost} aria-hidden="true">{nextNumber()}</span>
+            <span className={styles.ghost} aria-hidden="true">01</span>
             <div className={styles.chapterHead}>
               <div>
                 <span className={styles.kicker}>{content.brief.kicker}</span>
@@ -208,7 +203,7 @@ export default async function CaseStudyPage({
 
           {/* ── Trois personnes ───────────────────────────────────────── */}
           <section className={styles.chapter}>
-            <span className={styles.ghost} aria-hidden="true">{nextNumber()}</span>
+            <span className={styles.ghost} aria-hidden="true">02</span>
             <div className={styles.chapterHead}>
               <div>
                 <span className={styles.kicker}>{content.personas.kicker}</span>
@@ -230,7 +225,7 @@ export default async function CaseStudyPage({
 
           {/* ── Le résultat ───────────────────────────────────────────── */}
           <section className={styles.chapter}>
-            <span className={styles.ghost} aria-hidden="true">{nextNumber()}</span>
+            <span className={styles.ghost} aria-hidden="true">03</span>
             <div className={styles.chapterHead}>
               <div>
                 <span className={styles.kicker}>{content.results.kicker}</span>
@@ -250,7 +245,7 @@ export default async function CaseStudyPage({
 
           {/* ── En images ─────────────────────────────────────────────── */}
           <section className={styles.chapter}>
-            <span className={styles.ghost} aria-hidden="true">{nextNumber()}</span>
+            <span className={styles.ghost} aria-hidden="true">04</span>
             <div className={styles.chapterHead}>
               <div>
                 <span className={styles.kicker}>{content.gallery.kicker}</span>
@@ -283,7 +278,7 @@ export default async function CaseStudyPage({
 
           {/* ── Le nœud du chantier ───────────────────────────────────── */}
           <section className={styles.chapter}>
-            <span className={styles.ghost} aria-hidden="true">{nextNumber()}</span>
+            <span className={styles.ghost} aria-hidden="true">05</span>
             <div className={styles.chapterHead}>
               <div>
                 <span className={styles.kicker}>{content.challenge.kicker}</span>
@@ -304,7 +299,7 @@ export default async function CaseStudyPage({
         <div className={styles.workshop}>
           <div className="container">
             <section className={styles.chapter}>
-              <span className={styles.ghost} aria-hidden="true">{nextNumber()}</span>
+              <span className={styles.ghost} aria-hidden="true">06</span>
               <div className={styles.chapterHead}>
                 <div>
                   <span className={styles.kicker}>{content.workshop.kicker}</span>

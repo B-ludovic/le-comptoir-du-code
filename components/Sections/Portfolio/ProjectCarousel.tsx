@@ -15,12 +15,14 @@ function CarouselInner({
   alt,
   current,
   setCurrent,
+  loaded,
   variant,
 }: {
   images: string[]
   alt: string
   current: number
   setCurrent: (i: number) => void
+  loaded: number[]
   variant: 'inline' | 'modal'
 }) {
   const prev = (e: React.MouseEvent) => {
@@ -37,13 +39,21 @@ function CarouselInner({
       <div className={styles.track}>
         {images.map((src, i) => (
           <div key={src} className={`${styles.slide} ${i === current ? styles.active : ''}`}>
-            <Image
-              src={src}
-              alt={`${alt} — ${i + 1}`}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1400px"
-              className={styles.screenshot}
-            />
+            {/* Une slide masquée par `opacity: 0` occupe sa place dans la page :
+                le chargement différé du navigateur regarde la position, pas
+                l'opacité, et téléchargeait donc les cinq captures d'un chantier
+                dès que sa carte entrait à l'écran. On ne pose l'image que sur
+                les vues déjà atteintes — la suivante étant toujours préparée
+                d'avance, le fondu ne tombe jamais sur du vide. */}
+            {loaded.includes(i) && (
+              <Image
+                src={src}
+                alt={`${alt} — ${i + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1400px"
+                className={styles.screenshot}
+              />
+            )}
           </div>
         ))}
       </div>
@@ -73,6 +83,22 @@ export default function ProjectCarousel({ images, alt }: Props) {
   const [current, setCurrent] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+
+  /* La vue de départ et la suivante : de quoi afficher et de quoi enchaîner.
+     La liste s'allonge au fil du défilement, jamais au-delà de ce qui a
+     réellement été montré. */
+  const [loaded, setLoaded] = useState<number[]>(() =>
+    images.length > 1 ? [0, 1] : [0]
+  )
+
+  useEffect(() => {
+    const upcoming = (current + 1) % images.length
+    setLoaded((seen) =>
+      seen.includes(current) && seen.includes(upcoming)
+        ? seen
+        : [...new Set([...seen, current, upcoming])]
+    )
+  }, [current, images.length])
 
   // Défilement automatique de la miniature — en pause au survol, modale ouverte,
   // ou si le visiteur préfère réduire les animations
@@ -111,7 +137,7 @@ export default function ProjectCarousel({ images, alt }: Props) {
         tabIndex={0}
         aria-label="Ouvrir la galerie"
       >
-        <CarouselInner images={images} alt={alt} current={current} setCurrent={setCurrent} variant="inline" />
+        <CarouselInner images={images} alt={alt} current={current} setCurrent={setCurrent} loaded={loaded} variant="inline" />
         <div className={styles.hoverOverlay}>
         </div>
       </div>
@@ -123,7 +149,7 @@ export default function ProjectCarousel({ images, alt }: Props) {
             <X size={22} strokeWidth={1.5} />
           </button>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <CarouselInner images={images} alt={alt} current={current} setCurrent={setCurrent} variant="modal" />
+            <CarouselInner images={images} alt={alt} current={current} setCurrent={setCurrent} loaded={loaded} variant="modal" />
           </div>
         </div>
       )}
