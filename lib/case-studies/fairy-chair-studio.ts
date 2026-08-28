@@ -114,8 +114,8 @@ export const fairyChairStudio: CaseStudy = {
         lead:
           "Encaisser, facturer, rembourser, expédier : le parcours marchand est complet et automatique de bout en bout — la gérante garde ses journées pour ses clientes.",
         items: [
-          { value: '2 langues', label: 'de l’accueil au tunnel de commande, FAQ et e-mails compris' },
           { value: '24 h', label: 'avant qu’un panier abandonné rende son stock au rayon' },
+          { value: '780 tests', label: 'rejoués à chaque modification — une évolution ne casse rien en silence' },
           { value: '0 €', label: 'd’abonnement mensuel à une plateforme — la boutique appartient au salon' },
         ],
       },
@@ -259,9 +259,9 @@ export const fairyChairStudio: CaseStudy = {
         lead:
           'Taking payment, invoicing, refunding, shipping: the retail journey is complete and automatic end to end — the owner keeps her days for her clients.',
         items: [
-          { value: '2 languages', label: 'from the home page to the checkout, FAQ and emails included' },
           { value: '24 h', label: 'before an abandoned basket gives its stock back to the shelf' },
-          { value: '£0', label: 'in monthly platform fees — the shop belongs to the salon' },
+          { value: '780 tests', label: 'replayed on every change — a new feature breaks nothing quietly' },
+          { value: '€0', label: 'in monthly platform fees — the shop belongs to the salon' },
         ],
       },
 
