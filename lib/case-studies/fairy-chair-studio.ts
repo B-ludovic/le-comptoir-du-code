@@ -12,18 +12,24 @@ import type { CaseStudy } from './index'
    entièrement vrai. Elle ne dit pas pourquoi le rayon est vide : ce n'est pas
    au prestataire de commenter publiquement le calendrier de sa cliente.
 
-   Pas de vidéo d'ouverture : les pages sont peu hautes, un défilement filmé
-   n'apprendrait rien de plus qu'une capture. */
+   L'ouverture est le montage de la vitrine, comme sur les deux autres
+   chantiers : les pages sont peu hautes, et ce que la version téléphone ajoute
+   au récit, un défilement filmé ne l'apprendrait pas. */
 
 export const fairyChairStudio: CaseStudy = {
   slug: 'fairy-chair-studio',
   number: '03',
 
+  /* Le montage d'ouverture : la vitrine sur écran large, et à côté le même site
+     sur téléphone. Une capture desktop seule laisse ouverte la question que se
+     pose tout visiteur venu juger du travail — « et sur mobile ? ». */
   hero: {
-    kind: 'image',
-    src: '/images/accueil-fcs.png',
-    width: 3448,
-    height: 1990,
+    kind: 'composite',
+    desktop: { src: '/images/accueil-fcs.webp', width: 2400, height: 1385 },
+    mobiles: [
+      { src: '/images/mobile-fcs.webp', width: 974, height: 2164 },
+      { src: '/images/burger-fcs.webp', width: 974, height: 2164 },
+    ],
   },
 
   gallery: [
@@ -54,7 +60,11 @@ export const fairyChairStudio: CaseStudy = {
         { label: 'Voir', value: 'fairychairstudio.com', href: 'https://fairychairstudio.com/fr' },
       ],
       heroCaption:
-        "La page d'accueil : le salon, ses spécialités et sa gamme — en français et en anglais.",
+        "La page d'accueil, sur écran large et sur téléphone : le salon, ses spécialités et sa gamme — en français et en anglais.",
+      heroMobileAlts: [
+        'Le premier écran sur téléphone : la réservation et la boutique offertes côte à côte.',
+        'Le menu de navigation ouvert : les prestations, la réservation, le compte client et la bascule vers l\'anglais.',
+      ],
       back: 'Retour aux archives',
 
       brief: {
@@ -198,7 +208,11 @@ export const fairyChairStudio: CaseStudy = {
         { label: 'Visit', value: 'fairychairstudio.com', href: 'https://fairychairstudio.com/en' },
       ],
       heroCaption:
-        'The home page: the salon, its specialities and its range — in French and English.',
+        'The home page, on a wide screen and on a phone: the salon, its specialities and its range — in French and English.',
+      heroMobileAlts: [
+        'The first screen on a phone: booking and the shop offered side by side.',
+        'The navigation menu open: services, booking, the customer account and the switch to English.',
+      ],
       back: 'Back to selected work',
 
       brief: {

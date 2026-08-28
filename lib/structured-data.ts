@@ -1,6 +1,6 @@
 import type { Post } from '@/lib/blog'
 import type { Project } from '@/lib/projects'
-import { hasCaseStudy, type CaseStudy, type CaseContent } from '@/lib/case-studies'
+import { hasCaseStudy, heroShareImage, type CaseStudy, type CaseContent } from '@/lib/case-studies'
 import {
   TIERS,
   SCOPING_TIERS,
@@ -196,7 +196,7 @@ export function caseStudyJsonLd(
   const locale: Locale = rawLocale === 'en' ? 'en' : 'fr'
   const url = `${BASE_URL}/${locale}/chantiers/${study.slug}`
   const images = [
-    ...(study.hero.kind === 'image' ? [study.hero.src] : [study.hero.poster]),
+    heroShareImage(study.hero),
     ...study.gallery.map((shot) => shot.src),
   ].map((path) => `${BASE_URL}${path}`)
 

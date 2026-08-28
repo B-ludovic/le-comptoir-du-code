@@ -13,11 +13,16 @@ export const miabelangue: CaseStudy = {
   slug: 'miabelangue',
   number: '01',
 
+  /* Le montage d'ouverture : la vitrine sur écran large, et à côté le même site
+     sur téléphone. Une capture desktop seule laisse ouverte la question que se
+     pose tout visiteur venu juger du travail — « et sur mobile ? ». */
   hero: {
-    kind: 'video',
-    poster: '/videos/miabe-accueil.jpg',
-    mp4: '/videos/miabe-accueil.mp4',
-    webm: '/videos/miabe-accueil.webm',
+    kind: 'composite',
+    desktop: { src: '/images/accueil-miabe.webp', width: 2400, height: 1507 },
+    mobiles: [
+      { src: '/images/mobile-miabe.webp', width: 974, height: 2166 },
+      { src: '/images/burger-miabe.webp', width: 964, height: 2164 },
+    ],
   },
 
   gallery: [
@@ -47,7 +52,11 @@ export const miabelangue: CaseStudy = {
         { label: 'Voir', value: 'miabelangue.com', href: 'https://miabelangue.com/fr' },
       ],
       heroCaption:
-        "La vitrine publique, du premier écran aux formules — en français, anglais et allemand.",
+        "La vitrine publique, sur écran large et sur téléphone — en français, anglais et allemand.",
+      heroMobileAlts: [
+        "Le premier écran sur téléphone : les deux langues enseignées, le Mina et l'Ewe, et l'inscription à portée de pouce.",
+        'Le menu de navigation ouvert : les trois langues d\'interface et les deux devises, euro et franc CFA.',
+      ],
       back: 'Retour aux archives',
 
       brief: {
@@ -188,7 +197,11 @@ export const miabelangue: CaseStudy = {
         { label: 'Visit', value: 'miabelangue.com', href: 'https://miabelangue.com/en' },
       ],
       heroCaption:
-        'The public site, from the first screen to the plans — in French, English and German.',
+        'The public site, on a wide screen and on a phone — in French, English and German.',
+      heroMobileAlts: [
+        'The first screen on a phone: the two languages taught, Mina and Ewe, and sign-up within thumb’s reach.',
+        'The navigation menu open: the three interface languages and the two currencies, euro and CFA franc.',
+      ],
       back: 'Back to selected work',
 
       brief: {

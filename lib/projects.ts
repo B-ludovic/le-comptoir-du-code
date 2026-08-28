@@ -29,7 +29,7 @@ export const PROJECT_MEDIA: ProjectMedia[] = [
   {
     slug: 'miabelangue',
     images: [
-      '/images/accueil-miabe.png',
+      '/images/accueil-miabe.webp',
       '/images/inscription-miabe.png',
       '/images/onboarding-miabe.png',
       '/images/admin-miabe.png',
@@ -41,7 +41,7 @@ export const PROJECT_MEDIA: ProjectMedia[] = [
   {
     slug: 'aux-ptits-pois',
     images: [
-      '/images/accueil-auxptitspois.png',
+      '/images/accueil-amap.webp',
       '/images/product-auxptitspois.png',
       '/images/recette-auxptitspois.png',
       '/images/abonnement-auxptitspois.png',

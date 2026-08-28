@@ -38,6 +38,10 @@ export type CaseContent = {
   lede: string
   facts: Fact[]
   heroCaption: string
+  /* Un alt par vignette mobile du montage d'ouverture, dans l'ordre de
+     `hero.mobiles` : même jointure par position que `gallery.shots`. Absent
+     quand le chantier n'ouvre pas sur un montage. */
+  heroMobileAlts?: string[]
   back: string
   brief: Chapter & { body: string[] }
   personas: Chapter & { items: Persona[] }
@@ -53,14 +57,26 @@ export type CaseContent = {
   cta: { title: string; body: string; primary: string; secondary: string }
 }
 
-/* Média d'ouverture. Une vidéo quand il y en a une — elle montre ce qu'une
-   capture ne peut pas, la profondeur d'un site qu'on parcourt —, une image
-   sinon. Les deux ne coexistent jamais : c'est le premier écran. */
-export type HeroMedia =
-  | { kind: 'video'; poster: string; mp4: string; webm: string }
-  | { kind: 'image'; src: string; width: number; height: number }
-
 export type Shot = { src: string; width: number; height: number }
+
+/* Média d'ouverture. Trois formes possibles, jamais deux à la fois : c'est le
+   premier écran.
+
+   `composite` est le montage — la capture desktop et, à côté, deux vignettes du
+   même site sur téléphone. C'est la seule forme qui montre d'un coup d'œil
+   qu'un chantier a été mené sur les deux tailles d'écran ; une capture desktop
+   seule laisse la question ouverte.
+
+   `image` reste pour un chantier dont une seule capture dit tout.
+
+   Il y a eu une troisième forme, `video` : un défilement filmé de la vitrine,
+   posé en `preload="none"` avec des contrôles. Le visiteur voyait donc une
+   affiche fixe et devait cliquer pour lancer la lecture, ce que presque personne
+   ne faisait — trois mégaoctets de rushes au service d'une image immobile. Le
+   montage dit la même chose, tout de suite et pour cent fois moins lourd. */
+export type HeroMedia =
+  | { kind: 'composite'; desktop: Shot; mobiles: Shot[] }
+  | { kind: 'image'; src: string; width: number; height: number }
 
 export type CaseStudy = {
   /* Même slug que dans PROJECT_MEDIA : c'est lui qui relie la carte de la page
@@ -77,6 +93,16 @@ export type CaseStudy = {
    carte, sans lien vers nulle part. C'est volontaire — mieux vaut cinq cartes
    muettes qu'un lien qui promet une étude de cas inexistante. */
 export const CASE_STUDIES: CaseStudy[] = [miabelangue, auxPtitsPois, fairyChairStudio]
+
+/* L'image que le chantier montre à l'extérieur — Open Graph, Twitter, JSON-LD.
+   Toujours une capture paysage : d'un montage on ne retient que le desktop, les
+   vignettes de téléphone seraient illisibles une fois rognées au format d'une
+   carte de partage. Passer par cette fonction plutôt que par un ternaire posé
+   sur place évite qu'une quatrième variante de `HeroMedia` casse silencieusement
+   deux fichiers éloignés. */
+export function heroShareImage(hero: HeroMedia): string {
+  return hero.kind === 'composite' ? hero.desktop.src : hero.src
+}
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((study) => study.slug === slug)

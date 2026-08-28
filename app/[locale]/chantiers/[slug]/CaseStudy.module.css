@@ -161,8 +161,7 @@
   background: rgba(232, 196, 160, 0.25);
 }
 
-.shot img,
-.video {
+.shot img {
   width: 100%;
   height: auto;
   display: block;
@@ -180,6 +179,45 @@
 
 .hero .shot {
   margin-top: 4rem;
+}
+
+/* ── Le montage d'ouverture ──────────────────────────────────────────────── */
+
+/* Deux colonnes qui se partagent la largeur de la figure : la capture desktop à
+   gauche, la paire de téléphones à droite. Le rapport 64/36 n'est pas un choix
+   d'esthète — c'est ce qui fait finir les deux blocs à peu près à la même
+   hauteur, un desktop en 16/9 et deux portraits en 19,5/9 ne s'équilibrant pas
+   autrement. Les `minmax(0, …)` empêchent une capture large de pousser sa
+   colonne au-delà de sa part : sans eux, la taille intrinsèque de l'image fait
+   loi et la grille déborde. */
+.composite {
+  display: grid;
+  grid-template-columns: minmax(0, 64fr) minmax(0, 36fr);
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.compositeDesktop {
+  border: 1px solid rgba(232, 196, 160, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
+}
+
+.phones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Le rayon généreux et l'absence de bandeau font tout le travail : c'est ce qui
+   dit « téléphone » là où le bloc voisin dit « fenêtre de navigateur ». */
+.phone {
+  border: 1px solid rgba(232, 196, 160, 0.14);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
 }
 
 /* ── Chapitres ───────────────────────────────────────────────────────────── */
@@ -525,7 +563,22 @@
 
 /* ── Adaptations ─────────────────────────────────────────────────────────── */
 
+/* Sous 900 px, la colonne des téléphones tomberait sous 150 px de large : on
+   ne lirait plus rien et les vignettes deviendraient une texture. Le montage se
+   casse donc en deux étages — desktop en haut, téléphones côte à côte dessous,
+   où ils retrouvent de la place. */
+@media (max-width: 900px) {
+  .composite {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
+  .composite {
+    gap: 1.25rem;
+    padding: 1rem;
+  }
+
   .main {
     padding-top: 7rem;
   }

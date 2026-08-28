@@ -7,7 +7,7 @@ import styles from './CaseStudy.module.css'
 import { emphasize } from './emphasize'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
-import { getCaseStudy, getCaseStudySlugs, contentFor } from '@/lib/case-studies'
+import { getCaseStudy, getCaseStudySlugs, contentFor, heroShareImage } from '@/lib/case-studies'
 import { PROJECT_MEDIA } from '@/lib/projects'
 import { BASE_URL, caseStudyJsonLd, breadcrumbJsonLd } from '@/lib/structured-data'
 
@@ -37,9 +37,7 @@ export async function generateMetadata({
   const url = `${BASE_URL}/${locale}/chantiers/${slug}`
   /* Le slug est un nom propre : il ne se traduit pas, donc les deux versions
      partagent la même adresse à la locale près. */
-  const image = `${BASE_URL}${
-    study.hero.kind === 'image' ? study.hero.src : study.hero.poster
-  }`
+  const image = `${BASE_URL}${heroShareImage(study.hero)}`
 
   return {
     title: content.metaTitle,
@@ -148,37 +146,57 @@ export default async function CaseStudyPage({
             </dl>
 
             <figure className={styles.shot}>
-              <div className={styles.chrome} aria-hidden="true">
-                <i /><i /><i />
-              </div>
-              {study.hero.kind === 'video' ? (
-                /* Lecture au clic, jamais automatique : pas d'octet dépensé
-                   sans geste du visiteur, et rien qui bouge tout seul pour qui
-                   a demandé moins d'animation. Le WebM passe en premier — le
-                   navigateur retient la première source qu'il sait lire, et
-                   VP9 pèse un tiers de moins que H.264. */
-                <video
-                  className={styles.video}
-                  controls
-                  muted
-                  playsInline
-                  loop
-                  preload="none"
-                  poster={study.hero.poster}
-                  aria-label={content.heroCaption}
-                >
-                  <source src={study.hero.webm} type="video/webm" />
-                  <source src={study.hero.mp4} type="video/mp4" />
-                </video>
+              {study.hero.kind === 'composite' ? (
+                /* Le montage d'ouverture. La capture desktop garde le bandeau de
+                   fenêtre ; les téléphones ont leur propre cadre, aux coins bien
+                   plus ronds et sans bandeau. Sans cette distinction, l'œil lit
+                   trois fenêtres de navigateur alignées et la démonstration du
+                   responsive tombe à plat. */
+                <div className={styles.composite}>
+                  <div className={styles.compositeDesktop}>
+                    <div className={styles.chrome} aria-hidden="true">
+                      <i /><i /><i />
+                    </div>
+                    <Image
+                      src={study.hero.desktop.src}
+                      alt={content.heroCaption}
+                      width={study.hero.desktop.width}
+                      height={study.hero.desktop.height}
+                      sizes="(max-width: 768px) 100vw, 700px"
+                      priority
+                    />
+                  </div>
+                  <div className={styles.phones}>
+                    {study.hero.mobiles.map((mobile, index) => (
+                      /* Pas d'alt de repli inventé : sans texte fourni, la
+                         vignette reste décorative et le lecteur d'écran passe son
+                         chemin, plutôt que d'entendre deux fois la légende. */
+                      <div key={mobile.src} className={styles.phone}>
+                        <Image
+                          src={mobile.src}
+                          alt={content.heroMobileAlts?.[index] ?? ''}
+                          width={mobile.width}
+                          height={mobile.height}
+                          sizes="(max-width: 768px) 42vw, 190px"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               ) : (
-                <Image
-                  src={study.hero.src}
-                  alt={content.heroCaption}
-                  width={study.hero.width}
-                  height={study.hero.height}
-                  sizes="(max-width: 1200px) 100vw, 1136px"
-                  priority
-                />
+                <>
+                  <div className={styles.chrome} aria-hidden="true">
+                    <i /><i /><i />
+                  </div>
+                  <Image
+                    src={study.hero.src}
+                    alt={content.heroCaption}
+                    width={study.hero.width}
+                    height={study.hero.height}
+                    sizes="(max-width: 1200px) 100vw, 1136px"
+                    priority
+                  />
+                </>
               )}
               <figcaption>{content.heroCaption}</figcaption>
             </figure>

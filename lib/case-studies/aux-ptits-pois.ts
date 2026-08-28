@@ -8,17 +8,22 @@ import type { CaseStudy } from './index'
    donnait les deux au premier chapitre, puis les répétait deux fois : le
    lecteur qui descendait avait l'impression de relire.
 
-   L'ouverture est le défilement de la vitrine, comme sur le chantier 01. */
+   L'ouverture est le montage de la vitrine, comme sur le chantier 01. */
 
 export const auxPtitsPois: CaseStudy = {
   slug: 'aux-ptits-pois',
   number: '02',
 
+  /* Le montage d'ouverture : la vitrine sur écran large, et à côté le même site
+     sur téléphone. Une capture desktop seule laisse ouverte la question que se
+     pose tout visiteur venu juger du travail — « et sur mobile ? ». */
   hero: {
-    kind: 'video',
-    poster: '/videos/ptitspois-accueil.jpg',
-    mp4: '/videos/ptitspois-accueil.mp4',
-    webm: '/videos/ptitspois-accueil.webm',
+    kind: 'composite',
+    desktop: { src: '/images/accueil-amap.webp', width: 2400, height: 1507 },
+    mobiles: [
+      { src: '/images/mobile-amap.webp', width: 974, height: 2164 },
+      { src: '/images/burger-amap.webp', width: 974, height: 2164 },
+    ],
   },
 
   gallery: [
@@ -50,7 +55,11 @@ export const auxPtitsPois: CaseStudy = {
         { label: 'Voir', value: 'auxptitspois.fr', href: 'https://www.auxptitspois.fr' },
       ],
       heroCaption:
-        "La vitrine publique : les producteurs, les abonnements et les recettes de la semaine.",
+        "La vitrine publique, sur écran large et sur téléphone : les producteurs, les abonnements et le panier de la semaine.",
+      heroMobileAlts: [
+        'Le premier écran sur téléphone : le panier de la semaine, son contenu détaillé et la date de la prochaine distribution.',
+        'Le menu de navigation ouvert : le panier, les abonnements, les producteurs et l\'inscription.',
+      ],
       back: 'Retour aux archives',
 
       brief: {
@@ -196,7 +205,11 @@ export const auxPtitsPois: CaseStudy = {
         { label: 'Visit', value: 'auxptitspois.fr', href: 'https://www.auxptitspois.fr' },
       ],
       heroCaption:
-        'The public site: the growers, the membership plans and the recipes of the week.',
+        'The public site, on a wide screen and on a phone: the growers, the membership plans and the basket of the week.',
+      heroMobileAlts: [
+        'The first screen on a phone: the week’s basket, what is in it and the date of the next pickup.',
+        'The navigation menu open: the basket, the membership plans, the growers and sign-up.',
+      ],
       back: 'Back to selected work',
 
       brief: {
