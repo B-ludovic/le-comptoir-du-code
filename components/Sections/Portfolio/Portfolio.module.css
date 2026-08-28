@@ -84,8 +84,11 @@
   padding-top: 2.5rem;
 }
 
+/* Aux P'tits Pois tombe sur une rangée non inversée : sa photo est à gauche,
+   son titre à droite. Sans ce rattrapage, la photo démarrerait 2,5rem au-dessus
+   du titre — on la descend sur la ligne du titre. */
 #aux-ptits-pois .projectMedia {
-  padding-top: 0;
+  padding-top: 2.5rem;
 }
 
 /* Colonne média : photo, tags en légende, inventaire */
@@ -370,7 +373,8 @@
 
   /* En colonne, plus de gauche/droite : le décalage disparaît */
   .projectRow .projectText,
-  .projectWrapper:nth-child(even) .projectRow .projectMedia {
+  .projectWrapper:nth-child(even) .projectRow .projectMedia,
+  #aux-ptits-pois .projectMedia {
     padding-top: 0;
   }
 
