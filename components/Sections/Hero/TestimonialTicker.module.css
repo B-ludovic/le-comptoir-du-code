@@ -40,7 +40,9 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  animation: scroll 48s linear infinite;
+  /* Seize secondes par avis : la durée suit le nombre de cartes, sans quoi
+     ajouter un avis accélère la lecture de tous les autres. */
+  animation: scroll 64s linear infinite;
 }
 
 .clone {

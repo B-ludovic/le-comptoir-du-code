@@ -73,4 +73,17 @@ export const TESTIMONIALS: Testimonial[] = [
     translation:
       'A partnership that came together quickly and efficiently. Every change was made with judgement and understanding. He listened to me and took ownership of the different elements of the brand to deliver a thoroughly satisfying result. Many thanks.',
   },
+  {
+    id: 'mag-miabelangue',
+    author: 'Mag',
+    organisation: 'Miabelangue',
+    project: 'Miabelangue',
+    sector: { fr: 'Apprentissage des langues', en: 'Language learning' },
+    tier: 'outils',
+    datePublished: '2026-08-28',
+    body:
+      "Ludovic a réalisé un travail très satisfaisant de codage à partir de la feuille quasiment blanche du cahier des charges que j'avais préparé pour mon site internet. Il a su dépasser les attentes et créer tout un écosystème avec un résultat assez bluffant.",
+    translation:
+      'Ludovic did very satisfying development work starting from the almost blank sheet of the brief I had prepared for my website. He went beyond expectations and built a whole ecosystem, with a genuinely striking result.',
+  },
 ]
