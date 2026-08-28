@@ -123,7 +123,6 @@ export const miabelangue: CaseStudy = {
         lead: "Le problème le plus dur du chantier, celui qui a décidé de la forme du reste.",
         quote:
           "Deux caisses en deux monnaies devaient produire une seule comptabilité : l'encaissement d'une commande n'est écrit qu'une fois, côté serveur — et le franc CFA, qui n'a pas de centime, a imposé des montants en francs entiers jusque dans les factures PDF.",
-        cite: 'Le nœud du chantier',
       },
 
       workshop: {
@@ -265,7 +264,6 @@ export const miabelangue: CaseStudy = {
         lead: 'The hardest problem of the project, and the one that shaped everything else.',
         quote:
           'Two tills in two currencies had to produce a single set of books: order settlement is written once, server-side — and the CFA franc, which has no cents, forced whole-franc amounts all the way into the PDF invoices.',
-        cite: 'The hard part',
       },
 
       workshop: {

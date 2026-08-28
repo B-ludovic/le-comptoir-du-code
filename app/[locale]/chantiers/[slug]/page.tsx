@@ -293,7 +293,7 @@ export default async function CaseStudyPage({
             </div>
             <blockquote className={styles.challenge}>
               <p>{content.challenge.quote}</p>
-              <cite>{content.challenge.cite}</cite>
+              {content.challenge.cite && <cite>{content.challenge.cite}</cite>}
             </blockquote>
           </section>
         </div>

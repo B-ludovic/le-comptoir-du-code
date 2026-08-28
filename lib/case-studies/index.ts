@@ -9,6 +9,7 @@
    descendre — recruteur, directeur technique, prospect méthodique. */
 
 import { miabelangue } from './miabelangue'
+import { auxPtitsPois } from './aux-ptits-pois'
 
 export type Locale = 'fr' | 'en'
 
@@ -43,7 +44,10 @@ export type CaseContent = {
   /* `shots` suit l'ordre de `gallery` côté média : c'est la position qui fait
      la jointure, comme les puces numérotées des dictionnaires. */
   gallery: Chapter & { shots: { alt: string; caption: string }[] }
-  challenge: Chapter & { quote: string; cite: string }
+  /* `cite` reste possible pour une vraie attribution — un mot du client, une
+     phrase de cahier des charges. Vide, le bloc se ferme sur sa citation :
+     répéter le sur-titre du chapitre juste en dessous n'apprend rien. */
+  challenge: Chapter & { quote: string; cite?: string }
   workshop: Chapter & { items: WorkshopItem[] }
   cta: { title: string; body: string; primary: string; secondary: string }
 }
@@ -71,7 +75,7 @@ export type CaseStudy = {
 /* Le registre. Un chantier absent d'ici n'a pas de page : sa carte reste une
    carte, sans lien vers nulle part. C'est volontaire — mieux vaut cinq cartes
    muettes qu'un lien qui promet une étude de cas inexistante. */
-export const CASE_STUDIES: CaseStudy[] = [miabelangue]
+export const CASE_STUDIES: CaseStudy[] = [miabelangue, auxPtitsPois]
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((study) => study.slug === slug)
