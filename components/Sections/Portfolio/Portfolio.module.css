@@ -254,6 +254,27 @@
   hyphens: auto;
 }
 
+/* Lien vers l'étude de cas. Même registre que les libellés de la carte —
+   petites capitales espacées, doré — mais souligné d'un filet qui s'allume au
+   survol : c'est un lien, il doit se distinguer d'une étiquette. */
+.caseLink {
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--accent-primary);
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(232, 196, 160, 0.25);
+  transition: border-color var(--transition-base), color var(--transition-base);
+}
+
+.caseLink:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-primary);
+}
+
 /* Gros œuvre — les constructions marquantes du chantier */
 .builds {
   max-width: 480px;

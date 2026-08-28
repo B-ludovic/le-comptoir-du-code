@@ -1,5 +1,6 @@
 import type { Post } from '@/lib/blog'
 import type { Project } from '@/lib/projects'
+import { hasCaseStudy, type CaseStudy, type CaseContent } from '@/lib/case-studies'
 import {
   TIERS,
   SCOPING_TIERS,
@@ -109,6 +110,18 @@ export function faqJsonLd(
    L'@id de chaque chantier pointe vers son ancre réelle dans la page d'accueil,
    celle que porte le bloc HTML correspondant : l'identifiant mène quelque part
    au lieu de désigner un nœud flottant. */
+/* L'identité d'un chantier, en un seul endroit. Tant que la page d'accueil
+   était le seul lieu où il apparaissait, son @id pointait vers l'ancre du bloc.
+   Maintenant qu'un chantier peut avoir sa propre adresse, c'est elle qui fait
+   foi — sinon la liste de la page d'accueil et l'étude de cas décriraient deux
+   entités jumelles au lieu d'une seule, et un moteur n'aurait aucune raison de
+   les rapprocher. */
+export function projectEntityId(locale: Locale, slug: string): string {
+  return hasCaseStudy(slug)
+    ? `${BASE_URL}/${locale}/chantiers/${slug}#chantier`
+    : `${BASE_URL}/${locale}#${slug}`
+}
+
 export function portfolioJsonLd(
   projects: Project[],
   rawLocale: string,
@@ -135,7 +148,12 @@ export function portfolioJsonLd(
       position: index + 1,
       item: {
         '@type': 'WebApplication',
-        '@id': `${pageUrl}#${project.slug}`,
+        '@id': projectEntityId(locale, project.slug),
+        /* Quand le chantier a son étude de cas, on dit où se lit son récit
+           complet : la carte n'est plus qu'un résumé. */
+        ...(hasCaseStudy(project.slug)
+          ? { subjectOf: { '@id': `${BASE_URL}/${locale}/chantiers/${project.slug}` } }
+          : {}),
         name: project.title,
         description: project.desc,
         applicationCategory: 'BusinessApplication',
@@ -159,6 +177,61 @@ export function portfolioJsonLd(
         ...(project.challenge ? { abstract: project.challenge } : {}),
       },
     })),
+  }
+}
+
+/* L'étude de cas : une page dont le sujet est un chantier. `mainEntity` porte
+   la même WebApplication que la liste de la page d'accueil — même @id, donc une
+   seule entité vue de deux endroits — enrichie de ce que seule cette page
+   raconte : le contexte, les chiffres, la pile complète.
+
+   `author` et `publisher` sont sur la page, pas sur l'application : c'est le
+   récit qui est signé, pas le logiciel du client. */
+export function caseStudyJsonLd(
+  study: CaseStudy,
+  content: CaseContent,
+  rawLocale: string,
+  projectUrl: string | null,
+) {
+  const locale: Locale = rawLocale === 'en' ? 'en' : 'fr'
+  const url = `${BASE_URL}/${locale}/chantiers/${study.slug}`
+  const images = [
+    ...(study.hero.kind === 'image' ? [study.hero.src] : [study.hero.poster]),
+    ...study.gallery.map((shot) => shot.src),
+  ].map((path) => `${BASE_URL}${path}`)
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': url,
+    url,
+    name: content.metaTitle,
+    description: content.metaDescription,
+    inLanguage: locale,
+    isPartOf: { '@id': `${BASE_URL}/${locale}/#website` },
+    author: authorRef,
+    publisher: publisherRef,
+    primaryImageOfPage: images[0],
+    mainEntity: {
+      '@type': 'WebApplication',
+      '@id': projectEntityId(locale, study.slug),
+      name: content.facts[0]?.value ?? study.slug,
+      description: content.lede,
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web browser',
+      inLanguage: locale,
+      creator: authorRef,
+      provider: publisherRef,
+      creativeWorkStatus: 'Published',
+      ...(projectUrl ? { url: projectUrl } : {}),
+      image: images,
+      keywords: study.stack.join(', '),
+      /* Les chapitres « sous le capot » disent ce que ce chantier a demandé de
+         savoir résoudre : c'est la matière qu'un moteur génératif peut citer. */
+      featureList: content.workshop.items.map((item) => item.title).join(', '),
+      abstract: content.challenge.quote,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    },
   }
 }
 

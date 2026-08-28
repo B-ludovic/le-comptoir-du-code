@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { BASE_URL } from '@/lib/structured-data'
 import { getAllPosts } from '@/lib/blog'
+import { getCaseStudySlugs } from '@/lib/case-studies'
 
 const locales = ['fr', 'en']
 
@@ -77,6 +78,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   )
 
+  /* Les études de cas. Le slug est un nom propre, donc identique d'une langue
+     à l'autre : les deux versions ne diffèrent que par le préfixe de locale,
+     et withAlternates suffit à les déclarer l'une à l'autre. Priorité haute —
+     c'est là que le récit complet d'un chantier est publié, la carte de la page
+     d'accueil n'en donne qu'un résumé. */
+  const caseStudyRoutes = locales.flatMap((locale) =>
+    getCaseStudySlugs().map((slug) => ({
+      url: `${BASE_URL}/${locale}/chantiers/${slug}`,
+      lastModified: CONTENT_LAST_REVIEWED,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+      alternates: withAlternates(`/chantiers/${slug}`),
+    }))
+  )
+
   const profileRoutes = locales.map((locale) => ({
     url: `${BASE_URL}/${locale}/a-propos`,
     lastModified: CONTENT_LAST_REVIEWED,
@@ -112,6 +128,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...homepages,
+    ...caseStudyRoutes,
     ...profileRoutes,
     ...solidaireRoutes,
     ...faqRoutes,

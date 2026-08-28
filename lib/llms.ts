@@ -3,6 +3,7 @@ import { BASE_URL } from '@/lib/structured-data'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 import { getProjects, type Project } from '@/lib/projects'
+import { hasCaseStudy } from '@/lib/case-studies'
 import {
   TIERS,
   ENGINEERING_DAY_RATE,
@@ -85,6 +86,7 @@ const worksCopy = {
     builds: 'Le gros œuvre',
     features: 'Livré avec',
     challenge: 'Le défi',
+    caseStudy: 'Étude de cas',
     others: '### Autres chantiers livrés',
     archived: '### Archives',
     archivedNote:
@@ -100,6 +102,7 @@ const worksCopy = {
     builds: 'The heavy lifting',
     features: 'Ships with',
     challenge: 'The hard part',
+    caseStudy: 'Case study',
     others: '### Other delivered projects',
     archived: '### Archive',
     archivedNote:
@@ -119,6 +122,12 @@ function flagshipBlock(project: Project, locale: Locale): string {
     `### ${project.title}`,
     '',
     `${label(t.site, locale)} ${project.url}`,
+    /* Le chantier qui a son étude de cas donne son adresse : c'est là qu'un
+       moteur trouve le récit complet — contexte, résultat, mécanique — plutôt
+       que le résumé de la page d'accueil. */
+    ...(hasCaseStudy(project.slug)
+      ? [`${label(t.caseStudy, locale)} ${BASE_URL}/${locale}/chantiers/${project.slug}`]
+      : []),
     '',
     project.desc,
     '',

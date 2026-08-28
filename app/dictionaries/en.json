@@ -109,6 +109,7 @@
     "builds_label": "The heavy lifting",
     "features_label": "Ships with",
     "challenge_label": "The hard part",
+    "case_link": "See the full project",
     "project1_title": "Miabelangue",
     "project1_desc": "A Mina and Ewe learning platform for the Togolese diaspora. Protected course materials, one-on-one sessions with a teacher, real-time messaging, subscriptions and a bookshop — in three languages, from the first screen down to the invoices.",
     "project1_build1": "Two payment rails, one ledger: card payments in euros via Stripe, mobile money in CFA francs via CinetPay — order settlement is written once, server-side.",

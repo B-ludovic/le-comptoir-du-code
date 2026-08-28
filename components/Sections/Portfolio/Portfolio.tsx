@@ -1,7 +1,9 @@
+import Link from 'next/link'
 import styles from './Portfolio.module.css'
 import ProjectCarousel from './ProjectCarousel'
 import { portfolioJsonLd } from '@/lib/structured-data'
 import { getProjects, projectHref } from '@/lib/projects'
+import { hasCaseStudy, caseStudyPath } from '@/lib/case-studies'
 
 type Props = {
   locale: string
@@ -96,6 +98,19 @@ export default function Portfolio({ locale, dict }: Props) {
                     <h3 className={styles.projectTitle}>{project.title}</h3>
                   )}
                   <p className={styles.projectDesc}>{project.desc}</p>
+
+                  {/* Le chantier qui a son étude de cas emmène plus loin. Le
+                      titre continue de mener au site en production : le lien
+                      externe montre le produit, celui-ci raconte le chantier. */}
+                  {hasCaseStudy(project.slug) && (
+                    <Link
+                      href={caseStudyPath(locale, project.slug)}
+                      className={styles.caseLink}
+                    >
+                      {dict.case_link}
+                      <span aria-hidden="true"> →</span>
+                    </Link>
+                  )}
 
                   {project.builds.length > 0 && (
                     <div className={styles.builds}>

@@ -109,6 +109,7 @@
     "builds_label": "Le gros œuvre",
     "features_label": "Livré avec",
     "challenge_label": "Le défi",
+    "case_link": "Voir le chantier en détail",
     "project1_title": "Miabelangue",
     "project1_desc": "Plateforme d'apprentissage du mina et de l'éwé pour la diaspora togolaise. Cours à supports protégés, séances individuelles avec un professeur, messagerie temps réel, abonnements et boutique de livres — en trois langues, du premier écran jusqu'aux factures.",
     "project1_build1": "Deux caisses, un seul bordereau : carte en euros via Stripe, mobile money en francs CFA via CinetPay — l'encaissement d'une commande n'est écrit qu'une fois, côté serveur.",

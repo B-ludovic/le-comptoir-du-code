@@ -81,6 +81,12 @@ export async function proxy(request: NextRequest) {
   return withCsp(NextResponse.next({ request: { headers: requestHeaders } }), csp)
 }
 
+/* Les fichiers servis depuis public/ doivent sortir du champ du middleware :
+   ils n'ont pas de préfixe de langue, donc la redirection de locale les
+   enverrait vers /fr/… où ils n'existent pas. Le symptôme est trompeur — le
+   navigateur annonce un format vidéo non géré, alors qu'il a simplement reçu
+   une redirection puis un 404. D'où les deux garde-fous : le dossier et
+   l'extension, comme c'est déjà le cas pour les images. */
 export const config = {
-  matcher: ['/((?!_next|favicon\\.ico|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico)|images|fonts|icons|api|sitemap\\.xml|robots\\.txt|llms\\.txt|llms-full\\.txt).*)']
+  matcher: ['/((?!_next|favicon\\.ico|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|mp4|webm|woff2)|images|videos|fonts|icons|api|sitemap\\.xml|robots\\.txt|llms\\.txt|llms-full\\.txt).*)']
 }
