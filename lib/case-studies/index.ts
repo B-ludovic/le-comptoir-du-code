@@ -10,6 +10,7 @@
 
 import { miabelangue } from './miabelangue'
 import { auxPtitsPois } from './aux-ptits-pois'
+import { fairyChairStudio } from './fairy-chair-studio'
 
 export type Locale = 'fr' | 'en'
 
@@ -75,7 +76,7 @@ export type CaseStudy = {
 /* Le registre. Un chantier absent d'ici n'a pas de page : sa carte reste une
    carte, sans lien vers nulle part. C'est volontaire — mieux vaut cinq cartes
    muettes qu'un lien qui promet une étude de cas inexistante. */
-export const CASE_STUDIES: CaseStudy[] = [miabelangue, auxPtitsPois]
+export const CASE_STUDIES: CaseStudy[] = [miabelangue, auxPtitsPois, fairyChairStudio]
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((study) => study.slug === slug)
