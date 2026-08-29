@@ -453,28 +453,41 @@
   font-style: normal;
   font-size: 1.2rem;
   font-weight: 300;
+  line-height: 1;
   color: var(--accent-primary);
   flex-shrink: 0;
-  transition: transform var(--transition-base);
+  /* Le signe suit la même règle que la rangée : il revient au rythme de la
+     fermeture, pas au sien. */
+  transition: transform 0.35s cubic-bezier(0.4, 0, 1, 1);
 }
 
 .faqItem[open] summary {
   color: var(--accent-primary);
 }
 
+/* Le signe ne change pas de glyphe, il tourne : un + à 135° est un ×, et
+   c'est la seule façon d'animer le passage. Remplacer le caractère, comme
+   avant, produisait un saut sec au milieu d'une ouverture en douceur. */
 .faqItem[open] summary::after {
-  content: '×';
+  transform: rotate(135deg);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Les deux sens ont leur courbe. Ici, la fermeture : elle accélère vers zéro,
+   comme un tiroir qu'on pousse. Une courbe à longue traîne laisserait un filet
+   de rangée ramper un quart de seconde après que tout a l'air fini, et c'est
+   ce reste de mouvement qui se lit comme un à-coup. */
 .faqAnswer {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 1, 1);
   overflow: hidden;
 }
 
+/* L'ouverture, elle, part vite et se pose. */
 .faqItem[open] .faqAnswer {
   grid-template-rows: 1fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .faqAnswerInner {
@@ -486,12 +499,46 @@
   line-height: 1.8;
   opacity: 0;
   transform: translateY(-4px);
-  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+  /* Même durée et même courbe que la rangée : le texte descend avec elle.
+     Sinon on assiste à deux gestes — un texte qui s'efface, puis un vide qui
+     se referme — là où il n'y a qu'un seul objet qui se replie. */
+  transition:
+    opacity 0.35s cubic-bezier(0.4, 0, 1, 1),
+    transform 0.35s cubic-bezier(0.4, 0, 1, 1);
 }
 
 .faqItem[open] .faqAnswerInner {
   opacity: 1;
   transform: translateY(0);
+  transition:
+    opacity 0.35s ease 0.12s,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+/* La fermeture ne s'animait pas : en retirant `open`, le navigateur cache
+   son contenu à l'instant même, donc la rangée se refermait sur du vide.
+   `allow-discrete` repousse ce basculement à la fin de la transition — le
+   texte reste rendu le temps que la hauteur redescende, puis disparaît,
+   accessibilité comprise. */
+@supports selector(::details-content) {
+  .faqItem::details-content {
+    content-visibility: hidden;
+    transition: content-visibility 0.35s allow-discrete;
+  }
+
+  .faqItem[open]::details-content {
+    content-visibility: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faqAnswer,
+  .faqAnswerInner,
+  .faqItem[open] .faqAnswerInner,
+  .faqItem summary::after {
+    transition-duration: 0.01s;
+    transition-delay: 0s;
+  }
 }
 
 /* Responsive */
