@@ -17,8 +17,10 @@
   transition: color var(--transition-base);
 }
 
-.back:hover {
-  color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .back:hover {
+    color: var(--accent-primary);
+  }
 }
 
 .article {
@@ -114,8 +116,10 @@
   text-decoration: none;
 }
 
-.content a:hover {
-  text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+  .content a:hover {
+    text-decoration: underline;
+  }
 }
 
 .content ul,

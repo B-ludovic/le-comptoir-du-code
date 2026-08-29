@@ -23,8 +23,10 @@
   z-index: 1;
 }
 
-.thumbnailWrapper:hover .hoverOverlay {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .thumbnailWrapper:hover .hoverOverlay {
+    opacity: 1;
+  }
 }
 
 /* ── Shared carousel internals ── */
@@ -78,9 +80,11 @@
   backdrop-filter: blur(4px);
 }
 
-.arrow:hover {
-  background: rgba(232, 196, 160, 0.15);
-  border-color: rgba(232, 196, 160, 0.5);
+@media (hover: hover) and (pointer: fine) {
+  .arrow:hover {
+    background: rgba(232, 196, 160, 0.15);
+    border-color: rgba(232, 196, 160, 0.5);
+  }
 }
 
 .arrowLeft {
@@ -162,8 +166,10 @@
   z-index: 10;
 }
 
-.closeButton:hover {
-  color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .closeButton:hover {
+    color: var(--accent-primary);
+  }
 }
 
 @keyframes fadeIn {

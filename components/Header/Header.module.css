@@ -70,8 +70,10 @@
   transition: opacity var(--transition-base);
 }
 
-.logo:hover {
-  opacity: 0.85;
+@media (hover: hover) and (pointer: fine) {
+  .logo:hover {
+    opacity: 0.85;
+  }
 }
 
 @property --glow-angle {
@@ -179,12 +181,16 @@
     transition: width var(--transition-base);
 }
 
-.navLink:hover {
-    color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .navLink:hover {
+      color: var(--accent-primary);
+  }
 }
 
-.navLink:hover::after {
-    width: 100%;
+@media (hover: hover) and (pointer: fine) {
+  .navLink:hover::after {
+      width: 100%;
+  }
 }
 
 .navLinkActive {
@@ -271,6 +277,14 @@
   height: 32px;
 }
 
+/* Panneau ouvert : le médaillon s'efface. Sa destination — l'Échoppe
+   Solidaire — a déjà sa porte dans le pied du menu, et deux entrées pour
+   le même endroit, l'une par-dessus l'autre, ne sert personne. */
+.portraitMuted {
+    opacity: 0.25;
+    pointer-events: none;
+}
+
 /* Tooltip */
 .portraitTooltip {
   position: absolute;
@@ -304,8 +318,10 @@
   border-bottom-color: rgba(232, 196, 160, 0.2);
 }
 
-.portraitMedallion:hover .portraitTooltip {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .portraitMedallion:hover .portraitTooltip {
+    opacity: 1;
+  }
 }
 
 /* Actions */
@@ -331,8 +347,10 @@
     transition: color var(--transition-base);
 }
 
-.langSwitch:hover {
-    color: var(--text-main);
+@media (hover: hover) and (pointer: fine) {
+  .langSwitch:hover {
+      color: var(--text-main);
+  }
 }
 
 .langActive {
@@ -397,8 +415,10 @@
     transform: translateY(6px);
 }
 
-.hamburger:hover .hamburgerLine {
-    background-color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .hamburger:hover .hamburgerLine {
+      background-color: var(--accent-primary);
+  }
 }
 
 .hamburger.open .hamburgerLine:nth-of-type(2) {
@@ -512,16 +532,26 @@
     letter-spacing: 0.5px;
 }
 
-.mobileNavLink:hover,
 .mobileNavLink:active,
 .mobileNavLinkActive {
     color: var(--accent-primary);
 }
 
-.mobileNavLink:hover .mobileNavIndex,
+@media (hover: hover) and (pointer: fine) {
+  .mobileNavLink:hover {
+      color: var(--accent-primary);
+  }
+}
+
 .mobileNavLink:active .mobileNavIndex,
 .mobileNavLinkActive .mobileNavIndex {
     opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mobileNavLink:hover .mobileNavIndex {
+      opacity: 1;
+  }
 }
 
 /* Pied du panneau : langue + porte d'entrée de l'Échoppe Solidaire */
@@ -561,8 +591,10 @@
     transition: color var(--transition-base);
 }
 
-.mobileLangSwitch:hover {
-    color: var(--text-main);
+@media (hover: hover) and (pointer: fine) {
+  .mobileLangSwitch:hover {
+      color: var(--text-main);
+  }
 }
 
 .mobileSolidaire {
@@ -577,8 +609,10 @@
     transition: color var(--transition-base);
 }
 
-.mobileSolidaire:hover {
-    color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .mobileSolidaire:hover {
+      color: var(--accent-primary);
+  }
 }
 
 /* Un piège à focus sans anneau visible ne sert à rien : celui qui tourne dans
@@ -606,14 +640,6 @@
     opacity: 1;
 }
 
-@keyframes medallionVibrate {
-  0%, 88%, 100% { transform: translateX(0) rotate(0deg); }
-  89%  { transform: translateX(-3px) rotate(-3deg); }
-  90%  { transform: translateX(3px)  rotate(3deg); }
-  91%  { transform: translateX(-2px) rotate(-2deg); }
-  92%  { transform: translateX(2px)  rotate(2deg); }
-  93%  { transform: translateX(0)    rotate(0deg); }
-}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -637,11 +663,6 @@
 
     .inner {
         padding-bottom: 0.75rem;
-    }
-
-    .portraitMedallion {
-        animation: medallionVibrate 3s ease-in-out infinite;
-        animation-delay: 2s;
     }
 }
 

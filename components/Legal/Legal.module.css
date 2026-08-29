@@ -17,8 +17,10 @@
   transition: color var(--transition-base);
 }
 
-.back:hover {
-  color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .back:hover {
+    color: var(--accent-primary);
+  }
 }
 
 .title {
@@ -77,8 +79,10 @@
   text-decoration: none;
 }
 
-.text a:hover {
-  text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+  .text a:hover {
+    text-decoration: underline;
+  }
 }
 
 /* Tableaux des pages légales — le conteneur défile seul, la page ne

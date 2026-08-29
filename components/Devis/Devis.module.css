@@ -74,9 +74,11 @@
   transition: all 0.15s ease;
 }
 
-.removeBtn:hover {
-  color: rgba(240, 100, 100, 0.9);
-  border-color: rgba(240, 100, 100, 0.5);
+@media (hover: hover) and (pointer: fine) {
+  .removeBtn:hover {
+    color: rgba(240, 100, 100, 0.9);
+    border-color: rgba(240, 100, 100, 0.5);
+  }
 }
 
 .addServiceBtn {
@@ -94,9 +96,11 @@
   transition: all 0.15s ease;
 }
 
-.addServiceBtn:hover {
-  background-color: rgba(232, 196, 160, 0.05);
-  border-color: rgba(232, 196, 160, 0.5);
+@media (hover: hover) and (pointer: fine) {
+  .addServiceBtn:hover {
+    background-color: rgba(232, 196, 160, 0.05);
+    border-color: rgba(232, 196, 160, 0.5);
+  }
 }
 
 /* Champs en grille */
@@ -290,8 +294,10 @@
   transition: color var(--transition-base);
 }
 
-.logoutBtn:hover {
-  color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .logoutBtn:hover {
+    color: var(--accent-primary);
+  }
 }
 
 .printBtn {
@@ -309,9 +315,11 @@
   transition: background-color var(--transition-base), color var(--transition-base);
 }
 
-.printBtn:hover {
-  background-color: var(--accent-primary);
-  color: var(--bg-main);
+@media (hover: hover) and (pointer: fine) {
+  .printBtn:hover {
+    background-color: var(--accent-primary);
+    color: var(--bg-main);
+  }
 }
 
 .iframeWrapper {

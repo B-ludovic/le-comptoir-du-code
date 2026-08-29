@@ -46,18 +46,28 @@
   line-height: 1.8;
 }
 
-/* Formulaire */
+/* Formulaire — un plan posé, pas un cadre dessiné.
+   Le fond monte d'un cran par rapport à la page (--bg-card sur --bg-main) et
+   le liseré est celui des cards du système, à 0.05 : assez pour poser une
+   arête, trop peu pour enfermer. La largeur passe de 720 à 816 px, soit
+   exactement le padding ajouté de part et d'autre — la surface grandit vers
+   l'extérieur, la largeur d'écriture ne bouge pas d'un pixel. */
 .form {
-  max-width: 720px;
+  max-width: 816px;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
+  padding: 3rem;
+  background-color: var(--bg-card);
+  border: 1px solid rgba(232, 196, 160, 0.05);
+  border-radius: var(--card-radius);
 }
 
+/* Les intervalles se resserrent : c'est le padding qui respire maintenant. */
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 /* Champ */
@@ -174,9 +184,11 @@
   transition: background-color var(--transition-base), color var(--transition-base);
 }
 
-.btn:hover:not(:disabled) {
-  background-color: var(--accent-primary);
-  color: var(--bg-main);
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover:not(:disabled) {
+    background-color: var(--accent-primary);
+    color: var(--bg-main);
+  }
 }
 
 .btn:disabled {
@@ -218,6 +230,39 @@
   line-height: 1.6;
 }
 
+/* L'erreur se pose sous le champ fautif, pas dans une bulle du navigateur :
+   même famille, même graisse que le reste du formulaire. */
+.fieldError {
+  margin-top: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #c0706a;
+}
+
+/* Ligne de rassurance sous le bouton : elle doit se lire, pas se remarquer. */
+.privacyNote {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.privacyLink,
+.errorLink {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .privacyLink:hover,
+  .errorLink:hover {
+    color: var(--accent-primary);
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .header {
@@ -230,8 +275,16 @@
     padding-bottom: 0;
   }
 
+  /* Sur téléphone le plan reste, mais il ne peut pas manger la largeur :
+     le padding tombe à 1.5 rem, sinon les champs se retrouvent à 60 px de
+     chaque bord une fois cumulé avec celui du container. */
+  .form {
+    padding: 1.5rem;
+    gap: 1.75rem;
+  }
+
   .row {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 1.75rem;
   }
 }

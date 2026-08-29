@@ -279,9 +279,11 @@
   transition: all var(--transition-base);
 }
 
-.btn:hover {
-  background: var(--accent-primary);
-  color: var(--bg-main);
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background: var(--accent-primary);
+    color: var(--bg-main);
+  }
 }
 
 .notice {
@@ -305,8 +307,10 @@
   padding-bottom: 1px;
 }
 
-.termsLink:hover {
-  border-bottom-color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .termsLink:hover {
+    border-bottom-color: var(--accent-primary);
+  }
 }
 
 /* — Responsive — */

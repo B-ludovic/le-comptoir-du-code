@@ -56,7 +56,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* Section 6 — Contact + Footer */}
       <div style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column' }}>
         <Suspense>
-          <Contact dict={dict.contact} />
+          <Contact dict={dict.contact} locale={locale} />
         </Suspense>
         <Footer locale={locale} dict={dict.footer} />
       </div>

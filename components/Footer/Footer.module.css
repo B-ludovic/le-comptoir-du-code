@@ -54,8 +54,10 @@
   transition: color var(--transition-base);
 }
 
-.legalLinks a:hover {
-  color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .legalLinks a:hover {
+    color: var(--accent-primary);
+  }
 }
 
 .legalLinkActive {
@@ -80,8 +82,10 @@
   transition: color var(--transition-base);
 }
 
-.social a:hover {
-  color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .social a:hover {
+    color: var(--accent-primary);
+  }
 }
 
 @media (max-width: 768px) {

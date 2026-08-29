@@ -111,9 +111,11 @@
   border-radius: var(--card-radius);
 }
 
-.imageLink:hover .screenshot {
-  transform: scale(1.03);
-  box-shadow: 0 36px 110px rgba(0, 0, 0, 0.65);
+@media (hover: hover) and (pointer: fine) {
+  .imageLink:hover .screenshot {
+    transform: scale(1.03);
+    box-shadow: 0 36px 110px rgba(0, 0, 0, 0.65);
+  }
 }
 
 .screenshot {
@@ -125,9 +127,11 @@
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-.projectImage:hover .screenshot {
-  transform: scale(1.03);
-  box-shadow: 0 36px 110px rgba(0, 0, 0, 0.65);
+@media (hover: hover) and (pointer: fine) {
+  .projectImage:hover .screenshot {
+    transform: scale(1.03);
+    box-shadow: 0 36px 110px rgba(0, 0, 0, 0.65);
+  }
 }
 
 /* Bloc texte */
@@ -192,8 +196,10 @@
   display: inline-block;
 }
 
-.titleLink:hover .projectTitle {
-  color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .titleLink:hover .projectTitle {
+    color: var(--accent-primary);
+  }
 }
 
 /* Titre */
@@ -277,9 +283,11 @@
   transition: border-color var(--transition-base), color var(--transition-base);
 }
 
-.caseLink:hover {
-  color: var(--accent-hover);
-  border-bottom-color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .caseLink:hover {
+    color: var(--accent-hover);
+    border-bottom-color: var(--accent-primary);
+  }
 }
 
 /* Gros œuvre — les constructions marquantes du chantier */

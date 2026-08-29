@@ -134,8 +134,10 @@
   transition: border-color var(--transition-base);
 }
 
-.link:hover {
-  border-color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    border-color: var(--accent-primary);
+  }
 }
 
 @media (max-width: 480px) {

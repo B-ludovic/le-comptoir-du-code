@@ -388,7 +388,33 @@ export default async function EchoppeSolidairePage({
             budget_2: `${tier('boutique').name} — ${isFr ? 'à partir de' : 'from'} ${formatPrice(tier('boutique').nonProfitPrice, isFr ? 'fr' : 'en')}${isFr ? ' HT' : ' excl. VAT'}`,
             budget_3: `${tier('outils').name} — ${isFr ? 'à partir de' : 'from'} ${formatPrice(tier('outils').nonProfitPrice, isFr ? 'fr' : 'en')}${isFr ? ' HT' : ' excl. VAT'}`,
             btn_submit: isFr ? 'Envoyer ma demande' : 'Send my request',
-          }} />
+            privacy_note: isFr
+              ? 'Vos données ne servent qu\'à répondre à cette demande.'
+              : 'Your details are only used to answer this request.',
+            privacy_link: isFr ? 'Politique de confidentialité' : 'Privacy policy',
+            success: isFr
+              ? 'Demande envoyée. Réponse sous 48 h.'
+              : 'Request sent. Reply within 48h.',
+            error_invalid: isFr
+              ? 'Certains champs sont incomplets. Vérifiez le formulaire ci-dessus.'
+              : 'Some fields are incomplete. Please check the form above.',
+            error_rate_limited: isFr
+              ? 'Vous avez déjà envoyé trois demandes. Réessayez dans quinze minutes.'
+              : 'You have already sent three requests. Try again in fifteen minutes.',
+            error_transport: isFr
+              ? 'L\'envoi a échoué de mon côté. Écrivez-moi directement à'
+              : 'Sending failed on my end. Write to me directly at',
+            err_name: isFr
+              ? 'Indiquez votre nom ou celui de votre association.'
+              : 'Enter your name or your organisation name.',
+            err_email: isFr
+              ? 'Cette adresse email ne semble pas valide.'
+              : 'This email address doesn\'t look valid.',
+            err_budget: isFr ? 'Sélectionnez un forfait.' : 'Select a package.',
+            err_message: isFr
+              ? 'Décrivez votre projet en dix caractères minimum.'
+              : 'Describe your project in at least ten characters.',
+          }} locale={locale} />
         </Suspense>
 
       </main>

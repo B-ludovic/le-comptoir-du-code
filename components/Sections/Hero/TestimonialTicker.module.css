@@ -66,10 +66,14 @@
 }
 
 /* Un texte qui bouge est un texte qu'on ne peut pas finir de lire : le survol
-   met le rail en pause. */
-.viewport:hover .rail,
-.viewport:focus-within .rail {
+   met le rail en pause. */.viewport:focus-within .rail {
   animation-play-state: paused;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .viewport:hover .rail {
+    animation-play-state: paused;
+  }
 }
 
 .card {
@@ -131,8 +135,10 @@
   transition: border-color var(--transition-base);
 }
 
-.sourceLink:hover {
-  border-color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+  .sourceLink:hover {
+    border-color: var(--accent-primary);
+  }
 }
 
 /* Un défilement automatique est un déclencheur connu de gêne vestibulaire.

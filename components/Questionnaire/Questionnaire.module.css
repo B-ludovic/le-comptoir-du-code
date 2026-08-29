@@ -122,8 +122,10 @@
   transition: color var(--transition-base);
 }
 
-.privacyLink:hover {
-  color: var(--accent-hover);
+@media (hover: hover) and (pointer: fine) {
+  .privacyLink:hover {
+    color: var(--accent-hover);
+  }
 }
 
 .actions {
@@ -145,9 +147,11 @@
   transition: all var(--transition-base);
 }
 
-.btn:hover:not(:disabled) {
-  background: var(--accent-primary);
-  color: var(--bg-main);
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover:not(:disabled) {
+    background: var(--accent-primary);
+    color: var(--bg-main);
+  }
 }
 
 .btn:disabled {

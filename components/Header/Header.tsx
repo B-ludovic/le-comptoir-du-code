@@ -147,7 +147,13 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
         </nav>
 
         {/* Portrait — lien vers L'Échoppe Solidaire */}
-        <a href={`/${locale}/echoppe-solidaire`} className={styles.portraitMedallion} aria-label="L'Échoppe Solidaire — tarification associative">
+        <a
+          href={`/${locale}/echoppe-solidaire`}
+          className={`${styles.portraitMedallion} ${menuOpen ? styles.portraitMuted : ''}`}
+          aria-label="L'Échoppe Solidaire — tarification associative"
+          aria-hidden={menuOpen}
+          tabIndex={menuOpen ? -1 : undefined}
+        >
           {/* Le fichier source fait 768 × 1024 pour un médaillon de 32 px :
               servi tel quel, c'était 128 Ko sur chaque page du site. Passé à
               l'optimiseur, il en pèse deux ou trois. `sizes` dit la taille

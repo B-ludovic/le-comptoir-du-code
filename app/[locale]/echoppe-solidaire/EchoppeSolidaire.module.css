@@ -94,8 +94,10 @@
   padding-right: 0;
 }
 
-.card:hover {
-  transform: translateY(-4px);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-4px);
+  }
 }
 
 .separator {
@@ -285,9 +287,11 @@
   white-space: nowrap;
 }
 
-.btn:hover {
-  background-color: var(--accent-primary);
-  color: var(--bg-main);
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background-color: var(--accent-primary);
+    color: var(--bg-main);
+  }
 }
 
 .vatNotice {

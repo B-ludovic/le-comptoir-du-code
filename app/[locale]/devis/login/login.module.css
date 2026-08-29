@@ -86,9 +86,11 @@
   transition: background-color var(--transition-base), color var(--transition-base);
 }
 
-.btn:hover:not(:disabled) {
-  background-color: var(--accent-primary);
-  color: var(--bg-main);
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover:not(:disabled) {
+    background-color: var(--accent-primary);
+    color: var(--bg-main);
+  }
 }
 
 .btn:disabled {
