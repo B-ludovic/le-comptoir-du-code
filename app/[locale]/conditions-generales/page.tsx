@@ -114,6 +114,11 @@ const articles = {
         "Lorsque la prestation conduit le Prestataire à traiter des données à caractère personnel pour le compte du Client (hébergement, maintenance, base de données, formulaires), le Prestataire agit en qualité de sous-traitant au sens de l'article 28 du RGPD et n'intervient que sur instruction documentée du Client, responsable de traitement. Les parties concluent à cet effet un accord de traitement des données (DPA) précisant l'objet, la durée, la nature et la finalité du traitement, les catégories de données et de personnes concernées, les mesures de sécurité et le sort des données en fin de contrat.\n\nLe Prestataire s'engage à la confidentialité, à ne recourir qu'à des sous-traitants ultérieurs présentant des garanties suffisantes et à assister le Client dans le respect de ses propres obligations (sécurité, violations de données, exercice des droits des personnes).",
     },
     {
+      title: "8 quater. Absence de conseil juridique",
+      content:
+        "Les mentions légales, conditions générales, politiques de confidentialité et autres textes à portée juridique ou réglementaire que le Prestataire rédige, adapte ou intègre au projet sont des documents de travail, destinés à être soumis à un avocat ou à un juriste avant toute mise en ligne. Leur validation relève du seul Client.\n\nIl en va de même des dispositifs techniques liés à la conformité — bandeau de consentement, gestion des cookies, formulaires de collecte, durées de conservation : leur mise en œuvre par le Prestataire ne vaut ni audit, ni attestation de conformité.\n\nLe Prestataire n'exerce pas d'activité de consultation juridique et n'émet aucun avis juridique. Sa responsabilité ne saurait être engagée au titre de la conformité légale ou réglementaire du projet du Client, ni des conséquences d'une mise en ligne intervenue sans validation préalable par un professionnel du droit.",
+    },
+    {
       title: "9. Règlement des litiges et juridiction compétente",
       content:
         "Les présentes conditions sont soumises au droit français. En cas de différend, les parties s'efforcent d'abord de trouver une solution amiable, après réclamation écrite préalable adressée au Prestataire.\n\nÀ défaut de résolution amiable dans un délai de trente (30) jours, tout litige relève de la compétence exclusive du tribunal dans le ressort du siège social de la Société de Portage, y compris en cas de pluralité de défendeurs ou d'appel en garantie.",
@@ -194,6 +199,11 @@ const articles = {
       title: "8 ter. Personal Data and Sub-processing (GDPR)",
       content:
         "Where the service leads the Service Provider to process personal data on behalf of the Client (hosting, maintenance, database, forms), the Service Provider acts as a processor within the meaning of Article 28 GDPR and only on the documented instructions of the Client, who is the controller. The parties enter into a Data Processing Agreement (DPA) setting out the subject-matter, duration, nature and purpose of the processing, the categories of data and data subjects, the security measures and the fate of the data at the end of the contract.\n\nThe Service Provider undertakes to maintain confidentiality, to use only sub-processors offering sufficient guarantees, and to assist the Client with its own obligations (security, data breaches, handling of data-subject requests).",
+    },
+    {
+      title: "8 quater. No Legal Advice",
+      content:
+        "Legal notices, terms and conditions, privacy policies and any other text of a legal or regulatory nature drafted, adapted or integrated into the project by the Service Provider are working documents, intended to be reviewed by a lawyer before any publication. Their validation is a matter for the Client alone.\n\nThe same applies to the technical arrangements relating to compliance — consent banner, cookie management, collection forms, retention periods: their implementation by the Service Provider constitutes neither an audit nor a certificate of compliance.\n\nThe Service Provider does not carry out legal consultancy and issues no legal opinion. No liability may be attached to the Service Provider in respect of the legal or regulatory compliance of the Client's project, nor in respect of the consequences of any publication carried out without prior review by a legal professional.",
     },
     {
       title: "9. Disputes and Jurisdiction",
