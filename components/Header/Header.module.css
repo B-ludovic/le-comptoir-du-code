@@ -6,17 +6,33 @@
     right: 0;
     z-index: 100;
     padding: 1.75rem 0;
-    background-color: transparent;
-    transition: background-color var(--transition-base),
-        padding var(--transition-base),
+    transition: padding var(--transition-base),
         border-bottom var(--transition-base);
 }
 
+/* Le fond et son flou sont posés sur un calque séparé, jamais sur .header.
+   Un backdrop-filter ferait du header le bloc conteneur de ses descendants
+   en position fixed : le panneau, avec son inset: 0, se replierait alors sur
+   la hauteur de la barre dès qu'on a défilé de 50 px. Un pseudo-élément n'est
+   pas un ancêtre du panneau, il ne déplace donc aucune ancre. */
+.header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    pointer-events: none;
+    transition: background-color var(--transition-base);
+}
+
 .header.scrolled {
-    background-color: rgba(26, 23, 20, 0.95);
-    backdrop-filter: blur(8px);
     padding: 1.25rem 0;
     border-bottom: var(--border-subtle);
+}
+
+.header.scrolled::before {
+    background-color: rgba(26, 23, 20, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 /* Le header sort volontairement du .container : il occupe toute la largeur
