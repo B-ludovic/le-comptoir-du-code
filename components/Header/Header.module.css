@@ -22,6 +22,8 @@
 /* Le header sort volontairement du .container : il occupe toute la largeur
    de l'écran et porte ses propres marges, alignées sur celles du container. */
 .inner {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -326,91 +328,266 @@
     opacity: 0.4;
 }
 
-/* Hamburger */
+/* Hamburger — cible ronde de 42 px, origine de la révélation radiale.
+   Trois traits superposés au centre : fermé, ils s'écartent de ±6 px ;
+   ouvert, le trait du milieu s'efface (scaleX) pendant que les deux autres
+   pivotent en X. L'anneau cuivré s'allume et se déploie à l'ouverture. */
 .hamburger {
+    position: relative;
     display: none;
-    flex-direction: column;
-    gap: 5px;
+    place-items: center;
+    width: 42px;
+    height: 42px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
+    padding: 0;
 }
 
-.hamburger span {
-    display: block;
-    width: 22px;
+.hamburgerRing {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(232, 196, 160, 0.4);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.6);
+    transition:
+        opacity 0.4s ease,
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.hamburger.open .hamburgerRing {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hamburgerLine {
+    position: absolute;
+    width: 20px;
     height: 1px;
     background-color: var(--text-main);
-    transition: all var(--transition-base);
     transform-origin: center;
+    transition:
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color var(--transition-base);
 }
 
-.hamburger.open span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+.hamburgerLine:nth-of-type(2) {
+    transform: translateY(-6px);
 }
 
-.hamburger.open span:nth-child(2) {
-    opacity: 0;
+.hamburgerLine:nth-of-type(4) {
+    transform: translateY(6px);
 }
 
-.hamburger.open span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+.hamburger:hover .hamburgerLine {
+    background-color: var(--accent-primary);
 }
 
-/* Nav mobile */
-.mobileNav {
+.hamburger.open .hamburgerLine:nth-of-type(2) {
+    transform: rotate(45deg);
+}
+
+.hamburger.open .hamburgerLine:nth-of-type(3) {
+    transform: scaleX(0);
+}
+
+.hamburger.open .hamburgerLine:nth-of-type(4) {
+    transform: rotate(-45deg);
+}
+
+/* Panneau mobile plein écran — révélation radiale.
+   Le panneau ne fond plus : il est découpé par un cercle (clip-path) dont le
+   centre est le burger, en haut à droite. Fermé, le cercle a un rayon nul ;
+   ouvert, il couvre tout l'écran. `visibility` accompagne la découpe pour que
+   le panneau fermé ne capte aucun clic et sorte de l'ordre de tabulation. */
+.mobilePanel {
     display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
     flex-direction: column;
-    gap: 0;
-    background-color: rgba(26, 23, 20, 0.98);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height var(--transition-base);
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 7.5rem 1.5rem 2.25rem;
+    background-color: rgba(24, 21, 18, 0.99);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    clip-path: circle(0px at calc(100% - 44px) 52px);
+    visibility: hidden;
+    transition:
+        clip-path 0.85s cubic-bezier(0.65, 0, 0.35, 1),
+        visibility 0s linear 0.85s;
 }
 
-.mobileNav.mobileOpen {
-    border-top: var(--border-subtle);
+/* La lueur cuivrée est recentrée sur le point d'origine de la révélation :
+   la lumière semble sortir du burger avec le panneau. */
+.mobilePanel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 80% 40% at 88% 4%, rgba(200, 120, 40, 0.16) 0%, transparent 70%);
 }
 
-.mobileNav.mobileOpen {
-    max-height: 400px;
+.mobilePanel.mobileOpen {
+    clip-path: circle(150% at calc(100% - 44px) 52px);
+    visibility: visible;
+    transition:
+        clip-path 0.85s cubic-bezier(0.65, 0, 0.35, 1),
+        visibility 0s linear 0s;
 }
 
+.mobileNav {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Les liens ne glissent presque plus : ils se défloutent. Chacun part
+   légèrement bas, flou et transparent, et se pose net dans la lumière,
+   en cascade (délais inline posés par le composant). */
 .mobileNavLink {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    text-transform: uppercase;
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    padding: 0.7rem 0;
+    color: var(--text-main);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(6px);
+    transition:
+        opacity 0.55s ease,
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.55s ease,
+        color var(--transition-base);
+}
+
+.mobileNavLink + .mobileNavLink {
+    border-top: 1px solid rgba(232, 196, 160, 0.08);
+}
+
+.mobileOpen .mobileNavLink {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+}
+
+/* Le numéro en monospace : c'est le seul rappel du logo mark dans le panneau,
+   et il donne à la liste son air de sommaire plutôt que de formulaire. */
+.mobileNavIndex {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
     letter-spacing: 1.5px;
-    padding: 1.25rem 2rem;
-    border-bottom: var(--border-subtle);
-    transition: color var(--transition-base), background-color var(--transition-base);
-}
-
-.mobileNavLink:hover {
     color: var(--accent-primary);
-    background-color: var(--bg-card);
+    opacity: 0.45;
+    flex-shrink: 0;
+    transition: opacity var(--transition-base);
 }
 
+.mobileNavLabel {
+    font-family: var(--font-heading);
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
+}
+
+.mobileNavLink:hover,
+.mobileNavLink:active,
 .mobileNavLinkActive {
     color: var(--accent-primary);
 }
 
-/* Overlay blur menu mobile */
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  background-color: rgba(26, 23, 20, 0.4);
-  animation: fadeIn 0.2s ease;
+.mobileNavLink:hover .mobileNavIndex,
+.mobileNavLink:active .mobileNavIndex,
+.mobileNavLinkActive .mobileNavIndex {
+    opacity: 1;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+/* Pied du panneau : langue + porte d'entrée de l'Échoppe Solidaire */
+.mobileFooter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: var(--border-subtle);
+    opacity: 0;
+    filter: blur(6px);
+    transition:
+        opacity 0.55s ease,
+        filter 0.55s ease;
+}
+
+.mobileOpen .mobileFooter {
+    opacity: 1;
+    filter: blur(0px);
+}
+
+.mobileLangSwitch {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color var(--transition-base);
+}
+
+.mobileLangSwitch:hover {
+    color: var(--text-main);
+}
+
+.mobileSolidaire {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: right;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+.mobileSolidaire:hover {
+    color: var(--accent-primary);
+}
+
+/* Un piège à focus sans anneau visible ne sert à rien : celui qui tourne dans
+   la boucle au clavier doit voir où il est. On ne cible que :focus-visible,
+   donc l'anneau n'apparaît pas au clic à la souris. */
+.hamburger:focus-visible,
+.mobileNavLink:focus-visible,
+.mobileLangSwitch:focus-visible,
+.mobileSolidaire:focus-visible {
+    outline: 1px solid var(--accent-primary);
+    outline-offset: 6px;
+    border-radius: 2px;
+}
+
+.hamburger:focus-visible {
+    border-radius: 50%;
+    outline-offset: 2px;
+}
+
+.mobileNavLink:focus-visible {
+    color: var(--accent-primary);
+}
+
+.mobileNavLink:focus-visible .mobileNavIndex {
+    opacity: 1;
 }
 
 @keyframes medallionVibrate {
@@ -428,11 +605,17 @@
         display: none;
     }
 
-    .hamburger {
-        display: flex;
+    /* Le switch de langue déménage dans le panneau : la barre mobile n'a de
+       place que pour le logo, le médaillon et le hamburger. */
+    .langSwitch {
+        display: none;
     }
 
-    .mobileNav {
+    .hamburger {
+        display: grid;
+    }
+
+    .mobilePanel {
         display: flex;
     }
 
@@ -443,5 +626,35 @@
     .portraitMedallion {
         animation: medallionVibrate 3s ease-in-out infinite;
         animation-delay: 2s;
+    }
+}
+
+/* Sur un appareil réglé sur « animations réduites », la découpe radiale et le
+   défloutage disparaissent : le panneau et les liens apparaissent en simple
+   fondu, sans cascade. */
+@media (prefers-reduced-motion: reduce) {
+    .mobilePanel {
+        clip-path: none;
+        opacity: 0;
+        transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+    }
+
+    .mobilePanel.mobileOpen {
+        clip-path: none;
+        opacity: 1;
+        transition: opacity 0.2s ease, visibility 0s linear 0s;
+    }
+
+    .mobileNavLink,
+    .mobileFooter {
+        transform: none;
+        filter: none;
+        transition: opacity 0.2s ease, color var(--transition-base);
+        transition-delay: 0s !important;
+    }
+
+    .hamburgerRing,
+    .hamburgerLine {
+        transition-duration: 0.01s;
     }
 }
