@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { BASE_URL } from '@/lib/structured-data'
+import { formatPrice, WORKSHOP_HOUR_RATE, PRODUCT_DESIGN_DAY_RATE } from '@/lib/pricing'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
@@ -70,7 +71,7 @@ const articles = {
     {
       title: "6. Livrable et corrections",
       content:
-        "Le Prestataire remet un dossier au format PDF comprenant les sections listées au devis, dans le délai qui y est indiqué, courant à compter de la date de l'atelier.\n\nLe Client dispose de quinze (15) jours à compter de la remise pour transmettre, en un seul envoi, une série unique de corrections limitée à dix (10) points. Ces corrections portent exclusivement sur des erreurs factuelles ou des omissions au regard des éléments communiqués lors de l'atelier.\n\nTout changement d'orientation, tout élément nouveau non évoqué lors de l'atelier et tout nouvel arbitrage constituent une prestation complémentaire, facturée 150 € HT de l'heure et soumise à devis préalable.",
+        `Le Prestataire remet un dossier au format PDF comprenant les sections listées au devis, dans le délai qui y est indiqué, courant à compter de la date de l'atelier.\n\nLe Client dispose de quinze (15) jours à compter de la remise pour transmettre, en un seul envoi, une série unique de corrections limitée à dix (10) points. Ces corrections portent exclusivement sur des erreurs factuelles ou des omissions au regard des éléments communiqués lors de l'atelier.\n\nTout changement d'orientation, tout élément nouveau non évoqué lors de l'atelier et tout nouvel arbitrage constituent une prestation complémentaire, facturée ${formatPrice(WORKSHOP_HOUR_RATE, 'fr')} HT de l'heure et soumise à devis préalable.`,
     },
     {
       title: "7. Propriété du dossier",
@@ -90,7 +91,7 @@ const articles = {
     {
       title: "10. Dépassement et prestations complémentaires",
       content:
-        "Toute heure d'atelier au-delà de la durée incluse au devis est facturée 150 € HT.\n\nLorsque le cadrage établit que le projet n'est pas défini et requiert un travail de conception produit — définition des fonctionnalités, des règles de gestion, de la structure des contenus ou du modèle économique — cette prestation est distincte du cadrage. Elle fait l'objet d'un devis séparé, établi en jours, au tarif journalier en vigueur. Elle n'est en aucun cas incluse dans le prix du cadrage.",
+        `Toute heure d'atelier au-delà de la durée incluse au devis est facturée ${formatPrice(WORKSHOP_HOUR_RATE, 'fr')} HT.\n\nLorsque le cadrage établit que le projet n'est pas défini et requiert un travail de conception produit — définition des fonctionnalités, des règles de gestion, de la structure des contenus ou du modèle économique — cette prestation est distincte du cadrage. Elle fait l'objet d'un devis séparé, établi en jours, au tarif journalier de la conception produit, soit ${formatPrice(PRODUCT_DESIGN_DAY_RATE, 'fr')} HT par jour. Elle n'est en aucun cas incluse dans le prix du cadrage.`,
     },
     {
       title: "11. Confidentialité",
@@ -142,7 +143,7 @@ const articles = {
     {
       title: "6. Deliverable and Corrections",
       content:
-        "The Service Provider delivers a PDF report containing the sections listed in the quote, within the timeframe stated therein, running from the date of the workshop.\n\nThe Client has fifteen (15) days from delivery to submit, in a single message, one set of corrections limited to ten (10) points. These corrections relate exclusively to factual errors or omissions with regard to the information communicated during the workshop.\n\nAny change of direction, any new element not raised during the workshop and any fresh trade-off constitute an additional service, invoiced at €150 excl. VAT per hour and subject to a prior quote.",
+        `The Service Provider delivers a PDF report containing the sections listed in the quote, within the timeframe stated therein, running from the date of the workshop.\n\nThe Client has fifteen (15) days from delivery to submit, in a single message, one set of corrections limited to ten (10) points. These corrections relate exclusively to factual errors or omissions with regard to the information communicated during the workshop.\n\nAny change of direction, any new element not raised during the workshop and any fresh trade-off constitute an additional service, invoiced at ${formatPrice(WORKSHOP_HOUR_RATE, 'en')} excl. VAT per hour and subject to a prior quote.`,
     },
     {
       title: "7. Ownership of the Report",
@@ -162,7 +163,7 @@ const articles = {
     {
       title: "10. Overruns and Additional Services",
       content:
-        "Any workshop hour beyond the duration included in the quote is invoiced at €150 excl. VAT.\n\nWhere the scoping work establishes that the project is not defined and requires product design work — defining features, business rules, content structure or the economic model — that service is distinct from scoping. It is the subject of a separate quote, expressed in days, at the daily rate in force. It is under no circumstances included in the price of the scoping service.",
+        `Any workshop hour beyond the duration included in the quote is invoiced at ${formatPrice(WORKSHOP_HOUR_RATE, 'en')} excl. VAT.\n\nWhere the scoping work establishes that the project is not defined and requires product design work — defining features, business rules, content structure or the economic model — that service is distinct from scoping. It is the subject of a separate quote, expressed in days, at the product design daily rate of ${formatPrice(PRODUCT_DESIGN_DAY_RATE, 'en')} excl. VAT per day. It is under no circumstances included in the price of the scoping service.`,
     },
     {
       title: "11. Confidentiality",

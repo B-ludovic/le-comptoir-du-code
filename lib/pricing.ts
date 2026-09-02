@@ -15,12 +15,36 @@
 export type Locale = 'fr' | 'en'
 type Bilingual = { fr: string; en: string }
 
-/* Ingénierie : conception, développement, tests, mise en ligne. */
+/* Ingénierie : conception, développement, tests, mise en ligne.
+
+   Seul taux contractuel. C'est lui qui chiffre les avenants au périmètre et
+   les travaux déjà réalisés en cas de rupture. Un contrat qui connaîtrait
+   deux taux ouvrirait, à chaque journée facturée, la discussion sur celui
+   qui s'applique — et cette discussion, on la perd toujours à moitié. La
+   conception produit ci-dessous ne se facture jamais à l'intérieur d'un
+   projet : seulement en amont, sur un devis distinct. */
 export const ENGINEERING_DAY_RATE = 435
 
 /* Conception produit : décider quoi construire vaut plus cher qu'exécuter.
    Facturée à la journée, hors forfait, et rattachée au cadrage. */
 export const PRODUCT_DESIGN_DAY_RATE = 650
+
+/* Heure d'atelier vendue seule, au-delà de la durée incluse au cadrage. Le
+   tarif horaire porte une prime assumée sur la journée : une heure isolée
+   mobilise une préparation et un créneau que la journée amortit. Il vivait
+   en dur dans deux articles des conditions de cadrage — exactement ce que
+   l'en-tête de ce fichier reproche à l'état antérieur. */
+export const WORKSHOP_HOUR_RATE = 150
+
+/* Date d'entrée en vigueur de la grille, reportée sur le devis. Le taux
+   applicable à un contrat est celui en vigueur au jour de la signature, y
+   compris pour ses avenants ultérieurs : dater la grille rend cette règle
+   vérifiable au lieu de discutable. À mettre à jour à chaque revalorisation,
+   en même temps que les montants. */
+export const TARIFF_VERSION: Bilingual = {
+  fr: '1er septembre 2026',
+  en: '1 September 2026',
+}
 
 /* Mécénat de compétences de L'Échoppe Solidaire. La maintenance associative
    n'en découle pas : elle suit un barème dédié, porté par chaque palier. */
