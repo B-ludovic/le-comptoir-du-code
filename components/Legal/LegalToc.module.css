@@ -1,0 +1,124 @@
+.toc {
+  font-family: var(--font-body);
+}
+
+/* Sur grand écran le bouton n'est qu'un titre : pas de bordure, pas de
+   curseur, et le chevron disparaît. Il redevient un vrai bouton sous 1024px. */
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: default;
+  text-align: left;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent-primary);
+}
+
+.chevron {
+  display: none;
+}
+
+.list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  border-left: var(--border-subtle);
+  max-height: calc(100dvh - 10rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(232, 196, 160, 0.2) transparent;
+}
+
+.link {
+  display: grid;
+  /* La colonne du numéro est taillée sur le plus long, « 8 quater » : huit
+     caractères de mono à 0.68rem. Plus étroite, le numéro déborde sur le
+     libellé au lieu de s'aligner avec ses voisins. */
+  grid-template-columns: 3.75rem 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.4rem 0 0.4rem 1rem;
+  margin-left: -1px;
+  border-left: 1px solid transparent;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+
+.number {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.label {
+  min-width: 0;
+}
+
+.link.active {
+  color: var(--text-main);
+  border-left-color: var(--accent-primary);
+}
+
+.link.active .number {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    color: var(--text-main);
+  }
+}
+
+/* Sous 1024px : un bouton replié en tête de page. La liste ne défile plus
+   dans son propre cadre, elle prend la hauteur qu'il lui faut. */
+@media (max-width: 1023px) {
+  .toggle {
+    cursor: pointer;
+    padding: 0.9rem 0;
+    border-top: var(--border-subtle);
+    border-bottom: var(--border-subtle);
+  }
+
+  .chevron {
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 1px solid var(--accent-primary);
+    border-bottom: 1px solid var(--accent-primary);
+    transform: rotate(45deg);
+    transition: transform var(--transition-base);
+  }
+
+  .toggle[aria-expanded='true'] .chevron {
+    transform: rotate(-135deg);
+  }
+
+  .list {
+    display: none;
+    max-height: none;
+    overflow: visible;
+    margin: 1rem 0 0;
+  }
+
+  .list.open {
+    display: block;
+  }
+}

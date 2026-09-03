@@ -5,6 +5,8 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
 import { linkifyEmails } from '@/components/Legal/linkify'
+import LegalToc from '@/components/Legal/LegalToc'
+import { tocItems } from '@/components/Legal/toc'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -232,6 +234,7 @@ export default async function ConditionsGenerales({
   const dict = dictionaries[locale as 'fr' | 'en'] ?? dictionaries.fr
   const isFr = locale !== 'en'
   const content = isFr ? articles.fr : articles.en
+  const toc = tocItems(content)
 
   return (
     <>
@@ -253,16 +256,23 @@ export default async function ConditionsGenerales({
             {isFr ? 'Dernière mise à jour : 3 septembre 2026 (v6)' : 'Last updated: September 3, 2026 (v6)'}
           </p>
 
-          {content.map((article) => (
-            <div key={article.title} className={styles.block}>
-              <h2 className={styles.heading}>{article.title}</h2>
-              {article.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className={styles.text}>
-                  {linkifyEmails(paragraph)}
-                </p>
+          <div className={styles.layout}>
+            <div className={styles.articles}>
+              {content.map((article, articleIndex) => (
+                <div key={article.title} id={toc[articleIndex].id} className={styles.block}>
+                  <h2 className={styles.heading}>{article.title}</h2>
+                  {article.content.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className={styles.text}>
+                      {linkifyEmails(paragraph)}
+                    </p>
+                  ))}
+                </div>
               ))}
             </div>
-          ))}
+            <aside className={styles.aside}>
+              <LegalToc items={toc} locale={locale} />
+            </aside>
+          </div>
 
         </div>
       </main>

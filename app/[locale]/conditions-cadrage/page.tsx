@@ -5,6 +5,8 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
 import { linkifyEmails } from '@/components/Legal/linkify'
+import LegalToc from '@/components/Legal/LegalToc'
+import { tocItems } from '@/components/Legal/toc'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -46,7 +48,7 @@ const articles = {
     {
       title: "2. Formation du contrat et paiement",
       content:
-        "La prestation débute à réception du devis daté, signé et portant la mention \"Bon pour accord\", accompagné du règlement dû à la commande. Aucune date d'atelier n'est réservée avant réception de ce règlement.\n\nPour les paliers 01 et 02, le règlement intégral du montant HT, majoré de la TVA applicable, est exigible à la commande. Pour le palier 03 ainsi que pour les prestations de conception produit, 50 % du montant HT sont exigibles à la commande et le solde à la remise du dossier, payable sous quinze (15) jours. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel indiqué sur la facture.\n\nLes sommes versées d'avance constituent un acompte, et non des arrhes au sens de l'article 1590 du code civil. Elles engagent définitivement les deux parties et valent réservation du créneau d'atelier.",
+        "La prestation débute à réception du devis daté, signé et portant la mention \"Bon pour accord\", accompagné du règlement dû à la commande. Aucune date d'atelier n'est réservée avant réception de ce règlement.\n\nPour les paliers 01 et 02, le règlement intégral du montant HT, majoré de la TVA applicable, est exigible à la commande. Pour le palier 03 ainsi que pour les prestations de conception produit, 50 % du montant HT sont exigibles à la commande. Le Prestataire notifie au Client l'achèvement du dossier et lui en présente le contenu en visioconférence ou sous la forme d'un extrait filigrané non exploitable. La facture de solde est émise à cette date, payable à réception. Le dossier définitif est remis à l'encaissement du solde, et le délai de corrections prévu à l'article 6 court à compter de cette remise. Le règlement s'effectue par virement bancaire uniquement, sur le compte professionnel indiqué sur la facture.\n\nLes sommes versées d'avance constituent un acompte, et non des arrhes au sens de l'article 1590 du code civil. Elles engagent définitivement les deux parties et valent réservation du créneau d'atelier.",
     },
     {
       title: "2 bis. Imputation en cas de poursuite en développement",
@@ -61,17 +63,22 @@ const articles = {
     {
       title: "4. Engagements du Client",
       content:
-        "Le Client s'engage à retourner le questionnaire de pré-qualification complété et à transmettre les éléments demandés au devis au plus tard quarante-huit (48) heures avant la date de l'atelier. À défaut, l'atelier est reporté et le créneau réservé n'est ni remboursé ni reporté sans frais.\n\nLe Client garantit l'exactitude et l'exhaustivité des informations qu'il communique. Les recommandations du Prestataire en découlent directement : toute information inexacte, incomplète ou omise engage la seule responsabilité du Client.",
+        `Le Client s'engage à retourner le questionnaire de pré-qualification complété et à transmettre les éléments demandés au devis au plus tard quarante-huit (48) heures avant la date de l'atelier. À défaut, l'atelier est reporté une fois, moyennant des frais de reprogrammation forfaitaires de ${formatPrice(WORKSHOP_HOUR_RATE, 'fr')} HT, facturés avant la fixation de la nouvelle date.\n\nLe Client garantit l'exactitude et l'exhaustivité des informations qu'il communique. Les recommandations du Prestataire en découlent directement : toute information inexacte, incomplète ou omise engage la seule responsabilité du Client.`,
+    },
+    {
+      title: "4 bis. Carence du Client et caducité",
+      content:
+        "Lorsque, du fait du Client, l'atelier n'a pu se tenir dans un délai de trois (3) mois à compter de la commande, notamment faute de retour du questionnaire de pré-qualification, de confirmation d'une date ou après épuisement du report prévu à l'article 4, le Prestataire adresse au Client, par courriel à l'adresse indiquée au devis, un rappel écrit lui laissant quinze (15) jours pour fixer une date d'atelier.\n\nÀ défaut de réponse dans ce délai, le contrat est caduc de plein droit. Les sommes versées demeurent intégralement acquises au Prestataire en contrepartie de la réservation du créneau et du travail préparatoire engagé, et le Client ne peut prétendre à aucun report, remboursement ni indemnité. Toute reprise du projet fait l'objet d'une nouvelle commande.",
     },
     {
       title: "5. Déroulé de l'atelier",
       content:
-        "L'atelier se tient en visioconférence, pour la durée fixée au devis. Il ne fait l'objet d'aucun enregistrement audio ou vidéo.\n\nToute demande de report ou d'annulation émanant du Client doit parvenir au Prestataire au moins quarante-huit (48) heures avant l'heure prévue. En deçà de ce délai, le créneau est considéré comme consommé et n'ouvre droit à aucun remboursement ni report. L'absence du Client à l'atelier vaut consommation du créneau.",
+        "L'atelier se tient en visioconférence, pour la durée fixée au devis. Il ne fait l'objet d'aucun enregistrement audio ou vidéo.\n\nToute demande de report ou d'annulation émanant du Client doit parvenir au Prestataire au moins quarante-huit (48) heures avant l'heure prévue. En deçà de ce délai, un report unique est accordé moyennant les frais de reprogrammation forfaitaires prévus à l'article 4. Tout report ultérieur, quel qu'en soit le motif, ainsi que l'absence du Client à l'atelier sans demande préalable, valent consommation du créneau et n'ouvrent droit à aucun remboursement. L'annulation émanant du Client vaut consommation du créneau, les sommes versées demeurant acquises conformément à l'article 2.",
     },
     {
       title: "6. Livrable et corrections",
       content:
-        `Le Prestataire remet un dossier au format PDF comprenant les sections listées au devis, dans le délai qui y est indiqué, courant à compter de la date de l'atelier.\n\nLe Client dispose de quinze (15) jours à compter de la remise pour transmettre, en un seul envoi, une série unique de corrections limitée à dix (10) points. Ces corrections portent exclusivement sur des erreurs factuelles ou des omissions au regard des éléments communiqués lors de l'atelier.\n\nTout changement d'orientation, tout élément nouveau non évoqué lors de l'atelier et tout nouvel arbitrage constituent une prestation complémentaire, facturée ${formatPrice(WORKSHOP_HOUR_RATE, 'fr')} HT de l'heure et soumise à devis préalable.`,
+        `Le Prestataire remet un dossier au format PDF comprenant les sections listées au devis, dans le délai qui y est indiqué, courant à compter de la date de l'atelier.\n\nLe Client dispose de quinze (15) jours à compter de la remise pour transmettre, en un seul envoi, une série unique de corrections limitée à dix (10) points. Ces corrections portent exclusivement sur des erreurs factuelles ou des omissions au regard des éléments communiqués lors de l'atelier.\n\nTout changement d'orientation, tout élément nouveau non évoqué lors de l'atelier et tout nouvel arbitrage constituent une prestation complémentaire, facturée ${formatPrice(WORKSHOP_HOUR_RATE, 'fr')} HT de l'heure et soumise à devis préalable.\n\nÀ défaut de corrections transmises dans ce délai, le dossier est réputé accepté sans réserve et la prestation achevée. Lorsque des corrections sont transmises, le Prestataire remet la version corrigée sous dix (10) jours ouvrés ; cette remise clôt la prestation et n'ouvre aucun nouveau délai de corrections.`,
     },
     {
       title: "7. Propriété du dossier",
@@ -118,7 +125,7 @@ const articles = {
     {
       title: "2. Contract Formation and Payment",
       content:
-        "The service begins upon receipt of the quote — dated, signed and bearing the handwritten note \"Bon pour accord\" — together with the payment due on order. No workshop date is reserved before that payment is received.\n\nFor tiers 01 and 02, the full amount excl. VAT, plus applicable VAT, is due on order. For tier 03 and for product design services, 50% of the amount excl. VAT is due on order and the balance upon delivery of the report, payable within fifteen (15) days. Payment is made exclusively by bank transfer to the professional account indicated on the invoice.\n\nSums paid in advance constitute a deposit (acompte), not arrhes within the meaning of Article 1590 of the French Civil Code. They bind both parties definitively and secure the workshop slot.",
+        "The service begins upon receipt of the quote — dated, signed and bearing the handwritten note \"Bon pour accord\" — together with the payment due on order. No workshop date is reserved before that payment is received.\n\nFor tiers 01 and 02, the full amount excl. VAT, plus applicable VAT, is due on order. For tier 03 and for product design services, 50% of the amount excl. VAT is due on order. The Service Provider notifies the Client that the report is complete and presents its content by video conference or as a watermarked, non-usable extract. The balance invoice is issued on that date, payable on receipt. The final report is delivered once the balance has been received, and the correction period provided for in Article 6 runs from that delivery. Payment is made exclusively by bank transfer to the professional account indicated on the invoice.\n\nSums paid in advance constitute a deposit (acompte), not arrhes within the meaning of Article 1590 of the French Civil Code. They bind both parties definitively and secure the workshop slot.",
     },
     {
       title: "2 bis. Set-Off Where the Project Proceeds to Development",
@@ -133,17 +140,22 @@ const articles = {
     {
       title: "4. Client Commitments",
       content:
-        "The Client undertakes to return the completed pre-qualification questionnaire and to supply the materials listed in the quote no later than forty-eight (48) hours before the workshop date. Failing that, the workshop is postponed and the reserved slot is neither refunded nor rescheduled free of charge.\n\nThe Client warrants the accuracy and completeness of the information they provide. The Service Provider's recommendations follow directly from it: any inaccurate, incomplete or omitted information is the sole responsibility of the Client.",
+        `The Client undertakes to return the completed pre-qualification questionnaire and to supply the materials listed in the quote no later than forty-eight (48) hours before the workshop date. Failing that, the workshop is postponed once, subject to a flat rescheduling fee of ${formatPrice(WORKSHOP_HOUR_RATE, 'en')} excl. VAT, invoiced before a new date is set.\n\nThe Client warrants the accuracy and completeness of the information they provide. The Service Provider's recommendations follow directly from it: any inaccurate, incomplete or omitted information is the sole responsibility of the Client.`,
+    },
+    {
+      title: "4 bis. Client Default and Lapse of the Contract",
+      content:
+        "Where, due to the Client, the workshop could not be held within three (3) months of the order, in particular because the pre-qualification questionnaire has not been returned, no date has been confirmed, or the postponement provided for in Article 4 has been used up, the Service Provider sends the Client a written reminder by email, to the address stated in the quote, granting fifteen (15) days to set a workshop date.\n\nIf no reply is received within that period, the contract lapses automatically. Sums paid remain fully acquired by the Service Provider in consideration of the reserved slot and the preparatory work undertaken, and the Client is entitled to no postponement, refund or compensation. Any resumption of the project requires a new order.",
     },
     {
       title: "5. Workshop Format",
       content:
-        "The workshop is held by video conference, for the duration set out in the quote. It is not recorded, in audio or video form.\n\nAny request to postpone or cancel from the Client must reach the Service Provider at least forty-eight (48) hours before the scheduled time. Below that threshold, the slot is deemed consumed and gives rise to no refund or rescheduling. The Client's absence from the workshop counts as consumption of the slot.",
+        "The workshop is held by video conference, for the duration set out in the quote. It is not recorded, in audio or video form.\n\nAny request to postpone or cancel from the Client must reach the Service Provider at least forty-eight (48) hours before the scheduled time. Below that threshold, a single postponement is granted subject to the flat rescheduling fee provided for in Article 4. Any further postponement, whatever the reason, as well as the Client's absence from the workshop without a prior request, count as consumption of the slot and give rise to no refund. Cancellation by the Client counts as consumption of the slot, sums paid remaining acquired in accordance with Article 2.",
     },
     {
       title: "6. Deliverable and Corrections",
       content:
-        `The Service Provider delivers a PDF report containing the sections listed in the quote, within the timeframe stated therein, running from the date of the workshop.\n\nThe Client has fifteen (15) days from delivery to submit, in a single message, one set of corrections limited to ten (10) points. These corrections relate exclusively to factual errors or omissions with regard to the information communicated during the workshop.\n\nAny change of direction, any new element not raised during the workshop and any fresh trade-off constitute an additional service, invoiced at ${formatPrice(WORKSHOP_HOUR_RATE, 'en')} excl. VAT per hour and subject to a prior quote.`,
+        `The Service Provider delivers a PDF report containing the sections listed in the quote, within the timeframe stated therein, running from the date of the workshop.\n\nThe Client has fifteen (15) days from delivery to submit, in a single message, one set of corrections limited to ten (10) points. These corrections relate exclusively to factual errors or omissions with regard to the information communicated during the workshop.\n\nAny change of direction, any new element not raised during the workshop and any fresh trade-off constitute an additional service, invoiced at ${formatPrice(WORKSHOP_HOUR_RATE, 'en')} excl. VAT per hour and subject to a prior quote.\n\nIf no corrections are submitted within that period, the report is deemed accepted without reservation and the service completed. Where corrections are submitted, the Service Provider delivers the corrected version within ten (10) working days; that delivery closes the service and opens no new correction period.`,
     },
     {
       title: "7. Ownership of the Report",
@@ -192,6 +204,7 @@ export default async function ConditionsCadrage({
   const dict = dictionaries[locale as 'fr' | 'en'] ?? dictionaries.fr
   const isFr = locale !== 'en'
   const content = isFr ? articles.fr : articles.en
+  const toc = tocItems(content)
 
   return (
     <>
@@ -210,19 +223,26 @@ export default async function ConditionsCadrage({
           </h1>
 
           <p className={styles.text} style={{ opacity: 0.6, fontSize: '0.85rem', marginBottom: '2rem' }}>
-            {isFr ? 'Dernière mise à jour : 17 août 2026 (v2)' : 'Last updated: August 17, 2026 (v2)'}
+            {isFr ? 'Dernière mise à jour : 4 septembre 2026 (v3)' : 'Last updated: September 4, 2026 (v3)'}
           </p>
 
-          {content.map((article) => (
-            <div key={article.title} className={styles.block}>
-              <h2 className={styles.heading}>{article.title}</h2>
-              {article.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className={styles.text}>
-                  {linkifyEmails(paragraph)}
-                </p>
+          <div className={styles.layout}>
+            <div className={styles.articles}>
+              {content.map((article, articleIndex) => (
+                <div key={article.title} id={toc[articleIndex].id} className={styles.block}>
+                  <h2 className={styles.heading}>{article.title}</h2>
+                  {article.content.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className={styles.text}>
+                      {linkifyEmails(paragraph)}
+                    </p>
+                  ))}
+                </div>
               ))}
             </div>
-          ))}
+            <aside className={styles.aside}>
+              <LegalToc items={toc} locale={locale} />
+            </aside>
+          </div>
 
         </div>
       </main>

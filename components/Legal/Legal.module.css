@@ -33,6 +33,39 @@
 
 .block {
   margin-bottom: 3rem;
+  /* Le header est fixe et mesure ~92px une fois replié : un saut d'ancre
+     sans cette marge cacherait le titre de l'article derrière lui. */
+  scroll-margin-top: 7rem;
+}
+
+/* Pages à sommaire : les articles à gauche, dans la largeur de lecture
+   habituelle, et le sommaire collé à droite. Sous 1024px les deux se
+   superposent, sommaire en premier. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 680px) minmax(220px, 280px);
+  gap: 5rem;
+  align-items: start;
+}
+
+.articles {
+  min-width: 0;
+}
+
+.aside {
+  position: sticky;
+  top: 7rem;
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    display: block;
+  }
+
+  .aside {
+    position: static;
+    margin-bottom: 3rem;
+  }
 }
 
 .heading {
