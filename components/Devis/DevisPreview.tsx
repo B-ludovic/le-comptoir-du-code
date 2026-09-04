@@ -31,9 +31,30 @@ function fmt(val: string, locale: 'fr' | 'en'): string {
   return new Intl.NumberFormat(lang, { style: 'currency', currency: 'EUR' }).format(n)
 }
 
+/* Identité de l'entité qui émet juridiquement le devis : c'est elle qui
+   contracte, encaisse et porte le SIRET imprimé sur le document. Le devis
+   étant désormais engageant, ces valeurs sont la seule chose à réécrire le
+   jour où la structure change — l'en-tête, le bloc Prestataire et le pied de
+   page se servent tous ici. */
+const ISSUER = {
+  name: "L'Échoppe du Code",
+  details: [
+    'Ludovic BATAILLE (Entrepreneur-salarié)',
+    'Hébergé par : Jump Green',
+    "7 Place de l'Hôtel de Ville, 93600 Aulnay-sous-Bois",
+    'SIRET : 97761078100014',
+    'N° TVA : FR10977610781',
+    'contact@lechoppeducode.com',
+  ],
+  legalLine:
+    "L'Échoppe du Code — Hébergé par Jump Green au capital de 18 501 € — SIRET 97761078100014 — RCS de Bobigny — TVA FR10977610781",
+  site: 'lechoppeducode.com',
+  email: 'contact@lechoppeducode.com',
+}
+
 const T = {
   fr: {
-    docType: 'Proposition Commerciale',
+    docType: 'Devis',
     docNo: 'N°',
     issuedOn: (date: string) => `Émis le ${date} — Valable 30 jours`,
     provider: 'Prestataire',
@@ -69,7 +90,7 @@ const T = {
     paymentTitle: 'Modalités de paiement',
     paymentText: `Acompte de 30 % à la commande (facture d'acompte fournie).<br>Solde de 70 % à la mise en ligne.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
     startTitle: 'Démarrage du projet',
-    startText: `Le projet démarre à réception du devis officiel<br>signé (émis par Jump Green) et du paiement<br>de l'acompte de 30 %.`,
+    startText: `Le projet démarre à réception du présent devis<br>signé avec la mention « Bon pour accord »<br>et du paiement de l'acompte de 30 %.`,
     schedules: {
       dev: {
         rate: 0.3,
@@ -78,7 +99,7 @@ const T = {
         terms: 'Conditions générales de vente et de prestation : www.lechoppeducode.com/fr/conditions-generales',
         deposit: 'Acompte à la signature (30 %)',
         paymentText: `Acompte de 30 % à la commande (facture d'acompte fournie).<br>Solde de 70 % à la mise en ligne.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
-        startText: `Le projet démarre à réception du devis officiel<br>signé (émis par Jump Green) et du paiement<br>de l'acompte de 30 %.`,
+        startText: `Le projet démarre à réception du présent devis<br>signé avec la mention « Bon pour accord »<br>et du paiement de l'acompte de 30 %.`,
       },
       cadrage_full: {
         rate: 1,
@@ -87,7 +108,7 @@ const T = {
         terms: 'Conditions générales de la prestation de cadrage : www.lechoppeducode.com/fr/conditions-cadrage',
         deposit: 'Règlement intégral à la commande',
         paymentText: `Règlement intégral à la commande.<br>Règlement par virement bancaire uniquement.<br>Aucune date d'atelier n'est réservée<br>avant réception du paiement.`,
-        startText: `L'atelier est planifié à réception du devis<br>officiel signé (émis par Jump Green), du<br>paiement et du questionnaire complété.`,
+        startText: `L'atelier est planifié à réception du présent<br>devis signé, du paiement et du<br>questionnaire complété.`,
       },
       cadrage_split: {
         rate: 0.5,
@@ -96,18 +117,18 @@ const T = {
         terms: 'Conditions générales de la prestation de cadrage : www.lechoppeducode.com/fr/conditions-cadrage',
         deposit: 'Acompte à la signature (50 %)',
         paymentText: `Acompte de 50 % à la commande (facture d'acompte fournie).<br>Solde de 50 % à la remise du dossier.<br>Règlement par virement bancaire uniquement.<br>Délai de paiement : 15 jours à compter de la facture.`,
-        startText: `L'atelier est planifié à réception du devis<br>officiel signé (émis par Jump Green), de<br>l'acompte et du questionnaire complété.`,
+        startText: `L'atelier est planifié à réception du présent<br>devis signé, de l'acompte et du<br>questionnaire complété.`,
       },
     },
     validityTitle: 'Validité',
-    validityText: `Cette proposition est valable 30 jours<br>à compter de sa date d'émission.<br>Passé ce délai, les tarifs peuvent être révisés.`,
+    validityText: `Ce devis est valable 30 jours<br>à compter de sa date d'émission.<br>Passé ce délai, les tarifs peuvent être révisés.`,
     disclaimerTitle: null,
-    disclaimerText: `Cette proposition commerciale est émise à titre indicatif. En cas d'accord, un devis officiel sera établi et transmis par Jump Green, société de portage salarial (SIRET 97761078100014 — RCS de Bobigny). Les droits de propriété intellectuelle sont transférés au client à réception du paiement intégral. Les présentes conditions sont soumises au droit français.`,
+    disclaimerText: `Le présent devis est établi gratuitement et engage le Prestataire pendant toute sa durée de validité. Il forme le contrat à réception de l'exemplaire signé portant la mention « Bon pour accord », accompagné du paiement prévu au calendrier ci-dessus. Les droits de propriété intellectuelle sont transférés au client à réception du paiement intégral. Les présentes conditions sont soumises au droit français.`,
     mecenaBadge: "L'Échoppe Solidaire — Mécénat de compétences LGBTQI+ & Associations",
     htmlLang: 'fr',
   },
   en: {
-    docType: 'Commercial Proposal',
+    docType: 'Quote',
     docNo: 'No.',
     issuedOn: (date: string) => `Issued on ${date} — Valid for 30 days`,
     provider: 'Service Provider',
@@ -143,7 +164,7 @@ const T = {
     paymentTitle: 'Payment Terms',
     paymentText: `30% deposit upon order (deposit invoice provided).<br>Balance of 70% upon go-live.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
     startTitle: 'Project commencement',
-    startText: `The project starts upon receipt of the signed<br>official quote (issued by Jump Green) and the<br>30% deposit payment.`,
+    startText: `The project starts upon receipt of this quote,<br>signed and marked « Bon pour accord »,<br>and of the 30% deposit payment.`,
     schedules: {
       dev: {
         rate: 0.3,
@@ -152,7 +173,7 @@ const T = {
         terms: 'General terms of sale and service: www.lechoppeducode.com/en/conditions-generales',
         deposit: 'Deposit upon signing (30%)',
         paymentText: `30% deposit upon order (deposit invoice provided).<br>Balance of 70% upon go-live.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
-        startText: `The project starts upon receipt of the signed<br>official quote (issued by Jump Green) and the<br>30% deposit payment.`,
+        startText: `The project starts upon receipt of this quote,<br>signed and marked « Bon pour accord »,<br>and of the 30% deposit payment.`,
       },
       cadrage_full: {
         rate: 1,
@@ -161,7 +182,7 @@ const T = {
         terms: 'General terms for scoping services: www.lechoppeducode.com/en/conditions-cadrage',
         deposit: 'Payment in full upon order',
         paymentText: `Payment in full upon order.<br>Bank transfer only.<br>No workshop date is reserved<br>before payment is received.`,
-        startText: `The workshop is scheduled upon receipt of the<br>signed official quote (issued by Jump Green),<br>payment, and the completed questionnaire.`,
+        startText: `The workshop is scheduled upon receipt of this<br>signed quote, payment, and the completed<br>questionnaire.`,
       },
       cadrage_split: {
         rate: 0.5,
@@ -170,13 +191,13 @@ const T = {
         terms: 'General terms for scoping services: www.lechoppeducode.com/en/conditions-cadrage',
         deposit: 'Deposit upon signing (50%)',
         paymentText: `50% deposit upon order (deposit invoice provided).<br>Balance of 50% upon delivery of the report.<br>Bank transfer only.<br>Payment due within 15 days of invoice.`,
-        startText: `The workshop is scheduled upon receipt of the<br>signed official quote (issued by Jump Green),<br>the deposit, and the completed questionnaire.`,
+        startText: `The workshop is scheduled upon receipt of this<br>signed quote, the deposit, and the completed<br>questionnaire.`,
       },
     },
     validityTitle: 'Validity',
-    validityText: `This proposal is valid for 30 days<br>from its issuance date.<br>After this period, rates may be revised.`,
-    disclaimerTitle: 'Disclaimer',
-    disclaimerText: `This proposal is provided for informational purposes. If agreed, an official quote will be issued and sent by Jump Green, a portage salarial company (SIRET 97761078100014 — RCS de Bobigny). Intellectual property rights are transferred to the client upon receipt of full payment. These terms are governed by French law.`,
+    validityText: `This quote is valid for 30 days<br>from its issuance date.<br>After this period, rates may be revised.`,
+    disclaimerTitle: 'Terms',
+    disclaimerText: `This quote is issued free of charge and binds the Service Provider throughout its validity period. It forms the contract upon receipt of the signed copy bearing the words « Bon pour accord » (agreed), together with the payment set out in the schedule above. Intellectual property rights are transferred to the client upon receipt of full payment. These terms are governed by French law.`,
     mecenaBadge: "L'Échoppe Solidaire — Skills Sponsorship LGBTQI+ & Associations",
     htmlLang: 'en',
   },
@@ -332,13 +353,8 @@ export default function DevisPreview({ data }: Props) {
   <div class="parties">
     <div class="party">
       <div class="party-label">${t.provider}</div>
-      <span class="party-name">L'Échoppe du Code</span>
-      <span class="party-detail">Ludovic BATAILLE (Entrepreneur-salarié)</span>
-      <span class="party-detail">Hébergé par : Jump Green</span>
-      <span class="party-detail">7 Place de l'Hôtel de Ville, 93600 Aulnay-sous-Bois</span>
-      <span class="party-detail">SIRET : 97761078100014</span>
-      <span class="party-detail">N° TVA : FR10977610781</span>
-      <span class="party-detail">contact@lechoppeducode.com</span>
+      <span class="party-name">${esc(ISSUER.name)}</span>
+      ${ISSUER.details.map(line => `<span class="party-detail">${esc(line)}</span>`).join('')}
     </div>
     <div class="party">
       <div class="party-label">${t.client}</div>
@@ -445,9 +461,9 @@ export default function DevisPreview({ data }: Props) {
   </div>
 
   <div class="footer">
-    <span class="footer-left">L'Échoppe du Code — Hébergé par Jump Green au capital de 18 501 € — SIRET 97761078100014 — RCS de Bobigny — TVA FR10977610781</span>
+    <span class="footer-left">${esc(ISSUER.legalLine)}</span>
     <div class="footer-right">
-      <span class="footer-site">lechoppeducode.com</span> — contact@lechoppeducode.com
+      <span class="footer-site">${esc(ISSUER.site)}</span> — ${esc(ISSUER.email)}
     </div>
   </div>
 </body>
@@ -491,7 +507,7 @@ export default function DevisPreview({ data }: Props) {
           srcDoc={html}
           sandbox="allow-same-origin allow-modals"
           className={styles.iframe}
-          title="Aperçu de la proposition commerciale"
+          title="Aperçu du devis"
         />
       </div>
     </div>
