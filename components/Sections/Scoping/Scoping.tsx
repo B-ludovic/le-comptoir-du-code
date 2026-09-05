@@ -34,6 +34,20 @@ type Props = {
   }
 }
 
+/* Cadrage — une seule retouche de structure.
+
+   Le chiffre fantôme en dégradé clippé cède la place au numéro monospace de
+   Méthode et Réalisations. Ce n'est pas un caprice : cinq sections de la page
+   d'accueil sont numérotées, et elles le disaient de trois façons différentes
+   — fantôme géant ici et dans Solutions, monospace dans le header mobile,
+   rien ailleurs. Méthode, Cadrage et Réalisations parlent désormais la même
+   langue. Solutions garde son chiffre fantôme : convertir le sien demande de
+   redériver la liste de pistes de son subgrid à huit rangées, et cet
+   alignement-là ne se change pas à l'aveugle (voir integration/patches.css).
+
+   Le `subgrid` est conservé : les trois paliers partagent leurs pistes, donc
+   les trois prix retombent sur la même ligne quelle que soit la hauteur du
+   titre. Le numéro devient simplement une quatrième piste — voir la feuille. */
 export default function Scoping({ locale, dict }: Props) {
   const tiers: Tier[] = [
     { number: '01', title: dict.tier1_title, label: dict.tier1_label, price: dict.tier1_price },
@@ -47,7 +61,7 @@ export default function Scoping({ locale, dict }: Props) {
         <div className={styles.band}>
 
           <div className={styles.head}>
-            <div>
+            <div className={styles.headLeft}>
               <p className={styles.eyebrow}>{dict.eyebrow}</p>
               <h2 className={styles.title}>
                 {dict.section_title.split('\n').map((line, index) => (
@@ -66,7 +80,7 @@ export default function Scoping({ locale, dict }: Props) {
           <div className={styles.tiers}>
             {tiers.map((tier) => (
               <div key={tier.number} className={styles.tier}>
-                <span className={styles.tierGhost} aria-hidden="true">{tier.number}</span>
+                <span className={styles.tierNumber}>{tier.number}</span>
                 <h3 className={styles.tierTitle}>{tier.title}</h3>
                 <p className={styles.tierLabel}>{tier.label}</p>
                 <p className={styles.tierPrice}>

@@ -4,19 +4,20 @@
   padding: var(--section-padding);
 }
 
-/* Header */
-.header {
-  display: grid;
-  grid-template-columns: 5fr 4fr;
-  gap: 4rem;
-  align-items: end;
-  margin-bottom: 5rem;
+/* Deux colonnes, valeurs de la maquette : le discours ouvre à 320 px de base,
+   le formulaire à 420. Tant que les deux tiennent côte à côte, la page ne
+   perd plus sa moitié droite ; en dessous, le formulaire passe sous le
+   discours de lui-même, sans qu'un breakpoint ait à le décider. */
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: flex-start;
 }
 
-.headerLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+.aside {
+  flex: 1 1 320px;
+  min-width: 0;
 }
 
 .eyebrow {
@@ -26,48 +27,74 @@
   text-transform: uppercase;
   letter-spacing: 3px;
   color: var(--accent-primary);
+  margin-bottom: 1.1rem;
 }
 
 .sectionTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 600;
+  line-height: 1.1;
   color: var(--text-main);
-}
-
-.headerRight {
-  padding-bottom: 0.5rem;
+  margin-bottom: 1.75rem;
+  text-wrap: pretty;
 }
 
 .intro {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.8;
+  max-width: 48ch;
+  text-wrap: pretty;
 }
 
-/* Formulaire — un plan posé, pas un cadre dessiné.
-   Le fond monte d'un cran par rapport à la page (--bg-card sur --bg-main) et
-   le liseré est celui des cards du système, à 0.05 : assez pour poser une
-   arête, trop peu pour enfermer. La largeur passe de 720 à 816 px, soit
-   exactement le padding ajouté de part et d'autre — la surface grandit vers
-   l'extérieur, la largeur d'écriture ne bouge pas d'un pixel. */
-.form {
-  max-width: 816px;
+/* Trois repères sous l'intro. Monospace, comme tout ce qui est chiffré sur le
+   site : « 24 h », « 15 minutes », « chiffré en jours ». Ils n'ajoutent aucune
+   promesse — ils sortent de l'intro ce qu'un visiteur pressé doit retenir. */
+.assurances {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 2rem 0 0;
+  border-top: 1px solid rgba(232, 196, 160, 0.16);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 3rem;
-  background-color: var(--bg-card);
-  border: 1px solid rgba(232, 196, 160, 0.05);
+  gap: 0.9rem;
+}
+
+.assurances li {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Formulaire — la colonne de droite, encadrée.
+
+   Le cadre est celui que la maquette emploie partout : bordure d'accent bien
+   lisible à 0.16, remplissage presque nul à 0.02. C'est l'inverse du réglage
+   précédent — liseré invisible sur plaque opaque — et c'est ce qui fait que
+   les cartes de Solutions, la bande de Cadrage, l'encadré des avis et ce
+   formulaire se lisent comme un même jeu de cadres. Plus de max-width : la
+   base de flex décide de la largeur, et la colonne de gauche occupe le reste. */
+.form {
+  flex: 1 1 420px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(232, 196, 160, 0.16);
   border-radius: var(--card-radius);
 }
 
-/* Les intervalles se resserrent : c'est le padding qui respire maintenant. */
 .row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.6rem;
 }
 
 /* Champ */
@@ -88,18 +115,21 @@
 
 /* Input & Textarea */
 .input,
+/* Seul champ multiligne du formulaire, seul champ encadré : le soulignement
+   ne disait pas où s'arrêtait la zone de saisie, la boîte le dit. */
 .textarea {
   background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(232, 196, 160, 0.2);
+  border: 1px solid rgba(232, 196, 160, 0.18);
+  border-radius: var(--card-radius);
   color: var(--text-main);
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  padding: 0.6rem 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding: 0.85rem;
   outline: none;
   width: 100%;
   transition: border-color var(--transition-base);
-  resize: none;
+  resize: vertical;
 }
 
 .input::placeholder,
@@ -108,10 +138,13 @@
   opacity: 0.5;
 }
 
-.input:focus,
-.textarea:focus {
+.input:focus {
   border-bottom-color: var(--accent-primary);
   box-shadow: 0 1px 0 0 var(--accent-primary);
+}
+
+.textarea:focus {
+  border-color: var(--accent-primary);
 }
 
 /* Select custom */
@@ -161,16 +194,20 @@
 }
 
 /* Footer */
+/* Bouton et mention de confidentialité sur une même ligne : la mention n'est
+   pas une note de bas de page, c'est la contrepartie de l'envoi. Elle repasse
+   dessous d'elle-même quand la colonne se resserre. */
 .footer {
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 
 /* Bouton */
 .btn {
-  width: 100%;
-  padding: 1rem 2rem;
+  padding: 1.1rem 2.5rem;
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 500;
@@ -215,6 +252,13 @@
   40% { opacity: 1; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .dots span {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* Messages */
 .successMsg {
   font-family: var(--font-body);
@@ -243,9 +287,10 @@
 /* Ligne de rassurance sous le bouton : elle doit se lire, pas se remarquer. */
 .privacyNote {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   line-height: 1.6;
   color: var(--text-muted);
+  max-width: 32ch;
 }
 
 .privacyLink,
@@ -265,16 +310,6 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .header {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .headerRight {
-    padding-bottom: 0;
-  }
-
   /* Sur téléphone le plan reste, mais il ne peut pas manger la largeur :
      le padding tombe à 1.5 rem, sinon les champs se retrouvent à 60 px de
      chaque bord une fois cumulé avec celui du container. */

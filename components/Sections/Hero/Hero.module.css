@@ -1,36 +1,43 @@
 /* Le min-height 100dvh, le centrage vertical et le padding de base viennent de
-   la règle `section` de globals.css : rien à redéclarer ici. */
+   la règle `section` de globals.css : rien à redéclarer ici — sauf le padding
+   haut, qui doit dégager la barre fixe. */
 .hero {
   padding: var(--section-padding);
-}
-
-/* Sur mobile le contenu monte assez haut pour passer sous le header fixe.
-   Même compensation que celle que portait Method quand il ouvrait la page. */
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 7rem;
-  }
+  padding-top: 11rem;
 }
 
 /* L'accroche garde la largeur de lecture confortable, le bandeau prend une
-   colonne plus étroite. En dessous de 1024px la preuve passe sous le discours
-   plutôt que de l'écraser. */
+   colonne plus étroite. Le repli est piloté par les bases de flex : la preuve
+   passe sous le discours dès qu'elle n'a plus la place de tenir à côté, sans
+   qu'un breakpoint ait à le décider. */
 .layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: 4rem;
-  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem 4rem;
+  align-items: flex-start;
 }
 
 .pitch {
+  flex: 1 1 460px;
   min-width: 0;
 }
 
-@media (max-width: 1024px) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
+/* La colonne de preuve, encadrée.
+
+   Deux choses se jouent ici. La base de flex, d'abord : le ticker est habillé
+   par son propre module et n'en déclare aucune, donc sans cette règle il se
+   dimensionne sur son contenu et se replie seul sur une ligne pleine largeur,
+   laissant la moitié droite du premier écran vide. Le cadre ensuite, celui de
+   la maquette — bordure d'accent lisible, remplissage presque nul — le même
+   que les cartes de Solutions, la bande de Cadrage et le formulaire du brief.
+   Il transforme les avis en pièce jointe au discours plutôt qu'en suite. */
+.proof {
+  flex: 1 1 320px;
+  min-width: 0;
+  padding: 1.5rem 1.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(232, 196, 160, 0.12);
+  border-radius: var(--card-radius);
 }
 
 .eyebrow {
@@ -50,6 +57,7 @@
   line-height: 1.1;
   color: var(--text-main);
   max-width: 20ch;
+  text-wrap: pretty;
 }
 
 /* Filet lumineux, même vocabulaire que les séparateurs de Method. */
@@ -67,6 +75,7 @@
   line-height: 1.8;
   color: var(--text-main);
   max-width: 58ch;
+  text-wrap: pretty;
 }
 
 /* Les chiffres sont mis à part : un filet vertical les détache du récit sans
@@ -80,6 +89,7 @@
   line-height: 1.8;
   color: var(--text-muted);
   max-width: 62ch;
+  text-wrap: pretty;
 }
 
 .actions {
@@ -134,13 +144,29 @@
   }
 }
 
+/* La barre fixe passe en hamburger sous 1200 px et perd un peu de hauteur :
+   le dégagement haut suit. */
+@media (max-width: 1199px) {
+  .hero {
+    padding-top: 9rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .hero {
+    padding-top: 7rem;
+  }
+
   .title {
     max-width: none;
   }
 
   .lead {
     font-size: 1rem;
+  }
+
+  .actions {
+    margin-top: 2.25rem;
   }
 }
 
