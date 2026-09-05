@@ -34,6 +34,12 @@ function CarouselInner({
     setCurrent((current + 1) % images.length)
   }
 
+  /* La vignette remplit son cadre (cover, cadrée en haut) ; la modale montre
+     la capture entière (contain). En 16/9 et en `contain`, une capture de page
+     laissait deux bandes vides au-dessus et en dessous : elle ne pesait plus
+     rien dans la fiche. Même composant, deux cadrages. */
+  const fit = variant === 'modal' ? styles.screenshotModal : styles.screenshot
+
   return (
     <div className={variant === 'modal' ? styles.carouselModal : styles.carousel}>
       <div className={styles.track}>
@@ -51,7 +57,7 @@ function CarouselInner({
                 alt={`${alt} — ${i + 1}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1400px"
-                className={styles.screenshot}
+                className={fit}
               />
             )}
           </div>
@@ -91,14 +97,25 @@ export default function ProjectCarousel({ images, alt }: Props) {
     images.length > 1 ? [0, 1] : [0]
   )
 
-  useEffect(() => {
+  /* Cette liste se déduit du numéro de vue : elle ne synchronise rien avec le
+     monde extérieur, elle prolonge une valeur que React a déjà en main. Un
+     effet était donc le mauvais outil — il attendait la peinture pour déclencher
+     un second rendu, soit une image affichée sur du vide entre les deux.
+
+     Le motif est celui que React documente sous « ajuster l'état pendant le
+     rendu » : on garde en mémoire le numéro déjà pris en compte, et quand il
+     bouge on rallonge la liste dans la foulée. React interrompt le rendu en
+     cours et le rejoue avec la nouvelle liste, avant de peindre quoi que ce
+     soit. Rien ne s'affiche entre les deux passes. */
+  const [tracked, setTracked] = useState(current)
+
+  if (tracked !== current) {
+    setTracked(current)
     const upcoming = (current + 1) % images.length
-    setLoaded((seen) =>
-      seen.includes(current) && seen.includes(upcoming)
-        ? seen
-        : [...new Set([...seen, current, upcoming])]
-    )
-  }, [current, images.length])
+    if (!loaded.includes(current) || !loaded.includes(upcoming)) {
+      setLoaded([...new Set([...loaded, current, upcoming])])
+    }
+  }
 
   // Défilement automatique de la miniature — en pause au survol, modale ouverte,
   // ou si le visiteur préfère réduire les animations

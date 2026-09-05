@@ -36,6 +36,13 @@ const blocks = [
   },
 ]
 
+/* Méthode — trois colonnes sous un filet chacune.
+
+   Le numéro était posé en fantôme géant derrière le texte, et les blocs
+   séparés par des filets verticaux. Le numéro passe devant, en monospace :
+   c'est le même signal que le logo mark, et il fait de la liste un sommaire
+   plutôt qu'un décor. Le filet devient horizontal, un par colonne — c'est
+   désormais la grammaire commune de Méthode, Cadrage et Réalisations. */
 export default function Method({ dict }: Props) {
   return (
     <section id="method" className={styles.section}>
@@ -52,31 +59,14 @@ export default function Method({ dict }: Props) {
         </div>
 
         <div className={styles.blocks}>
-          {blocks.map((block, index) => {
+          {blocks.map((block) => {
             const Icon = block.icon
             return (
               <div key={block.number} className={styles.block}>
-
-                {/* Numéro fantôme en arrière-plan */}
                 <span className={styles.number}>{block.number}</span>
-
-                {/* Contenu au premier plan */}
-                <div className={styles.blockContent}>
-                  <h3 className={styles.blockTitle}>
-                    <Icon
-                      size={20}
-                      strokeWidth={1.5}
-                      className={styles.icon}
-                    />
-                    {dict[block.titleKey]}
-                  </h3>
-                  <p className={styles.blockText}>{dict[block.textKey]}</p>
-                </div>
-
-                {index < blocks.length - 1 && (
-                  <div className={styles.separator} />
-                )}
-
+                <Icon size={22} strokeWidth={1.5} className={styles.icon} />
+                <h3 className={styles.blockTitle}>{dict[block.titleKey]}</h3>
+                <p className={styles.blockText}>{dict[block.textKey]}</p>
               </div>
             )
           })}

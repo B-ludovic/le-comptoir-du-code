@@ -7,7 +7,9 @@
     "cta": "Request a quote",
     "cta_secondary": "See the packages",
     "reviews_label": "They pushed the door open",
-    "reviews_source": "Reviews published on"
+    "reviews_source": "Reviews published on",
+    "live_label": "Live right now",
+    "live_cta": "The six projects"
   },
   "nav": {
     "method": "Process",
@@ -56,6 +58,7 @@
     "section_title": "Three foundations. No surprises.",
     "intro": "Each package is a foundation with a defined scope, priced in working days. Specific needs are added as modules billed by the day: you know exactly what you are paying for, and you can take things out.",
     "from": "From",
+    "days_line": "{days} days",
     "maintenance_included": "{months} months of security updates included, then {rate}",
     "modules_label": "Extra, priced separately",
     "cards": {
@@ -209,7 +212,16 @@
     "project6_feat4": "real-time admin notifications",
     "project6_feat5": "multiple delivery addresses",
     "project6_feat6": "anti-spam honeypot",
-    "project6_stack": "Next.js 14 · Express · PostgreSQL · Stripe · Prisma"
+    "project6_stack": "Next.js 14 · Express · PostgreSQL · Stripe · Prisma",
+    "summary_label": "Project index",
+    "status_production": "In production",
+    "status_online": "Live",
+    "status_archived": "Archived — source open",
+    "foundations_label": "The foundations",
+    "foundations_intro": "Three earlier projects, still online. Open a card to read the detail — the same level of proof, filed more tightly.",
+    "archive_toggle": "Open or close the project card",
+    "open_site": "Open the site",
+    "open_repo": "See the code"
   },
   "about": {
     "eyebrow": "The craftsman behind the code.",
@@ -217,12 +229,23 @@
     "p1": "After 18 years leading teams and running field operations, I hung up the tie to come back to my true obsession: the raw mechanics of the web.",
     "p2": "Those years as a manager left me with a sharp, practical lens. I know business owners don't have time for jargon — they need tools that work. I have an eye for friction. I can tell immediately what's slowing your users down, what's making an interface feel heavy, or where something just rings false.",
     "p3": "That's what this Échoppe is built on. No hollow promises. What brings us together is a brief to honor and a result to deliver.",
-    "p4": "We align on the foundations, I forge the architecture, and I don't close my editor until the machine does exactly what was agreed upon. My job is to write solid code so you can focus on yours."
+    "p4": "We align on the foundations, I forge the architecture, and I don't close my editor until the machine does exactly what was agreed upon. My job is to write solid code so you can focus on yours.",
+    "portrait_alt": "Ludovic Bataille, freelance web developer in Paris",
+    "portrait_caption": "LUDOVIC BATAILLE · PARIS · ÎLE-DE-FRANCE",
+    "stat1_value": "18 years",
+    "stat1_label": "leading teams on the ground",
+    "stat2_value": "6",
+    "stat2_label": "projects shipped, 5 still live",
+    "stat3_value": "1",
+    "stat3_label": "single point of contact, from scoping to launch"
   },
   "contact": {
     "eyebrow": "At the counter",
     "section_title": "Drop your brief.",
     "intro": "Describe the shape of your marketing website, online shop or business application. Reply within 24 working hours to set up a 15-minute call and lock in the technical scope.",
+    "assurance1": "Reply within 24 working hours",
+    "assurance2": "A 15-minute call",
+    "assurance3": "Quote priced in days",
     "field_name": "Name / Company",
     "field_email": "Email",
     "field_description": "What do you need?",

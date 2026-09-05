@@ -2,19 +2,27 @@
   padding: var(--section-padding);
 }
 
-/* Header — même layout que Method/Solutions */
+/* Header — même layout que Method/Solutions.
+   Passé en flex : la colonne d'intro se replie sous le titre quand la place
+   manque, sans point de rupture arbitraire. */
 .header {
-  display: grid;
-  grid-template-columns: 5fr 4fr;
-  gap: 4rem;
-  align-items: end;
-  margin-bottom: 6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 4rem;
+  align-items: flex-end;
+  margin-bottom: 3.5rem;
 }
 
 .headerLeft {
+  flex: 1 1 380px;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+.headerRight {
+  flex: 1 1 300px;
+  padding-bottom: 0.5rem;
 }
 
 .eyebrow {
@@ -31,10 +39,7 @@
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 600;
   color: var(--text-main);
-}
-
-.headerRight {
-  padding-bottom: 0.5rem;
+  text-wrap: pretty;
 }
 
 .intro {
@@ -42,141 +47,122 @@
   font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.8;
+  text-wrap: pretty;
 }
 
-/* Séparateur dégradé entre les projets */
-.separator {
-  width: 100%;
-  height: 1px;
-  margin: 6rem 0;
-  background: linear-gradient(
-    90deg,
-    rgba(26, 23, 20, 0) 0%,
-    rgba(232, 196, 160, 0.15) 50%,
-    rgba(26, 23, 20, 0) 100%
-  );
-}
+/* ── Sommaire ─────────────────────────────────────────────── */
 
-/* Ligne projet — alignement haut : la photo commence sur la ligne du titre */
-.projectRow {
+.summary {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 6rem;
+  flex-wrap: wrap;
+  gap: 0.9rem 2.25rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(232, 196, 160, 0.12);
+  border-bottom: 1px solid rgba(232, 196, 160, 0.12);
+  margin-bottom: 6rem;
 }
 
-/* Alternance : les projets pairs (index 1, 3) sont inversés */
-.projectWrapper:nth-child(even) .projectRow {
-  flex-direction: row-reverse;
-}
-
-/* Décalage éditorial : la colonne visuellement à droite démarre un peu plus bas.
-   Rangée normale, le texte est à droite ; rangée inversée, c'est le média. */
-.projectRow .projectText {
-  padding-top: 2.5rem;
-}
-
-.projectWrapper:nth-child(even) .projectRow .projectText {
-  padding-top: 0;
-}
-
-.projectWrapper:nth-child(even) .projectRow .projectMedia {
-  padding-top: 2.5rem;
-}
-
-/* Aux P'tits Pois tombe sur une rangée non inversée : sa photo est à gauche,
-   son titre à droite. Sans ce rattrapage, la photo démarrerait 2,5rem au-dessus
-   du titre — on la descend sur la ligne du titre. */
-#aux-ptits-pois .projectMedia {
-  padding-top: 2.5rem;
-}
-
-/* Colonne média : photo, tags en légende, inventaire */
-.projectMedia {
-  flex: 1.2;
-  min-width: 0;
+.summaryLink {
   display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-
-.projectImage {
-  overflow: hidden;
-  border-radius: var(--card-radius);
-}
-
-.imageLink {
-  display: block;
-  overflow: hidden;
-  border-radius: var(--card-radius);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .imageLink:hover .screenshot {
-    transform: scale(1.03);
-    box-shadow: 0 36px 110px rgba(0, 0, 0, 0.65);
-  }
-}
-
-.screenshot {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(232, 196, 160, 0.1);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .projectImage:hover .screenshot {
-    transform: scale(1.03);
-    box-shadow: 0 36px 110px rgba(0, 0, 0, 0.65);
-  }
-}
-
-/* Bloc texte */
-.projectText {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Numéro fantôme */
-.number {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-70%);
-  right: -1rem;
-  font-family: var(--font-heading);
-  font-size: 14rem;
-  font-weight: 600;
-  line-height: 1;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   color: var(--text-muted);
-  opacity: 0.06;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -8px;
+  transition: color var(--transition-base);
 }
 
-.projectWrapper:nth-child(even) .number {
-  right: auto;
-  left: -1rem;
+@media (hover: hover) and (pointer: fine) {
+  .summaryLink:hover {
+    color: var(--accent-primary);
+  }
 }
 
-.textContent {
-  position: relative;
-  z-index: 1;
+.summaryNumber {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  opacity: 0.7;
+}
+
+/* ── Fiche complète ───────────────────────────────────────── */
+
+.project {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(232, 196, 160, 0.16);
+  margin-bottom: 7rem;
+  scroll-margin-top: 120px;
+}
+
+.projectMeta {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 0 0 2rem;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-bottom: 1.1rem;
 }
 
-/* Tags */
+.number {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-primary);
+}
+
+.metaRule {
+  width: 16px;
+  height: 1px;
+  background: rgba(232, 196, 160, 0.4);
+}
+
+/* La pulsation ne décore pas : elle ne dit qu'une chose, « ça tourne ». */
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full, 50%);
+  background: var(--accent-primary);
+  animation: portfolioLivePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes portfolioLivePulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liveDot {
+    animation: none;
+  }
+}
+
+.status {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  justify-content: flex-end;
 }
 
 .tag {
@@ -191,9 +177,26 @@
   border-radius: var(--card-radius);
 }
 
-/* Lien titre */
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .titleLink {
   display: inline-block;
+}
+
+.projectTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.05;
+  transition: color var(--transition-base);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -202,53 +205,88 @@
   }
 }
 
-/* Titre */
-.projectTitle {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 400;
-  font-style: italic;
-  color: var(--text-main);
-  line-height: 1.1;
-  transition: color 0.3s ease;
+.domain {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(232, 196, 160, 0.25);
+  transition: color var(--transition-base), border-color var(--transition-base);
 }
 
-/* Description */
+@media (hover: hover) and (pointer: fine) {
+  .domain:hover {
+    color: var(--accent-primary);
+    border-bottom-color: var(--accent-primary);
+  }
+}
+
+/* Capture à gauche, preuve à droite — toujours dans cet ordre, sur toutes les
+   fiches. Le repli est piloté par les bases de flex, pas par un breakpoint. */
+.body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 3.25rem;
+  align-items: flex-start;
+}
+
+.media {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+
+.aside {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Le texte n'est plus justifié : en colonne étroite, `justify` ouvrait des
+   rivières de blanc que `hyphens: auto` ne rattrapait pas. */
 .projectDesc {
   font-family: var(--font-body);
   font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.8;
-  max-width: 440px;
-  text-align: justify;
-  hyphens: auto;
+  text-wrap: pretty;
 }
 
-/* Inventaire sous la photo */
-.featuresLabel {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(232, 196, 160, 0.12);
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1;
   color: var(--accent-primary);
-  margin-bottom: 0.5rem;
 }
 
-.featuresList {
+.statLabel {
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
-/* Le défi — le problème le plus dur du chantier */
 .challenge {
   border-left: 2px solid rgba(232, 196, 160, 0.35);
   padding-left: 1.1rem;
 }
 
-.challengeLabel {
+.label {
   font-family: var(--font-body);
   font-size: 0.65rem;
   font-weight: 500;
@@ -263,8 +301,7 @@
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.7;
-  text-align: justify;
-  hyphens: auto;
+  text-wrap: pretty;
 }
 
 /* Lien vers l'étude de cas. Même registre que les libellés de la carte —
@@ -290,123 +327,137 @@
   }
 }
 
-/* Gros œuvre — les constructions marquantes du chantier */
+/* Gros œuvre — les constructions marquantes du chantier.
+   Sur deux colonnes fluides : cinq entrées de 30 à 50 mots empilées faisaient
+   à elles seules la moitié de la hauteur de la fiche. */
 .builds {
-  max-width: 480px;
-}
-
-.buildsLabel {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  color: var(--accent-primary);
-  margin-bottom: 0.75rem;
+  margin-top: 3.5rem;
 }
 
 .buildsList {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  column-gap: 3.25rem;
+}
+
+.builds .label {
+  margin-bottom: 1rem;
 }
 
 .buildItem {
   position: relative;
-  padding: 0.7rem 0 0.7rem 1.15rem;
+  padding: 0.8rem 0 0.8rem 1.15rem;
   border-top: 1px solid rgba(232, 196, 160, 0.12);
   font-family: var(--font-body);
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.7;
-  text-align: justify;
-  hyphens: auto;
+  text-wrap: pretty;
 }
 
 .buildItem::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 1.4em;
+  top: 1.55em;
   width: 7px;
   height: 1px;
   background: var(--accent-primary);
 }
 
-/* Chiffre-preuve */
-.stat {
+.features {
+  margin-top: 2.25rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.85rem;
+  gap: 0.5rem 1rem;
 }
 
-.statValue {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--accent-primary);
+.features .label {
+  margin-bottom: 0;
+  flex-shrink: 0;
 }
 
-.statLabel {
+.featuresList {
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  max-width: 220px;
-  line-height: 1.6;
+  line-height: 1.8;
+  text-wrap: pretty;
 }
 
-/* Responsive */
+/* ── Les fondations ───────────────────────────────────────── */
+
+.foundations {
+  margin-bottom: 2.5rem;
+}
+
+.foundations .eyebrow {
+  margin-bottom: 0.9rem;
+}
+
+.foundationsIntro {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+.closingRule {
+  border-top: 1px solid rgba(232, 196, 160, 0.16);
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .project {
+    margin-bottom: 5rem;
+  }
+
+  .summary {
+    margin-bottom: 4rem;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .headerRight {
     padding-bottom: 0;
   }
 
-  .projectRow,
-  .projectWrapper:nth-child(even) .projectRow {
-    flex-direction: column-reverse;
-    align-items: stretch;
-    min-height: unset;
-    gap: 2.5rem;
+  .summary {
+    margin-bottom: 3rem;
   }
 
-  /* En colonne, plus de gauche/droite : le décalage disparaît */
-  .projectRow .projectText,
-  .projectWrapper:nth-child(even) .projectRow .projectMedia,
-  #aux-ptits-pois .projectMedia {
-    padding-top: 0;
+  .titleRow {
+    margin-bottom: 1.75rem;
   }
 
-  .separator {
-    margin: 3.5rem 0;
-  }
-
-  .number {
-    font-size: 8rem;
-    top: 50%;
-    transform: translateY(-70%);
-    right: -0.5rem;
-  }
-
-  .projectWrapper:nth-child(even) .number {
-    right: auto;
-    left: -0.5rem;
-  }
-
-  .projectDesc {
-    max-width: 100%;
+  /* Les étiquettes de techno passent sous le numéro plutôt que de se battre
+     avec lui pour la même ligne. */
+  .tags {
+    justify-content: flex-start;
   }
 
   .builds {
-    max-width: 100%;
+    margin-top: 2.5rem;
+  }
+
+  .project {
+    margin-bottom: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .statValue {
+    font-size: 2.1rem;
   }
 }

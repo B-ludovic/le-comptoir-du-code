@@ -7,7 +7,9 @@
     "cta": "Demander un devis",
     "cta_secondary": "Voir les forfaits",
     "reviews_label": "Ils ont ouvert la porte",
-    "reviews_source": "Avis publiés sur"
+    "reviews_source": "Avis publiés sur",
+    "live_label": "En ligne en ce moment",
+    "live_cta": "Les six chantiers"
   },
   "nav": {
     "method": "Méthode",
@@ -56,6 +58,7 @@
     "section_title": "Trois socles. Zéro surprise.",
     "intro": "Chaque offre est un socle au périmètre défini, chiffré en jours de travail. Les besoins spécifiques s'ajoutent en modules facturés à la journée : vous savez exactement ce que vous payez, et vous pouvez en retirer.",
     "from": "À partir de",
+    "days_line": "{days} jours",
     "maintenance_included": "{months} mois de mises à jour de sécurité inclus, puis {rate}",
     "modules_label": "En supplément, chiffrés à part",
     "cards": {
@@ -209,7 +212,16 @@
     "project6_feat4": "notifications admin en temps réel",
     "project6_feat5": "adresses de livraison multiples",
     "project6_feat6": "honeypot anti-spam",
-    "project6_stack": "Next.js 14 · Express · PostgreSQL · Stripe · Prisma"
+    "project6_stack": "Next.js 14 · Express · PostgreSQL · Stripe · Prisma",
+    "summary_label": "Sommaire des chantiers",
+    "status_production": "En production",
+    "status_online": "En ligne",
+    "status_archived": "Archivé — code ouvert",
+    "foundations_label": "Les fondations",
+    "foundations_intro": "Trois chantiers plus anciens, toujours consultables. Ouvrez la fiche pour lire le détail — c'est le même niveau de preuve, rangé plus serré.",
+    "archive_toggle": "Ouvrir ou fermer la fiche du chantier",
+    "open_site": "Ouvrir le site",
+    "open_repo": "Voir le code"
   },
   "about": {
     "eyebrow": "L'artisan derrière l'écran.",
@@ -217,12 +229,23 @@
     "p1": "Après 18 ans à encadrer des équipes sur le terrain et à piloter des opérations, j'ai tombé la cravate pour revenir à ma véritable obsession : la mécanique pure du web.",
     "p2": "De cette première vie de manager, j'ai gardé une grille de lecture implacable. Je sais qu'un chef d'entreprise n'a pas le temps pour le jargon ou les grandes théories : il a besoin d'outils qui tournent. Mon œil a été formé à repérer les frictions. Quand j'analyse un projet, je vois immédiatement ce qui ralentit vos clients, ce qui alourdit une interface ou ce qui sonne faux.",
     "p3": "C'est ce qui fonde cette Échoppe. Je ne vous ferai pas de grandes promesses creuses. Ce qui nous réunit, c'est un cahier des charges à tenir et un résultat à livrer.",
-    "p4": "On se met d'accord sur les fondations, je forge l'architecture, et je ne ferme pas mon éditeur tant que la machine ne fait pas exactement ce qui a été signé. Mon métier, c'est de produire un code solide pour que vous puissiez vous concentrer sur le vôtre."
+    "p4": "On se met d'accord sur les fondations, je forge l'architecture, et je ne ferme pas mon éditeur tant que la machine ne fait pas exactement ce qui a été signé. Mon métier, c'est de produire un code solide pour que vous puissiez vous concentrer sur le vôtre.",
+    "portrait_alt": "Ludovic Bataille, développeur web freelance à Paris",
+    "portrait_caption": "LUDOVIC BATAILLE · PARIS · ÎLE-DE-FRANCE",
+    "stat1_value": "18 ans",
+    "stat1_label": "à encadrer des équipes sur le terrain",
+    "stat2_value": "6",
+    "stat2_label": "chantiers livrés, 5 encore en ligne",
+    "stat3_value": "1",
+    "stat3_label": "seul interlocuteur, du cadrage à la mise en ligne"
   },
   "contact": {
     "eyebrow": "Au comptoir",
     "section_title": "Déposer le brief.",
     "intro": "Décrivez les contours de votre site vitrine, vente en ligne ou application métier. Réponse sous 24 heures ouvrées pour planifier un échange de 15 minutes et valider le périmètre technique.",
+    "assurance1": "Réponse sous 24 h ouvrées",
+    "assurance2": "Échange de 15 minutes",
+    "assurance3": "Devis chiffré en jours",
     "field_name": "Nom / Entreprise",
     "field_email": "Email",
     "field_description": "Description de votre besoin",

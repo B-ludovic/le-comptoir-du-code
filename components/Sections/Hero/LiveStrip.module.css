@@ -1,0 +1,103 @@
+.strip {
+  margin-top: 4rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(232, 196, 160, 0.16);
+  border-bottom: 1px solid rgba(232, 196, 160, 0.16);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2.25rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--accent-primary);
+}
+
+/* Une pulsation, un sens : « ça tourne ». Nulle part ailleurs. */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  animation: liveStripPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes liveStripPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.25rem;
+}
+
+.domain {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  transition: color var(--transition-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .domain:hover {
+    color: var(--accent-primary);
+  }
+}
+
+.cta {
+  margin-left: auto;
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--accent-primary);
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(232, 196, 160, 0.25);
+  transition: border-color var(--transition-base), color var(--transition-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cta:hover {
+    color: var(--accent-hover);
+    border-bottom-color: var(--accent-primary);
+  }
+}
+
+@media (max-width: 1024px) {
+  .strip {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta {
+    margin-left: 0;
+  }
+}

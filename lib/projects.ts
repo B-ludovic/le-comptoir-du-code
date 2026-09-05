@@ -20,8 +20,10 @@ export type ProjectMedia = {
   repo?: string
   status: 'online' | 'archived'
   /* Chantiers mis en avant : ceux qu'un prospect ou un moteur peut ouvrir et
-     parcourir aujourd'hui. Ils passent en tête de liste et sont les seuls
-     détaillés dans le llms.txt. */
+     parcourir aujourd'hui. Ils passent en tête de liste, sont les seuls
+     détaillés dans le llms.txt — et depuis la refonte de la page d'accueil,
+     les seuls présentés en fiche complète. Les autres tiennent en une ligne
+     dépliable. */
   flagship?: boolean
 }
 
@@ -142,4 +144,45 @@ export function getProjects(dict: Record<string, string>): Project[] {
    dépôt sinon, rien du tout si les deux manquent. */
 export function projectHref(project: ProjectMedia): string | null {
   return project.url ?? project.repo ?? null
+}
+
+/* Deux rangs de présentation, tirés du seul `flagship` déjà déclaré au-dessus.
+   La page d'accueil détaillait les six chantiers à poids égal ; un prospect
+   n'en lisait donc aucun. Les trois chantiers phares gardent la fiche complète,
+   les trois autres tiennent en une ligne dépliable — même contenu, rangé plus
+   serré, et toujours dans le DOM pour les moteurs. */
+export function splitProjects(projects: Project[]): {
+  flagships: Project[]
+  archives: Project[]
+} {
+  return {
+    flagships: projects.filter((project) => project.flagship),
+    archives: projects.filter((project) => !project.flagship),
+  }
+}
+
+/* Le domaine, nu, tel qu'on l'écrirait sur une carte de visite. Affiché à côté
+   du titre : c'est la preuve la moins contestable qu'un chantier tourne — plus
+   qu'un badge « en production », qui n'engage que celui qui l'écrit. Rien pour
+   un chantier fermé, et rien pour un dépôt : github.com n'est pas un produit. */
+export function projectDomain(project: ProjectMedia): string | null {
+  if (!project.url) return null
+  return project.url
+    .replace(/^https?:\/\//, '')
+    .replace(/^www\./, '')
+    .replace(/\/.*$/, '')
+}
+
+/* Clé de libellé d'état, à lire dans le dictionnaire. Trois cas seulement :
+   un chantier phare en ligne, un chantier en ligne, un chantier fermé. */
+export function projectStatusKey(
+  project: ProjectMedia,
+): 'status_production' | 'status_online' | 'status_archived' {
+  if (project.status === 'archived') return 'status_archived'
+  return project.flagship ? 'status_production' : 'status_online'
+}
+
+/* Les chantiers ouvrables aujourd'hui, pour le bandeau de l'accroche. */
+export function liveProjects(): ProjectMedia[] {
+  return PROJECT_MEDIA.filter((project) => project.url !== null)
 }

@@ -11,6 +11,9 @@ type Props = {
     eyebrow?: string
     section_title: string
     intro: string
+    assurance1?: string
+    assurance2?: string
+    assurance3?: string
     field_name: string
     field_email: string
     field_description: string
@@ -160,17 +163,32 @@ export default function Contact({ dict, locale }: Props) {
     <section id="contact" className={styles.section}>
       <div className="container">
 
-        <div className={styles.header}>
-          <div className={styles.headerLeft}>
+        {/* Deux colonnes qui partagent la même ligne de départ : le discours
+            à gauche, le formulaire à droite. Le brief n'est plus un bloc posé
+            sous un en-tête pleine largeur avec un demi-écran vide à côté —
+            la promesse et le champ où l'on répond sont enfin côte à côte. */}
+        <div className={styles.layout}>
+
+          <div className={styles.aside}>
             {dict.eyebrow && <p className={styles.eyebrow}>{dict.eyebrow}</p>}
             <h2 className={styles.sectionTitle}>{dict.section_title}</h2>
-          </div>
-          <div className={styles.headerRight}>
             <p className={styles.intro}>{dict.intro}</p>
-          </div>
-        </div>
 
-        <form ref={formRef} onSubmit={handleSubmit} className={styles.form} noValidate>
+            {/* Trois repères, en monospace comme tous les faits chiffrés du
+                site. Ils ne répètent pas l'intro : ils l'extraient.
+                Optionnels : la page Échoppe solidaire réutilise ce formulaire
+                avec son propre dictionnaire en dur, et ses délais ne sont pas
+                ceux de l'accueil. Sans les clés, le bloc ne sort pas. */}
+            {dict.assurance1 && dict.assurance2 && dict.assurance3 && (
+              <ul className={styles.assurances}>
+                <li>{dict.assurance1}</li>
+                <li>{dict.assurance2}</li>
+                <li>{dict.assurance3}</li>
+              </ul>
+            )}
+          </div>
+
+          <form ref={formRef} onSubmit={handleSubmit} className={styles.form} noValidate>
 
           <div className={styles.row}>
             <div className={styles.field}>
@@ -297,7 +315,9 @@ export default function Contact({ dict, locale }: Props) {
             )}
           </div>
 
-        </form>
+          </form>
+
+        </div>
 
       </div>
     </section>

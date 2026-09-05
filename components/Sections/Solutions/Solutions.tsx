@@ -23,6 +23,7 @@ type Props = {
     section_title: string
     intro: string
     from: string
+    days_line: string
     maintenance_included: string
     modules_label: string
     cards: Record<TierId, CardCopy>
@@ -65,14 +66,22 @@ export default function Solutions({ locale, dict }: Props) {
                   {String(index + 1).padStart(2, '0')}
                 </span>
 
+
                 <div className={styles.cardContent}>
                   <div className={styles.cardHeader}>
                     <h3 className={styles.cardTitle}>{tier.name}</h3>
                     <span className={styles.cardSubtitle}>{copy.subtitle}</span>
                   </div>
+                  {/* Le montant seul, en gros ; la condition juste dessous.
+                      « À partir de » ne se dit qu'une fois, sur la ligne qui
+                      porte le nombre de jours — c'est le socle qui est chiffré
+                      en jours, pas le prix qui serait négociable. */}
                   <p className={styles.cardPrice}>
-                    {dict.from} {formatPrice(tier.price, lang)}&nbsp;
+                    {formatPrice(tier.price, lang)}&nbsp;
                     <span className={styles.cardPriceHT}>HT</span>
+                  </p>
+                  <p className={styles.daysLine}>
+                    {dict.from} · {dict.days_line.replace('{days}', String(tier.days))}
                   </p>
 
                   <p className={styles.cardDesc}>{copy.desc}</p>
@@ -106,7 +115,6 @@ export default function Solutions({ locale, dict }: Props) {
                   </div>
                 </div>
 
-                {index < TIERS.length - 1 && <div className={styles.separator} />}
               </div>
             )
           })}

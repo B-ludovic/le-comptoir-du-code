@@ -1,7 +1,20 @@
 /* Bandeau « Le préalable » — posé au-dessus de la grille Solutions.
    Mise en page d'après la maquette carte.html, transposée sur les tokens
    du design system : Cormorant à la place de Playfair, DM Sans à la place
-   de Hanken Grotesk, accent cuivre unique, border-radius 2px. */
+   de Hanken Grotesk, accent cuivre unique, border-radius 2px.
+
+   Refonte v2 — trois changements, rien de plus :
+   1. .head et .foot passent en flex : ils se replient d'eux-mêmes, sans
+      attendre le breakpoint 1024.
+   2. .intro n'est plus justifié : en colonne de 400 px, `justify` ouvrait des
+      rivières de blanc que `hyphens: auto` ne rattrapait pas.
+   3. .tierGhost devient .tierNumber — monospace, devant le texte, aligné sur
+      Méthode et Réalisations. Le subgrid passe de trois à quatre pistes.
+
+   Refonte v3, d'après mocks/Accueil-v2.dc.html : la bande prend le cadre
+   commun de la page, le filet du palier redevient un trait simple et le
+   numéro perd son tiret. Le subgrid, lui, est conservé contre la maquette —
+   voir la note sur .tiers. */
 
 .section {
   padding: 6rem 2rem 2rem;
@@ -9,27 +22,30 @@
 
 .band {
   position: relative;
-  padding: 4.5rem 4.5rem 3.75rem;
+  /* Le cadre commun de la page, celui de la maquette : bordure d'accent
+     lisible, remplissage presque nul. Le dégradé et l'ombre portée d'avant
+     faisaient de cette bande la seule pièce en relief d'une page entièrement
+     plate — une fois Solutions, l'accroche et le brief encadrés de la même
+     façon, elle détonnait au lieu de ressortir. */
+  padding: clamp(1.5rem, 4vw, 3.5rem);
   border: 1px solid rgba(232, 196, 160, 0.16);
   border-radius: var(--card-radius);
-  background: linear-gradient(
-    180deg,
-    rgba(232, 196, 160, 0.05),
-    rgba(232, 196, 160, 0.01)
-  );
-  box-shadow:
-    0 42px 120px -46px rgba(0, 0, 0, 0.65),
-    inset 0 1px 0 rgba(232, 196, 160, 0.06);
+  background: rgba(255, 255, 255, 0.02);
   overflow: hidden;
 }
 
 /* — En-tête : titre à gauche, pitch à droite, alignés en pied — */
 
 .head {
-  display: grid;
-  grid-template-columns: 1.55fr 1fr;
-  gap: 4.5rem;
-  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem 4.5rem;
+  align-items: flex-end;
+}
+
+.headLeft {
+  flex: 1 1 360px;
+  min-width: 0;
 }
 
 .eyebrow {
@@ -50,64 +66,75 @@
   line-height: 1.06;
   letter-spacing: -0.012em;
   color: var(--text-main);
+  text-wrap: pretty;
 }
 
 .intro {
+  flex: 1 1 320px;
   margin: 0 0 0.6rem;
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.75;
   color: var(--text-muted);
   max-width: 400px;
-  text-align: justify;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+  text-wrap: pretty;
 }
 
 /* — Filets de séparation — */
 
-/* Même halo que les séparateurs des cartes Solutions : dégradé qui
-   s'éteint aux deux bouts + double lueur cuivrée. */
+/* Dégradé simple, de l'accent vers presque rien, comme dans la maquette. La
+   lueur cuivrée est partie avec les filets à halo de Solutions : plus rien sur
+   la page ne rayonne, ce trait ne peut pas être le seul. */
 .rule {
   height: 1px;
-  margin: 3.5rem 0 2.875rem;
+  margin: 2.75rem 0;
   background: linear-gradient(
-    to right,
-    transparent,
-    rgba(232, 196, 160, 0.2) 20%,
-    rgba(232, 196, 160, 0.2) 80%,
-    transparent
+    90deg,
+    rgba(232, 196, 160, 0.2),
+    rgba(232, 196, 160, 0.04)
   );
-  box-shadow:
-    0 0 6px rgba(232, 196, 160, 0.25),
-    0 0 14px rgba(232, 196, 160, 0.1);
 }
 
 /* — Les trois paliers — */
 
-/* Trois pistes (titre / label / prix) partagées par les trois colonnes :
-   le prix retombe donc sur la même ligne, quelle que soit la hauteur du
-   titre. Même dispositif que les cartes Solutions. */
+/* ⚠️ Écart assumé avec la maquette, qui pose ici un `auto-fit` sans subgrid.
+
+   Quatre pistes (numéro / titre / label / prix) partagées par les trois
+   colonnes : le prix retombe donc sur la même ligne, quelle que soit la
+   hauteur du titre. Même dispositif que les cartes Solutions — c'est le
+   numéro monospace qui ajoute la quatrième piste, là où le chiffre fantôme
+   était hors flux et n'en demandait aucune.
+
+   Pourquoi ne pas suivre la maquette : elle est dessinée sur des titres d'une
+   seule ligne. En vrai, « Cadrage E-commerce & Business » en fait deux, et les
+   trois prix se désalignent aussitôt. Trois montants côte à côte se comparent
+   du regard — c'est tout l'objet de ce bloc — et un décrochage de 34 px suffit
+   à casser la comparaison. Le subgrid tient cette ligne quel que soit le
+   texte ; l'auto-fit ne le peut pas. */
 .tiers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto auto auto;
   /* Écart entre colonnes seulement : les lignes sont des pistes du subgrid,
      leur espacement est géré par les marges de chaque élément. */
-  column-gap: 3.5rem;
+  column-gap: 2.5rem;
   row-gap: 0;
 }
 
 .tier {
   position: relative;
   display: grid;
-  grid-row: span 3;
+  grid-row: span 4;
   grid-template-rows: subgrid;
   align-content: start;
-  padding: 4.375rem 0 0.25rem 2rem;
+  /* Le chiffre fantôme imposait 4.375rem de dégagement en haut. Le numéro
+     monospace vit dans le flux : le padding tombe à la respiration normale. */
+  padding: 0 0 0.25rem 1.25rem;
 }
 
-/* Filet vertical repris des cartes Solutions — dégradé + halo */
+/* Filet simple, comme dans la maquette. Le dégradé à halo venait des colonnes
+   nues de Solutions, qui n'existent plus : elles sont devenues des cartes
+   encadrées, et ce halo n'avait plus de parent nulle part. */
 .tier::before {
   content: '';
   position: absolute;
@@ -115,38 +142,19 @@
   left: 0;
   width: 1px;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(232, 196, 160, 0.2) 20%,
-    rgba(232, 196, 160, 0.2) 80%,
-    transparent
-  );
-  box-shadow:
-    0 0 6px rgba(232, 196, 160, 0.25),
-    0 0 14px rgba(232, 196, 160, 0.1);
+  background: rgba(232, 196, 160, 0.16);
   pointer-events: none;
 }
 
-/* Chiffre fantôme — même esprit que les cartes Solutions, en dégradé clippé */
-.tierGhost {
-  position: absolute;
-  top: -0.625rem;
-  left: -0.375rem;
-  font-family: var(--font-heading);
-  font-size: 7.25rem;
+/* Le numéro, devant le texte. Sans tiret : dans la maquette il n'accompagne
+   que celui de Méthode, où il tient lieu de signature de section. */
+.tierNumber {
+  margin-bottom: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   font-weight: 700;
-  line-height: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(232, 196, 160, 0.14),
-    rgba(232, 196, 160, 0.015)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  pointer-events: none;
-  user-select: none;
+  letter-spacing: 2px;
+  color: var(--accent-primary);
 }
 
 .tierTitle {
@@ -158,6 +166,7 @@
   font-weight: 500;
   line-height: 1.2;
   color: var(--text-main);
+  text-wrap: pretty;
 }
 
 .tierLabel {
@@ -205,15 +214,26 @@
   font-size: 0.92rem;
   line-height: 1.7;
   color: var(--text-muted);
+  text-wrap: pretty;
 }
 
 /* — Pied : conception à gauche, action à droite — */
 
 .foot {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 4.5rem;
-  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem 4.5rem;
+  align-items: flex-start;
+}
+
+.design {
+  flex: 1 1 400px;
+  min-width: 0;
+}
+
+.action {
+  flex: 1 1 280px;
+  min-width: 0;
 }
 
 .designHead {
@@ -257,6 +277,7 @@
   line-height: 1.72;
   color: var(--text-muted);
   max-width: 540px;
+  text-wrap: pretty;
 }
 
 /* — Action — */
@@ -293,6 +314,7 @@
   line-height: 1.65;
   color: var(--text-muted);
   opacity: 0.85;
+  text-wrap: pretty;
 }
 
 .star {
@@ -316,16 +338,6 @@
 /* — Responsive — */
 
 @media (max-width: 1024px) {
-  .band {
-    padding: 3.5rem 2.5rem 3rem;
-  }
-
-  .head,
-  .foot {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
   .intro,
   .designNote,
   .designHead {
@@ -333,17 +345,13 @@
   }
 
   .tiers {
-    gap: 2.5rem;
+    column-gap: 2.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .section {
     padding: 4rem 1.25rem 1.5rem;
-  }
-
-  .band {
-    padding: 2.5rem 1.75rem 2.25rem;
   }
 
   /* Une seule colonne : plus rien à aligner entre paliers, on sort du
@@ -357,11 +365,7 @@
 
   .tier {
     display: block;
-    padding-top: 3.25rem;
-  }
-
-  .tierGhost {
-    font-size: 5.5rem;
+    padding-top: 0;
   }
 
   .rule {
@@ -372,10 +376,6 @@
 @media (max-width: 480px) {
   .section {
     padding: 3rem 1rem 1rem;
-  }
-
-  .band {
-    padding: 2rem 1.25rem 1.75rem;
   }
 
   .btn {

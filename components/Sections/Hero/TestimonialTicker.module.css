@@ -11,14 +11,16 @@
   text-transform: uppercase;
   letter-spacing: 2.5px;
   color: var(--accent-primary);
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(232, 196, 160, 0.12);
 }
 
 /* Fenêtre de lecture : le rail défile derrière, et le masque efface ses bords
    pour que les cartes n'apparaissent pas tranchées net en haut et en bas. */
 .viewport {
   position: relative;
-  height: 420px;
+  margin-top: 1rem;
+  height: clamp(260px, 42vh, 360px);
   overflow: hidden;
   mask-image: linear-gradient(
     to bottom,
@@ -39,7 +41,7 @@
 .rail {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.75rem;
   /* Seize secondes par avis : la durée suit le nombre de cartes, sans quoi
      ajouter un avis accélère la lecture de tous les autres. */
   animation: scroll 64s linear infinite;
@@ -48,7 +50,7 @@
 .clone {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.75rem;
   /* Le gap du rail ne s'applique pas à l'intérieur du clone : on le rétablit
      au-dessus pour que le raccord soit rigoureusement identique aux autres. */
   padding-top: 0;
@@ -66,7 +68,8 @@
 }
 
 /* Un texte qui bouge est un texte qu'on ne peut pas finir de lire : le survol
-   met le rail en pause. */.viewport:focus-within .rail {
+   met le rail en pause. */
+.viewport:focus-within .rail {
   animation-play-state: paused;
 }
 
@@ -76,20 +79,20 @@
   }
 }
 
+/* Aucun cadre ici : c'est le bandeau entier qui est encadré, côté Hero.
+   Un cadre par avis à l'intérieur d'un cadre commun donnait deux bordures
+   concentriques à 1.5 rem l'une de l'autre — l'œil ne savait plus laquelle
+   délimitait quoi. Les avis se séparent par le blanc du rail. */
 .card {
   margin: 0;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(232, 196, 160, 0.08);
-  border-radius: var(--card-radius);
 }
 
 .quote {
-  margin: 0 0 1rem;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
   font-style: italic;
-  line-height: 1.8;
+  line-height: 1.55;
   color: var(--text-main);
 }
 
@@ -98,8 +101,7 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.5rem;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgba(232, 196, 160, 0.08);
+  margin-top: 0.7rem;
   font-family: var(--font-body);
   font-size: 0.72rem;
   color: var(--text-muted);
@@ -122,7 +124,9 @@
 }
 
 .source {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(232, 196, 160, 0.12);
   font-family: var(--font-body);
   font-size: 0.68rem;
   letter-spacing: 0.5px;
