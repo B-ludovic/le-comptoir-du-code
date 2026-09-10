@@ -12,22 +12,61 @@ export type ProjectMedia = {
      pointe vers rien de réel n'apprend rien à un moteur. */
   slug: string
   images: string[]
-  /* Adresse du site en production. `null` quand le chantier n'est plus servi :
-     déclarer une URL morte revient à faire indexer une erreur. */
+  /* Adresse du site en production. `null` quand rien ne s'ouvre — chantier
+     fermé, ou chantier encore gardé par un portique d'accès. Déclarer une URL
+     morte revient à faire indexer une erreur ; déclarer une URL qui répond par
+     une porte close est pire, puisque c'est l'argument même de la section — une
+     adresse qui s'ouvre engage le chantier — qu'on retourne contre soi. */
   url: string | null
+  /* Le domaine d'un chantier qui n'ouvre pas encore. Il s'écrit sur la fiche,
+     mais en texte mort : l'adresse est réservée, elle ne se visite pas. Sans ce
+     champ, un chantier en test privé n'aurait que ses captures à montrer, et le
+     visiteur n'aurait aucun nom à retenir pour y revenir le jour de
+     l'ouverture. */
+  domain?: string
   /* Code public, quand il existe. Ce n'est pas l'adresse du produit : un dépôt
      déclaré comme `url` ferait de github.com le site du projet. */
   repo?: string
-  status: 'online' | 'archived'
+  /* Trois états, parce que deux ne suffisaient pas : un chantier peut tourner
+     pour de vrai sans être encore ouvert au public. `beta` est cet entre-deux —
+     il n'est ni servi à tous, ni abandonné. */
+  status: 'online' | 'beta' | 'archived'
   /* Chantiers mis en avant : ceux qu'un prospect ou un moteur peut ouvrir et
      parcourir aujourd'hui. Ils passent en tête de liste, sont les seuls
      détaillés dans le llms.txt — et depuis la refonte de la page d'accueil,
      les seuls présentés en fiche complète. Les autres tiennent en une ligne
-     dépliable. */
+     dépliable. Un chantier en test privé y a sa place lui aussi : il n'est pas
+     ouvrable, mais il est ce qu'on montre en premier. */
   flagship?: boolean
 }
 
 export const PROJECT_MEDIA: ProjectMedia[] = [
+  {
+    /* Le vaisseau amiral, encore derrière son portique : bymaisonmuse.com
+       répond aujourd'hui par une redirection vers /beta. D'où `url: null` — le
+       titre ne mène nulle part plutôt que vers une porte close — et le domaine
+       écrit juste à côté, sans lien. Le jour de l'ouverture, il suffit de
+       déplacer l'adresse de `domain` vers `url` et de passer le statut à
+       `online` : la fiche, le llms.txt, le bandeau de l'accroche et la page
+       « à propos » suivent tout seuls. */
+    slug: 'muse',
+    /* Quatre captures choisies pour ce qu'elles ne montrent pas. La galerie de
+       templates et la page des ventes événementielles ont été écartées : elles
+       prenaient pour sujet ce qui distingue le produit, et la seconde traînait
+       en plus la barre d'onglets du navigateur. Restent la vitrine, le pilotage
+       vendeur, la conformité et les registres d'administration — ce que la
+       fiche raconte, et rien de plus. */
+    images: [
+      '/images/muse-accueil.png',
+      '/images/muse-dashboard.png',
+      '/images/muse-legal.png',
+      '/images/muse-admin.png',
+    ],
+    url: null,
+    domain: 'bymaisonmuse.com',
+    status: 'beta',
+    flagship: true,
+  },
   {
     slug: 'miabelangue',
     images: [
@@ -166,19 +205,22 @@ export function splitProjects(projects: Project[]): {
    qu'un badge « en production », qui n'engage que celui qui l'écrit. Rien pour
    un chantier fermé, et rien pour un dépôt : github.com n'est pas un produit. */
 export function projectDomain(project: ProjectMedia): string | null {
-  if (!project.url) return null
+  if (!project.url) return project.domain ?? null
   return project.url
     .replace(/^https?:\/\//, '')
     .replace(/^www\./, '')
     .replace(/\/.*$/, '')
 }
 
-/* Clé de libellé d'état, à lire dans le dictionnaire. Trois cas seulement :
-   un chantier phare en ligne, un chantier en ligne, un chantier fermé. */
+/* Clé de libellé d'état, à lire dans le dictionnaire. Quatre cas : un chantier
+   phare en ligne, un chantier en ligne, un chantier en test privé, un chantier
+   fermé. Le test privé se lit avant le rang : un chantier phare qu'on ne peut
+   pas encore ouvrir ne s'annonce pas « en production ». */
 export function projectStatusKey(
   project: ProjectMedia,
-): 'status_production' | 'status_online' | 'status_archived' {
+): 'status_production' | 'status_online' | 'status_beta' | 'status_archived' {
   if (project.status === 'archived') return 'status_archived'
+  if (project.status === 'beta') return 'status_beta'
   return project.flagship ? 'status_production' : 'status_online'
 }
 

@@ -8,6 +8,8 @@
    C'est cette page-ci qui porte le récit complet, pour le lecteur qui veut
    descendre — recruteur, directeur technique, prospect méthodique. */
 
+import { PROJECT_MEDIA } from '@/lib/projects'
+import { muse } from './muse'
 import { miabelangue } from './miabelangue'
 import { auxPtitsPois } from './aux-ptits-pois'
 import { fairyChairStudio } from './fairy-chair-studio'
@@ -89,10 +91,29 @@ export type CaseStudy = {
   content: Record<Locale, CaseContent>
 }
 
+/* Le numéro d'un chantier n'est écrit qu'à un seul endroit : sa place dans
+   PROJECT_MEDIA. Il était jusqu'ici recopié en tête de chaque étude de cas, et
+   l'arrivée d'un chantier en début de liste faisait aussitôt mentir les trois
+   autres — la page d'accueil annonçait 02, l'étude de cas affichait toujours
+   01. Un numéro recopié est un numéro qui finit faux ; celui-ci est calculé.
+   Un chantier absent de la table garde `00`, ce qui se voit tout de suite. */
+function caseNumber(slug: string): string {
+  const index = PROJECT_MEDIA.findIndex((project) => project.slug === slug)
+  return index < 0 ? '00' : String(index + 1).padStart(2, '0')
+}
+
+/* Ce qu'un fichier d'étude de cas déclare : tout, sauf son numéro. */
+export type CaseStudySource = Omit<CaseStudy, 'number'>
+
 /* Le registre. Un chantier absent d'ici n'a pas de page : sa carte reste une
    carte, sans lien vers nulle part. C'est volontaire — mieux vaut cinq cartes
    muettes qu'un lien qui promet une étude de cas inexistante. */
-export const CASE_STUDIES: CaseStudy[] = [miabelangue, auxPtitsPois, fairyChairStudio]
+export const CASE_STUDIES: CaseStudy[] = [
+  muse,
+  miabelangue,
+  auxPtitsPois,
+  fairyChairStudio,
+].map((study) => ({ ...study, number: caseNumber(study.slug) }))
 
 /* L'image que le chantier montre à l'extérieur — Open Graph, Twitter, JSON-LD.
    Toujours une capture paysage : d'un montage on ne retient que le desktop, les

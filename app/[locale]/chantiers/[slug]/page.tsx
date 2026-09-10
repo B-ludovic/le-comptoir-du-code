@@ -86,7 +86,7 @@ export default async function CaseStudyPage({
   const altLocale = isFr ? 'en' : 'fr'
 
   const jsonLd = [
-    caseStudyJsonLd(study, content, locale, media?.url ?? null),
+    caseStudyJsonLd(study, content, locale, media ?? null),
     breadcrumbJsonLd([
       { name: isFr ? 'Accueil' : 'Home', path: `/${locale}` },
       { name: isFr ? 'Réalisations' : 'Selected work', path: `/${locale}#portfolio` },
@@ -333,12 +333,29 @@ export default async function CaseStudyPage({
               </div>
 
               <div className={styles.workshopGrid}>
-                {content.workshop.items.map((item) => (
-                  <div key={item.title} className={styles.workshopItem}>
-                    <h3>{item.title}</h3>
-                    <p>{item.body}</p>
-                  </div>
-                ))}
+                {content.workshop.items.map((item, index) => {
+                  const headingId = `workshop-${study.slug}-${index}`
+                  return (
+                    <div key={item.title} className={styles.workshopItem}>
+                      <h3 id={headingId}>{item.title}</h3>
+                      {/* Le texte défile dans sa case. Chrome ne rend pas
+                          focusable un conteneur qui déborde : sans `tabIndex`,
+                          une personne au clavier ne pourrait pas lire la suite
+                          d'une case longue. Le `role` en fait une région, et
+                          `aria-labelledby` lui donne pour nom le titre de la
+                          case — une région anonyme ne dirait rien à un lecteur
+                          d'écran qui la parcourt. */}
+                      <div
+                        className={styles.workshopBody}
+                        tabIndex={0}
+                        role="region"
+                        aria-labelledby={headingId}
+                      >
+                        <p>{item.body}</p>
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
             </section>
           </div>

@@ -1,4 +1,4 @@
-import type { CaseStudy } from './index'
+import type { CaseStudySource } from './index'
 
 /* Chantier 02 — Aux P'tits Pois.
 
@@ -10,9 +10,8 @@ import type { CaseStudy } from './index'
 
    L'ouverture est le montage de la vitrine, comme sur le chantier 01. */
 
-export const auxPtitsPois: CaseStudy = {
+export const auxPtitsPois: CaseStudySource = {
   slug: 'aux-ptits-pois',
-  number: '02',
 
   /* Le montage d'ouverture : la vitrine sur écran large, et à côté le même site
      sur téléphone. Une capture desktop seule laisse ouverte la question que se

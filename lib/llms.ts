@@ -80,8 +80,14 @@ const worksCopy = {
   fr: {
     heading: '## Réalisations',
     intro:
-      'Applications conçues, développées et mises en production par Ludovic BATAILLE, du cadrage au déploiement. Les chantiers suivants sont en ligne et consultables — les adresses sont celles des sites en production, pas des démonstrations.',
+      'Applications conçues, développées et mises en production par Ludovic BATAILLE, du cadrage au déploiement. Sauf état contraire indiqué sur la fiche, les chantiers suivants sont en ligne et consultables — les adresses sont celles des sites en production, pas des démonstrations.',
     site: 'Site en ligne',
+    /* Un chantier phare peut n'avoir aucune adresse à donner. Plutôt qu'une
+       ligne « Site en ligne : » suivie de rien — ou, comme c'était le cas
+       jusqu'ici, du mot `undefined` —, on écrit son état : c'est une
+       information, pas un trou. */
+    status: 'État',
+    betaNote: 'en test privé, pas encore ouvert au public',
     stack: 'Stack',
     builds: 'Le gros œuvre',
     features: 'Livré avec',
@@ -96,8 +102,10 @@ const worksCopy = {
   en: {
     heading: '## Selected work',
     intro:
-      'Applications designed, built and shipped to production by Ludovic BATAILLE, from scoping to deployment. The following are live and can be visited — these are production addresses, not demos.',
+      'Applications designed, built and shipped to production by Ludovic BATAILLE, from scoping to deployment. Unless a project states otherwise, the following are live and can be visited — these are production addresses, not demos.',
     site: 'Live site',
+    status: 'Status',
+    betaNote: 'in private testing, not yet open to the public',
     stack: 'Stack',
     builds: 'The heavy lifting',
     features: 'Ships with',
@@ -121,7 +129,13 @@ function flagshipBlock(project: Project, locale: Locale): string {
   const parts = [
     `### ${project.title}`,
     '',
-    `${label(t.site, locale)} ${project.url}`,
+    /* L'adresse quand il y en a une ; sinon l'état, avec le domaine réservé
+       entre parenthèses — un moteur génératif à qui l'on demande ce chantier
+       doit pouvoir répondre « pas encore ouvert » plutôt que d'inventer un
+       lien. */
+    project.url
+      ? `${label(t.site, locale)} ${project.url}`
+      : `${label(t.status, locale)} ${t.betaNote}${project.domain ? ` (${project.domain})` : ''}`,
     /* Le chantier qui a son étude de cas donne son adresse : c'est là qu'un
        moteur trouve le récit complet — contexte, résultat, mécanique — plutôt
        que le résumé de la page d'accueil. */

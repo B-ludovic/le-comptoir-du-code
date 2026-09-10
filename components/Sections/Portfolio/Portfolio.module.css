@@ -133,6 +133,16 @@
   animation: portfolioLivePulse 1.8s ease-in-out infinite;
 }
 
+/* Le jumeau éteint du point live : même encombrement, même place dans la
+   ligne, mais creux et immobile. Il tient la colonne sans rien promettre. */
+.pendingDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full, 50%);
+  border: 1px solid var(--text-muted);
+  opacity: 0.6;
+}
+
 @keyframes portfolioLivePulse {
   0%,
   100% {
@@ -221,6 +231,19 @@
     color: var(--accent-primary);
     border-bottom-color: var(--accent-primary);
   }
+
+  /* Une adresse qu'on ne peut pas encore visiter ne doit pas s'allumer au
+     survol : le soulignement pointillé et le curseur inchangé disent, avant le
+     clic, qu'il n'y a pas de clic à faire. */
+  .domainPending:hover {
+    color: var(--text-muted);
+    border-bottom-color: rgba(232, 196, 160, 0.25);
+  }
+}
+
+.domainPending {
+  border-bottom-style: dashed;
+  cursor: default;
 }
 
 /* Capture à gauche, preuve à droite — toujours dans cet ordre, sur toutes les
@@ -245,8 +268,8 @@
   gap: 1.75rem;
 }
 
-/* Le texte n'est plus justifié : en colonne étroite, `justify` ouvrait des
-   rivières de blanc que `hyphens: auto` ne rattrapait pas. */
+/* Le texte est justifié — voir le bloc « Justification du texte courant » en
+   fin de fichier, qui porte la règle et la raison. */
 .projectDesc {
   font-family: var(--font-body);
   font-size: 0.95rem;
@@ -460,4 +483,30 @@
   .statValue {
     font-size: 2.1rem;
   }
+}
+
+/* ————————————————————————————————————————————————————————————————
+   Justification du texte courant.
+
+   Deux propriétés qui ne se séparent pas. `text-align: justify` seul étire les
+   espaces d'une ligne jusqu'à ce que la dernière lettre touche la marge : sur
+   une colonne étroite, ces espaces gonflés s'alignent verticalement d'une ligne
+   à l'autre et creusent des « rivières » de blanc au milieu du paragraphe.
+   `hyphens: auto` est la parade — il coupe les mots longs en fin de ligne, ce
+   qui rend aux espaces leur taille normale. Le navigateur décide où couper
+   d'après la langue déclarée sur <html>, que le layout pose depuis la locale :
+   sans ce `lang`, il n'y aurait pas de dictionnaire de césure et la
+   justification retomberait dans son défaut.
+
+   Les titres, suréclats, libellés, prix et listes de mots-clés restent alignés
+   à gauche : justifier deux mots sur une ligne ne fait qu'écarter les deux
+   mots. Seule la prose est concernée.
+   ———————————————————————————————————————————————————————————————— */
+.intro,
+.projectDesc,
+.challengeText,
+.foundationsIntro,
+.buildItem {
+  text-align: justify;
+  hyphens: auto;
 }

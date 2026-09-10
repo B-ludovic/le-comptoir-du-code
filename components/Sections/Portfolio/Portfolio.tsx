@@ -32,9 +32,9 @@ type Props = {
      numéro et état → titre et domaine → capture → pitch → chiffre-preuve →
      défi → gros œuvre → livré avec
 
-   Deux rangs, tirés du `flagship` de lib/projects.ts : trois fiches complètes,
-   trois lignes dépliables. Le contenu est identique à l'ancienne version — rien
-   n'a été coupé, tout reste dans le DOM. */
+   Deux rangs, tirés du `flagship` de lib/projects.ts : les fiches complètes en
+   haut, les lignes dépliables en dessous. Le contenu est identique à l'ancienne
+   version — rien n'a été coupé, tout reste dans le DOM. */
 export default function Portfolio({ locale, dict }: Props) {
   const projects = getProjects(dict)
   const { flagships, archives } = splitProjects(projects)
@@ -82,7 +82,15 @@ export default function Portfolio({ locale, dict }: Props) {
                 <span className={styles.number}>
                   {project.number}
                   <span className={styles.metaRule} aria-hidden="true" />
-                  <span className={styles.liveDot} aria-hidden="true" />
+                  {/* Le point ne pulse que pour ce qui tourne vraiment sous
+                      les yeux du visiteur. Un chantier qu'on ne peut pas encore
+                      ouvrir garde un point creux : la nuance est muette, mais
+                      elle évite qu'une pastille clignotante contredise le mot
+                      « test privé » écrit trois centimètres à droite. */}
+                  <span
+                    className={project.url ? styles.liveDot : styles.pendingDot}
+                    aria-hidden="true"
+                  />
                   <span className={styles.status}>{dict[projectStatusKey(project)]}</span>
                 </span>
                 <div className={styles.tags}>
@@ -112,18 +120,29 @@ export default function Portfolio({ locale, dict }: Props) {
 
                 {/* Le domaine, écrit en clair. C'est la preuve : un badge
                     « en production » n'engage que celui qui l'écrit, une adresse
-                    qui s'ouvre engage le chantier. */}
-                {domain && (
-                  <a
-                    href={project.url!}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.domain}
-                  >
-                    {domain}
-                    <span aria-hidden="true"> ↗</span>
-                  </a>
-                )}
+                    qui s'ouvre engage le chantier.
+
+                    Reste le cas du chantier dont l'adresse est réservée mais
+                    encore gardée. Elle s'écrit quand même — c'est le nom qu'on
+                    veut faire retenir — mais en texte mort, sans flèche : un
+                    lien qui mène à un portique d'accès dépense la confiance
+                    qu'il était censé gagner. */}
+                {domain &&
+                  (project.url ? (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.domain}
+                    >
+                      {domain}
+                      <span aria-hidden="true"> ↗</span>
+                    </a>
+                  ) : (
+                    <span className={`${styles.domain} ${styles.domainPending}`}>
+                      {domain}
+                    </span>
+                  ))}
               </div>
 
               <div className={styles.body}>

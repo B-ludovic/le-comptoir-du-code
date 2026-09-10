@@ -1,4 +1,4 @@
-import type { CaseStudy } from './index'
+import type { CaseStudySource } from './index'
 
 /* Chantier 01 — Miabelangue.
 
@@ -9,9 +9,8 @@ import type { CaseStudy } from './index'
    capot, au temps qui convient : construit, en attente d'une décision qui
    appartient à la cliente. */
 
-export const miabelangue: CaseStudy = {
+export const miabelangue: CaseStudySource = {
   slug: 'miabelangue',
-  number: '01',
 
   /* Le montage d'ouverture : la vitrine sur écran large, et à côté le même site
      sur téléphone. Une capture desktop seule laisse ouverte la question que se

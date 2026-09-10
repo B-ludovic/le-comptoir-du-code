@@ -1,5 +1,5 @@
 import type { Post } from '@/lib/blog'
-import type { Project } from '@/lib/projects'
+import type { Project, ProjectMedia } from '@/lib/projects'
 import { hasCaseStudy, heroShareImage, type CaseStudy, type CaseContent } from '@/lib/case-studies'
 import {
   TIERS,
@@ -122,6 +122,23 @@ export function projectEntityId(locale: Locale, slug: string): string {
     : `${BASE_URL}/${locale}#${slug}`
 }
 
+/* `creativeWorkStatus` dit ce que l'absence d'URL laisserait deviner : le
+   chantier a existé, il n'est simplement plus servi. Trois valeurs depuis qu'un
+   chantier peut tourner sans être ouvert — `Draft` est le terme du vocabulaire
+   schema.org le plus proche d'un test privé, et surtout le seul qui ne dise pas
+   « abandonné » d'un produit qui est en train de naître.
+
+   La fonction existe parce que deux pages décrivent la même entité sous le même
+   `@id` : la carte de la page d'accueil et l'étude de cas. L'étude de cas
+   écrivait « Published » en dur — un chantier en test privé s'y déclarait donc
+   ouvert au public pendant que la page d'accueil le disait en brouillon. Deux
+   réponses contradictoires sur un seul identifiant : un moteur n'a aucune
+   raison de retenir la bonne. Une seule source, désormais. */
+function creativeWorkStatusFor(status: ProjectMedia['status']): string {
+  if (status === 'online') return 'Published'
+  return status === 'beta' ? 'Draft' : 'Archived'
+}
+
 export function portfolioJsonLd(
   projects: Project[],
   rawLocale: string,
@@ -161,9 +178,7 @@ export function portfolioJsonLd(
         inLanguage: locale,
         creator: authorRef,
         provider: publisherRef,
-        /* `creativeWorkStatus` dit ce que l'absence d'URL laisserait deviner :
-           le chantier a existé, il n'est simplement plus servi. */
-        creativeWorkStatus: project.status === 'online' ? 'Published' : 'Archived',
+        creativeWorkStatus: creativeWorkStatusFor(project.status),
         ...(project.url ? { url: project.url } : {}),
         ...(project.repo ? { codeRepository: project.repo } : {}),
         image: project.images.map((image) => `${BASE_URL}${image}`),
@@ -191,7 +206,9 @@ export function caseStudyJsonLd(
   study: CaseStudy,
   content: CaseContent,
   rawLocale: string,
-  projectUrl: string | null,
+  /* Le chantier lui-même, et non sa seule adresse : l'état en dépend autant que
+     l'URL, et les deux doivent sortir de la même ligne de la table. */
+  project: ProjectMedia | null,
 ) {
   const locale: Locale = rawLocale === 'en' ? 'en' : 'fr'
   const url = `${BASE_URL}/${locale}/chantiers/${study.slug}`
@@ -222,8 +239,8 @@ export function caseStudyJsonLd(
       inLanguage: locale,
       creator: authorRef,
       provider: publisherRef,
-      creativeWorkStatus: 'Published',
-      ...(projectUrl ? { url: projectUrl } : {}),
+      creativeWorkStatus: creativeWorkStatusFor(project?.status ?? 'online'),
+      ...(project?.url ? { url: project.url } : {}),
       image: images,
       keywords: study.stack.join(', '),
       /* Les chapitres « sous le capot » disent ce que ce chantier a demandé de

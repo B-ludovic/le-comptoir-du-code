@@ -1,4 +1,4 @@
-import type { CaseStudy } from './index'
+import type { CaseStudySource } from './index'
 
 /* Chantier 03 — Fairy Chair Studio.
 
@@ -16,9 +16,8 @@ import type { CaseStudy } from './index'
    chantiers : les pages sont peu hautes, et ce que la version téléphone ajoute
    au récit, un défilement filmé ne l'apprendrait pas. */
 
-export const fairyChairStudio: CaseStudy = {
+export const fairyChairStudio: CaseStudySource = {
   slug: 'fairy-chair-studio',
-  number: '03',
 
   /* Le montage d'ouverture : la vitrine sur écran large, et à côté le même site
      sur téléphone. Une capture desktop seule laisse ouverte la question que se

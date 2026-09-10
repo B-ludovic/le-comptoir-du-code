@@ -484,9 +484,57 @@
   border: 1px solid rgba(232, 196, 160, 0.1);
 }
 
+/* Toutes les cases au même gabarit, quel que soit le chantier.
+
+   Avant, chaque ligne de la grille prenait la hauteur de sa case la plus
+   bavarde : une case de neuf lignes en étirait deux autres de trois, et le
+   chapitre finissait en escalier. La hauteur est donc posée une fois pour
+   toutes, et c'est le texte qui défile à l'intérieur — un pavé long ne
+   déforme plus ses voisins.
+
+   Le corollaire est assumé : sur les chantiers aux textes courts, la case
+   garde du blanc sous son dernier mot. Une grille régulière avec du vide se
+   lit mieux qu'une grille en dents de scie. */
 .workshopItem {
   background: var(--bg-card);
   padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  height: 21rem;
+}
+
+/* La zone qui défile. `min-height: 0` est ce qui rend le débordement possible :
+   sans lui, un élément flex refuse de devenir plus petit que son contenu, donc
+   rien ne défile jamais et la case déborde en silence. */
+.workshopBody {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  /* Le défilement s'arrête à la case : arrivé en bas, la molette ne se met pas
+     à faire descendre la page derrière. */
+  overscroll-behavior: contain;
+  /* Le texte ne colle pas à la barre, et la gouttière est reprise en marge
+     négative pour que la colonne reste alignée sur les autres. */
+  padding-right: 0.9rem;
+  margin-right: -0.6rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(232, 196, 160, 0.35) transparent;
+}
+
+.workshopBody::-webkit-scrollbar {
+  width: 4px;
+}
+
+.workshopBody::-webkit-scrollbar-thumb {
+  background: rgba(232, 196, 160, 0.35);
+  border-radius: var(--radius-full, 999px);
+}
+
+/* La zone est atteignable au clavier — voir le commentaire du composant. Sans
+   contour visible, on ne saurait pas où l'on vient d'arriver. */
+.workshopBody:focus-visible {
+  outline: 1px solid var(--accent-primary);
+  outline-offset: 4px;
 }
 
 .workshopItem h3 {
@@ -503,6 +551,7 @@
   font-size: 0.85rem;
   line-height: 1.8;
   color: var(--text-muted);
+  margin: 0;
 }
 
 /* ── Appel ───────────────────────────────────────────────────────────────── */

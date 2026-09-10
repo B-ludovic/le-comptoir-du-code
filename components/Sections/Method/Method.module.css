@@ -127,3 +127,13 @@
     font-size: 1.6rem;
   }
 }
+
+/* Justification du texte courant. `justify` et `hyphens: auto` vont par paire :
+   sans la césure, les espaces étirés creusent des rivières de blanc dans la
+   colonne. La coupure suit le `lang` posé sur <html>. Même règle dans les
+   autres sections — le commentaire complet est dans Portfolio.module.css. */
+.intro,
+.blockText {
+  text-align: justify;
+  hyphens: auto;
+}
