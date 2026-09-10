@@ -57,10 +57,10 @@ export const PROJECT_MEDIA: ProjectMedia[] = [
        vendeur, la conformité et les registres d'administration — ce que la
        fiche raconte, et rien de plus. */
     images: [
-      '/images/muse-accueil.png',
-      '/images/muse-dashboard.png',
-      '/images/muse-legal.png',
-      '/images/muse-admin.png',
+      '/images/muse-accueil.webp',
+      '/images/muse-dashboard.webp',
+      '/images/muse-legal.webp',
+      '/images/muse-admin.webp',
     ],
     url: null,
     domain: 'bymaisonmuse.com',

@@ -31,17 +31,17 @@ export const muse: CaseStudySource = {
      téléphone » — ce qui, pour un outil de gestion, est la question qui compte. */
   hero: {
     kind: 'composite',
-    desktop: { src: '/images/muse-accueil.png', width: 3450, height: 1926 },
+    desktop: { src: '/images/muse-accueil.webp', width: 2400, height: 1340 },
     mobiles: [
-      { src: '/images/muse-dashboard-mobile.jpeg', width: 1320, height: 2393 },
-      { src: '/images/muse-mobile.jpeg', width: 1320, height: 2381 },
+      { src: '/images/muse-dashboard-mobile.webp', width: 1000, height: 1813 },
+      { src: '/images/muse-mobile.webp', width: 1000, height: 1804 },
     ],
   },
 
   gallery: [
-    { src: '/images/muse-dashboard.png', width: 3450, height: 1926 },
-    { src: '/images/muse-legal.png', width: 3450, height: 1926 },
-    { src: '/images/muse-admin.png', width: 3450, height: 1926 },
+    { src: '/images/muse-dashboard.webp', width: 2400, height: 1340 },
+    { src: '/images/muse-legal.webp', width: 2400, height: 1340 },
+    { src: '/images/muse-admin.webp', width: 2400, height: 1340 },
   ],
 
   stack: [
