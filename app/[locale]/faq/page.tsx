@@ -1,5 +1,12 @@
 import type { Metadata } from 'next'
-import { tier, formatPrice, formatMonthly, ENGINEERING_DAY_RATE, SCOPING_NON_PROFIT_FROM } from '@/lib/pricing'
+import {
+  tier,
+  formatPrice,
+  formatMonthly,
+  ENGINEERING_DAY_RATE,
+  SCOPING_NON_PROFIT_FROM,
+  QUOTE_STUDY_FEE,
+} from '@/lib/pricing'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
@@ -49,8 +56,9 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Le devis est-il payant ?',
       answer: [
-        "Non. Le devis et le premier échange sont gratuits. Un devis chiffre un périmètre : les lots, ce qu'ils contiennent, le prix, les conditions.",
-        "Ce qu'il ne contient pas, c'est l'étude — arborescence, modèle de données, choix des solutions, arbitrages techniques. Cette étude porte un nom, c'est le cadrage, et elle est facturée parce qu'elle est le travail lui-même.",
+        "Les deux premiers devis d'un projet sont gratuits, comme le premier échange. Un devis chiffre un périmètre : les lots, ce qu'ils contiennent, le prix, les conditions.",
+        `À partir du troisième, il est facturé ${formatPrice(QUOTE_STUDY_FEE, 'fr')} HT. Deux devis suffisent à qui a un projet ; le troisième veut dire qu'on est en train de concevoir à votre place, gratuitement et sans l'avoir dit. Je vous préviens avant de commencer et rien n'est engagé sans votre accord écrit — et si vous signez dans les trois mois, la somme se déduit intégralement du développement.`,
+        "Ce qu'un devis ne contient pas, c'est l'étude — arborescence, modèle de données, choix des solutions, arbitrages techniques. Cette étude porte un nom, c'est le cadrage, et elle est facturée parce qu'elle est le travail lui-même. Un devis qui suit un cadrage réglé n'est jamais facturé : le chiffrage sort du dossier, il est déjà payé.",
         "Concrètement : si vous savez ce que vous voulez construire, je chiffre et on démarre. Si le projet reste à définir, c'est le cadrage qui le définit — un plan ne se dessine pas en marge d'un devis.",
       ],
     },
@@ -131,8 +139,9 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Is the quote itself chargeable?',
       answer: [
-        'No. The quote and the first conversation are free. A quote prices a scope: the work packages, what they contain, the price, the terms.',
-        'What it does not contain is the study — site structure, data model, solution choices, technical trade-offs. That study has a name, it is the scoping engagement, and it is billed because it is the work itself.',
+        'The first two quotes for a project are free, as is the first conversation. A quote prices a scope: the work packages, what they contain, the price, the terms.',
+        `From the third one on, it is charged at ${formatPrice(QUOTE_STUDY_FEE, 'en')} excl. VAT. Two quotes are enough for anyone who has a project; a third means I am designing it for you, free of charge and without either of us having said so. I tell you before I start and nothing is committed without your written agreement — and if you sign within three months, the amount comes off the development price in full.`,
+        'What a quote does not contain is the study — site structure, data model, solution choices, technical trade-offs. That study has a name, it is the scoping engagement, and it is billed because it is the work itself. A quote that follows a paid scoping engagement is never charged: the costing comes out of the report, which you have already paid for.',
         'In practice: if you know what you want to build, I price it and we start. If the project is still to be defined, scoping is what defines it — a plan is not drawn in the margins of a quote.',
       ],
     },

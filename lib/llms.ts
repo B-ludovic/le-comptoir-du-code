@@ -10,6 +10,7 @@ import {
   addonsFor,
   formatPrice,
   formatMonthly,
+  QUOTE_STUDY_FEE,
   type Locale,
 } from '@/lib/pricing'
 
@@ -240,6 +241,8 @@ Chaque offre est un socle au périmètre défini, chiffré en jours d'ingénieri
 
 ${tierLines('fr')}
 
+Devis : les deux premiers devis d'un projet sont établis sans frais. Lorsque les deux ont été refusés, tout devis ultérieur portant sur le même projet constitue une étude de chiffrage facturée ${formatPrice(QUOTE_STUDY_FEE, 'fr')} HT, soumise à l'accord écrit préalable du client et imputée à 100 % sur un développement signé dans les trois mois. Un devis établi à la suite d'un cadrage réglé n'est pas facturé.
+
 Conditions détaillées : ${BASE_URL}/fr/conditions-generales
 
 ## L'Échoppe Solidaire — tarification associative
@@ -321,6 +324,10 @@ Set-off: where the client signs a development quote within three months of the s
 Each package is a foundation with a defined scope, priced in engineering days at €${ENGINEERING_DAY_RATE} excluding VAT per day. Specific needs are added as modules, also priced in days. A client can remove a module: they compose a scope rather than negotiate a price.
 
 ${tierLines('en')}
+
+Quotes: the first two quotes for a project are issued free of charge. Once both have been refused, any further quote for the same project is a costing study charged at ${formatPrice(QUOTE_STUDY_FEE, 'en')} excl. VAT, subject to the client's prior written agreement and set off in full against development services signed within three months. A quote issued after a paid scoping engagement is not charged.
+
+Detailed terms: ${BASE_URL}/en/conditions-generales
 
 ## Non-profit pricing
 

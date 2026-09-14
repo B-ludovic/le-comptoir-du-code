@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import type { DevisData } from './DevisForm'
 import styles from './Devis.module.css'
+import { QUOTE_STUDY_FEE, formatPrice } from '@/lib/pricing'
 
 type Props = { data: DevisData }
 
@@ -77,6 +78,7 @@ const T = {
     standardHT: 'Tarif standard HT',
     mecenasDiscount: 'Mécénat de compétences (−50 %)',
     imputationLabel: 'Imputation cadrage (−50 %)',
+    imputationEtudeLabel: 'Imputation étude de chiffrage (−100 %)',
     baseHT: 'Base HT',
     subtotal: 'Sous-total HT',
     tva: 'TVA (20 %)',
@@ -118,7 +120,7 @@ const T = {
     validityTitle: 'Validité',
     validityText: `Ce devis est valable 30 jours<br>à compter de sa date d'émission.<br>Passé ce délai, les tarifs peuvent être révisés.`,
     disclaimerTitle: null,
-    disclaimerText: `Le présent devis est établi gratuitement et engage le Prestataire pendant toute sa durée de validité. Il forme le contrat à réception de l'exemplaire signé portant la mention « Bon pour accord », accompagné du paiement prévu au calendrier ci-dessus. Les droits de propriété intellectuelle sont transférés au client à réception du paiement intégral. Les présentes conditions sont soumises au droit français.`,
+    disclaimerText: `Le présent devis engage le Prestataire pendant toute sa durée de validité. Les deux premiers devis d'un projet sont établis sans frais ; au-delà, l'établissement d'un devis constitue une étude de chiffrage facturée ${formatPrice(QUOTE_STUDY_FEE, 'fr')} HT, soumise à l'accord écrit préalable du Client et imputée à 100 % sur un développement signé dans les trois mois (article 4 ter des conditions générales). Il forme le contrat à réception de l'exemplaire signé portant la mention « Bon pour accord », accompagné du paiement prévu au calendrier ci-dessus. Les droits de propriété intellectuelle sont transférés au client à réception du paiement intégral. Les présentes conditions sont soumises au droit français.`,
     mecenaBadge: "L'Échoppe Solidaire — Mécénat de compétences LGBTQI+ & Associations",
     htmlLang: 'fr',
   },
@@ -146,6 +148,7 @@ const T = {
     standardHT: 'Standard rate (excl. VAT)',
     mecenasDiscount: 'Skills sponsorship (−50%)',
     imputationLabel: 'Scoping set-off (−50%)',
+    imputationEtudeLabel: 'Costing study set-off (−100%)',
     baseHT: 'Taxable base (excl. VAT)',
     subtotal: 'Subtotal (excl. VAT)',
     tva: 'VAT (20%)',
@@ -187,7 +190,7 @@ const T = {
     validityTitle: 'Validity',
     validityText: `This quote is valid for 30 days<br>from its issuance date.<br>After this period, rates may be revised.`,
     disclaimerTitle: 'Terms',
-    disclaimerText: `This quote is issued free of charge and binds the Service Provider throughout its validity period. It forms the contract upon receipt of the signed copy bearing the words « Bon pour accord » (agreed), together with the payment set out in the schedule above. Intellectual property rights are transferred to the client upon receipt of full payment. These terms are governed by French law.`,
+    disclaimerText: `This quote binds the Service Provider throughout its validity period. The first two quotes for a project are issued free of charge; beyond that, issuing a quote constitutes a costing study charged at ${formatPrice(QUOTE_STUDY_FEE, 'en')} excl. VAT, subject to the Client's prior written agreement and set off in full against development services signed within three months (Article 4 ter of the general terms and conditions). It forms the contract upon receipt of the signed copy bearing the words « Bon pour accord » (agreed), together with the payment set out in the schedule above. Intellectual property rights are transferred to the client upon receipt of full payment. These terms are governed by French law.`,
     mecenaBadge: "L'Échoppe Solidaire — Skills Sponsorship LGBTQI+ & Associations",
     htmlLang: 'en',
   },
@@ -204,7 +207,14 @@ function calcTotals(data: DevisData) {
     prestation === 'dev'
       ? Math.min((parseFloat(data.cadrage_paid) || 0) * 0.5, ht)
       : 0
-  const baseHt = ht - imputation
+  /* L'étude de chiffrage s'impute à 100 %, dans ce qui reste après le
+     cadrage : deux imputations qui se cumuleraient sans plafond commun
+     feraient tomber une base HT négative, donc une TVA négative. */
+  const imputationEtude =
+    prestation === 'dev'
+      ? Math.min(parseFloat(data.etude_paid) || 0, ht - imputation)
+      : 0
+  const baseHt = ht - imputation - imputationEtude
   const tva = baseHt * 0.20
   const ttc = baseHt + tva
   // Le taux d'acompte dépend du contrat : CGV développement ou CGP cadrage.
@@ -215,8 +225,10 @@ function calcTotals(data: DevisData) {
     remise: fmt(String(remise), locale),
     total_ht: fmt(String(ht), locale),
     imputation: fmt(String(imputation), locale),
+    imputation_etude: fmt(String(imputationEtude), locale),
     base_ht: fmt(String(baseHt), locale),
     hasImputation: imputation > 0,
+    hasImputationEtude: imputationEtude > 0,
     tva_amount: fmt(String(tva), locale),
     acompte_amount: fmt(String(acompte), locale),
     total_ttc: fmt(String(ttc), locale),
@@ -410,6 +422,7 @@ export default function DevisPreview({ data }: Props) {
       ${totals.isAsso ? `<div class="totaux-line remise"><span>${t.mecenasDiscount}</span><span>−${totals.remise}</span></div>` : ''}
       <div class="totaux-line"><span>${t.subtotal}</span><span>${totals.total_ht}</span></div>
       ${totals.hasImputation ? `<div class="totaux-line remise"><span>${t.imputationLabel}</span><span>−${totals.imputation}</span></div>` : ''}
+        ${totals.hasImputationEtude ? `<div class="totaux-line remise"><span>${t.imputationEtudeLabel}</span><span>−${totals.imputation_etude}</span></div>` : ''}
       ${totals.hasImputation ? `<div class="totaux-line"><span>${t.baseHT}</span><span>${totals.base_ht}</span></div>` : ''}
       <div class="totaux-line tva"><span>${t.tva}</span><span>${totals.tva_amount}</span></div>
       <div class="totaux-line total"><span>${t.total}</span><span class="amount">${totals.total_ttc}</span></div>

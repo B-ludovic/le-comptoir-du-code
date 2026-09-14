@@ -36,6 +36,19 @@ export const PRODUCT_DESIGN_DAY_RATE = 650
    l'en-tête de ce fichier reproche à l'état antérieur. */
 export const WORKSHOP_HOUR_RATE = 150
 
+/* Étude de chiffrage : le devis cesse d'être gratuit au troisième portant sur
+   le même projet. Deux devis suffisent à un client qui a un projet ; le
+   troisième signale qu'on fait la conception à sa place, gratuitement et sans
+   l'avoir dit. Imputé à 100 % sur le développement si le Client signe dans les
+   trois mois — la clause vise le pompage, pas le client qui hésite.
+
+   Adossé au taux horaire d'atelier plutôt que recopié à 150 : chiffrer un
+   projet, c'est la même heure de cerveau que l'atelier vendu seul, et les deux
+   montants doivent se revaloriser ensemble. Écrire le nombre en dur ici, c'est
+   se préparer à revaloriser l'atelier en laissant le devis derrière. */
+export const QUOTE_STUDY_FEE = WORKSHOP_HOUR_RATE
+export const FREE_QUOTES_PER_PROJECT = 2
+
 /* Date d'entrée en vigueur de la grille, reportée sur le devis. Le taux
    applicable à un contrat est celui en vigueur au jour de la signature, y
    compris pour ses avenants ultérieurs : dater la grille rend cette règle

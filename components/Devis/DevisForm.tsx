@@ -41,6 +41,8 @@ export type DevisData = {
   maintenance_rate: string
   infra_rate: string
   cadrage_paid: string
+  /* Étude de chiffrage déjà réglée (article 4 ter des CGV), imputée à 100 %. */
+  etude_paid: string
   client_type: 'standard' | 'association'
   devis_locale: 'fr' | 'en'
   /* Échéancier applicable — dépend du contrat dont relève la prestation.
@@ -492,13 +494,22 @@ export default function DevisForm({ data, onChange }: Props) {
         <TextareaField label="Adresse & Objet" value={data.client_address} onChange={v => set('client_address', v)} />
         <TextareaField label="Description du projet" value={data.project_description} onChange={v => set('project_description', v)} />
         {data.prestation_type === 'dev' && (
-          <Field
-            label="Cadrage déjà réglé (€ HT) — 50 % imputés"
-            value={data.cadrage_paid}
-            onChange={v => set('cadrage_paid', v)}
-            type="number"
-            placeholder="0"
-          />
+          <div className={styles.row}>
+            <Field
+              label="Cadrage déjà réglé (€ HT) — 50 % imputés"
+              value={data.cadrage_paid}
+              onChange={v => set('cadrage_paid', v)}
+              type="number"
+              placeholder="0"
+            />
+            <Field
+              label="Étude de chiffrage déjà réglée (€ HT) — 100 % imputés"
+              value={data.etude_paid}
+              onChange={v => set('etude_paid', v)}
+              type="number"
+              placeholder="0"
+            />
+          </div>
         )}
       </section>
 

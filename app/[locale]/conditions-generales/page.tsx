@@ -1,6 +1,12 @@
 import type { Metadata } from 'next'
 import { BASE_URL } from '@/lib/structured-data'
-import { tier, formatMonthly, formatPrice, ENGINEERING_DAY_RATE } from '@/lib/pricing'
+import {
+  tier,
+  formatMonthly,
+  formatPrice,
+  ENGINEERING_DAY_RATE,
+  QUOTE_STUDY_FEE,
+} from '@/lib/pricing'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from '@/components/Legal/Legal.module.css'
@@ -79,6 +85,11 @@ const articles = {
       title: "4 bis. Imputation de la prestation de cadrage",
       content:
         "Lorsque le Client a fait réaliser par le Prestataire une prestation de cadrage et qu'il signe un devis de développement dans un délai de trois (3) mois à compter de la remise du dossier de cadrage, cinquante pour cent (50 %) du montant HT effectivement réglé au titre de ce cadrage s'imputent sur le prix HT de la prestation de développement.\n\nL'imputation est mentionnée sur la proposition commerciale ou le devis de développement, où elle apparaît en diminution du prix hors taxes, avant application de la taxe sur la valeur ajoutée. Elle ne peut donner lieu à aucun remboursement, ni excéder le prix de la prestation de développement, ni être cédée à un tiers.\n\nLe bénéfice de cette imputation suppose le paiement intégral préalable de la prestation de cadrage. Elle s'applique une seule fois par dossier de cadrage et ne concerne ni les prestations de conception produit facturées à la journée, ni les heures d'atelier complémentaires, lesquelles demeurent dues en totalité.\n\nPassé le délai de trois (3) mois courant à compter de la remise du dossier, la prestation de cadrage demeure intégralement acquise au Prestataire, sans imputation possible.",
+    },
+    {
+      title: "4 ter. Établissement des devis et étude de chiffrage",
+      content:
+        `Le Prestataire établit sans frais deux (2) devis par projet. Est regardée comme portant sur le même projet toute demande dont l'objet est substantiellement identique à celui d'un devis déjà établi, quels que soient l'intitulé retenu par le Client ou le support de la demande. Ne constitue pas un devis nouveau la simple modification d'un devis existant par ajout ou retrait de postes déjà chiffrés.\n\nUn devis est regardé comme refusé lorsque le Client le refuse expressément par écrit, ou lorsqu'il n'est pas retourné signé dans le délai de validité qui y figure.\n\nLorsque les deux devis établis sans frais ont été refusés, l'établissement de tout devis ultérieur portant sur le même projet constitue une étude de chiffrage, facturée ${formatPrice(QUOTE_STUDY_FEE, 'fr')} HT. Le Prestataire en informe le Client par écrit avant d'engager le moindre travail ; l'étude n'est entreprise qu'après acceptation écrite du Client portant sur son principe et sur son montant. À défaut d'acceptation, aucune étude n'est réalisée et aucune somme n'est due.\n\nLorsque le Client signe auprès du Prestataire un devis de développement dans un délai de trois (3) mois à compter de la remise de l'étude, cent pour cent (100 %) du montant HT effectivement réglé au titre de cette étude s'imputent sur le prix HT de la prestation de développement. L'imputation apparaît sur le devis en diminution du prix hors taxes, avant application de la taxe sur la valeur ajoutée. Elle ne peut donner lieu à aucun remboursement, ni excéder le prix de la prestation de développement, ni être cédée à un tiers. Passé ce délai, l'étude demeure intégralement acquise au Prestataire.\n\nLe décompte des postes, la décomposition technique et les descriptions fonctionnelles figurant au devis relèvent du savoir-faire du Prestataire. Le Client ne peut les reproduire ni les communiquer à un tiers en vue de faire réaliser le projet par celui-ci. La communication du seul montant global, notamment à des fins de comparaison, demeure libre.\n\nLe présent article ne s'applique pas aux devis établis à la suite d'une prestation de cadrage réglée par le Client : le chiffrage procède alors du dossier de cadrage et n'est pas facturé séparément.`,
     },
     {
       title: "5. Retard de paiement",
@@ -171,6 +182,11 @@ const articles = {
       title: "4 bis. Set-Off of the Scoping Engagement",
       content:
         "Where the Client has commissioned a scoping engagement from the Service Provider and signs a development quote within three (3) months of the delivery of the scoping report, fifty per cent (50%) of the amount actually paid, excluding VAT, in respect of that scoping engagement is set off against the price, excluding VAT, of the development services.\n\nThe set-off is stated on the commercial proposal or the development quote, where it appears as a reduction of the price excluding VAT, before value-added tax is applied. It may not give rise to any refund, exceed the price of the development services, or be assigned to a third party.\n\nEntitlement to the set-off is subject to prior payment in full of the scoping engagement. It applies once per scoping report and covers neither product design services billed by the day nor additional workshop hours, which remain payable in full.\n\nAfter the three (3) month period running from delivery of the report, the scoping engagement remains fully acquired by the Service Provider, with no set-off available.",
+    },
+    {
+      title: "4 ter. Issuing Quotes and Costing Studies",
+      content:
+        `The Service Provider issues two (2) quotes per project free of charge. Any request whose object is substantially identical to that of a quote already issued is treated as relating to the same project, whatever name the Client gives it and whatever form the request takes. Simply amending an existing quote by adding or removing items already priced does not constitute a new quote.\n\nA quote is treated as refused where the Client refuses it expressly in writing, or where it is not returned signed within the validity period stated on it.\n\nWhere both free quotes have been refused, issuing any further quote for the same project constitutes a costing study, charged at ${formatPrice(QUOTE_STUDY_FEE, 'en')} excl. VAT. The Service Provider informs the Client of this in writing before undertaking any work; the study is begun only once the Client has accepted its principle and its amount in writing. Absent such acceptance, no study is carried out and no sum is due.\n\nWhere the Client signs a development quote with the Service Provider within three (3) months of delivery of the study, one hundred per cent (100%) of the amount actually paid, excluding VAT, in respect of that study is set off against the price, excluding VAT, of the development services. The set-off appears on the quote as a reduction of the price excluding VAT, before value-added tax is applied. It may not give rise to any refund, exceed the price of the development services, or be assigned to a third party. After that period, the study remains fully acquired by the Service Provider.\n\nThe itemisation, technical breakdown and functional descriptions set out in the quote form part of the Service Provider's know-how. The Client may not reproduce them or pass them to a third party with a view to having the project carried out by that third party. Disclosure of the overall amount alone, in particular for comparison purposes, remains free.\n\nThis article does not apply to quotes issued following a scoping engagement paid for by the Client: the costing then follows from the scoping report and is not charged separately.`,
     },
     {
       title: "5. Late Payment",
