@@ -34,7 +34,7 @@ export type DevisData = {
   client_address: string
   project_description: string
   services: Service[]
-  maintenance_option: 'none' | 'offered' | 'paid'
+  maintenance_option: 'none' | 'paid'
   /* Palier dont provient le taux de maintenance, pour pouvoir le reformater
      dans l'autre langue. Absent quand le taux a été saisi à la main. */
   maintenance_tier?: TierId
@@ -121,7 +121,7 @@ type Entry = {
   amount: string
   copy: Bi
   maintenance_tier?: TierId
-  maintenance_option: 'none' | 'offered' | 'paid'
+  maintenance_option: 'none' | 'paid'
   prestation_type: DevisData['prestation_type']
 }
 
@@ -287,7 +287,7 @@ const TIER_ENTRIES: Entry[] = TIERS.map((t) => ({
   amount: String(t.price),
   copy: TIER_COPY[t.id],
   maintenance_tier: t.id,
-  maintenance_option: 'offered' as const,
+  maintenance_option: 'paid' as const,
   prestation_type: 'dev' as const,
 }))
 
@@ -536,8 +536,7 @@ export default function DevisForm({ data, onChange }: Props) {
                 onChange={e => set('maintenance_option', e.target.value as DevisData['maintenance_option'])}
               >
                 <option value="none">Aucune</option>
-                <option value="offered">Année 1 offerte — puis {data.maintenance_rate}</option>
-                <option value="paid">Année 1 facturée à {data.maintenance_rate}</option>
+                <option value="paid">Contrat mensuel dès la mise en ligne — {data.maintenance_rate}</option>
               </select>
             </div>
           )}

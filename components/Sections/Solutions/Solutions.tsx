@@ -24,7 +24,7 @@ type Props = {
     intro: string
     from: string
     days_line: string
-    maintenance_included: string
+    maintenance_line: string
     modules_label: string
     cards: Record<TierId, CardCopy>
     cta: string
@@ -55,8 +55,7 @@ export default function Solutions({ locale, dict }: Props) {
         <div className={styles.grid}>
           {TIERS.map((tier, index) => {
             const copy = dict.cards[tier.id]
-            const maintenance = dict.maintenance_included
-              .replace('{months}', String(tier.maintenance.includedMonths))
+            const maintenance = dict.maintenance_line
               .replace('{rate}', formatMonthly(tier.maintenance.price, lang))
 
             return (

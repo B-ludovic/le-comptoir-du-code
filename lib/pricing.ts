@@ -59,12 +59,14 @@ export type Tier = {
   days: number
   price: number
   nonProfitPrice: number
+  /* Redevance mensuelle, due dès la mise en ligne. Aucun mois n'est offert :
+     une période gratuite se lit comme une remise sur le forfait, jamais comme
+     un service, et le client qui ne l'a jamais payée ne la reconduit pas. La
+     garantie de conformité de l'article 7 des CGV, elle, reste due et ne se
+     confond pas avec l'entretien. */
   maintenance: {
     price: number
     nonProfitPrice: number
-    /* Mois de maintenance inclus à la livraison. Zéro n'existe plus : une
-       maintenance « optionnelle » n'est jamais souscrite. */
-    includedMonths: number
   }
 }
 
@@ -75,7 +77,7 @@ export const TIERS: Tier[] = [
     days: 6,
     price: 2600,
     nonProfitPrice: 1300,
-    maintenance: { price: 90, nonProfitPrice: 55, includedMonths: 3 },
+    maintenance: { price: 90, nonProfitPrice: 55 },
   },
   {
     id: 'boutique',
@@ -83,7 +85,7 @@ export const TIERS: Tier[] = [
     days: 15,
     price: 6500,
     nonProfitPrice: 3250,
-    maintenance: { price: 140, nonProfitPrice: 85, includedMonths: 12 },
+    maintenance: { price: 140, nonProfitPrice: 85 },
   },
   {
     id: 'outils',
@@ -91,7 +93,7 @@ export const TIERS: Tier[] = [
     days: 22,
     price: 9500,
     nonProfitPrice: 4750,
-    maintenance: { price: 240, nonProfitPrice: 140, includedMonths: 12 },
+    maintenance: { price: 240, nonProfitPrice: 140 },
   },
 ]
 

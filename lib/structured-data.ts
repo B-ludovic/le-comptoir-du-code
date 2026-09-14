@@ -408,8 +408,8 @@ function tierOffers(t: Tier, locale: Locale, nonProfit: boolean) {
         ? `${t.days} days of engineering, ${formatPrice(price, 'en')} excluding VAT.`
         : `${t.days} jours d’ingénierie, ${formatPrice(price, 'fr')} HT.`,
       locale === 'en'
-        ? `${t.maintenance.includedMonths} months of security updates included, then ${formatMonthly(maintenance, 'en')}.`
-        : `${t.maintenance.includedMonths} mois de mises à jour de sécurité inclus, puis ${formatMonthly(maintenance, 'fr')}.`,
+        ? `Security maintenance from go-live, ${formatMonthly(maintenance, 'en')}, billed separately.`
+        : `Maintenance de sécurité dès la mise en ligne, ${formatMonthly(maintenance, 'fr')}, facturée à part.`,
       suffix.trim(),
     ]),
   }

@@ -64,15 +64,10 @@ const T = {
     thDescription: 'Détail',
     thTimeline: 'Délai',
     thAmount: 'Montant',
-    maintOfferedName: 'Maintenance & sécurité — Année 1 offerte',
-    maintOfferedDesc: (rate: string) => `Dès la livraison : mises à jour de sécurité + correction de bugs bloquants. Puis engagement 1 an à ${rate}.`,
-    maintOfferedType: 'Offert',
-    maintOfferedDelay: '12 mois',
-    maintOfferedAmount: 'Offert',
-    maintPaidName: 'Maintenance & sécurité — Engagement 1 an',
-    maintPaidDesc: 'Dès la livraison : mises à jour de sécurité + correction de bugs bloquants. Engagement 1 an, facturation mensuelle.',
+    maintPaidName: 'Maintenance & sécurité — contrat mensuel',
+    maintPaidDesc: 'Souscrite à la livraison, facturée dès la mise en ligne : mises à jour de sécurité + correction de bugs bloquants. Reconduction de mois en mois, résiliable avec un mois de préavis. Distincte de la garantie de conformité de 30 jours, comprise dans le forfait.',
     maintPaidType: 'Mensuel',
-    maintPaidDelay: '12 mois',
+    maintPaidDelay: 'Dès la mise en ligne',
     deployName: 'Mise en ligne & déploiement',
     deployDesc: 'Configuration Vercel, nom de domaine, SSL',
     deployType: 'Inclus',
@@ -138,15 +133,10 @@ const T = {
     thDescription: 'Description',
     thTimeline: 'Timeline',
     thAmount: 'Amount',
-    maintOfferedName: 'Maintenance & Security — Year 1 Included',
-    maintOfferedDesc: (rate: string) => `From delivery: security updates + critical bug fixes. Then 1-year commitment at ${rate}.`,
-    maintOfferedType: 'Included',
-    maintOfferedDelay: '12 months',
-    maintOfferedAmount: 'Included',
-    maintPaidName: 'Maintenance & Security — 1-Year Commitment',
-    maintPaidDesc: 'From delivery: security updates + critical bug fixes. 1-year commitment, monthly billing.',
+    maintPaidName: 'Maintenance & Security — monthly contract',
+    maintPaidDesc: 'Taken out on delivery, billed from go-live: security updates + critical bug fixes. Renews month to month, cancellable with one month of notice. Separate from the 30-day conformity warranty, which is included in the package.',
     maintPaidType: 'Monthly',
-    maintPaidDelay: '12 months',
+    maintPaidDelay: 'From go-live',
     deployName: 'Deployment & Go-live',
     deployDesc: 'Vercel configuration, domain name, SSL',
     deployType: 'Included',
@@ -382,16 +372,6 @@ export default function DevisPreview({ data }: Props) {
       </thead>
       <tbody>
         ${serviceRows}
-        ${data.maintenance_option === 'offered' ? `
-        <tr>
-          <td class="desc">
-            ${t.maintOfferedName}
-            <span class="desc-sub">${t.maintOfferedDesc(esc(data.maintenance_rate))}</span>
-          </td>
-          <td>${t.maintOfferedType}</td>
-          <td class="right">${t.maintOfferedDelay}</td>
-          <td class="right">${t.maintOfferedAmount}</td>
-        </tr>` : ''}
         ${data.maintenance_option === 'paid' ? `
         <tr>
           <td class="desc">

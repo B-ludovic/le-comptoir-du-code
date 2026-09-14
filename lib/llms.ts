@@ -47,11 +47,10 @@ function tierLines(locale: Locale): string {
   return TIERS.map((t) => {
     const price = formatPrice(t.price, locale)
     const upkeep = formatMonthly(t.maintenance.price, locale)
-    const included = t.maintenance.includedMonths
     const heading =
       locale === 'en'
-        ? `- **${t.name} — from ${price}** — Socle: ${t.days} days of engineering. ${included} months of security updates included, then ${upkeep}.`
-        : `- **${t.name} — à partir de ${price} HT** — Socle : ${t.days} jours d'ingénierie. ${included} mois de mises à jour de sécurité inclus, puis ${upkeep}.`
+        ? `- **${t.name} — from ${price}** — Socle: ${t.days} days of engineering. Security maintenance from go-live, ${upkeep}, billed separately.`
+        : `- **${t.name} — à partir de ${price} HT** — Socle : ${t.days} jours d'ingénierie. Maintenance de sécurité dès la mise en ligne, ${upkeep}, facturée à part.`
     const modules = addonsFor(t.id)
       .map((a) => {
         const unit = locale === 'en' ? `${a.days} day${a.days > 1 ? 's' : ''}` : `${a.days} j`

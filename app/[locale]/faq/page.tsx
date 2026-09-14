@@ -93,7 +93,8 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'Que couvre exactement la maintenance ?',
       answer: [
-        `Les mises à jour de sécurité et la correction des bugs bloquants liés au code que j'ai livré. Douze mois sont inclus sur La Boutique et Les Outils Sur-Mesure, puis ${formatMonthly(tier('boutique').maintenance.price, 'fr')} et ${formatMonthly(tier('outils').maintenance.price, 'fr')}. La Présence en inclut trois, puis ${formatMonthly(tier('presence').maintenance.price, 'fr')}.`,
+        `Les mises à jour de sécurité et la correction des bugs bloquants liés au code que j'ai livré. Elle se souscrit à la livraison et se facture dès la mise en ligne : ${formatMonthly(tier('presence').maintenance.price, 'fr')} sur La Présence, ${formatMonthly(tier('boutique').maintenance.price, 'fr')} sur La Boutique, ${formatMonthly(tier('outils').maintenance.price, 'fr')} sur Les Outils Sur-Mesure. Aucun mois n'est offert : une période gratuite n'est qu'une remise déguisée sur le forfait, et je préfère l'écrire dans le prix que dans une promesse.`,
+        "À ne pas confondre avec la garantie de conformité, elle incluse dans le forfait : pendant trente jours après la mise en ligne, tout écart entre ce qui a été livré et ce qui a été validé au cadrage se corrige sans frais. La maintenance, c'est l'entretien de ce qui fonctionnait déjà.",
         "Elle ne couvre pas les nouvelles fonctionnalités, les changements de contenu ni les refontes de design : ce sont des chantiers, pas de l'entretien. Les coûts d'hébergement, de nom de domaine et de services tiers restent à votre charge directe. Le contrat mensuel se résilie à tout moment avec un mois de préavis, sans pénalité.",
       ],
     },
@@ -174,7 +175,8 @@ const entries: Record<'fr' | 'en', Entry[]> = {
     {
       question: 'What exactly does maintenance cover?',
       answer: [
-        `Security updates and fixes for blocking bugs in the code I delivered. Twelve months are included with La Boutique and Les Outils Sur-Mesure, then ${formatMonthly(tier('boutique').maintenance.price, 'en')} and ${formatMonthly(tier('outils').maintenance.price, 'en')}. La Présence includes three, then ${formatMonthly(tier('presence').maintenance.price, 'en')}.`,
+        `Security updates and fixes for blocking bugs in the code I delivered. It is taken out on delivery and billed from go-live: ${formatMonthly(tier('presence').maintenance.price, 'en')} on La Présence, ${formatMonthly(tier('boutique').maintenance.price, 'en')} on La Boutique, ${formatMonthly(tier('outils').maintenance.price, 'en')} on Les Outils Sur-Mesure. No month is free: a free period is only a disguised discount on the package, and I would rather write it into the price than into a promise.`,
+        'Not to be confused with the conformity warranty, which is part of the package: for thirty days after go-live, any gap between what was delivered and what was signed off at scoping is fixed at no charge. Maintenance is the upkeep of what already worked.',
         'It does not cover new features, content changes or design overhauls: those are building work, not upkeep. Hosting, domain names and third-party services stay on your own account. The monthly contract can be cancelled at any time with one month of notice, with no penalty.',
       ],
     },
