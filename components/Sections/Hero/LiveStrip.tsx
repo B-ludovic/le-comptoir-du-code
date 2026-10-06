@@ -9,7 +9,7 @@ type Props = {
 /* Bandeau « en ligne en ce moment ».
 
    Le premier écran promettait des applications sur-mesure sans rien qui prouve
-   qu'il en existe. Cinq domaines qui s'ouvrent, listés au-dessus de la ligne de
+   qu'il en existe. Des domaines qui s'ouvrent, listés au-dessus de la ligne de
    flottaison, le prouvent avant tout argument — et sans ajouter une ligne de
    discours. Les adresses viennent de PROJECT_MEDIA : une fermeture de domaine
    les retire d'ici comme du portfolio, sans double saisie. */

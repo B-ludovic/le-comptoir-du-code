@@ -237,7 +237,7 @@
     "status_online": "Live",
     "status_archived": "Archived — source open",
     "foundations_label": "The foundations",
-    "foundations_intro": "Three earlier projects, still online. Open a card to read the detail — the same level of proof, filed more tightly.",
+    "foundations_intro": "Three earlier projects, live or archived with their code public. Open a card to read the detail — the same level of proof, filed more tightly.",
     "archive_toggle": "Open or close the project card",
     "open_site": "Open the site",
     "open_repo": "See the code"

@@ -237,7 +237,7 @@
     "status_online": "En ligne",
     "status_archived": "Archivé — code ouvert",
     "foundations_label": "Les fondations",
-    "foundations_intro": "Trois chantiers plus anciens, toujours consultables. Ouvrez la fiche pour lire le détail — c'est le même niveau de preuve, rangé plus serré.",
+    "foundations_intro": "Trois chantiers plus anciens, en ligne ou archivés avec leur code ouvert. Ouvrez la fiche pour lire le détail — c'est le même niveau de preuve, rangé plus serré.",
     "archive_toggle": "Ouvrir ou fermer la fiche du chantier",
     "open_site": "Ouvrir le site",
     "open_repo": "Voir le code"

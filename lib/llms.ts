@@ -96,7 +96,7 @@ const worksCopy = {
     others: '### Autres chantiers livrés',
     archived: '### Archives',
     archivedNote:
-      'Chantier conservé au catalogue : le site n’est plus servi, le code reste public.',
+      'Toujours au catalogue : le site n’est plus servi, le code reste public.',
     repo: 'Code',
   },
   en: {

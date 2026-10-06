@@ -105,6 +105,9 @@ export const PROJECT_MEDIA: ProjectMedia[] = [
     flagship: true,
   },
   {
+    /* Mis hors ligne : okanime.live ne sert plus qu'une 404. Même traitement
+       que Mea Vita — le chantier garde sa ligne au catalogue, sans URL, avec
+       son seul code public. */
     slug: 'okanime',
     images: [
       '/images/accueil-okanime.png',
@@ -112,8 +115,9 @@ export const PROJECT_MEDIA: ProjectMedia[] = [
       '/images/detail-okanime.png',
       '/images/base-okanime.png',
     ],
-    url: 'https://okanime.live/',
-    status: 'online',
+    url: null,
+    repo: 'https://github.com/B-ludovic/okanime',
+    status: 'archived',
   },
   {
     slug: 'la-requeyrie',
