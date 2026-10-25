@@ -1,0 +1,56 @@
+---
+title: "Le gabarit et la pâte à bois : pourquoi un test doit d'abord savoir dire non"
+description: "Un test écrit après le code, par la même main, épouse la forme de ce qui a été coupé. Le gabarit de l'atelier fait l'inverse : il dit non avant qu'on touche au bois. Pourquoi j'exige un test rouge avant la première ligne, surtout quand c'est une IA qui usine."
+date: '2026-10-25'
+coverImage: '/images/blog/gabarit-pate-a-bois.png'
+excerpt: "Demandez à une IA une fonctionnalité et ses tests : deux minutes plus tard, tout est vert. Rien n'est prouvé pour autant. Ce que l'atelier sait depuis longtemps sur les gabarits, et pourquoi la pâte à bois finit toujours par sauter."
+summary:
+  - "Un test écrit après le code par la même main recopie ce que le code fait, quoi qu'il fasse : c'est un comptage de caisse qui connaît déjà le chiffre attendu."
+  - "Le test rouge sert de gabarit : il trace le contour du vide avant qu'on usine. Encore faut-il qu'il échoue pour la bonne raison — un import cassé ne dit rien sur la planche."
+  - "Le test de complaisance est de la pâte à bois : il comble le jour entre deux pièces mal ajustées, et il saute dès que le bois travaille, chez le client."
+alternate_slug: 'jig-and-wood-filler-test-must-say-no-first'
+---
+
+Demandez à une IA de coder une fonctionnalité, puis d'écrire ses tests. Deux minutes plus tard, la console est entièrement verte, et vous ne savez toujours pas si la fonctionnalité marche.
+
+Je travaille avec Claude tous les jours, et c'est précisément pour ça que ce vert-là m'inquiète. Il entretient une illusion qui grandit à mesure que les outils progressent : celle qu'on pourrait faire l'économie de la structure.
+
+## Le comptage qui connaît déjà le chiffre
+
+Quand on débute, on imagine que le test arrive à la fin : on écrit la fonction, puis un test pour se rassurer. Tester après n'a rien de honteux en soi. Le piège se referme quand la même main écrit le code et son test dans la même foulée : le test recopie alors ce que le code fait, quoi qu'il fasse, au lieu de vérifier ce qu'il devait faire.
+
+Avec une IA, ce piège tourne à plein régime, parce qu'elle écrit les deux d'un seul souffle. Le résultat a un nom : le test de complaisance. Un exemple courant : le test remplace Stripe par une doublure à qui l'on fait répondre « remboursement réussi », puis il vérifie… que le remboursement a réussi. Il est vert, il le restera, et il ne prouve qu'une chose : la doublure répète ce qu'on lui a dicté.
+
+J'ai appris cette règle bien avant le code, en dix-huit ans de management dans le retail aéroportuaire. Le soir, à la fermeture, l'équipier compte sa caisse sans voir le total que le système attend. Le chiffre attendu existe déjà, mais hors de sa vue, parce qu'un compteur qui connaît le résultat finit toujours par le trouver. Un test écrit après le code, par la même main, c'est un comptage qui connaît le chiffre.
+
+## Le gabarit avant la planche
+
+Il faut donc inverser la démarche, et exiger que le test soit d'abord rouge.
+
+L'atelier fonctionne comme ça depuis toujours. On ne coupe pas une planche au jugé pour voir ensuite si elle comble le trou. On fabrique d'abord le gabarit de contrôle. On présente le vide : le gabarit dit non. On usine la matière jusqu'à ce qu'elle s'emboîte au millimètre : le gabarit dit oui.
+
+Un test qui n'a pas échoué pour la bonne raison ne prouve rien. Un test peut être rouge parce qu'un import est cassé, qu'une fonction n'existe pas encore ou qu'une faute de frappe traîne dans son nom. Ce rouge-là équivaut à un gabarit posé de travers : il dit non lui aussi, et il ne vous apprend rien sur la planche. Le bon rouge, c'est l'assertion qui échoue parce que le comportement attendu manque, avec un message d'erreur qui décrit exactement ce que le code devra faire. On lit ce message avant d'écrire la moindre ligne d'implémentation, et s'il ne parle pas du bon sujet, on repose le gabarit.
+
+Cette discipline n'a rien de spectaculaire : un test rouge ne se montre pas en démo, il n'a rien de cliquable. Poser une architecture, modéliser des droits d'accès ou anticiper la rupture d'un flux de paiement demande du temps, du silence et de l'abstraction. C'est sans doute pour ça qu'on en parle si peu quand on apprend à coder.
+
+## Désigner le blanc
+
+Pour vouloir atteindre le point X, encore faut-il savoir qu'il y a cinq étapes critiques entre A et X. C'est là que le « vibe coding » touche ses limites. Un prompt superficiel ne décrit que la surface : il délègue l'intention à l'outil sans en poser les fondations, et le jour où l'environnement réel réagit de travers, rien ne tient, parce qu'aucun plan n'a jamais existé sur le papier.
+
+La machine remplit les blancs qu'on lui désigne. Elle le fait très bien, y compris quand le blanc n'a pas de contour : elle le remplit alors avec quelque chose de plausible. Le test rouge sert précisément à tracer ce contour. Un client ne doit jamais voir la facture d'un autre. Un webhook de paiement qui arrive deux fois ne doit pas décrémenter le stock deux fois. Chacune de ces phrases devient un gabarit posé avant d'usiner.
+
+C'est ma façon de travailler avec Claude Code. Je décris le comportement attendu, le test s'écrit en premier, je le lance et je lis pourquoi il échoue. Tant qu'il n'est pas rouge pour la bonne raison, la machine ne touche pas au code. Ensuite seulement, elle usine, contre un gabarit taillé avant la pièce, qui ne peut donc pas en épouser les défauts.
+
+## La pâte à bois
+
+L'atelier connaît aussi l'outil inverse du gabarit. Quand deux pièces mal ajustées laissent un jour entre elles, la pâte à bois le comble ; une fois poncée et teintée, la coupe ratée disparaît. Le test de complaisance est de la pâte à bois : il épouse la forme de ce qui a été coupé, quelle qu'elle soit, et le joint paraît parfait.
+
+Le problème, c'est que le bois travaille. Il gonfle à l'humidité, se rétracte au chauffage, et la pâte, qui ne bouge pas au même rythme, se fissure puis saute. Dans le code, le bois qui travaille, c'est l'environnement réel : la vraie API Stripe, le vrai réseau, le vrai utilisateur qui clique deux fois. La doublure du test, elle, ne travaille jamais.
+
+La même pâte s'est glissée dans les échanges professionnels. Sur un défaut de surface, elle a sa place : je fais relire mes textes, et une tournure maladroite ou une faute n'ont pas à gâcher un message. Elle devient une fraude quand elle remplace l'assemblage, quand un message de prise de contact est poncé au point qu'on n'y trouve plus aucun besoin réel. Un joint aussi lisse n'offre aucune prise : on ne sait pas à quoi répondre.
+
+Un gabarit qui dit non coûte une planche, dans l'atelier. La pâte à bois tient jusqu'au premier hiver. Elle saute chez le client, le jour où le chauffage se rallume et où le bois se met à travailler.
+
+---
+
+_Vous avez une application dont tous les tests sont verts, sans savoir ce qu'ils vérifient ? [Parlons-en](/fr#contact) : on pose le gabarit avant de toucher au bois._

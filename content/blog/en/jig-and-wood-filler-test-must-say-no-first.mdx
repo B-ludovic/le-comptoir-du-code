@@ -1,0 +1,56 @@
+---
+title: "The jig and the wood filler: why a test has to say no first"
+description: "A test written after the code, by the same hand, takes the shape of whatever was cut. The workshop jig does the opposite: it says no before anyone touches the wood. Why I demand a red test before the first line, especially when an AI does the machining."
+date: '2026-10-25'
+coverImage: '/images/blog/gabarit-pate-a-bois.png'
+excerpt: "Ask an AI for a feature and its tests: two minutes later, everything is green. Nothing has been proven. What the workshop has long known about jigs, and why wood filler always ends up popping out."
+summary:
+  - "A test written after the code by the same hand copies whatever the code does: it's a till count that already knows the expected figure."
+  - "The red test is a jig: it traces the outline of the gap before any machining. It still has to fail for the right reason — a broken import says nothing about the board."
+  - "A yes-man test is wood filler: it fills the gap between two badly fitted pieces, and it pops out as soon as the wood moves, at the client's place."
+alternate_slug: 'gabarit-pate-a-bois-test-doit-dire-non'
+---
+
+Ask an AI to code a feature, then to write its tests. Two minutes later, the console is solid green, and you still don't know whether the feature works.
+
+I work with Claude every day, and that's exactly why this kind of green worries me. It feeds an illusion that grows as the tools improve: the belief that structure is something you can skip.
+
+## The count that already knows the figure
+
+When you're starting out, you picture testing as the last step: you write the function, then a test to reassure yourself. Testing afterwards isn't shameful in itself. The trap closes when the same hand writes the code and its test in one go: the test then copies whatever the code does, instead of checking what it was supposed to do.
+
+With an AI, that trap runs at full speed, because it writes both in a single breath. The result has a name: the yes-man test. A common example: the test swaps Stripe for a stand-in told to answer "refund succeeded", then checks… that the refund succeeded. It's green, it will stay green, and it proves exactly one thing: the stand-in repeats what it was told.
+
+I learned this rule long before code, in eighteen years of managing airport retail teams. At closing time, the till is counted blind: the team member counts the cash without seeing the total the system expects. The expected figure already exists, just out of sight, because a counter who knows the answer always ends up finding it. A test written after the code, by the same hand, is a count that knows the figure.
+
+## The jig before the board
+
+So the process has to be reversed: the test must be red first.
+
+The workshop has always worked this way. You don't cut a board by eye and then check whether it fills the gap. You make the jig first. You present the empty space: the jig says no. You machine the material until it fits to the millimeter: the jig says yes.
+
+A test that hasn't failed for the right reason proves nothing. A test can be red because an import is broken, because a function doesn't exist yet, or because a typo is lurking in its name. That kind of red is a jig set down crooked: it says no too, and tells you nothing about the board. The right red is the assertion that fails because the expected behavior is missing, with an error message that describes exactly what the code will have to do. You read that message before writing a single line of implementation, and if it's about the wrong thing, you reset the jig.
+
+This discipline has nothing spectacular about it: a red test doesn't show well in a demo, there's nothing to click. Laying down an architecture, modeling access rights or anticipating a payment flow breaking takes time, quiet and abstraction. That's probably why so little is said about it when people learn to code.
+
+## Marking the blank
+
+To aim for point X, you first need to know there are five critical steps between A and X. That's where "vibe coding" hits its limits. A shallow prompt only describes the surface: it hands the intent to the tool without laying the foundations, and the day the real environment reacts the wrong way, nothing holds, because no plan ever existed on paper.
+
+The machine fills the blanks you mark out for it. It does so very well, even when the blank has no outline: it then fills it with something plausible. The red test is precisely what traces that outline. A customer must never see another customer's invoice. A payment webhook that arrives twice must not decrement stock twice. Each of those sentences becomes a jig set down before machining.
+
+That's how I work with Claude Code. I describe the expected behavior, the test gets written first, I run it and read why it fails. Until it's red for the right reason, the machine doesn't touch the code. Only then does it machine, against a jig cut before the piece, which therefore can't take on its flaws.
+
+## Wood filler
+
+The workshop also knows the opposite of the jig. When two badly fitted pieces leave a gap, wood filler closes it; once sanded and stained, the bad cut disappears. The yes-man test is wood filler: it takes the shape of whatever was cut, and the joint looks perfect.
+
+The problem is that wood moves. It swells with humidity, shrinks with the heating, and the filler, which doesn't move at the same pace, cracks and then pops out. In code, the moving wood is the real environment: the real Stripe API, the real network, the real user who clicks twice. The test's stand-in never moves.
+
+The same filler has crept into professional exchanges. On a surface flaw, it has its place: I have my texts proofread, and a clumsy turn of phrase or a typo shouldn't spoil a message. It turns into a fraud when it replaces the joinery, when an outreach message is sanded down until no real need is left in it. A joint that smooth offers no grip: you don't know what to answer.
+
+A jig that says no costs one board, in the workshop. Wood filler holds until the first winter. It pops out at the client's place, the day the heating comes back on and the wood starts to move.
+
+---
+
+_Got an application where every test is green, but no one knows what they check? [Let's talk](/en#contact): we'll set the jig before touching the wood._
