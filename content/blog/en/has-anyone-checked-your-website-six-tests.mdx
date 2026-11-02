@@ -1,0 +1,78 @@
+---
+title: "Has anyone checked your website? Six tests you can run without coding"
+description: "Links to localhost, phone numbers you can't tap, social links all announced as \"Follow\": six flaws you can spot yourself, and they all say the same thing. Nobody checked the site before delivering it."
+date: '2026-11-02'
+coverImage: '/images/blog/site-jamais-relu.png'
+excerpt: "For the first three seconds on screen, two websites can look like they do the same job. Six tests you can run yourself, with no technical knowledge, to find out whether anyone checked yours before handing it over."
+summary:
+  - "A website can look finished and still have links that only work on the computer it was built on, phone numbers you can't tap, and links a screen reader can't tell apart."
+  - "These flaws take fifteen minutes to spot, without coding, with a computer and a phone."
+  - "They don't condemn the site or the tool: most can be fixed in a few hours. They show that nobody checked before delivery, and they raise the same question about what you can't verify alone: updates, backups, security."
+alternate_slug: 'votre-site-a-t-il-ete-relu-six-verifications'
+---
+
+For the first three seconds on screen, two websites can look like they do the same job: a logo, some text, photos, a contact button. The differences appear when someone uses them, and that person is rarely the one who built the site.
+
+A website delivered without a review has specific, recognisable flaws. You can look for them yourself: all you need is a computer, a phone and fifteen minutes. None of these six tests requires knowing how to code. When you have to open the source code, it will only be to search for a word.
+
+## 1. Search the code for "localhost"
+
+On a computer, in Chrome or Firefox: right-click the page, choose "View Page Source", then press Ctrl+F (Cmd+F on a Mac) and type "localhost". Repeat on every page. Any result is worth a question to whoever built your site.
+
+"localhost" means the machine you're currently on. On the computer of the person building the site, a development server answers at that address, and the link works. On your customer's phone, nothing answers, and the link leads to an error. From their own screen, the person who built the site never sees the problem.
+
+This can happen to anyone, me included. On one of my projects, a variable missing at compile time sent a localhost link into production: every thumbnail in a back office broke, while everything worked fine on my machine. Since then, the build fails if that variable is missing. What matters is the check that catches the slip before the customer does.
+
+## 2. Hover over your phone number and email
+
+On a computer, move your mouse over your phone number and email address. A real link shows "tel:" or "mailto:" at the bottom left of the window. If nothing appears, it's plain text: people can read it, but they can't tap it to call or write.
+
+Run this test on a computer, because some phones turn a number into a link on their own, which hides the flaw.
+
+The fix takes a few characters. Without it, your customer copies the number by hand, or gives up.
+
+## 3. Listen to your links
+
+Turn on your phone's screen reader in the accessibility settings (VoiceOver on iPhone, TalkBack on Android), then touch your social media links. You should hear Instagram, TikTok, Facebook.
+
+Some themes produce "Follow, Follow, Follow, Follow" instead. A visually impaired person can't tell where each link goes without opening it.
+
+Touch your review stars and pictograms too. They are often drawn with an icon font, meaning characters that only exist in the theme's font. On screen, you see a star. Paste it into a document and you're left with an empty square, or nothing at all. Without an added description, a screen reader has nothing to say about it, and a search engine finds no rating there.
+
+## 4. Send yourself a message
+
+Fill in your contact form from your phone and check that the message arrives. While you're there, look at what it asks you to do to prove you're not a robot.
+
+If it's a sum (7 + 4 = ?), that's often the form module's default setting, left as it was. The sum is displayed in plain text, so a script can read it and solve it. It stops the least sophisticated bots and adds a step for everyone who wants to write to you. A server-side limit on submissions, possibly combined with an invisible check, protects the form without asking the visitor for anything.
+
+## 5. Search the code for the headings
+
+Go back to the source code and search for "&lt;h1", then "&lt;main". You should find one of each per page.
+
+These tags say what each part of the page is: the main heading, the main content. Visual builders often produce dozens of "div" tags, meaningless boxes nested inside one another. Every website uses "div" tags. The problem starts when nothing else is left: the screen reader loses the landmarks it uses to move around the page, and the search engine has to guess what you could have told it.
+
+An empty search isn't enough to conclude anything: a page built entirely in the browser won't show any of them here. In that case, it's a question to ask whoever built your site.
+
+## 6. Watch the address when you click the menu
+
+Click each item in your menu while watching the address bar. If only a "#" appears or changes at the end, you're still on the same page.
+
+A page means one title and one description in search results. Ten services grouped on a single address therefore share one title to answer ten different searches. A single page makes sense when the business comes down to one offer. As soon as people search for your services separately, each one benefits from its own address. And either way, a menu that scrolls the page should show readers where they are.
+
+## What about the purple gradient?
+
+You may know this look: an entirely white page, purple and blue gradient buttons, blocks with no shared alignment, margins that change from one section to the next. It often comes out of a generator. The tool isn't the issue: [I work with an AI every day myself](/en/blog/jig-and-wood-filler-test-must-say-no-first). The question is whether someone looked at the result and decided what to keep.
+
+To see it, take a screenshot and draw a vertical line along a block of text. If the other blocks never land on that line, nobody probably decided where they go.
+
+## What this proves
+
+None of these flaws condemns your website, or the tool used to build it. Most can be fixed in a few hours, visual builders included, without redoing anything. They show one specific thing: nobody checked this site before delivering it, or not from any device other than their own.
+
+They are also the easiest flaws to see. If they're still there after delivery, the same question applies to what you can't verify alone: updates, backups, the security of the data your customers entrust to you. Ask whoever built your site who checked it before delivery, and on what device.
+
+A customer who taps a phone number that doesn't respond won't write to let you know. They go back to the search results and call the next one.
+
+---
+
+_One of these tests failed on your site and you're not sure where to start? [Let's talk.](/en#contact)_

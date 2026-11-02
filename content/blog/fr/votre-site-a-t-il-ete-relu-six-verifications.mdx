@@ -1,0 +1,78 @@
+---
+title: "Votre site a-t-il été relu ? Six vérifications à faire sans savoir coder"
+description: "Liens vers localhost, numéros sur lesquels on ne peut pas appuyer, réseaux sociaux tous annoncés « Suivre » : six défauts faciles à repérer soi-même, et qui disent tous la même chose. Personne n'a relu le site avant de le livrer."
+date: '2026-11-02'
+coverImage: '/images/blog/site-jamais-relu.png'
+excerpt: "Pendant trois secondes, à l'écran, deux sites peuvent donner la même impression. Six vérifications à faire vous-même, sans connaissance technique, pour savoir si quelqu'un a relu le vôtre avant de vous le livrer."
+summary:
+  - "Un site peut avoir l'air terminé et garder des liens qui ne fonctionnent que sur l'ordinateur qui a servi à le construire, des numéros sur lesquels on ne peut pas appuyer, des liens qu'un lecteur d'écran ne sait pas distinguer."
+  - "Ces défauts se repèrent en un quart d'heure, sans savoir coder, avec un ordinateur et un téléphone."
+  - "Ils ne condamnent ni le site ni l'outil : la plupart se corrigent en quelques heures. Ils montrent que personne n'a relu avant la livraison, et posent la même question pour ce qu'on ne peut pas vérifier seul : mises à jour, sauvegardes, sécurité."
+alternate_slug: 'has-anyone-checked-your-website-six-tests'
+---
+
+À l'écran, pendant les trois premières secondes, deux sites peuvent donner l'impression de faire le même métier : un logo, des textes, des photos, un bouton pour prendre contact. Les différences apparaissent quand quelqu'un s'en sert, et cette personne est rarement celle qui a construit le site.
+
+Un site livré sans relecture se reconnaît à des défauts précis. Vous pouvez les chercher vous-même : il vous faut un ordinateur, un téléphone et un quart d'heure. Aucune de ces six vérifications ne demande de savoir coder. Quand il faudra ouvrir le code source, ce sera seulement pour y chercher un mot.
+
+## 1. Cherchez « localhost » dans le code
+
+Sur ordinateur, avec Chrome ou Firefox : clic droit sur la page, « Afficher le code source », puis Ctrl+F (Cmd+F sur Mac) et tapez « localhost ». Refaites-le sur chaque page. Le moindre résultat mérite une question à votre prestataire.
+
+« localhost » désigne la machine sur laquelle on se trouve. Sur le poste de la personne qui construit le site, un serveur de travail y répond, et le lien fonctionne. Sur le téléphone de votre client, rien n'y répond, et le lien mène à une erreur. Depuis son propre écran, la personne qui a construit le site ne voit donc jamais le problème.
+
+L'oubli peut arriver à n'importe qui, moi compris. Sur un de mes projets, une variable absente au moment de la compilation a envoyé un lien vers localhost en production : toutes les vignettes d'un back-office se sont retrouvées cassées, alors que tout fonctionnait chez moi. Depuis, la compilation échoue si cette variable manque. Ce qui compte, c'est le contrôle qui repère l'oubli avant le client.
+
+## 2. Survolez votre numéro et votre e-mail
+
+Sur ordinateur, passez la souris sur votre numéro de téléphone et votre adresse e-mail. Un vrai lien affiche « tel: » ou « mailto: » en bas à gauche de la fenêtre. Si rien ne s'affiche, c'est du simple texte : on peut le lire, mais pas appuyer dessus pour appeler ou écrire.
+
+Faites ce test sur ordinateur, parce que certains téléphones transforment d'eux-mêmes un numéro en lien, ce qui masque le défaut.
+
+La correction tient en quelques caractères. Sans elle, votre client recopie le numéro à la main, ou renonce.
+
+## 3. Écoutez vos liens
+
+Activez le lecteur d'écran de votre téléphone, dans les réglages d'accessibilité (VoiceOver sur iPhone, TalkBack sur Android), puis touchez vos liens vers les réseaux sociaux. Vous devez entendre Instagram, TikTok, Facebook.
+
+Certains thèmes produisent à la place « Suivre, Suivre, Suivre, Suivre ». Une personne malvoyante ne peut pas savoir où mène chaque lien sans l'ouvrir.
+
+Touchez aussi vos étoiles d'avis et vos pictogrammes. Ils sont souvent dessinés avec une police d'icônes, c'est-à-dire des caractères qui n'existent que dans la police du thème. À l'écran, on voit une étoile. Copiée dans un document, il reste un carré vide ou rien du tout. Sans description ajoutée, un lecteur d'écran ne peut rien en dire, et un moteur de recherche n'y trouve aucune note.
+
+## 4. Envoyez-vous un message
+
+Remplissez votre formulaire depuis votre téléphone et vérifiez que le message arrive. Regardez au passage ce qu'on vous demande pour prouver que vous n'êtes pas un robot.
+
+Si c'est une addition (7 + 4 = ?), c'est souvent le réglage par défaut du module de formulaire, resté tel quel. L'opération est affichée en clair, donc un script peut la lire et la résoudre. Elle arrête les robots les moins élaborés et ajoute une étape à chaque personne qui veut vous écrire. Une limite d'envois côté serveur, éventuellement associée à une vérification invisible, protège sans rien demander au visiteur.
+
+## 5. Cherchez les titres dans le code
+
+Retournez dans le code source et recherchez « &lt;h1 », puis « &lt;main ». Vous devez trouver un de chaque par page.
+
+Ces balises indiquent ce qu'est chaque morceau de page : le titre principal, le contenu principal. Les constructeurs visuels produisent souvent des dizaines de « div », des boîtes sans signification, imbriquées les unes dans les autres. Tous les sites utilisent des « div ». Le problème commence quand il ne reste plus qu'elles : le lecteur d'écran perd ses repères pour naviguer dans la page, et le moteur de recherche doit deviner ce que vous auriez pu lui dire.
+
+Une recherche vide ne suffit pas à conclure : une page fabriquée entièrement dans le navigateur n'en montre aucune ici. C'est alors une question à poser à votre prestataire.
+
+## 6. Regardez l'adresse quand vous cliquez sur le menu
+
+Cliquez sur chaque entrée de votre menu en regardant la barre d'adresse. Si seul un « # » apparaît ou change à la fin, vous êtes resté sur la même page.
+
+Une page, c'est un titre et une description dans les résultats de recherche. Dix prestations regroupées sur une seule adresse se partagent donc un seul titre pour répondre à dix recherches différentes. Une page unique se défend quand l'activité tient en une offre. Dès que vos prestations sont cherchées séparément, chacune gagne à avoir sa propre adresse. Et dans tous les cas, un menu qui fait défiler la page doit montrer au lecteur où il se trouve.
+
+## Et le dégradé violet ?
+
+Vous connaissez peut-être cette apparence : page entièrement blanche, boutons en dégradé violet et bleu, blocs sans alignement commun, marges qui changent d'une section à l'autre. Elle sort souvent d'un générateur. L'outil n'est pas en cause, [je travaille moi-même avec une IA tous les jours](/fr/blog/gabarit-pate-a-bois-test-doit-dire-non). La question est de savoir si quelqu'un a regardé le résultat et décidé de ce qu'il gardait.
+
+Pour le voir, faites une capture d'écran et tracez un trait vertical le long d'un bloc de texte. Si les autres blocs ne retombent jamais sur ce trait, leur place n'a sans doute été décidée par personne.
+
+## Ce que ça prouve
+
+Aucun de ces défauts ne condamne votre site, ni l'outil qui a servi à le construire. La plupart se corrigent en quelques heures, constructeur visuel compris, sans rien refaire. Ils montrent une chose précise : personne n'a relu ce site avant de le livrer, ou pas depuis un autre appareil que le sien.
+
+Ce sont aussi les défauts les plus faciles à voir. S'ils sont encore là après la livraison, la question se pose pour ce que vous ne pouvez pas vérifier seul : les mises à jour, les sauvegardes, la sécurité des données que vos clients vous confient. Demandez à votre prestataire qui a relu le site avant de vous le livrer, et sur quel appareil.
+
+Un client qui appuie sur un numéro qui ne réagit pas ne vous écrit pas pour vous le signaler. Il revient aux résultats de recherche et appelle le suivant.
+
+---
+
+_Une de ces vérifications a échoué sur votre site et vous ne savez pas par où commencer ? [Parlons-en.](/fr#contact)_
