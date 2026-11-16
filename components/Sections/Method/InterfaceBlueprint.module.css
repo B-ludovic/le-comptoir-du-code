@@ -203,6 +203,7 @@
 
 .leader {
   flex: 1;
+  min-width: 1rem;
   height: 0;
   margin: 0 0.75rem;
   border-top: 1px dashed rgba(232, 196, 160, 0.6);
@@ -212,9 +213,14 @@
 }
 
 .note {
+  /* Les annotations peuvent passer à la ligne à toutes les largeurs : en
+     anglais, « frozen PDF, continuous number » déborde dès 540 px sinon. */
+  flex-shrink: 1;
+  min-width: 0;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  text-align: right;
   opacity: 0;
   transition: opacity 0.3s ease 0.7s;
 }
@@ -325,9 +331,6 @@
 /* Sur un écran étroit, les annotations passent à la ligne. */
 @media (max-width: 480px) {
   .note {
-    white-space: normal;
-    text-align: right;
-    line-height: 1.3;
     font-size: 0.65rem;
   }
 
@@ -344,6 +347,23 @@
     flex-wrap: wrap;
     justify-content: center;
     white-space: normal;
+  }
+}
+
+/* Écrans pliés (Galaxy Fold, 280 px) : plus de place pour une ligne de
+   rappel, l'annotation prend toute la largeur restante. */
+@media (max-width: 340px) {
+  .leader {
+    display: none;
+  }
+
+  .outline:not(.outlineFull) {
+    width: 24% !important;
+    margin-right: 0.5rem;
+  }
+
+  .face {
+    padding: 16px;
   }
 }
 

@@ -725,3 +725,13 @@
         transition-duration: 0.01s;
     }
 }
+
+
+/* Écrans pliés (Galaxy Fold, 280 px) : la pastille, le médaillon et le
+   hamburger ne tiennent pas avec le nom en toutes lettres. La pastille E/C
+   reste le lien vers l'accueil. */
+@media (max-width: 340px) {
+    .logoText {
+        display: none;
+    }
+}

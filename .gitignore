@@ -47,6 +47,7 @@ next-env.d.ts
 AGENTS.md
 CLAUDE.md
 /memory
+/rushes
 
 # design system
 DESIGN_SYSTEM.md

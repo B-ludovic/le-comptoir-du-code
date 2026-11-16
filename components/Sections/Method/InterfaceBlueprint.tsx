@@ -129,17 +129,17 @@ export default function InterfaceBlueprint({ copy }: { copy: BlueprintCopy }) {
           </div>
           <ul className={styles.mechanics}>
             <li className={styles.rowTitle}>
-              <span className={styles.outline} style={{ width: '9.5rem' }} />
+              <span className={styles.outline} style={{ width: '38%' }} />
               <span className={styles.leader} />
               <span className={styles.note}>{copy.arch_record}</span>
             </li>
             <li className={styles.rowPrice}>
-              <span className={styles.outline} style={{ width: '7.5rem' }} />
+              <span className={styles.outline} style={{ width: '30%' }} />
               <span className={styles.leader} />
               <span className={styles.note}>{copy.arch_price}</span>
             </li>
             <li className={styles.rowStock}>
-              <span className={styles.outline} style={{ width: '9.5rem' }} />
+              <span className={styles.outline} style={{ width: '38%' }} />
               <span className={styles.leader} />
               <span className={styles.note}>{copy.arch_stock}</span>
             </li>
@@ -149,7 +149,7 @@ export default function InterfaceBlueprint({ copy }: { copy: BlueprintCopy }) {
               </span>
             </li>
             <li className={styles.rowInvoice}>
-              <span className={styles.outline} style={{ width: '10.5rem' }} />
+              <span className={styles.outline} style={{ width: '42%' }} />
               <span className={styles.leader} />
               <span className={styles.note}>{copy.arch_invoice}</span>
             </li>
