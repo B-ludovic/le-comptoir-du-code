@@ -8,6 +8,14 @@ import type { NextConfig } from 'next'
    permet de couvrir aussi les réponses que le matcher du middleware exclut :
    assets statiques, images, polices et routes d'API. */
 const nextConfig: NextConfig = {
+  /* Next surveille les avis de sécurité publiés sur sa propre version et prévient
+     quand celle installée ici est concernée. « security » limite l'alerte à ce
+     seul cas : ni montée de version de confort, ni adoption anticipée des
+     futurs défauts. */
+  experimental: {
+    agentUpgrade: 'security',
+  },
+
   /* « La même URL, en .md » : la convention que suivent les crawlers de moteurs
      génératifs pour récupérer la source d'une page. Le point ne pouvant pas
      figurer dans un nom de segment dynamique, la contrainte sur :slug l'exclut
