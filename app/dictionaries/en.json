@@ -1,109 +1,140 @@
 {
   "hero": {
-    "eyebrow": "Websites · E-commerce · Custom applications",
-    "h1": "Freelance web developer in Paris and Île-de-France",
-    "lead": "L'Échoppe du Code is my independent web development workshop. I'm Ludovic Bataille, your single point of contact from scoping to launch: custom code, delivered with its sources, and a site that belongs to you outright.",
-    "facts": "Marketing websites from €2,600, online shops from €6,500, business applications from €9,500. Each package is a foundation priced in days; specific needs are added as modules. Optional scoping from €290, half of which is set off against development. Registered non-profits get 50 % off. All prices exclude VAT.",
-    "cta": "Request a quote",
-    "cta_secondary": "See the packages",
-    "reviews_label": "They pushed the door open",
-    "reviews_source": "Reviews published on",
+    "kicker": "Freelance web developer in Paris and Île-de-France",
+    "h1_lead": "Web applications built ",
+    "h1_accent": "to hold up",
+    "h1_tail": ", not just to look good.",
+    "sub": "Online shops, business platforms and SaaS, built with Next.js and NestJS on a PostgreSQL database. Before the first line of code, we put the data, the access rules and the security in writing.",
+    "cta": "Start with scoping",
+    "cta_secondary": "See the work",
+    "reassurance": "One point of contact from scoping to launch. The code ships with its sources: it belongs to you.",
+    "demo_caption": "Native WebGL demo · move your mouse",
+    "reviews_label": "Recommended on",
     "live_label": "Live right now",
-    "live_cta": "The six projects"
+    "live_cta": "See the projects"
   },
   "nav": {
     "method": "Process",
-    "scoping": "Scoping",
-    "solutions": "Services",
     "portfolio": "Work",
     "about": "The Dev",
     "contact": "Get in Touch",
-    "blog": "Journal"
+    "blog": "Journal",
+    "cta": "Book a scoping session"
+  },
+  "build": {
+    "eyebrow": "What I build",
+    "section_title": "Three kinds of projects. The same standard under the hood.",
+    "intro": "What you see changes from one project to the next. What doesn't: well-structured data, payments checked on the server, tests that stop a bug before it goes live.",
+    "item1_title": "Business platforms and SaaS",
+    "item1_text": "Accounts, roles, subscriptions, dashboards. The tool that replaces your spreadsheets and manual follow-ups.",
+    "item1_link": "See M.U.S.E.",
+    "item2_title": "Online shops",
+    "item2_text": "Catalogue, Stripe payments, stock, orders, invoices. You sell; the system keeps the books.",
+    "item2_link": "See Fairy Chair Studio",
+    "item3_title": "Marketing websites",
+    "item3_text": "Fast, readable on mobile, well indexed. The front door, built with the same rigour as the rest.",
+    "item3_link": "See La Requeyrie"
   },
   "method": {
-    "eyebrow": "From concept to launch, zero detours.",
-    "section_title": "Three steps. No filler.",
-    "intro": "No endless meetings, no guesswork. Every stage comes with a clear deliverable, a firm deadline, and a fixed price.",
-    "block1_title": "The Counter Brief.",
-    "block1_text": "You pitch your business needs. I tell you straight away if it's doable, which tech fits best, and exactly what it costs. If the project is still to be defined, we start with a scoping session.",
-    "block2_title": "In the Workshop.",
-    "block2_text": "I design, I code. You stay focused on your business while I build. No time-wasting syncs — just tangible progress.",
-    "block3_title": "The Handover.",
-    "block3_text": "A battle-tested, secure tool that is 100% yours. I walk you through the essentials, then get out of your way."
-  },
-  "scoping": {
-    "eyebrow": "Before we build",
-    "section_title": "Define the project\nbefore building it",
-    "intro": "A poorly scoped project always costs more to fix than to design. Before the first line of code, we settle the architecture, the scope, the compliance requirements and the business model. You leave with a report that belongs to you — one any developer can execute, including someone other than me.",
-    "tier1_title": "Brochure Site Scoping",
-    "tier1_label": "Brochure site",
-    "tier1_price": "€290",
-    "tier2_title": "E-commerce & Business Scoping",
-    "tier2_label": "Sales & accounts",
-    "tier2_price": "€590",
-    "tier3_title": "Business Architecture Scoping",
-    "tier3_label": "Business application",
-    "tier3_price": "€1,190",
-    "condition": "Optional for a brochure site. Required as soon as there are user accounts, online payment or sensitive data: I cannot quote seriously without it.",
-    "design_title": "Product design",
-    "design_price": "€650",
-    "design_unit": "/ day",
-    "design_note": "For projects still to be invented: features, business rules, content structure, economic model. The number of days is set by the scoping work.",
-    "cta": "Book a scoping session",
-    "terms_link": "Terms of service",
-    "vat_notice": "The report is yours in every case. Where a development quote is signed within three months, 50 % of the scoping fee is set off against it."
-  },
-  "solutions": {
-    "eyebrow": "Choose your level of ambition.",
-    "section_title": "Three foundations. No surprises.",
-    "intro": "Each package is a foundation with a defined scope, priced in working days. Specific needs are added as modules billed by the day: you know exactly what you are paying for, and you can take things out.",
-    "from": "From",
-    "days_line": "{days} days",
-    "maintenance_line": "Maintenance and security, from go-live: {rate}",
-    "modules_label": "Extra, priced separately",
-    "cards": {
-      "presence": {
-        "subtitle": "Marketing Website",
-        "desc": "A fast, mobile-first website designed to turn visitors into customers.",
-        "features": [
-          "Custom design",
-          "Up to 5 pages",
-          "Flawless mobile responsiveness",
-          "Contact form",
-          "Technical SEO and launch"
-        ],
-        "modules": "booking with calendar, blog, multilingual, newsletter",
-        "delay": "2 to 3 weeks"
+    "eyebrow": "Process",
+    "section_title": "Not one line of code without an approved plan.",
+    "intro1": "An application rarely breaks where you're looking. It breaks in what you can't see: badly structured data, a payment nobody checked, a forgotten access rule. Those decisions are made at the start, or they get paid for later, at the price of a rebuild.",
+    "intro2": "That is what scoping is for: putting the scope, the data, the security and the compliance in writing, before the first development quote. Optional for a marketing website, it becomes necessary as soon as there are user accounts, online payment or sensitive data.",
+    "steps": [
+      {
+        "title": "Scoping",
+        "text": "The plan, in writing"
       },
-      "boutique": {
-        "subtitle": "Online Sales",
-        "desc": "Sell your products online with secure Stripe payments, a catalogue you manage yourself and full order tracking.",
-        "features": [
-          "Marketing website included",
-          "Product catalogue and pages",
-          "Secure Stripe payments",
-          "Order management",
-          "Back office and transactional emails"
-        ],
-        "modules": "real-time stock, refunds, shipping, PDF invoicing, subscriptions",
-        "delay": "5 to 7 weeks"
+      {
+        "title": "Build",
+        "text": "The code, tested"
       },
-      "outils": {
-        "subtitle": "Business Applications",
-        "desc": "Your custom internal tool. Dashboards, stock tracking, automation of whatever costs you time every week.",
-        "features": [
-          "Data modelling",
-          "Authentication, roles and permissions",
-          "Dashboard and back office",
-          "Robust NestJS backend",
-          "Deployment included"
-        ],
-        "modules": "client area, payments, API integration, reporting, mobile app",
-        "delay": "8 to 10 weeks"
+      {
+        "title": "Launch",
+        "text": "Live, and yours"
       }
+    ],
+    "e1_tag": "Step 01",
+    "e1_title": "Scoping: diagnosis and architecture",
+    "e1_p1": "A video workshop, then a written report, delivered within 48 hours or 5 working days depending on the tier. It holds the decisions that keep the application standing, and the development quote comes straight out of it.",
+    "e1_p2": "The report is yours. You can hand it to another developer: it is written to be carried out by anyone.",
+    "why_title": "Why this diagnosis is paid",
+    "why_text": "Because it is already the work. The data model, the access rights, the choice of payment provider: these are the decisions that cost the most to fix afterwards. A free quote guesses them. Scoping settles them, in writing.",
+    "demo_title": "The interface shows. The architecture is decided.",
+    "demo_where_wide": "On the right",
+    "demo_where_narrow": "Below",
+    "demo_lead": ", what your customer sees: a price, a stock level, a button.",
+    "demo_hover": "Hover over the card.",
+    "demo_touch": "Tap the button under the card.",
+    "demo_questions": "Behind each element there is a question. Where does this price come from, and who checks it? What happens to the last item if two customers pay at the same time? What happens if the bank doesn't confirm the payment?",
+    "demo_p2": "No mock-up answers these questions. They are settled during scoping, in writing, before the first development quote. That report is what you pay for: the decisions that keep the application standing, not one more pretty picture.",
+    "blueprint": {
+      "label": "Demo: a product card, then its architecture",
+      "product_name": "Mira bag",
+      "product_sub": "Natural leather",
+      "product_price": "€128.00",
+      "product_stock": "Only 2 left in stock",
+      "product_pay": "Pay",
+      "product_invoice": "Invoice sent by email",
+      "schema_browser": "Browser",
+      "schema_api": "NestJS API",
+      "schema_db": "PostgreSQL",
+      "schema_stripe": "Stripe",
+      "schema_webhook": "signed webhook",
+      "arch_record": "record read from the DB",
+      "arch_price": "total recomputed on the server",
+      "arch_stock": "reserved during payment",
+      "arch_pay": "signed Stripe webhook · auto catch-up",
+      "arch_invoice": "frozen PDF, continuous number",
+      "show_architecture": "Show the architecture",
+      "show_interface": "Show the interface",
+      "hint": "or hover over the card"
     },
-    "cta": "Start this project",
-    "vat_notice": "All prices exclude VAT. French VAT at 20 % applies on top."
+    "sheet_title": "Three depths of diagnosis",
+    "sheet_intro": "The right tier depends on what your project has to take payments for, protect or automate.",
+    "scoping": [
+      {
+        "for": "A site that presents you and brings in enquiries",
+        "content": "Reasoned choice of solution, site structure, GDPR checklist, scope of the first version, draft legal texts to be reviewed by a lawyer.",
+        "workshop": "1.5-hour workshop",
+        "delivery": "Delivered 48 h later"
+      },
+      {
+        "for": "Selling online, managing accounts or bookings",
+        "content": "Sales funnel and payment provider, booking and synchronisation workflows, e-commerce GDPR mapping, draft terms of sale, scope of the first version.",
+        "workshop": "1.5-hour workshop",
+        "delivery": "Delivered 48 h later"
+      },
+      {
+        "for": "A business application or a SaaS",
+        "content": "Data model and database schema, application architecture, back-office specification, roles and permissions matrix, security, business model, MVP broken down into phases.",
+        "workshop": "2-hour workshop",
+        "delivery": "Delivered in 5 working days"
+      }
+    ],
+    "optional_note": "Optional for a marketing website. Required as soon as there are user accounts, online payment or sensitive data.",
+    "setoff_note": "Signing for development within three months? {rate} of the scoping fee comes off the quote. If not, the report is still yours.",
+    "design_note": "Project still to be invented (features, rules, business model): product design at {price} excl. VAT per day, number of days set by the scoping.",
+    "e2_tag": "Step 02",
+    "e2_title": "Build",
+    "e2_p1": "The development quote comes out of the report: priced in days, module by module. You know what you are paying for, and you can remove a module.",
+    "e2_p2": "The sensitive parts, payment, access, stock, are covered by automated tests before going live.",
+    "e3_tag": "Step 03",
+    "e3_title": "Launch",
+    "e3_p1": "Go-live, handover, source code delivered. The application is 100% yours.",
+    "e3_p2": "Maintenance and security from launch:",
+    "socles": {
+      "presence": "Marketing website",
+      "boutique": "Online shop",
+      "outils": "Business application"
+    },
+    "from": "from",
+    "cta": "Book a scoping session",
+    "cta_secondary": "Describe my project",
+    "terms_link": "Terms of service",
+    "vat_notice": "Prices exclude VAT; 20% VAT applies on top.",
+    "nonprofit": "Non-profits: {rate} off with",
+    "nonprofit_link": "L'Échoppe Solidaire"
   },
   "portfolio": {
     "eyebrow": "The Counter Archives.",
@@ -242,26 +273,29 @@
     "open_site": "Open the site",
     "open_repo": "See the code"
   },
+  "testimonials": {
+    "eyebrow": "They pushed the door open",
+    "section_title": "What clients say.",
+    "source": "Reviews published on",
+    "translation_label": "Translation"
+  },
   "about": {
     "eyebrow": "The craftsman behind the code.",
     "section_title": "Management standards. Developer precision.",
-    "p1": "After 18 years leading teams and running field operations, I hung up the tie to come back to my true obsession: the raw mechanics of the web.",
-    "p2": "Those years as a manager left me with a sharp, practical lens. I know business owners don't have time for jargon — they need tools that work. I have an eye for friction. I can tell immediately what's slowing your users down, what's making an interface feel heavy, or where something just rings false.",
-    "p3": "That's what this Échoppe is built on. No hollow promises. What brings us together is a brief to honor and a result to deliver.",
-    "p4": "We align on the foundations, I forge the architecture, and I don't close my editor until the machine does exactly what was agreed upon. My job is to write solid code so you can focus on yours.",
+    "body": "Ludovic Bataille, full-stack developer in Paris. I design, build, test and ship: you have a single point of contact, from scoping to delivery. We agree on the plan, and I don't close my editor until the application does exactly what was signed.",
     "portrait_alt": "Ludovic Bataille, freelance web developer in Paris",
     "portrait_caption": "LUDOVIC BATAILLE · PARIS · ÎLE-DE-FRANCE",
     "stat1_value": "18 years",
     "stat1_label": "leading teams on the ground",
     "stat2_value": "6",
-    "stat2_label": "projects shipped, 5 still live",
+    "stat2_label": "projects shipped, {live} still live",
     "stat3_value": "1",
     "stat3_label": "single point of contact, from scoping to launch"
   },
   "contact": {
     "eyebrow": "At the counter",
-    "section_title": "Drop your brief.",
-    "intro": "Describe the shape of your marketing website, online shop or business application. Reply within 24 working hours to set up a 15-minute call and lock in the technical scope.",
+    "section_title": "Start with the plan.",
+    "intro": "Describe your project in a few lines. Reply within 24 working hours for a 15-minute call: we work out together whether your project needs scoping, and which tier.",
     "assurance1": "Reply within 24 working hours",
     "assurance2": "A 15-minute call",
     "assurance3": "Quote priced in days",
@@ -271,7 +305,7 @@
     "field_description_placeholder": "Keep it factual: what are the must-have features?",
     "field_budget": "Estimated budget",
     "field_budget_placeholder": "Select a budget range",
-    "budget_scoping": "Scope to be defined (Scoping — from €290)",
+    "budget_scoping": "To be defined: start with scoping (from €290 excl. VAT)",
     "budget_1": "€2,600 — €5,000 (Marketing Website)",
     "budget_2": "€6,500 — €15,000 (Online Shop)",
     "budget_3": "From €9,500 (Business Application)",

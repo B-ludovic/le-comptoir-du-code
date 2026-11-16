@@ -1,14 +1,12 @@
 import Image from 'next/image'
 import styles from './About.module.css'
+import { liveProjects } from '@/lib/projects'
 
 type Props = {
   dict: {
     eyebrow: string
     section_title: string
-    p1: string
-    p2: string
-    p3: string
-    p4: string
+    body: string
     portrait_alt: string
     portrait_caption: string
     stat1_value: string
@@ -34,22 +32,28 @@ function parseHighlights(text: string) {
    derrière l'écran » sans jamais le montrer se prive de son argument le moins
    coûteux. Traité comme les captures — nuances de gris, filet, pas d'ombre.
 
-   Trois chiffres, ensuite. Les quatre paragraphes disent le parcours ; les
-   chiffres le rendent citable, y compris par un moteur génératif qui n'aura
-   pas lu la prose. */
-export default function About({ dict }: Props) {
-  const paragraphs = [dict.p1, dict.p2, dict.p3, dict.p4]
+   Trois chiffres, ensuite. Le paragraphe dit le métier ; les chiffres le
+   rendent citable, y compris par un moteur génératif qui n'aura pas lu la
+   prose.
 
+   Refonte : les quatre paragraphes d'origine, qui ouvraient sur le récit de
+   reconversion, passent à un seul. Le nombre de sites en ligne n'est plus
+   écrit à la main : il vient de lib/projects.ts, comme le bandeau de
+   l'accroche — une fermeture de domaine le met à jour partout. */
+export default function About({ dict }: Props) {
   const stats = [
     { value: dict.stat1_value, label: dict.stat1_label },
-    { value: dict.stat2_value, label: dict.stat2_label },
+    {
+      value: dict.stat2_value,
+      label: dict.stat2_label.replace('{live}', String(liveProjects().length)),
+    },
     { value: dict.stat3_value, label: dict.stat3_label },
   ]
 
   return (
     <section id="about" className={styles.section}>
       <div className="container">
-        <div className={styles.layout}>
+        <div className={styles.layout} data-reveal="">
 
           <div className={styles.left}>
             <p className={styles.eyebrow}>{dict.eyebrow}</p>
@@ -72,11 +76,7 @@ export default function About({ dict }: Props) {
           </div>
 
           <div className={styles.right}>
-            {paragraphs.map((p, i) => (
-              <p key={i} className={styles.text}>
-                {parseHighlights(p)}
-              </p>
-            ))}
+            <p className={styles.text}>{parseHighlights(dict.body)}</p>
 
             <dl className={styles.stats}>
               {stats.map((stat) => (

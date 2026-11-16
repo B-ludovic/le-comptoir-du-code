@@ -111,3 +111,31 @@ section {
     padding: 0 1rem;
   }
 }
+
+/* Apparitions au défilement.
+
+   Un élément porte `data-reveal` ; RevealController pose `data-visible` quand
+   il entre à l'écran. L'état caché n'existe que sous `.reveal-armed`, classe que
+   le contrôleur pose sur <html> une fois hydraté : sans JavaScript, pour un
+   robot ou en mouvement réduit, tout reste visible d'office.
+
+   `--i` décale les éléments frères de 80 ms (cascade de quatre au plus).
+   La transition vit sur l'élément lui-même : on ne pose donc jamais
+   `data-reveal` sur un élément qui a déjà ses propres transitions de survol. */
+[data-reveal] {
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.6s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+.reveal-armed [data-reveal]:not([data-visible]) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    transition: none;
+  }
+}

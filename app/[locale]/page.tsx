@@ -3,14 +3,15 @@ import { reviewsJsonLd } from '@/lib/structured-data'
 import { TESTIMONIALS, REVIEWS_SOURCE, REVIEWS_SOURCE_NAME } from '@/lib/testimonials'
 import Header from '@/components/Header/Header'
 import Hero from '@/components/Sections/Hero/Hero'
+import Build from '@/components/Sections/Build/Build'
 import Method from '@/components/Sections/Method/Method'
-import Scoping from '@/components/Sections/Scoping/Scoping'
-import Solutions from '@/components/Sections/Solutions/Solutions'
 import Portfolio from '@/components/Sections/Portfolio/Portfolio'
+import Testimonials from '@/components/Sections/Testimonials/Testimonials'
 import About from '@/components/Sections/About/About'
 import Contact from '@/components/Sections/Contact/Contact'
 import Footer from '@/components/Footer/Footer'
 import ScrollToHash from '@/components/ScrollToHash/ScrollToHash'
+import RevealController from '@/components/Reveal/RevealController'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -24,7 +25,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <main>
       <Header locale={locale} nav={dict.nav} />
       <ScrollToHash />
-      {/* Les avis sont déclarés là où ils sont affichés : sur la page d'accueil. */}
+      <RevealController />
+      {/* Les avis sont déclarés là où ils sont affichés : la section
+          Testimonials, plus bas sur cette page. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -38,17 +41,20 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       />
       {/* Section 1 — Accroche. Porte le H1, visible : le titre le plus lourd de
           la page ne peut pas être celui que personne ne voit. */}
-      <Hero locale={locale} dict={dict.hero} />
+      <Hero dict={dict.hero} />
 
-      {/* Section 2 — Méthode */}
-      <Method dict={dict.method} />
+      {/* Section 2 — Ce que je construis : trois familles, aucun prix */}
+      <Build dict={dict.build} />
 
-      {/* Section 3 — Cadrage (étape 0) + Solutions */}
-      <Scoping locale={locale} dict={dict.scoping} />
-      <Solutions locale={locale} dict={dict.solutions} />
+      {/* Section 3 — Méthodologie : cadrage (étape 01), construction (02),
+          mise en service (03). Remplace Méthode, Cadrage et Solutions. */}
+      <Method locale={locale} dict={dict.method} />
 
       {/* Section 4 — Réalisations */}
       <Portfolio locale={locale} dict={dict.portfolio} />
+
+      {/* Avis clients, fixes : ce sont eux que déclare le JSON-LD ci-dessus. */}
+      <Testimonials locale={locale} dict={dict.testimonials} />
 
       {/* Section 5 — Le Codeur */}
       <About dict={dict.about} />

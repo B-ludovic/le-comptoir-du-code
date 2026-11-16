@@ -10,13 +10,13 @@
      cadre, elle n'a plus de blanc autour d'elle pour se détacher du fond.
      C'est le cadre qui la tient, et c'est lui qui s'allume au survol —
      « bordure avant ombre ». */
-  border: 1px solid rgba(232, 196, 160, 0.12);
+  border: 1px solid rgba(var(--tint-rgb), 0.12);
   transition: border-color var(--transition-base);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .thumbnailWrapper:hover {
-    border-color: rgba(232, 196, 160, 0.55);
+    border-color: rgba(var(--tint-rgb), 0.55);
   }
 }
 
@@ -91,8 +91,8 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  background: rgba(26, 23, 20, 0.6);
-  border: 1px solid rgba(232, 196, 160, 0.2);
+  background: rgba(var(--bg-rgb), 0.6);
+  border: 1px solid rgba(var(--tint-rgb), 0.2);
   color: var(--accent-primary);
   width: 36px;
   height: 36px;
@@ -107,8 +107,8 @@
 
 @media (hover: hover) and (pointer: fine) {
   .arrow:hover {
-    background: rgba(232, 196, 160, 0.15);
-    border-color: rgba(232, 196, 160, 0.5);
+    background: rgba(var(--tint-rgb), 0.15);
+    border-color: rgba(var(--tint-rgb), 0.5);
   }
 }
 
@@ -135,7 +135,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(232, 196, 160, 0.3);
+  background: rgba(var(--tint-rgb), 0.3);
   border: none;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
@@ -181,7 +181,9 @@
   right: 0;
   background: none;
   border: none;
-  color: rgba(232, 196, 160, 0.45);
+  /* Posé sur le voile sombre du modal, pas sur la page : il garde donc la
+     couleur claire du blueprint, quelle que soit la palette du site. */
+  color: var(--blueprint-line);
   cursor: pointer;
   padding: 0.25rem;
   display: flex;
@@ -193,7 +195,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .closeButton:hover {
-    color: var(--accent-primary);
+    color: var(--bg-main);
   }
 }
 

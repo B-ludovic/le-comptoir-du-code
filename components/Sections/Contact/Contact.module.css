@@ -4,6 +4,14 @@
   padding: var(--section-padding);
 }
 
+/* .container porte des marges auto dans une section en flex : sans largeur
+   explicite, il prend celle de son contenu le plus large — ici l'option la
+   plus longue du <select> — et la page déborde sur mobile. */
+.section > :global(.container) {
+  width: 100%;
+  min-width: 0;
+}
+
 /* Deux colonnes, valeurs de la maquette : le discours ouvre à 320 px de base,
    le formulaire à 420. Tant que les deux tiennent côte à côte, la page ne
    perd plus sa moitié droite ; en dessous, le formulaire passe sous le
@@ -56,7 +64,7 @@
   list-style: none;
   margin: 2.5rem 0 0;
   padding: 2rem 0 0;
-  border-top: 1px solid rgba(232, 196, 160, 0.16);
+  border-top: 1px solid rgba(var(--tint-rgb), 0.16);
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
@@ -86,8 +94,8 @@
   flex-direction: column;
   gap: 1.6rem;
   padding: clamp(1.25rem, 3vw, 2.5rem);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(232, 196, 160, 0.16);
+  background: var(--bg-card);
+  border: 1px solid rgba(var(--tint-rgb), 0.16);
   border-radius: var(--card-radius);
 }
 
@@ -119,7 +127,7 @@
    ne disait pas où s'arrêtait la zone de saisie, la boîte le dit. */
 .textarea {
   background: transparent;
-  border: 1px solid rgba(232, 196, 160, 0.18);
+  border: 1px solid rgba(var(--tint-rgb), 0.18);
   border-radius: var(--card-radius);
   color: var(--text-main);
   font-family: var(--font-body);
@@ -155,13 +163,15 @@
 .select {
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(232, 196, 160, 0.2);
+  border-bottom: 1px solid rgba(var(--tint-rgb), 0.2);
   color: var(--text-main);
   font-family: var(--font-body);
   font-size: 0.95rem;
   padding: 0.6rem 0;
   outline: none;
   width: 100%;
+  min-width: 0;
+  text-overflow: ellipsis;
   appearance: none;
   cursor: pointer;
   transition: border-color var(--transition-base);
@@ -270,7 +280,7 @@
 .errorMsg {
   font-family: var(--font-body);
   font-size: 0.85rem;
-  color: #c0706a;
+  color: var(--error);
   line-height: 1.6;
 }
 
@@ -281,7 +291,7 @@
   font-family: var(--font-body);
   font-size: 0.75rem;
   line-height: 1.5;
-  color: #c0706a;
+  color: var(--error);
 }
 
 /* Ligne de rassurance sous le bouton : elle doit se lire, pas se remarquer. */

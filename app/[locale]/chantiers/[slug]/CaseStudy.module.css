@@ -46,7 +46,7 @@
 .eyebrowRule {
   width: 20px;
   height: 1px;
-  background: rgba(232, 196, 160, 0.35);
+  background: rgba(var(--tint-rgb), 0.35);
 }
 
 .eyebrowKind {
@@ -58,7 +58,7 @@
   font-size: 0.65rem;
   letter-spacing: 1.5px;
   color: var(--accent-primary);
-  border: 1px solid rgba(232, 196, 160, 0.25);
+  border: 1px solid rgba(var(--tint-rgb), 0.25);
   border-radius: var(--card-radius);
   padding: 0.25rem 0.55rem;
 }
@@ -98,9 +98,9 @@
   border-bottom: 1px solid transparent;
   border-image: linear-gradient(
     90deg,
-    rgba(26, 23, 20, 0) 0%,
-    rgba(232, 196, 160, 0.15) 50%,
-    rgba(26, 23, 20, 0) 100%
+    rgba(var(--bg-rgb), 0) 0%,
+    rgba(var(--tint-rgb), 0.15) 50%,
+    rgba(var(--bg-rgb), 0) 100%
   ) 1;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .facts dd a {
-  border-bottom: 1px solid rgba(232, 196, 160, 0.3);
+  border-bottom: 1px solid rgba(var(--tint-rgb), 0.3);
   transition: color var(--transition-base);
 }
 
@@ -137,7 +137,7 @@
    fenêtre est propre à cette page : trois traits, pas trois pastilles rondes —
    un langage à 2px de rayon ne s'ouvre pas sur des cercles. */
 .shot {
-  border: 1px solid rgba(232, 196, 160, 0.1);
+  border: 1px solid rgba(var(--tint-rgb), 0.1);
   border-radius: var(--card-radius);
   background: var(--bg-card);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -158,13 +158,13 @@
   align-items: center;
   padding: 0.7rem 0.9rem;
   background: var(--bg-card);
-  border-bottom: 1px solid rgba(232, 196, 160, 0.08);
+  border-bottom: 1px solid rgba(var(--tint-rgb), 0.08);
 }
 
 .chrome i {
   width: 11px;
   height: 2px;
-  background: rgba(232, 196, 160, 0.25);
+  background: rgba(var(--tint-rgb), 0.25);
 }
 
 .shot img {
@@ -180,7 +180,7 @@
   font-size: 0.78rem;
   line-height: 1.7;
   color: var(--text-muted);
-  border-top: 1px solid rgba(232, 196, 160, 0.08);
+  border-top: 1px solid rgba(var(--tint-rgb), 0.08);
 }
 
 .hero .shot {
@@ -205,7 +205,7 @@
 }
 
 .compositeDesktop {
-  border: 1px solid rgba(232, 196, 160, 0.1);
+  border: 1px solid rgba(var(--tint-rgb), 0.1);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
@@ -220,7 +220,7 @@
 /* Le rayon généreux et l'absence de bandeau font tout le travail : c'est ce qui
    dit « téléphone » là où le bloc voisin dit « fenêtre de navigateur ». */
 .phone {
-  border: 1px solid rgba(232, 196, 160, 0.14);
+  border: 1px solid rgba(var(--tint-rgb), 0.14);
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
@@ -327,7 +327,7 @@
 @media (hover: hover) and (pointer: fine) {
   .persona:hover {
     background: var(--bg-card-hover);
-    border-color: rgba(232, 196, 160, 0.25);
+    border-color: rgba(var(--tint-rgb), 0.25);
   }
 }
 
@@ -370,7 +370,7 @@
   display: flex;
   flex-direction: column;
   padding-left: 1.1rem;
-  border-left: 2px solid rgba(232, 196, 160, 0.35);
+  border-left: 2px solid rgba(var(--tint-rgb), 0.35);
 }
 
 .resultValue {
@@ -408,7 +408,7 @@
 /* ── Le nœud du chantier ─────────────────────────────────────────────────── */
 
 .challenge {
-  border-left: 2px solid rgba(232, 196, 160, 0.35);
+  border-left: 2px solid rgba(var(--tint-rgb), 0.35);
   padding-left: 1.75rem;
   max-width: 720px;
 }
@@ -444,9 +444,9 @@
   border-bottom: 1px solid transparent;
   border-image: linear-gradient(
     90deg,
-    rgba(26, 23, 20, 0) 0%,
-    rgba(232, 196, 160, 0.15) 50%,
-    rgba(26, 23, 20, 0) 100%
+    rgba(var(--bg-rgb), 0) 0%,
+    rgba(var(--tint-rgb), 0.15) 50%,
+    rgba(var(--bg-rgb), 0) 100%
   ) 1;
 }
 
@@ -468,7 +468,7 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--accent-primary);
-  border: 1px solid rgba(232, 196, 160, 0.25);
+  border: 1px solid rgba(var(--tint-rgb), 0.25);
   border-radius: var(--card-radius);
   padding: 0.25rem 0.55rem;
 }
@@ -480,8 +480,8 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1px;
   margin-top: 3rem;
-  background: rgba(232, 196, 160, 0.1);
-  border: 1px solid rgba(232, 196, 160, 0.1);
+  background: rgba(var(--tint-rgb), 0.1);
+  border: 1px solid rgba(var(--tint-rgb), 0.1);
 }
 
 /* Toutes les cases au même gabarit, quel que soit le chantier.
@@ -518,7 +518,7 @@
   padding-right: 0.9rem;
   margin-right: -0.6rem;
   scrollbar-width: thin;
-  scrollbar-color: rgba(232, 196, 160, 0.35) transparent;
+  scrollbar-color: rgba(var(--tint-rgb), 0.35) transparent;
 }
 
 .workshopBody::-webkit-scrollbar {
@@ -526,7 +526,7 @@
 }
 
 .workshopBody::-webkit-scrollbar-thumb {
-  background: rgba(232, 196, 160, 0.35);
+  background: rgba(var(--tint-rgb), 0.35);
   border-radius: var(--radius-full, 999px);
 }
 

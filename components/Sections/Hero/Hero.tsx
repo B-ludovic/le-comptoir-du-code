@@ -1,67 +1,108 @@
 import styles from './Hero.module.css'
-import TestimonialTicker from './TestimonialTicker'
-import LiveStrip from './LiveStrip'
+import HeroStage from './HeroStage'
+import { liveProjects, projectDomain } from '@/lib/projects'
+import { REVIEWS_SOURCE, REVIEWS_SOURCE_NAME } from '@/lib/testimonials'
 
 type Props = {
-  locale: string
   dict: {
-    eyebrow: string
-    h1: string
-    lead: string
-    facts: string
+    kicker: string
+    h1_lead: string
+    h1_accent: string
+    h1_tail: string
+    sub: string
     cta: string
     cta_secondary: string
+    reassurance: string
+    demo_caption: string
     reviews_label: string
-    reviews_source: string
     live_label: string
     live_cta: string
   }
 }
 
-/* Bloc d'accroche — le premier écran, et le premier paragraphe que lisent les
-   robots d'indexation comme les moteurs génératifs. D'où deux textes distincts :
-   `lead` dit qui fait quoi, `facts` donne les chiffres. Chacun se tient seul,
-   sans son voisin ni son contexte visuel : c'est la condition pour être cité.
+/* Accroche.
 
-   S'y ajoute le bandeau des sites en ligne. Le discours et les avis disaient
-   « on me fait confiance » ; le bandeau dit « voilà les adresses, ouvrez-les ». */
-export default function Hero({ locale, dict }: Props) {
+   Le texte à gauche dit ce qui est vendu ; l'objet à droite montre qu'on sait
+   le construire. Le H1 et le sous-titre ne portent aucune animation : ce sont
+   eux qui fixent le LCP, et le premier texte qu'un robot ou un moteur lit.
+
+   Le H1 garde « Développeur web freelance à Paris et en Île-de-France » : visuellement
+   un surtitre, pour Google la première moitié du titre. Remplacer ces mots
+   par la seule accroche aurait fait perdre le signal local.
+
+   La bande du bas reprend le bandeau des sites en ligne : des adresses qui
+   s'ouvrent prouvent plus qu'un badge. Le défilement automatique des avis a
+   disparu (carrousel automatique, exclu par la charte d'animation) ; l'avis
+   reste cité, fixe, dans les Réalisations. */
+export default function Hero({ dict }: Props) {
+  const sites = liveProjects()
+
   return (
     <section id="hero" className={styles.hero}>
-      <div className="container">
-        {/* Deux colonnes : l'accroche porte le discours, le bandeau porte la
-            preuve. Les avis y défilent en continu, et le premier écran cesse
-            d'être une promesse pour devenir une promesse plus un témoin. */}
-        <div className={styles.layout}>
-          <div className={styles.pitch}>
-            <p className={styles.eyebrow}>{dict.eyebrow}</p>
-            <h1 className={styles.title}>{dict.h1}</h1>
+      <div className={`container ${styles.layout}`}>
+        <div className={styles.pitch}>
+          <h1 className={styles.title}>
+            <span className={styles.kicker}>{dict.kicker}</span>
+            {dict.h1_lead}
+            <em className={styles.accent}>{dict.h1_accent}</em>
+            {dict.h1_tail}
+          </h1>
 
-            <div className={styles.rule} />
+          <p className={styles.sub}>{dict.sub}</p>
 
-            <p className={styles.lead}>{dict.lead}</p>
-            <p className={styles.facts}>{dict.facts}</p>
-
-            <div className={styles.actions}>
-              <a href="#contact" className={styles.btn}>{dict.cta}</a>
-              <a href="#solutions" className={styles.btnGhost}>{dict.cta_secondary}</a>
-            </div>
+          <div className={styles.actions}>
+            <a href="#method" className={styles.btn}>{dict.cta}</a>
+            <a href="#portfolio" className={styles.btnGhost}>{dict.cta_secondary}</a>
           </div>
 
-          {/* Le ticker est stylé par son propre module : il n'a donc aucune
-              base de flex que .layout puisse lire, et il se replierait seul sur
-              une ligne pleine largeur. Ce conteneur porte la base côté Hero,
-              là où la colonne est décidée — sans coupler les deux feuilles. */}
-          <div className={styles.proof}>
-            <TestimonialTicker
-              locale={locale}
-              label={dict.reviews_label}
-              sourceLabel={dict.reviews_source}
-            />
-          </div>
+          <p className={styles.reassurance}>{dict.reassurance}</p>
         </div>
 
-        <LiveStrip label={dict.live_label} cta={dict.live_cta} />
+        <div className={styles.visual}>
+          <HeroStage />
+          <p className={styles.caption}>{dict.demo_caption}</p>
+        </div>
+      </div>
+
+      <div className={styles.proof} data-reveal="">
+        <div className={`container ${styles.proofInner}`}>
+          <a
+            href={REVIEWS_SOURCE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.proofLink}
+          >
+            {dict.reviews_label} {REVIEWS_SOURCE_NAME}
+            <span aria-hidden="true"> ↗</span>
+          </a>
+
+          {sites.length > 0 && (
+            <>
+              <span className={styles.proofDot} aria-hidden="true" />
+              <span className={styles.proofLabel}>{dict.live_label}</span>
+              <ul className={styles.domains}>
+                {sites.map((project) => (
+                  <li key={project.slug}>
+                    <a
+                      href={project.url!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.domain}
+                    >
+                      {projectDomain(project)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <span className={styles.proofDot} aria-hidden="true" />
+          <a href="#portfolio" className={styles.proofLink}>
+            {dict.live_cta}
+            <span aria-hidden="true"> ↓</span>
+          </a>
+        </div>
       </div>
     </section>
   )

@@ -1,17 +1,19 @@
 # Design System — L'Échoppe du Code
 
-> Charte graphique complète. Référence unique pour toute décision visuelle sur le site, le blog, et les documents PDF.
+> Charte graphique complète (base claire, novembre 2026). Référence unique pour toute décision visuelle sur le site, le blog, et les documents PDF.
 
 ---
 
 ## 1. Philosophie
 
-**Warm dark artisanal.** L'esthétique d'un atelier de nuit : fond brun-noir, lumière cuivrée, matières sobres. Zéro dépendance CSS externe, zéro template, zéro arrondi agressif. Chaque pixel est intentionnel.
+**Base claire, artisanale.** Fond beige chaud, accent terracotta, matières sobres (refonte de novembre 2026 ; l'ancienne charte « warm dark » brun-noir et cuivre est abandonnée). Le site doit rassurer un client qui ne lit pas de code : peu d'effets, beaucoup de lisibilité. Zéro dépendance CSS externe, zéro template, zéro arrondi agressif.
 
 Trois règles non négociables :
 - `border-radius: 2px` partout — jamais rond, jamais carré
-- Le cuivre/ambre est la seule couleur d'accent — tout le reste est neutre
+- Le terracotta est la seule couleur d'accent — tout le reste est neutre
 - Pas de couleurs vives, pas d'ombres portées agressives
+
+Un seul endroit sombre : la face « architecture » du composant Interface → Architecture (Méthodologie), et la pastille du logo. Le sombre y signifie « plan technique ».
 
 ---
 
@@ -19,32 +21,44 @@ Trois règles non négociables :
 
 ### Palette principale
 
-| Rôle | Variable CSS | Hex | Usage |
+Tous les textes passent le seuil WCAG AA (4,5 : 1) sur `--bg-main`, `--bg-card` et `--bg-alt`.
+
+| Rôle | Variable CSS | Valeur | Contraste sur `--bg-main` |
 |------|-------------|-----|-------|
-| Fond principal | `--bg-main` | `#1A1714` | Background body, pages |
-| Fond carte | `--bg-card` | `#242019` | Cards, sections encadrées |
-| Fond carte hover | `--bg-card-hover` | `#2A251E` | État hover des cards |
-| Lueur de fond | `--bg-glow` | `rgba(200, 120, 40, 0.08)` | Gradient radial haut-droite |
-| Texte principal | `--text-main` | `#F0EBE3` | Corps de texte, titres |
-| Texte secondaire | `--text-muted` | `#ADA49C` | Labels, nav links, meta |
-| Accent principal | `--accent-primary` | `#E8C4A0` | CTA, liens actifs, icônes accent |
-| Accent hover | `--accent-hover` | `#C9A882` | État hover des éléments accent |
+| Fond principal | `--bg-main` | `#F6F0E6` | — |
+| Fond carte | `--bg-card` | `#FBF7F1` | — |
+| Fond carte hover | `--bg-card-hover` | `#F2EADF` | — |
+| Fond section alternée | `--bg-alt` | `#EFE6D8` | — |
+| Lueur de fond | `--bg-glow` | `rgba(217, 119, 79, 0.1)` | — |
+| Texte principal | `--text-main` | `#2A211B` | 13,9 : 1 |
+| Texte secondaire | `--text-muted` | `#6B5D52` | 5,6 : 1 |
+| Accent (liens, CTA, numéros) | `--accent-primary` | `#A44A28` | 5,2 : 1 |
+| Accent hover | `--accent-hover` | `#94401F` | 6,2 : 1 |
+| Terracotta clair | `--accent-soft` | `#D9774F` | décoratif, jamais pour du texte |
+| Texte sur accent | `--on-accent` | `#FBF7F1` | 5,5 : 1 sur l'accent |
+| Erreur | `--error` | `#A8322A` | — |
+| Fond blueprint | `--blueprint-bg` | `#2A211B` | — |
+| Trait blueprint | `--blueprint-line` | `#E8C4A0` | 9,6 : 1 sur le blueprint |
+
+Un terracotta plus vif, type `#B4532F`, tombe à 4,4 : 1 et échoue pour le texte courant.
+
+### Transparences
+
+Les transparences passent par des triplets, jamais par une couleur écrite en dur :
+
+| Variable | Valeur | Usage |
+|----------|--------|-------|
+| `--tint-rgb` | `164, 74, 40` | `rgba(var(--tint-rgb), 0.12)` : filets et fonds teintés d'accent |
+| `--ink-rgb` | `42, 33, 27` | ombres légères, filets neutres |
+| `--bg-rgb` | `246, 240, 230` | header et footer translucides |
+| `--glow-rgb` | `217, 119, 79` | lueurs |
 
 ### Bordures
 
 | Variable | Valeur | Usage |
 |----------|--------|-------|
-| `--border-subtle` | `1px solid rgba(232, 196, 160, 0.1)` | Séparateurs, cards, header scrollé |
+| `--border-subtle` | `1px solid rgba(var(--ink-rgb), 0.12)` | Séparateurs, cards, header scrollé |
 | `--border-active` | `1px solid var(--accent-primary)` | Éléments actifs, focus |
-
-### Couleurs utilitaires (hors variables)
-
-| Usage | Valeur |
-|-------|--------|
-| Header/Footer scrollé (bg) | `rgba(26, 23, 20, 0.95)` |
-| Overlay menu mobile | `rgba(26, 23, 20, 0.4)` |
-| Suppression / erreur | `rgba(240, 100, 100, 0.6)` |
-| Logo mark border | `rgba(232, 196, 160, 0.2)` |
 
 ---
 
@@ -107,8 +121,8 @@ body::after {
 
 ### Glassmorphism
 
-- Header scrollé + Footer : `backdrop-filter: blur(8px)` + `background: rgba(26, 23, 20, 0.95)`
-- Overlay menu mobile : `backdrop-filter: blur(4px)` + `background: rgba(26, 23, 20, 0.4)`
+- Header scrollé + Footer : `backdrop-filter: blur(8px)` + `background: rgba(var(--bg-rgb), 0.95)`
+- Overlay menu mobile : `backdrop-filter: blur(4px)` + `background: rgba(var(--bg-rgb), 0.4)`
 
 ---
 
@@ -127,7 +141,7 @@ body::after {
 background: conic-gradient(
   from var(--glow-angle),
   transparent 0deg, transparent 60deg,
-  rgba(232, 196, 160, 0.9) 90deg,
+  rgba(var(--tint-rgb), 0.9) 90deg,
   transparent 120deg, transparent 360deg
 );
 animation: borderGlow 4s linear infinite;
@@ -153,6 +167,17 @@ Technique mask : `mask-composite: exclude` pour ne garder que le contour.
 /* 3s ease-in-out infinite, délai 2s */
 ```
 
+### Apparitions au défilement
+
+Une seule animation au défilement sur tout le site : opacité 0 → 1 et montée de 16 px, 600 ms, `var(--ease-out)` = `cubic-bezier(0.22, 1, 0.36, 1)`, jouée une fois. Un élément porte `data-reveal` ; `components/Reveal/RevealController.tsx` (un seul IntersectionObserver) pose `data-visible`. L'état caché n'existe que sous `html.reveal-armed` : sans JavaScript ou en mouvement réduit, tout reste visible. Cascade : `style={{ '--i': n }}`, 80 ms d'écart, quatre éléments au plus.
+
+Interdits : parallaxe, texte animé lettre par lettre, compteurs qui défilent, carrousels automatiques.
+
+### Deux exceptions interactives
+
+- **Objet WebGL du hero** (`components/Sections/Hero/HeroObject.tsx`) : galet terracotta en raymarching, sans bibliothèque. Réagit à la souris, quadrillage beige au survol. Densité de pixels plafonnée à 1,5, pause hors écran, repli CSS si WebGL manque.
+- **Carte Interface → Architecture** (`components/Sections/Method/InterfaceBlueprint.tsx`) : une ligne terracotta balaie la carte en 500 ms et la face blueprint remplace la face interface ; les annotations se tracent ensuite. Déclencheur : survol (souris), bouton (tactile, clavier).
+
 ### Transitions standard
 
 | Variable | Valeur |
@@ -176,17 +201,25 @@ text-transform: uppercase | color: --accent-primary
 ### Bouton CTA principal
 
 ```
+background: --accent-primary | border: 1px solid --accent-primary
+color: --on-accent | border-radius: 2px | min-height: 48px
+hover → background et border: --accent-hover
+transition: 0.3s ease
+```
+
+### Bouton secondaire
+
+```
 background: transparent | border: 1px solid --accent-primary
 color: --accent-primary | border-radius: 2px
-hover → background: --accent-primary | color: --bg-main
-transition: 0.3s ease
+hover → background: --accent-primary | color: --on-accent
 ```
 
 ### Cards
 
 ```
-background: rgba(255, 255, 255, 0.02)
-border: 1px solid rgba(232, 196, 160, 0.05)
+background: var(--bg-card)
+border: var(--border-subtle)
 border-radius: 2px
 ```
 
@@ -201,7 +234,7 @@ hover → color: --accent-primary + underline animé (width 0 → 100%)
 ### Tooltip
 
 ```
-background: rgba(26, 23, 20, 0.95) | border: --border-subtle
+background: rgba(var(--bg-rgb), 0.95) | border: --border-subtle
 font-size: 0.65rem | letter-spacing: 1.5px | uppercase
 border-radius: 2px | opacity 0 → 1 au hover (0.2s ease)
 ```

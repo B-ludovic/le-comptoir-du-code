@@ -10,12 +10,11 @@ type Props = {
   locale: string
   nav: {
     method: string
-    scoping: string
-    solutions: string
     portfolio: string
     about: string
     contact: string
     blog: string
+    cta: string
   }
   switchLocaleHref?: string
 }
@@ -43,7 +42,7 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
   }, [])
 
   useEffect(() => {
-    const ids = ['method', 'cadrage', 'solutions', 'portfolio', 'about', 'contact']
+    const ids = ['method', 'portfolio', 'about', 'contact']
     const observers: IntersectionObserver[] = []
 
     ids.forEach((id) => {
@@ -111,15 +110,21 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
     router.push(segments.join('/'))
   }
 
+  /* Refonte : Cadrage et Solutions ont fusionné dans la Méthodologie, et
+     Contact devient le bouton d'action à droite. Le panneau mobile garde
+     Contact en lien : il n'a pas de bouton. */
   const navLinks = [
     { href: `/${locale}#method`, label: nav.method, section: 'method' },
-    { href: `/${locale}#cadrage`, label: nav.scoping, section: 'cadrage' },
-    { href: `/${locale}#solutions`, label: nav.solutions, section: 'solutions' },
     { href: `/${locale}#portfolio`, label: nav.portfolio, section: 'portfolio' },
     { href: `/${locale}#about`, label: nav.about, section: 'about' },
-    { href: `/${locale}#contact`, label: nav.contact, section: 'contact' },
     { href: `/${locale}/blog`, label: nav.blog, section: 'blog' },
   ]
+  const mobileLinks = [
+    ...navLinks.slice(0, 3),
+    { href: `/${locale}#contact`, label: nav.contact, section: 'contact' },
+    navLinks[3],
+  ]
+  const ctaHref = `/${locale}?budget=cadrage#contact`
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
@@ -144,6 +149,9 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
               {link.label}
             </a>
           ))}
+          <a href={ctaHref} className={styles.navCta}>
+            {nav.cta}
+          </a>
         </nav>
 
         {/* Portrait — lien vers L'Échoppe Solidaire */}
@@ -214,7 +222,7 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
         aria-hidden={!menuOpen}
       >
         <nav className={styles.mobileNav}>
-          {navLinks.map((link, i) => (
+          {mobileLinks.map((link, i) => (
             <a
               key={link.href}
               href={link.href}
@@ -230,7 +238,7 @@ export default function Header({ locale, nav, switchLocaleHref }: Props) {
 
         <div
           className={styles.mobileFooter}
-          style={{ transitionDelay: menuOpen ? `${REVEAL_MS + navLinks.length * STAGGER_MS}ms` : '0ms' }}
+          style={{ transitionDelay: menuOpen ? `${REVEAL_MS + mobileLinks.length * STAGGER_MS}ms` : '0ms' }}
         >
           <button
             className={styles.mobileLangSwitch}

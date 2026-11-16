@@ -1,109 +1,140 @@
 {
   "hero": {
-    "eyebrow": "Sites vitrines · E-commerce · Applications métier",
-    "h1": "Développeur web freelance à Paris et en Île-de-France",
-    "lead": "L'Échoppe du Code est mon atelier de développement web indépendant. Je suis Ludovic Bataille, votre seul interlocuteur du cadrage à la mise en ligne : du code sur-mesure, livré avec ses sources, et un site qui vous appartient entièrement.",
-    "facts": "Site vitrine à partir de 2 600 € HT, boutique en ligne à partir de 6 500 € HT, application métier à partir de 9 500 € HT. Chaque offre est un socle chiffré en jours ; les besoins spécifiques s'ajoutent en modules. Cadrage préalable optionnel à partir de 290 € HT, imputable à 50 % sur le développement. Tarif associatif : 50 % de remise.",
-    "cta": "Demander un devis",
-    "cta_secondary": "Voir les forfaits",
-    "reviews_label": "Ils ont ouvert la porte",
-    "reviews_source": "Avis publiés sur",
+    "kicker": "Développeur web freelance à Paris et en Île-de-France",
+    "h1_lead": "Des applications web construites ",
+    "h1_accent": "pour tenir",
+    "h1_tail": ", pas seulement pour plaire.",
+    "sub": "Boutiques en ligne, plateformes métier et SaaS, développés en Next.js et NestJS sur une base PostgreSQL. Avant la première ligne de code, on fixe par écrit les données, les accès et la sécurité.",
+    "cta": "Démarrer par un cadrage",
+    "cta_secondary": "Voir les réalisations",
+    "reassurance": "Un seul interlocuteur du cadrage à la mise en ligne. Code livré avec ses sources : il vous appartient.",
+    "demo_caption": "Démo WebGL natif · déplacez la souris",
+    "reviews_label": "Recommandé sur",
     "live_label": "En ligne en ce moment",
-    "live_cta": "Les six chantiers"
+    "live_cta": "Voir les chantiers"
   },
   "nav": {
-    "method": "Méthode",
-    "scoping": "Cadrage",
-    "solutions": "Solutions",
+    "method": "Méthodologie",
     "portfolio": "Réalisations",
     "about": "Le Codeur",
     "contact": "Contact",
-    "blog": "Le Carnet"
+    "blog": "Le Carnet",
+    "cta": "Réserver un cadrage"
+  },
+  "build": {
+    "eyebrow": "Ce que je construis",
+    "section_title": "Trois familles de projets. Une même exigence sous le capot.",
+    "intro": "Ce qui se voit change d'un projet à l'autre. Ce qui ne change pas : des données bien rangées, des paiements vérifiés côté serveur, des tests qui bloquent une erreur avant la mise en ligne.",
+    "item1_title": "Plateformes métier et SaaS",
+    "item1_text": "Comptes, rôles, abonnements, tableaux de bord. L'outil qui remplace vos tableurs et vos relances à la main.",
+    "item1_link": "Voir M.U.S.E.",
+    "item2_title": "Boutiques en ligne",
+    "item2_text": "Catalogue, paiement Stripe, stock, commandes, factures. Vous vendez ; le système tient les comptes.",
+    "item2_link": "Voir Fairy Chair Studio",
+    "item3_title": "Sites vitrines",
+    "item3_text": "Rapides, lisibles sur mobile, bien référencés. La porte d'entrée, construite avec la même rigueur que le reste.",
+    "item3_link": "Voir La Requeyrie"
   },
   "method": {
-    "eyebrow": "De l'idée à la mise en ligne, sans détours.",
-    "section_title": "Trois étapes. Pas une de plus.",
-    "intro": "Pas de réunions inutiles, pas d'approximations. Chaque étape a un livrable, un délai, un prix.",
-    "block1_title": "Le brief à l'échoppe.",
-    "block1_text": "Vous m'exposez votre besoin métier. Je vous dis immédiatement si c'est réalisable, avec quelle technologie, et à quel prix. Si le projet reste à définir, on passe d’abord par un cadrage.",
-    "block2_title": "L'arrière-boutique.",
-    "block2_text": "Je conçois et je code. Vous continuez à gérer votre entreprise sans perdre de temps dans des réunions interminables. L'avancement est factuel.",
-    "block3_title": "La livraison.",
-    "block3_text": "Un outil testé, sécurisé, et qui vous appartient à 100 %. Je vous forme à son utilisation et je m'efface."
-  },
-  "scoping": {
-    "eyebrow": "Le préalable",
-    "section_title": "Poser le projet\navant de le construire",
-    "intro": "Un projet mal cadré coûte toujours plus cher à réparer qu'à concevoir. Avant la première ligne de code, on décide de l'architecture, du périmètre, de la conformité et du modèle économique. Vous repartez avec un dossier qui vous appartient — exécutable par n'importe quel développeur, y compris un autre que moi.",
-    "tier1_title": "Cadrage Vitrine",
-    "tier1_label": "Site vitrine",
-    "tier1_price": "290 €",
-    "tier2_title": "Cadrage E-commerce & Business",
-    "tier2_label": "Vente & comptes",
-    "tier2_price": "590 €",
-    "tier3_title": "Cadrage Architecture Métier",
-    "tier3_label": "Application métier",
-    "tier3_price": "1 190 €",
-    "condition": "Facultatif pour un site vitrine. Nécessaire dès qu’il y a des comptes utilisateurs, du paiement en ligne ou des données sensibles : je ne peux pas chiffrer sérieusement sans.",
-    "design_title": "Conception produit",
-    "design_price": "650 €",
-    "design_unit": "/ jour",
-    "design_note": "Quand le projet reste à inventer : fonctionnalités, règles de gestion, structure des contenus, modèle économique. Le nombre de jours est fixé par le cadrage.",
-    "cta": "Réserver un cadrage",
-    "terms_link": "Conditions de la prestation",
-    "vat_notice": "Le dossier vous appartient dans tous les cas. En cas de signature d’un devis de développement dans les trois mois, 50 % du cadrage viennent en déduction."
-  },
-  "solutions": {
-    "eyebrow": "Choisissez votre niveau d'ambition.",
-    "section_title": "Trois socles. Zéro surprise.",
-    "intro": "Chaque offre est un socle au périmètre défini, chiffré en jours de travail. Les besoins spécifiques s'ajoutent en modules facturés à la journée : vous savez exactement ce que vous payez, et vous pouvez en retirer.",
-    "from": "À partir de",
-    "days_line": "{days} jours",
-    "maintenance_line": "Maintenance et sécurité, dès la mise en ligne : {rate}",
-    "modules_label": "En supplément, chiffrés à part",
-    "cards": {
-      "presence": {
-        "subtitle": "Site Vitrine",
-        "desc": "Un site rapide, optimisé pour les mobiles et conçu pour convertir vos visiteurs en clients.",
-        "features": [
-          "Design sur-mesure",
-          "Jusqu'à 5 pages",
-          "Responsive mobile impeccable",
-          "Formulaire de contact",
-          "SEO technique et mise en ligne"
-        ],
-        "modules": "réservation avec agenda, blog, multilingue, newsletter",
-        "delay": "2 à 3 semaines"
+    "eyebrow": "Méthodologie",
+    "section_title": "Pas une ligne de code sans plan validé.",
+    "intro1": "Une application casse rarement là où on la regarde. Elle casse dans ce qu'on ne voit pas : une donnée mal rangée, un paiement mal vérifié, un accès oublié. Ces décisions se prennent au début, ou elles se paient plus tard, au prix d'une refonte.",
+    "intro2": "C'est le rôle du cadrage : fixer par écrit le périmètre, les données, la sécurité et la conformité, avant le premier devis de développement. Facultatif pour un site vitrine, il devient nécessaire dès qu'il y a des comptes, du paiement en ligne ou des données sensibles.",
+    "steps": [
+      {
+        "title": "Cadrage",
+        "text": "Le plan, par écrit"
       },
-      "boutique": {
-        "subtitle": "Vente en ligne",
-        "desc": "Vendez vos produits en ligne avec des paiements Stripe sécurisés, un catalogue que vous gérez seul et un suivi des commandes.",
-        "features": [
-          "Site vitrine inclus",
-          "Catalogue et fiches produits",
-          "Paiements Stripe sécurisés",
-          "Gestion des commandes",
-          "Back-office et e-mails transactionnels"
-        ],
-        "modules": "stock temps réel, remboursements, expédition, facturation PDF, abonnements",
-        "delay": "5 à 7 semaines"
+      {
+        "title": "Construction",
+        "text": "Le code, testé"
       },
-      "outils": {
-        "subtitle": "Applications métiers",
-        "desc": "Votre outil interne sur-mesure. Tableaux de bord, suivi des stocks, automatisation de ce qui vous coûte du temps chaque semaine.",
-        "features": [
-          "Modélisation de vos données",
-          "Authentification, rôles et permissions",
-          "Tableau de bord et back-office",
-          "Back-end robuste NestJS",
-          "Déploiement inclus"
-        ],
-        "modules": "espace client, paiements, intégration API, statistiques, application mobile",
-        "delay": "8 à 10 semaines"
+      {
+        "title": "Mise en service",
+        "text": "En ligne, et à vous"
       }
+    ],
+    "e1_tag": "Étape 01",
+    "e1_title": "Cadrage : diagnostic et architecture",
+    "e1_p1": "Un atelier en visio, puis un dossier écrit, livré en 48 h ou en 5 jours ouvrés selon le palier. Il contient les décisions qui font tenir l'application, et le chiffrage du développement en sort directement.",
+    "e1_p2": "Le dossier vous appartient. Vous pouvez le confier à un autre développeur : il est écrit pour être exécuté par n'importe qui.",
+    "why_title": "Pourquoi ce diagnostic est payant",
+    "why_text": "Parce que c'est déjà le travail. Le modèle de données, les droits d'accès, le choix du paiement : ce sont les décisions les plus chères à corriger après coup. Un devis gratuit les devine. Un cadrage les tranche, par écrit.",
+    "demo_title": "L'interface se montre. L'architecture se décide.",
+    "demo_where_wide": "À droite",
+    "demo_where_narrow": "Ci-dessous",
+    "demo_lead": ", ce que votre client voit : un prix, un stock, un bouton.",
+    "demo_hover": "Survolez la carte.",
+    "demo_touch": "Touchez le bouton sous la carte.",
+    "demo_questions": "Derrière chaque élément, il y a une question. D'où vient ce prix, et qui le vérifie ? Que devient la dernière pièce si deux clients paient en même temps ? Que se passe-t-il si la banque ne confirme pas le paiement ?",
+    "demo_p2": "Aucune maquette ne répond à ces questions. Elles se tranchent pendant le cadrage, par écrit, avant le premier devis de développement. C'est ce dossier que vous payez : les décisions qui font tenir l'application, pas un beau dessin de plus.",
+    "blueprint": {
+      "label": "Démonstration : une fiche produit, puis son architecture",
+      "product_name": "Sac Mira",
+      "product_sub": "Cuir naturel",
+      "product_price": "128,00 €",
+      "product_stock": "Plus que 2 en stock",
+      "product_pay": "Payer",
+      "product_invoice": "Facture envoyée par e-mail",
+      "schema_browser": "Navigateur",
+      "schema_api": "API NestJS",
+      "schema_db": "PostgreSQL",
+      "schema_stripe": "Stripe",
+      "schema_webhook": "webhook signé",
+      "arch_record": "fiche lue en base",
+      "arch_price": "total recalculé côté serveur",
+      "arch_stock": "réservé pendant le paiement",
+      "arch_pay": "webhook Stripe signé · rattrapage auto",
+      "arch_invoice": "PDF figé, numéro continu",
+      "show_architecture": "Voir l'architecture",
+      "show_interface": "Voir l'interface",
+      "hint": "ou survolez la carte"
     },
-    "cta": "Démarrer ce projet",
-    "vat_notice": "Tous nos tarifs sont indiqués hors taxes. Une TVA de 20 % s'applique en sus."
+    "sheet_title": "Trois profondeurs de diagnostic",
+    "sheet_intro": "Le bon palier dépend de ce que votre projet doit encaisser, protéger ou automatiser.",
+    "scoping": [
+      {
+        "for": "Un site qui présente et fait contacter",
+        "content": "Choix de solution argumenté, arborescence, checklist RGPD, périmètre de la V1, trames légales à faire valider par un avocat.",
+        "workshop": "Atelier 1 h 30",
+        "delivery": "Livré 48 h après"
+      },
+      {
+        "for": "Vendre en ligne, gérer des comptes ou des réservations",
+        "content": "Tunnel de vente et solution de paiement, workflows de réservation et de synchronisation, cartographie RGPD e-commerce, trame de CGV, périmètre de la V1.",
+        "workshop": "Atelier 1 h 30",
+        "delivery": "Livré 48 h après"
+      },
+      {
+        "for": "Une application métier ou un SaaS",
+        "content": "Modèle de données et schéma de base, architecture applicative, spécification du back-office, matrice rôles et permissions, sécurité, modèle économique, MVP découpé en phases.",
+        "workshop": "Atelier 2 h",
+        "delivery": "Livré en 5 jours ouvrés"
+      }
+    ],
+    "optional_note": "Facultatif pour un site vitrine. Nécessaire dès qu'il y a des comptes utilisateurs, du paiement en ligne ou des données sensibles.",
+    "setoff_note": "Vous signez le développement dans les trois mois ? {rate} du cadrage sont déduits du devis. Sinon, le dossier reste à vous.",
+    "design_note": "Projet encore à inventer (fonctionnalités, règles, modèle économique) : conception produit à {price} HT par jour, nombre de jours fixé par le cadrage.",
+    "e2_tag": "Étape 02",
+    "e2_title": "Construction",
+    "e2_p1": "Le devis de développement sort du dossier : chiffré en jours, module par module. Vous savez ce que vous payez, et vous pouvez retirer un module.",
+    "e2_p2": "Les parties sensibles, paiement, accès, stock, sont couvertes par des tests automatisés avant la mise en ligne.",
+    "e3_tag": "Étape 03",
+    "e3_title": "Mise en service",
+    "e3_p1": "Mise en ligne, prise en main, code source remis. L'application vous appartient à 100 %.",
+    "e3_p2": "Maintenance et sécurité dès la mise en ligne :",
+    "socles": {
+      "presence": "Site vitrine",
+      "boutique": "Boutique en ligne",
+      "outils": "Application métier"
+    },
+    "from": "dès",
+    "cta": "Réserver un cadrage",
+    "cta_secondary": "Décrire mon projet",
+    "terms_link": "Conditions de la prestation",
+    "vat_notice": "Tarifs hors taxes, TVA de 20 % en sus.",
+    "nonprofit": "Associations : {rate} de remise avec",
+    "nonprofit_link": "L'Échoppe Solidaire"
   },
   "portfolio": {
     "eyebrow": "Archives de l'Échoppe.",
@@ -242,26 +273,29 @@
     "open_site": "Ouvrir le site",
     "open_repo": "Voir le code"
   },
+  "testimonials": {
+    "eyebrow": "Ils ont ouvert la porte",
+    "section_title": "Ce qu'en disent les clients.",
+    "source": "Avis publiés sur",
+    "translation_label": "Traduction"
+  },
   "about": {
     "eyebrow": "L'artisan derrière l'écran.",
     "section_title": "L'exigence du manager. La rigueur du codeur.",
-    "p1": "Après 18 ans à encadrer des équipes sur le terrain et à piloter des opérations, j'ai tombé la cravate pour revenir à ma véritable obsession : la mécanique pure du web.",
-    "p2": "De cette première vie de manager, j'ai gardé une grille de lecture implacable. Je sais qu'un chef d'entreprise n'a pas le temps pour le jargon ou les grandes théories : il a besoin d'outils qui tournent. Mon œil a été formé à repérer les frictions. Quand j'analyse un projet, je vois immédiatement ce qui ralentit vos clients, ce qui alourdit une interface ou ce qui sonne faux.",
-    "p3": "C'est ce qui fonde cette Échoppe. Je ne vous ferai pas de grandes promesses creuses. Ce qui nous réunit, c'est un cahier des charges à tenir et un résultat à livrer.",
-    "p4": "On se met d'accord sur les fondations, je forge l'architecture, et je ne ferme pas mon éditeur tant que la machine ne fait pas exactement ce qui a été signé. Mon métier, c'est de produire un code solide pour que vous puissiez vous concentrer sur le vôtre.",
+    "body": "Ludovic Bataille, développeur fullstack à Paris. Je conçois, je code, je teste et je mets en ligne : vous n'avez qu'un interlocuteur, du cadrage à la livraison. On se met d'accord sur le plan, et je ne ferme pas mon éditeur tant que l'application ne fait pas exactement ce qui a été signé.",
     "portrait_alt": "Ludovic Bataille, développeur web freelance à Paris",
     "portrait_caption": "LUDOVIC BATAILLE · PARIS · ÎLE-DE-FRANCE",
     "stat1_value": "18 ans",
     "stat1_label": "à encadrer des équipes sur le terrain",
     "stat2_value": "6",
-    "stat2_label": "chantiers livrés, 5 encore en ligne",
+    "stat2_label": "chantiers livrés, {live} encore en ligne",
     "stat3_value": "1",
     "stat3_label": "seul interlocuteur, du cadrage à la mise en ligne"
   },
   "contact": {
     "eyebrow": "Au comptoir",
-    "section_title": "Déposer le brief.",
-    "intro": "Décrivez les contours de votre site vitrine, vente en ligne ou application métier. Réponse sous 24 heures ouvrées pour planifier un échange de 15 minutes et valider le périmètre technique.",
+    "section_title": "Commencez par le plan.",
+    "intro": "Décrivez votre projet en quelques lignes. Réponse sous 24 h ouvrées pour un échange de 15 minutes : on voit ensemble si votre projet demande un cadrage, et lequel.",
     "assurance1": "Réponse sous 24 h ouvrées",
     "assurance2": "Échange de 15 minutes",
     "assurance3": "Devis chiffré en jours",
@@ -271,7 +305,7 @@
     "field_description_placeholder": "Soyez factuel : quelles sont les fonctionnalités indispensables ?",
     "field_budget": "Enveloppe budgétaire estimée",
     "field_budget_placeholder": "Sélectionner une enveloppe",
-    "budget_scoping": "Périmètre à définir (Cadrage — à partir de 290 €)",
+    "budget_scoping": "À définir : commencer par un cadrage (dès 290 € HT)",
     "budget_1": "2 600 € — 5 000 € (Site vitrine)",
     "budget_2": "6 500 € — 15 000 € (Vente en ligne)",
     "budget_3": "À partir de 9 500 € (Application métier)",

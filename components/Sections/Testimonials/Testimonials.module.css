@@ -1,0 +1,120 @@
+.section {
+  min-height: 0;
+  padding-top: 2rem;
+}
+
+/* La section globale est un flex en colonne, et .container y porte des
+   marges auto : il prend alors la largeur de son contenu le plus large, au
+   lieu de celle de l'écran. Une largeur explicite l'en empêche. */
+.section > :global(.container) {
+  width: 100%;
+  min-width: 0;
+}
+
+.head {
+  max-width: 44rem;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  margin-bottom: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.title {
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: var(--bg-card);
+  border: var(--border-subtle);
+  border-top: 2px solid var(--accent-primary);
+  border-radius: var(--card-radius);
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.translation {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.translationLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.author {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.sector::before {
+  content: '·';
+  margin-right: 0.75rem;
+}
+
+.source {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.sourceLink {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sourceLink:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .quote {
+    font-size: 1.2rem;
+  }
+}

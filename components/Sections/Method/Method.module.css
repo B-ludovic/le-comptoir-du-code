@@ -1,139 +1,504 @@
+/* Méthodologie — fusion de Méthode, Cadrage et Solutions. */
+
 .section {
-  padding: var(--section-padding);
+  min-height: 0;
+  padding-top: 2rem;
 }
 
-/* Header — même layout que Portfolio/Solutions. */
-.header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem 4rem;
-  align-items: flex-end;
-  margin-bottom: 4rem;
-}
-
-.headerLeft {
-  flex: 1 1 380px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.headerRight {
-  flex: 1 1 300px;
-  padding-bottom: 0.5rem;
+/* La section globale est un flex en colonne, et .container y porte des
+   marges auto : il prend alors la largeur de son contenu le plus large, au
+   lieu de celle de l'écran. Une largeur explicite l'en empêche. */
+.section > :global(.container) {
+  width: 100%;
+  min-width: 0;
 }
 
 .eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.75rem;
   font-weight: 500;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  letter-spacing: 3px;
   color: var(--accent-primary);
 }
 
-.sectionTitle {
-  font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 600;
-  color: var(--text-main);
-  text-wrap: pretty;
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
 }
 
-.intro {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
+.h3 {
+  margin: 0.75rem 0 1.25rem;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.head {
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lead {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
-  line-height: 1.8;
-  text-wrap: pretty;
 }
 
-/* Trois étapes, trois colonnes sous un filet chacune.
-
-   L'ancienne version posait le numéro en fantôme géant derrière le texte et
-   séparait les blocs par des filets verticaux. Le numéro passe devant, en
-   monospace — même signal que le logo mark — et le filet devient horizontal :
-   trois traits qui ouvrent trois colonnes, comme un sommaire.
-
-   `auto-fit` fait le responsive : 3 → 2 → 1 colonne selon la largeur réelle,
-   sans breakpoint à maintenir. L'espacement est porté par `gap`, pas par un
-   `padding-right` — sinon la dernière colonne finit en retrait du bord de
-   contenu, à 36 px du filet qui la surmonte. */
-.blocks {
+/* Frise des trois étapes. Le filet qui relie les numéros se trace de gauche
+   à droite à l'apparition : c'est encore une apparition, pas une animation de
+   plus. Sans JavaScript, il est simplement là. */
+.steps {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  column-gap: 2.25rem;
-  row-gap: 2.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin: 5rem 0 4rem;
+  list-style: none;
 }
 
-.block {
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(232, 196, 160, 0.16);
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 16.66%;
+  right: 16.66%;
+  height: 1px;
+  background-color: var(--accent-primary);
+  transform-origin: left;
+  transition: transform 0.9s var(--ease-out) 0.2s;
 }
 
-.number {
+:global(.reveal-armed) .steps:not([data-visible])::before {
+  transform: scaleX(0);
+}
+
+.step {
+  position: relative;
+  text-align: center;
+}
+
+.stepNumber {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto;
+  border: 1px solid var(--accent-primary);
+  border-radius: 50%;
+  background-color: var(--bg-main);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-size: 0.8rem;
   color: var(--accent-primary);
+}
+
+.stepTitle {
+  margin: 1.25rem 0 0.25rem;
+  font-size: 1.6rem;
+}
+
+.stepText {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Étape 01 */
+.stage {
+  padding: 4rem;
+  background-color: var(--bg-alt);
+  border: var(--border-subtle);
+  border-radius: var(--card-radius);
+}
+
+.stageTop,
+.demo {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.stageTop {
+  align-items: start;
+}
+
+.stageText {
+  grid-column: 1 / span 7;
+}
+
+.stageText p,
+.demoText p {
+  margin-bottom: 0.875rem;
+}
+
+.why {
+  grid-column: 9 / span 4;
+  padding: 1.5rem;
+  background-color: var(--bg-card);
+  border: var(--border-subtle);
+  border-top: 2px solid var(--accent-primary);
+  border-radius: var(--card-radius);
+}
+
+.whyTitle {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.why p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.demo {
+  align-items: center;
+  margin-top: 4rem;
+  padding-top: 4rem;
+  border-top: var(--border-subtle);
+}
+
+.demoText {
+  grid-column: 1 / span 5;
+}
+
+.demoText p {
+  color: var(--text-muted);
+}
+
+.demoCard {
+  grid-column: 7 / span 6;
+}
+
+/* Deux formulations selon l'écran : « À droite » / « Ci-dessous », et
+   « Survolez » / « Touchez ». display: none retire aussi la variante masquée
+   de la lecture d'écran. */
+.narrow,
+.touchOnly {
+  display: none;
+}
+
+@media (hover: none) {
+  .hoverOnly {
+    display: none;
+  }
+
+  .touchOnly {
+    display: inline;
+  }
+}
+
+/* Fiche des paliers */
+.sheet {
+  margin-top: 4.5rem;
+  scroll-margin-top: 100px;
+}
+
+.sheetHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
   margin-bottom: 1.5rem;
 }
 
-.number::after {
-  content: '';
-  width: 16px;
-  height: 1px;
-  background: rgba(232, 196, 160, 0.4);
+.sheetHead .h3 {
+  margin: 0;
 }
 
-.icon {
-  display: block;
-  color: var(--accent-primary);
-  margin-bottom: 1rem;
-}
-
-.blockTitle {
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--text-main);
-  line-height: 1.15;
-  margin-bottom: 0.85rem;
-}
-
-.blockText {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
+.sheetHead p {
+  max-width: 26rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.8;
-  text-wrap: pretty;
+}
+
+.tier {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 3fr) minmax(0, 5fr) minmax(0, 2fr) 9.5rem;
+  grid-template-areas: 'n name content meta price';
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.75rem 0;
+  border-top: var(--border-subtle);
+}
+
+.tierNumber {
+  grid-area: n;
+  padding-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+}
+
+.tierName {
+  grid-area: name;
+}
+
+.tierName h4 {
+  font-size: 1.5rem;
+}
+
+.tierName p {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.tierContent {
+  grid-area: content;
+  padding-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.tierMeta {
+  grid-area: meta;
+  padding-top: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.9;
+  color: var(--text-muted);
+}
+
+.tierPrice {
+  grid-area: price;
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tierPrice small {
+  margin-left: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.notes {
+  padding-top: 1.75rem;
+  border-top: var(--border-subtle);
+}
+
+.notes p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.notes .optional {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* Étapes 02 et 03 */
+.next {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 4.5rem;
+  scroll-margin-top: 100px;
+}
+
+.card {
+  padding: 2.5rem;
+  background-color: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--card-radius);
+}
+
+.card p {
+  margin-bottom: 0.75rem;
+}
+
+.prices {
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.625rem 0;
+  border-top: 1px dashed rgba(var(--ink-rgb), 0.2);
+}
+
+a.priceRow {
+  color: var(--text-main);
+  transition: color var(--transition-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.priceRow:hover {
+    color: var(--accent-primary);
+  }
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.btn,
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 1.75rem;
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--card-radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.btn {
+  background-color: var(--accent-primary);
+  color: var(--on-accent);
+}
+
+.btnGhost {
+  color: var(--accent-primary);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+
+  .btnGhost:hover {
+    background-color: var(--accent-primary);
+    color: var(--on-accent);
+  }
+}
+
+.textLink {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.fine {
+  flex-basis: 100%;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.btn:focus-visible,
+.btnGhost:focus-visible,
+.textLink:focus-visible,
+a.priceRow:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1024px) {
+  /* Douze colonnes et onze gouttières de 2rem ne descendent pas sous 352 px :
+     sous 1024 px, une seule colonne. */
+  .stageTop,
+  .demo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stageText,
+  .why,
+  .demoText,
+  .demoCard {
+    grid-column: 1 / -1;
+  }
+
+  .wide {
+    display: none;
+  }
+
+  .narrow {
+    display: inline;
+  }
+
+  .tier {
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+    grid-template-areas:
+      'n name price'
+      'n content content'
+      'n meta meta';
+    gap: 0.75rem 1.25rem;
+  }
+
+  .next {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-  .header {
-    margin-bottom: 2.5rem;
+  .stage {
+    padding: 2rem 1.25rem;
   }
 
-  .headerRight {
-    padding-bottom: 0;
+  .card {
+    padding: 1.75rem 1.25rem;
   }
 
-  .blockTitle {
-    font-size: 1.6rem;
+  .steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    margin: 3.5rem 0 2.5rem;
   }
-}
 
-/* Justification du texte courant. `justify` et `hyphens: auto` vont par paire :
-   sans la césure, les espaces étirés creusent des rivières de blanc dans la
-   colonne. La coupure suit le `lang` posé sur <html>. Même règle dans les
-   autres sections — le commentaire complet est dans Portfolio.module.css. */
-.intro,
-.blockText {
-  text-align: justify;
-  hyphens: auto;
+  .steps::before {
+    display: none;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 0.125rem 1rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  .stepNumber {
+    grid-row: 1 / span 2;
+    margin: 0;
+  }
+
+  .stepTitle {
+    margin: 0;
+  }
+
+  .tier {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    grid-template-areas:
+      'n name'
+      'n price'
+      'n content'
+      'n meta';
+  }
+
+  .tierPrice {
+    text-align: left;
+  }
 }

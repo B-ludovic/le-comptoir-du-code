@@ -143,13 +143,13 @@
   text-transform: uppercase;
   color: var(--accent-primary);
   padding: 0 0.9rem 0.7rem 0;
-  border-bottom: 1px solid rgba(232, 196, 160, 0.15);
+  border-bottom: 1px solid rgba(var(--tint-rgb), 0.15);
   white-space: nowrap;
 }
 
 .table td {
   padding: 0.85rem 0.9rem 0.85rem 0;
-  border-bottom: 1px solid rgba(232, 196, 160, 0.06);
+  border-bottom: 1px solid rgba(var(--tint-rgb), 0.06);
   line-height: 1.6;
   vertical-align: top;
 }

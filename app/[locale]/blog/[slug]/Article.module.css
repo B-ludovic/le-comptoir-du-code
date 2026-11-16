@@ -174,8 +174,8 @@
 .summary {
   margin-bottom: 3.5rem;
   padding: 1.75rem 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(232, 196, 160, 0.08);
+  background: var(--bg-card);
+  border: 1px solid rgba(var(--tint-rgb), 0.08);
   border-radius: var(--card-radius);
 }
 

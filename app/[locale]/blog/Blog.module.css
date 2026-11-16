@@ -68,7 +68,7 @@
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     border-color: var(--accent-primary);
-    background: rgba(232, 196, 160, 0.04);
+    background: rgba(var(--tint-rgb), 0.04);
   }
 }
 

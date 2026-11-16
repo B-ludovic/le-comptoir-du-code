@@ -2,20 +2,44 @@
    un <link> se télécharge en parallèle, là où un @import bloque le rendu le
    temps d'aller chercher la feuille distante. */
 
+/* Base claire, accent terracotta (refonte de novembre 2026).
+
+   Chaque couleur de texte passe le seuil WCAG AA (4,5 : 1) sur les trois fonds.
+   Un terracotta plus vif, type #B4532F, tombe à 4,4 : 1 sur --bg-main et échoue
+   pour le texte courant : --accent-primary est donc volontairement plus sombre.
+
+   Les triplets *-rgb servent aux transparences (`rgba(var(--tint-rgb), 0.12)`) :
+   les modules CSS écrivaient la même couleur en dur à chaque fois, et c'est ce
+   qui rendait un changement de palette impossible sans tout relire. */
 :root {
   /* Fonds */
-  --bg-main: #1A1714;
-  --bg-card: #242019;
-  --bg-card-hover: #2A251E;
-  --bg-glow: rgba(200, 120, 40, 0.08);
+  --bg-main: #F6F0E6;
+  --bg-card: #FBF7F1;
+  --bg-card-hover: #F2EADF;
+  --bg-alt: #EFE6D8;
+  --bg-glow: rgba(217, 119, 79, 0.1);
 
   /* Typographie */
-  --text-main: #F0EBE3;
-  --text-muted: #ADA49C;
+  --text-main: #2A211B;     /* 13,9 : 1 sur --bg-main */
+  --text-muted: #6B5D52;    /* 5,6 : 1 sur --bg-main */
 
   /* Accents */
-  --accent-primary: #E8C4A0;
-  --accent-hover: #C9A882;
+  --accent-primary: #A44A28; /* 5,2 : 1 sur --bg-main */
+  --accent-hover: #94401F;   /* 6,2 : 1 sur --bg-main */
+  --accent-soft: #D9774F;    /* décoratif : jamais pour du texte */
+  --on-accent: #FBF7F1;      /* texte posé sur --accent-primary : 5,5 : 1 */
+  --error: #A8322A;
+
+  /* Le seul endroit sombre du site : la face « architecture » du composant de
+     la Méthodologie, et la pastille du logo. */
+  --blueprint-bg: #2A211B;
+  --blueprint-line: #E8C4A0; /* 9,6 : 1 sur --blueprint-bg */
+
+  /* Triplets pour les transparences */
+  --tint-rgb: 164, 74, 40;   /* = --accent-primary */
+  --ink-rgb: 42, 33, 27;     /* = --text-main */
+  --bg-rgb: 246, 240, 230;   /* = --bg-main */
+  --glow-rgb: 217, 119, 79;  /* = --accent-soft */
 
   /* Polices */
   --font-heading: 'Cormorant Garamond', serif;
@@ -29,9 +53,10 @@
 
   /* Transitions */
   --transition-base: 0.3s ease;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Bordures */
-  --border-subtle: 1px solid rgba(232, 196, 160, 0.1);
+  --border-subtle: 1px solid rgba(var(--ink-rgb), 0.12);
   --border-active: 1px solid var(--accent-primary);
 
   /* Breakpoints */

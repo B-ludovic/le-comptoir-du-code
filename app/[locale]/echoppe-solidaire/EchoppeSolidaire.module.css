@@ -83,11 +83,11 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(232, 196, 160, 0.2) 20%,
-    rgba(232, 196, 160, 0.2) 80%,
+    rgba(var(--tint-rgb), 0.2) 20%,
+    rgba(var(--tint-rgb), 0.2) 80%,
     transparent
   );
-  box-shadow: 0 0 6px rgba(232, 196, 160, 0.25), 0 0 14px rgba(232, 196, 160, 0.1);
+  box-shadow: 0 0 6px rgba(var(--tint-rgb), 0.25), 0 0 14px rgba(var(--tint-rgb), 0.1);
 }
 
 .card:last-child {
@@ -109,11 +109,11 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(232, 196, 160, 0.2) 20%,
-    rgba(232, 196, 160, 0.2) 80%,
+    rgba(var(--tint-rgb), 0.2) 20%,
+    rgba(var(--tint-rgb), 0.2) 80%,
     transparent
   );
-  box-shadow: 0 0 6px rgba(232, 196, 160, 0.25), 0 0 14px rgba(232, 196, 160, 0.1);
+  box-shadow: 0 0 6px rgba(var(--tint-rgb), 0.25), 0 0 14px rgba(var(--tint-rgb), 0.1);
 }
 
 .cardNumber {
@@ -328,11 +328,11 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(232, 196, 160, 0.2) 20%,
-    rgba(232, 196, 160, 0.2) 80%,
+    rgba(var(--tint-rgb), 0.2) 20%,
+    rgba(var(--tint-rgb), 0.2) 80%,
     transparent
   );
-  box-shadow: 0 0 6px rgba(232, 196, 160, 0.25), 0 0 14px rgba(232, 196, 160, 0.1);
+  box-shadow: 0 0 6px rgba(var(--tint-rgb), 0.25), 0 0 14px rgba(var(--tint-rgb), 0.1);
 }
 
 .block:last-child {
@@ -363,11 +363,11 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(232, 196, 160, 0.2) 20%,
-    rgba(232, 196, 160, 0.2) 80%,
+    rgba(var(--tint-rgb), 0.2) 20%,
+    rgba(var(--tint-rgb), 0.2) 80%,
     transparent
   );
-  box-shadow: 0 0 6px rgba(232, 196, 160, 0.25), 0 0 14px rgba(232, 196, 160, 0.1);
+  box-shadow: 0 0 6px rgba(var(--tint-rgb), 0.25), 0 0 14px rgba(var(--tint-rgb), 0.1);
 }
 
 .blockContent {
@@ -588,8 +588,8 @@
     background: linear-gradient(
       to right,
       transparent,
-      rgba(232, 196, 160, 0.2) 20%,
-      rgba(232, 196, 160, 0.2) 80%,
+      rgba(var(--tint-rgb), 0.2) 20%,
+      rgba(var(--tint-rgb), 0.2) 80%,
       transparent
     );
   }
@@ -634,8 +634,8 @@
     background: linear-gradient(
       to right,
       transparent,
-      rgba(232, 196, 160, 0.2) 20%,
-      rgba(232, 196, 160, 0.2) 80%,
+      rgba(var(--tint-rgb), 0.2) 20%,
+      rgba(var(--tint-rgb), 0.2) 80%,
       transparent
     );
   }
