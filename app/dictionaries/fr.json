@@ -56,7 +56,7 @@
     ],
     "e1_tag": "Étape 01",
     "e1_title": "Cadrage : diagnostic et architecture",
-    "e1_p1": "Un atelier en visio, puis un dossier écrit, livré en 48 h ou en 5 jours ouvrés selon le palier. Il contient les décisions qui font tenir l'application, et le chiffrage du développement en sort directement.",
+    "e1_p1": "Le cadrage est un audit d'architecture, mené avant toute estimation du développement. En atelier, en visio, on part de votre activité réelle : ce que l'application doit encaisser, protéger ou automatiser. Selon le projet, j'en tire le modèle de données, les droits d'accès, le parcours de paiement, la conformité RGPD et le périmètre de la première version, que je vous remets dans un dossier écrit, livré entre 48 heures et 5 jours ouvrés après l'atelier. C'est une étape d'ingénierie préliminaire, à partir de {price} HT.",
     "e1_p2": "Le dossier vous appartient. Vous pouvez le confier à un autre développeur : il est écrit pour être exécuté par n'importe qui.",
     "why_title": "Pourquoi ce diagnostic est payant",
     "why_text": "Parce que c'est déjà le travail. Le modèle de données, les droits d'accès, le choix du paiement : ce sont les décisions les plus chères à corriger après coup. Un devis gratuit les devine. Un cadrage les tranche, par écrit.",
@@ -90,28 +90,6 @@
       "show_interface": "Voir l'interface",
       "hint": "ou survolez la carte"
     },
-    "sheet_title": "Trois profondeurs de diagnostic",
-    "sheet_intro": "Le bon palier dépend de ce que votre projet doit encaisser, protéger ou automatiser.",
-    "scoping": [
-      {
-        "for": "Un site qui présente et fait contacter",
-        "content": "Choix de solution argumenté, arborescence, checklist RGPD, périmètre de la V1, trames légales à faire valider par un avocat.",
-        "workshop": "Atelier 1 h 30",
-        "delivery": "Livré 48 h après"
-      },
-      {
-        "for": "Vendre en ligne, gérer des comptes ou des réservations",
-        "content": "Tunnel de vente et solution de paiement, workflows de réservation et de synchronisation, cartographie RGPD e-commerce, trame de CGV, périmètre de la V1.",
-        "workshop": "Atelier 1 h 30",
-        "delivery": "Livré 48 h après"
-      },
-      {
-        "for": "Une application métier ou un SaaS",
-        "content": "Modèle de données et schéma de base, architecture applicative, spécification du back-office, matrice rôles et permissions, sécurité, modèle économique, MVP découpé en phases.",
-        "workshop": "Atelier 2 h",
-        "delivery": "Livré en 5 jours ouvrés"
-      }
-    ],
     "optional_note": "Facultatif pour un site vitrine. Nécessaire dès qu'il y a des comptes utilisateurs, du paiement en ligne ou des données sensibles.",
     "setoff_note": "Vous signez le développement dans les trois mois ? {rate} du cadrage sont déduits du devis. Sinon, le dossier reste à vous.",
     "design_note": "Projet encore à inventer (fonctionnalités, règles, modèle économique) : conception produit à {price} HT par jour, nombre de jours fixé par le cadrage.",

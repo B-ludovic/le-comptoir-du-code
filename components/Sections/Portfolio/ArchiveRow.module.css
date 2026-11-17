@@ -173,7 +173,7 @@
 
 .detail {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
   gap: 3.25rem;
   padding: 0.5rem 0 2.5rem;
   opacity: 0;

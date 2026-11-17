@@ -56,7 +56,7 @@
     ],
     "e1_tag": "Step 01",
     "e1_title": "Scoping: diagnosis and architecture",
-    "e1_p1": "A video workshop, then a written report, delivered within 48 hours or 5 working days depending on the tier. It holds the decisions that keep the application standing, and the development quote comes straight out of it.",
+    "e1_p1": "Scoping is an architecture audit, carried out before any development estimate. In a video workshop, we start from how your business actually runs: what the application has to take payments for, protect or automate. Depending on the project, I draw from it the data model, the access rights, the payment flow, GDPR compliance and the scope of the first version, and hand them to you in a written report, delivered between 48 hours and 5 working days after the workshop. It is a preliminary engineering step, from {price} excl. VAT.",
     "e1_p2": "The report is yours. You can hand it to another developer: it is written to be carried out by anyone.",
     "why_title": "Why this diagnosis is paid",
     "why_text": "Because it is already the work. The data model, the access rights, the choice of payment provider: these are the decisions that cost the most to fix afterwards. A free quote guesses them. Scoping settles them, in writing.",
@@ -90,28 +90,6 @@
       "show_interface": "Show the interface",
       "hint": "or hover over the card"
     },
-    "sheet_title": "Three depths of diagnosis",
-    "sheet_intro": "The right tier depends on what your project has to take payments for, protect or automate.",
-    "scoping": [
-      {
-        "for": "A site that presents you and brings in enquiries",
-        "content": "Reasoned choice of solution, site structure, GDPR checklist, scope of the first version, draft legal texts to be reviewed by a lawyer.",
-        "workshop": "1.5-hour workshop",
-        "delivery": "Delivered 48 h later"
-      },
-      {
-        "for": "Selling online, managing accounts or bookings",
-        "content": "Sales funnel and payment provider, booking and synchronisation workflows, e-commerce GDPR mapping, draft terms of sale, scope of the first version.",
-        "workshop": "1.5-hour workshop",
-        "delivery": "Delivered 48 h later"
-      },
-      {
-        "for": "A business application or a SaaS",
-        "content": "Data model and database schema, application architecture, back-office specification, roles and permissions matrix, security, business model, MVP broken down into phases.",
-        "workshop": "2-hour workshop",
-        "delivery": "Delivered in 5 working days"
-      }
-    ],
     "optional_note": "Optional for a marketing website. Required as soon as there are user accounts, online payment or sensitive data.",
     "setoff_note": "Signing for development within three months? {rate} of the scoping fee comes off the quote. If not, the report is still yours.",
     "design_note": "Project still to be invented (features, rules, business model): product design at {price} excl. VAT per day, number of days set by the scoping.",

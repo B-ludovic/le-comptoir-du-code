@@ -34,6 +34,14 @@
   color: var(--accent-primary);
 }
 
+/* La section globale est un flex en colonne, et .container y porte des
+   marges auto : sans largeur explicite, il prend celle de son contenu le plus
+   large et la page déborde sur un écran plié (280 px). */
+.section > :global(.container) {
+  width: 100%;
+  min-width: 0;
+}
+
 .sectionTitle {
   font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -362,7 +370,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   column-gap: 3.25rem;
 }
 

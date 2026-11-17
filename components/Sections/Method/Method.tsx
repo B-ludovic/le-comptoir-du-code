@@ -13,13 +13,6 @@ import {
   type TierId,
 } from '@/lib/pricing'
 
-type ScopingCopy = {
-  for: string
-  content: string
-  workshop: string
-  delivery: string
-}
-
 type Props = {
   locale: string
   dict: {
@@ -43,9 +36,6 @@ type Props = {
     demo_questions: string
     demo_p2: string
     blueprint: BlueprintCopy
-    sheet_title: string
-    sheet_intro: string
-    scoping: ScopingCopy[]
     optional_note: string
     setoff_note: string
     design_note: string
@@ -75,6 +65,10 @@ type Props = {
    l'étape 01 d'un parcours en trois temps. Le prix du développement
    n'apparaît plus qu'à l'étape 02, celle qui le produit.
 
+   Les trois paliers de cadrage ne sont plus listés avec leur prix : le prix
+   d'entrée est donné dans le texte de l'étape 01, comme une étape d'ingénierie
+   préliminaire, et non comme une option à choisir dans une grille.
+
    Les anciennes ancres restent valables (#method, #cadrage, #solutions) :
    des liens partagés, la FAQ ou les pages de chantier y pointent encore.
 
@@ -83,6 +77,9 @@ type Props = {
 export default function Method({ locale, dict }: Props) {
   const lang: Locale = locale === 'en' ? 'en' : 'fr'
   const ht = lang === 'en' ? 'excl. VAT' : 'HT'
+  /* Le prix d'entrée du cadrage, lu dans la grille plutôt qu'écrit dans le
+     texte : une revalorisation de lib/pricing.ts le met à jour ici aussi. */
+  const scopingFrom = Math.min(...SCOPING_TIERS.map((tier) => tier.price))
 
   return (
     <section id="method" className={styles.section}>
@@ -106,12 +103,12 @@ export default function Method({ locale, dict }: Props) {
         </ol>
 
         {/* Étape 01 — le cadrage */}
-        <div className={styles.stage} data-reveal="">
+        <div id="cadrage" className={styles.stage} data-reveal="">
           <div className={styles.stageTop}>
             <div className={styles.stageText}>
               <span className={styles.tag}>{dict.e1_tag}</span>
               <h3 className={styles.h3}>{dict.e1_title}</h3>
-              <p>{dict.e1_p1}</p>
+              <p>{dict.e1_p1.replace('{price}', formatPrice(scopingFrom, lang))}</p>
               <p>{dict.e1_p2}</p>
             </div>
             <aside className={styles.why}>
@@ -139,42 +136,14 @@ export default function Method({ locale, dict }: Props) {
           </div>
         </div>
 
-        {/* Les trois paliers : une fiche technique, pas une grille d'abonnements.
-            Le prix est la dernière information de la ligne, pas la première. */}
-        <div id="cadrage" className={styles.sheet} data-reveal="">
-          <div className={styles.sheetHead}>
-            <h3 className={styles.h3}>{dict.sheet_title}</h3>
-            <p>{dict.sheet_intro}</p>
-          </div>
-
-          {SCOPING_TIERS.map((tier, index) => {
-            const copy = dict.scoping[index]
-            return (
-              <div key={tier.id} className={styles.tier}>
-                <span className={styles.tierNumber}>{String(index + 1).padStart(2, '0')}</span>
-                <div className={styles.tierName}>
-                  <h4>{tier.name[lang]}</h4>
-                  <p>{copy.for}</p>
-                </div>
-                <p className={styles.tierContent}>{copy.content}</p>
-                <p className={styles.tierMeta}>
-                  {copy.workshop}
-                  <br />
-                  {copy.delivery}
-                </p>
-                <p className={styles.tierPrice}>
-                  {formatPrice(tier.price, lang)}
-                  <small>{ht}</small>
-                </p>
-              </div>
-            )
-          })}
-
-          <div className={styles.notes}>
-            <p className={styles.optional}>{dict.optional_note}</p>
-            <p>{dict.setoff_note.replace('{rate}', `${Math.round(SCOPING_SET_OFF * 100)}\u00a0%`)}</p>
-            <p>{dict.design_note.replace('{price}', formatPrice(PRODUCT_DESIGN_DAY_RATE, lang))}</p>
-          </div>
+        {/* Conditions du cadrage, en petit. Les trois paliers ne s'affichent plus
+            en lignes chiffrées : à côté des socles de l'étape 02, ils se lisaient
+            comme des options sur étagère. Le prix d'entrée vit désormais dans le
+            texte de l'étape 01 ; le palier exact se fixe à l'échange de 15 minutes. */}
+        <div className={styles.notes} data-reveal="">
+          <p className={styles.optional}>{dict.optional_note}</p>
+          <p>{dict.setoff_note.replace('{rate}', `${Math.round(SCOPING_SET_OFF * 100)}\u00a0%`)}</p>
+          <p>{dict.design_note.replace('{price}', formatPrice(PRODUCT_DESIGN_DAY_RATE, lang))}</p>
         </div>
 
         {/* Étapes 02 et 03 */}
