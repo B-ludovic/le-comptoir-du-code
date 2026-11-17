@@ -1,27 +1,21 @@
 import styles from './Build.module.css'
 
-type Item = {
+export type BuildItem = {
   title: string
   text: string
-  link: string
-  anchor: string
+  /* Lien vers un chantier réel. Facultatif : sur la page associative, les
+     lignes décrivent des outils, pas des réalisations. */
+  link?: { label: string; href: string }
 }
 
 type Props = {
+  id?: string
   dict: {
     eyebrow: string
     section_title: string
     intro: string
-    item1_title: string
-    item1_text: string
-    item1_link: string
-    item2_title: string
-    item2_text: string
-    item2_link: string
-    item3_title: string
-    item3_text: string
-    item3_link: string
   }
+  items: BuildItem[]
 }
 
 /* Ce que je construis.
@@ -30,18 +24,13 @@ type Props = {
    reconnaître dans une famille de projets, pas comparer des forfaits. Les prix
    arrivent dans la Méthodologie, à l'étape qui les produit.
 
-   L'ordre est voulu : le projet le plus technique d'abord, c'est lui qui porte
-   le positionnement. Chaque ligne renvoie à un chantier réel, par son ancre
-   dans les Réalisations. */
-export default function Build({ dict }: Props) {
-  const items: Item[] = [
-    { title: dict.item1_title, text: dict.item1_text, link: dict.item1_link, anchor: 'muse' },
-    { title: dict.item2_title, text: dict.item2_text, link: dict.item2_link, anchor: 'fairy-chair-studio' },
-    { title: dict.item3_title, text: dict.item3_text, link: dict.item3_link, anchor: 'la-requeyrie' },
-  ]
-
+   Le composant sert deux pages : l'accueil (trois familles de projets, chacune
+   reliée à un chantier) et L'Échoppe Solidaire (trois outils pour les
+   associations, sans lien). Les lignes arrivent donc toutes faites, la page
+   qui l'appelle décide de leur contenu. */
+export default function Build({ id = 'construire', dict, items }: Props) {
   return (
-    <section id="construire" className={styles.section}>
+    <section id={id} className={styles.section}>
       <div className={`container ${styles.layout}`}>
         <div className={styles.head} data-reveal="">
           <p className={styles.eyebrow}>{dict.eyebrow}</p>
@@ -52,7 +41,7 @@ export default function Build({ dict }: Props) {
         <ol className={styles.rows}>
           {items.map((item, index) => (
             <li
-              key={item.anchor}
+              key={item.title}
               className={styles.rowWrap}
               data-reveal=""
               style={{ '--i': index } as React.CSSProperties}
@@ -62,10 +51,12 @@ export default function Build({ dict }: Props) {
                 <div>
                   <h3 className={styles.rowTitle}>{item.title}</h3>
                   <p className={styles.rowText}>{item.text}</p>
-                  <a href={`#${item.anchor}`} className={styles.link}>
-                    {item.link}
-                    <span aria-hidden="true"> →</span>
-                  </a>
+                  {item.link && (
+                    <a href={item.link.href} className={styles.link}>
+                      {item.link.label}
+                      <span aria-hidden="true"> →</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </li>

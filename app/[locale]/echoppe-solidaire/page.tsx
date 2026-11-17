@@ -1,13 +1,23 @@
 import type { Metadata } from 'next'
-import { BASE_URL } from '@/lib/structured-data'
+import Link from 'next/link'
 import { Suspense } from 'react'
-import { Check, FilePen, Handshake, KeyRound, HeartHandshake, BadgeCheck, LockKeyhole } from 'lucide-react'
+import { BASE_URL } from '@/lib/structured-data'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
+import Build from '@/components/Sections/Build/Build'
 import Contact from '@/components/Sections/Contact/Contact'
 import ScrollToHash from '@/components/ScrollToHash/ScrollToHash'
+import RevealController from '@/components/Reveal/RevealController'
 import styles from './EchoppeSolidaire.module.css'
-import { tier, formatPrice, formatMonthly } from '@/lib/pricing'
+import {
+  TIERS,
+  tier,
+  NON_PROFIT_DISCOUNT,
+  SCOPING_NON_PROFIT_FROM,
+  formatPrice,
+  formatMonthly,
+  type Locale,
+} from '@/lib/pricing'
 import fr from '@/app/dictionaries/fr.json'
 import en from '@/app/dictionaries/en.json'
 
@@ -38,6 +48,17 @@ export async function generateMetadata({
   }
 }
 
+/* L'Échoppe Solidaire — refonte sur le modèle de l'accueil.
+
+   Même ossature que la page d'accueil : un hero avec le surtitre dans le H1,
+   les outils en trois lignes (le composant Build, partagé), puis la méthode en
+   trois étapes. Les trois grandes cartes de prix ont disparu : les tarifs
+   solidaires sont des lignes dans les étapes 02 et 03, le prix standard barré
+   à côté, pour que le mécénat se lise d'un coup d'œil.
+
+   Les textes vivent dans les dictionnaires (clé `solidaire`) et les montants
+   dans lib/pricing.ts : une revalorisation de la grille ou du taux de mécénat
+   met cette page à jour sans qu'on la relise. */
 export default async function EchoppeSolidairePage({
   params,
 }: {
@@ -45,376 +66,195 @@ export default async function EchoppeSolidairePage({
 }) {
   const { locale } = await params
   const dict = dictionaries[locale as 'fr' | 'en'] ?? dictionaries.fr
-  const isFr = locale !== 'en'
-
-  const cards = [
-    {
-      number: '01',
-      budgetParam: '1',
-      title: tier('presence').name,
-      subtitle: isFr ? 'Vitrine ou association locale' : 'Informational site for local non-profits',
-      originalPrice: formatPrice(tier('presence').price, isFr ? 'fr' : 'en'),
-      price: `${isFr ? 'À partir de' : 'From'} ${formatPrice(tier('presence').nonProfitPrice, isFr ? 'fr' : 'en')}`,
-      badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
-      desc: isFr
-        ? 'Un site professionnel, rapide et référencé. Votre présence en ligne, enfin à la hauteur de votre engagement.'
-        : 'A professional, fast and SEO-ready website. Your online presence, finally matching your commitment.',
-      features: isFr
-        ? ['Design sur-mesure responsive', 'SEO local inclus', 'Formulaire de contact sécurisé', 'Mise en ligne incluse']
-        : ['Responsive custom design', 'Local SEO included', 'Secure contact form', 'Deployment included'],
-      maintenance: `${isFr ? 'Maintenance à partir de' : 'Maintenance from'} ${formatMonthly(tier('presence').maintenance.nonProfitPrice, isFr ? 'fr' : 'en')}`,
-      delay: isFr ? '2 à 3 semaines' : '2 to 3 weeks',
-    },
-    {
-      number: '02',
-      budgetParam: '2',
-      title: `${tier('boutique').name} & Dons`,
-      subtitle: isFr ? 'Dons, adhésions & espaces membres' : 'Donations, memberships & member areas',
-      originalPrice: formatPrice(tier('boutique').price, isFr ? 'fr' : 'en'),
-      price: `${isFr ? 'À partir de' : 'From'} ${formatPrice(tier('boutique').nonProfitPrice, isFr ? 'fr' : 'en')}`,
-      badge: isFr ? 'Mécénat de compétences 50 %' : '50% pro bono discount',
-      desc: isFr
-        ? 'Gestion des dons Stripe, des adhésions récurrentes et des espaces membres sécurisés. Tout ce dont une association active a besoin.'
-        : 'Stripe donation management, recurring memberships and secure member areas. Everything an active non-profit needs.',
-      features: isFr
-        ? ['Paiements Stripe sécurisés', 'Adhésions récurrentes', 'Espace membres privé', 'Reçus fiscaux PDF']
-        : ['Secure Stripe payments', 'Recurring memberships', 'Private member portal', 'Automated PDF tax receipts'],
-      maintenance: `${isFr ? 'Maintenance à partir de' : 'Maintenance from'} ${formatMonthly(tier('boutique').maintenance.nonProfitPrice, isFr ? 'fr' : 'en')}`,
-      delay: isFr ? '5 à 7 semaines' : '5 to 7 weeks',
-    },
-    {
-      number: '03',
-      budgetParam: '3',
-      title: tier('outils').name,
-      subtitle: isFr ? 'Fédérations & grosses infrastructures' : 'Federations & large infrastructures',
-      originalPrice: formatPrice(tier('outils').price, isFr ? 'fr' : 'en'),
-      price: `${isFr ? 'À partir de' : 'From'} ${formatPrice(tier('outils').nonProfitPrice, isFr ? 'fr' : 'en')}`,
-      badge: isFr ? 'Remise calculée selon vos subventions' : 'Discount based on your grants',
-      desc: isFr
-        ? 'Votre projet est unique. La remise est calculée sur-mesure en fonction de vos subventions, votre budget réel, et l\'ampleur de votre infrastructure.'
-        : 'Your project is unique. The discount is tailored to your grants, your actual budget, and the scale of your infrastructure.',
-      features: isFr
-        ? ['Architecture sur-mesure', 'Gestion des rôles & sécurité', 'Base de données dédiée', 'RGPD renforcé (données sensibles)']
-        : ['Custom architecture', 'Role management & security', 'Dedicated database', 'Enhanced GDPR (sensitive data)'],
-      maintenance: `${isFr ? 'Maintenance à partir de' : 'Maintenance from'} ${formatMonthly(tier('outils').maintenance.nonProfitPrice, isFr ? 'fr' : 'en')}`,
-      delay: isFr ? '8 à 10 semaines' : '8 to 10 weeks',
-    },
-  ]
-
-  const approach = [
-    {
-      number: '01',
-      icon: FilePen,
-      title: isFr ? 'Transparence totale' : 'Total transparency',
-      text: isFr
-        ? "Le mécénat n'est pas du bricolage. Sur présentation de vos justificatifs, je vous fournis un devis officiel détaillant exactement la valeur de l'architecture et l'effort de mécénat appliqué. Un contrat en bonne et due forme est signé. Pas de zones d'ombre : vous connaissez la valeur réelle de votre outil, et nous avançons en toute sécurité."
-        : "Pro bono work is not guesswork. On presentation of your supporting documents, I provide an official quote detailing the exact value of the architecture and the sponsorship applied. A proper contract is signed. No grey areas: you know the real value of your tool, and we move forward with full confidence.",
-    },
-    {
-      number: '02',
-      icon: Handshake,
-      title: isFr ? "L'alliance stratégique" : 'The strategic alliance',
-      text: isFr
-        ? "Je ne suis pas juste un exécutant derrière un clavier. Je m'assois à votre table comme un partenaire technique. On challenge vos besoins réels, on élimine le superflu, et on conçoit ensemble la mécanique qui soulagera concrètement vos équipes sur le terrain. Mon rôle est de traduire vos enjeux militants en une infrastructure technique implacable."
-        : "I am not just an order-taker behind a keyboard. I sit at your table as a technical partner. We challenge your real needs, eliminate the superfluous, and design together the mechanism that will concretely support your teams in the field. My role is to translate your missions into a bulletproof technical infrastructure.",
-    },
-    {
-      number: '03',
-      icon: KeyRound,
-      title: isFr ? "L'indépendance totale" : 'Total independence',
-      text: isFr
-        ? "Le code vous appartient. Point. À la livraison, je vous remets les clés de la maison : l'infrastructure est à votre nom, le code source est le vôtre, conçu pour durer sans moi. Je vous forme à son utilisation. Vous êtes 100 % libres — et si vous avez besoin de moi plus tard, je suis là."
-        : "The code is yours. Full stop. At delivery, I hand over the keys: the infrastructure is in your name, the source code is yours, built to last without me. I train you on how to use it. You are 100% free — and if you need me later, I am here.",
-    },
-  ]
-
-  const tools = [
-    {
-      number: '01',
-      icon: HeartHandshake,
-      title: isFr ? 'Sécurisation des dons' : 'Donation security',
-      text: isFr
-        ? 'Intégration Stripe directe — sans plateforme intermédiaire. Vous ne payez que les frais Stripe standard, sans commission supplémentaire prélevée par un tiers.'
-        : 'Direct Stripe integration — no intermediary platform. You only pay standard Stripe fees, with no additional commission taken by a third party.',
-    },
-    {
-      number: '02',
-      icon: BadgeCheck,
-      title: isFr ? 'Gestion des membres' : 'Member management',
-      text: isFr
-        ? "Espaces adhérents privés, automatisation des adhésions et génération de reçus fiscaux PDF. Moins d'administration, plus de terrain."
-        : 'Private member areas, membership automation and PDF tax receipt generation. Less admin, more fieldwork.',
-    },
-    {
-      number: '03',
-      icon: LockKeyhole,
-      title: isFr ? 'RGPD renforcé & anonymat' : 'Enhanced GDPR & privacy',
-      text: isFr
-        ? 'Vos données sont sensibles (orientation, santé, convictions). Bases de données verrouillées, accès stricts par rôle, hébergement souverain. Votre infrastructure est inattaquable.'
-        : 'Your data is sensitive (orientation, health, beliefs). Locked databases, strict role-based access, sovereign hosting. Your infrastructure is bulletproof.',
-    },
-  ]
+  const t = dict.solidaire
+  const lang: Locale = locale === 'en' ? 'en' : 'fr'
+  const ht = lang === 'en' ? 'excl. VAT' : 'HT'
+  const rate = `${Math.round(NON_PROFIT_DISCOUNT * 100)} %`
+  const withRate = (text: string) => text.replace('{rate}', rate)
 
   return (
     <>
       <Header locale={locale} nav={dict.nav} />
       <ScrollToHash />
+      <RevealController />
       <main>
 
-        {/* Hero — même layout que Method */}
+        {/* Hero */}
         <section className={styles.hero}>
-          <div className="container">
-            <div className={styles.sectionHeader}>
-              <div className={styles.headerLeft}>
-                <p className={styles.eyebrow}>L&apos;Échoppe Solidaire</p>
-                <h1 className={styles.sectionTitle}>
-                  {isFr
-                    ? 'Le code au service de celles et ceux qui font.'
-                    : 'Code in the service of those who act.'}
-                </h1>
+          <div className={`container ${styles.heroGrid}`}>
+            <div className={styles.heroText}>
+              <h1 className={styles.title}>
+                <span className={styles.kicker}>{t.hero.kicker}</span>
+                {t.hero.h1_lead}
+                <em className={styles.accent}>{t.hero.h1_accent}</em>
+                {t.hero.h1_tail}
+              </h1>
+              <p className={styles.sub}>{withRate(t.hero.sub)}</p>
+              <div className={styles.actions}>
+                <a href="#contact" className={styles.btn}>{t.hero.cta}</a>
+                <a href="#methode" className={styles.btnGhost}>{t.hero.cta_secondary}</a>
               </div>
-              <div className={styles.headerRight}>
-                <p className={styles.intro}>
-                  {isFr
-                    ? "Militer, informer, rassembler — ça demande une énergie colossale. Vous ne devriez pas en perdre une seule once à vous battre contre des outils numériques inadaptés. L'Échoppe Solidaire s'adresse en priorité aux associations LGBTQI+, et plus largement à toutes les structures engagées. La même exigence technique, le même code sur-mesure, le même artisan — avec une tarification pensée pour le monde associatif."
-                    : "Campaigning, informing, bringing people together — it takes enormous energy. You should not waste a single ounce of it fighting inadequate digital tools. L'Échoppe Solidaire works primarily with LGBTQI+ organisations, and more broadly with any committed non-profit. The same technical standards, the same custom code, the same craftsman — with pricing built for the non-profit world."}
-                </p>
-              </div>
+              <p className={styles.reassurance}>{t.hero.reassurance}</p>
             </div>
 
-            <div className={styles.blocks}>
-              {approach.map((item, index) => {
-                const Icon = item.icon
-                return (
-                  <div key={item.number} className={styles.block}>
-                    <span className={styles.blockNumber}>{item.number}</span>
-                    <div className={styles.blockContent}>
-                      <h3 className={styles.blockTitle}>
-                        <Icon size={20} strokeWidth={1.5} className={styles.blockIcon} />
-                        {item.title}
-                      </h3>
-                      <p className={styles.blockText}>{item.text}</p>
+            <aside className={styles.heroSide} aria-label={t.hero.engagements_label}>
+              <ol className={styles.engagements}>
+                {t.hero.engagements.map((item, index) => (
+                  <li key={item.title} className={styles.engagement}>
+                    <span className={styles.number}>{String(index + 1).padStart(2, '0')}</span>
+                    <div>
+                      <h2 className={styles.engagementTitle}>{item.title}</h2>
+                      <p className={styles.engagementText}>{item.text}</p>
                     </div>
-                    {index < approach.length - 1 && <div className={styles.blockSeparator} />}
-                  </div>
-                )
-              })}
-            </div>
+                  </li>
+                ))}
+              </ol>
+            </aside>
           </div>
-        </section>
 
-        {/* Cards — même layout que Solutions */}
-        <section className={styles.cards}>
-          <div className="container">
-            <div className={styles.sectionHeader}>
-              <div className={styles.headerLeft}>
-                <p className={styles.eyebrow}>{isFr ? 'Tarification' : 'Pricing'}</p>
-                <h2 className={styles.sectionTitle}>
-                  {isFr ? 'La transparence contractuelle.' : 'Contractual transparency.'}
-                </h2>
-              </div>
-              <div className={styles.headerRight}>
-                <p className={styles.intro}>
-                  {isFr
-                    ? 'Les mêmes forfaits que nos clients commerciaux, avec un mécénat de compétences appliqué directement sur le prix. Aucune concession sur la qualité du code.'
-                    : 'The same packages as our commercial clients, with a skills sponsorship applied directly to the price. No compromise on code quality.'}
-                </p>
-              </div>
-            </div>
-
-            <div className={styles.grid}>
-              {cards.map((card, index) => (
-                <div key={card.number} className={styles.card}>
-                  <span className={styles.cardNumber}>{card.number}</span>
-                  <div className={styles.cardContent}>
-                    <div className={styles.cardHeader}>
-                      <h3 className={styles.cardTitle}>{card.title}</h3>
-                      {card.subtitle && (
-                        <span className={styles.cardSubtitle}>{card.subtitle}</span>
-                      )}
-                    </div>
-                    <div className={styles.priceBlock}>
-                      <span className={styles.originalPrice}>{card.originalPrice} HT</span>
-                      <p className={styles.cardPrice}>
-                        {card.price}&nbsp;<span className={styles.cardPriceHT}>HT</span>
-                      </p>
-                      <span className={styles.badge}>{card.badge}</span>
-                    </div>
-                    <p className={styles.cardDesc}>{card.desc}</p>
-                    <ul className={styles.features}>
-                      {card.features.map((f) => (
-                        <li key={f} className={styles.feature}>
-                          <Check size={14} strokeWidth={2} className={styles.checkIcon} />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className={styles.warranty}>
-                      <span className={styles.warrantyIcon}>✦</span>
-                      {card.maintenance}
-                    </div>
-                    <div className={styles.cardFooter}>
-                      <span className={styles.delay}>{card.delay}</span>
-                      <a href={`?budget=${card.budgetParam}#contact`} className={styles.btn}>
-                        {isFr ? 'Démarrer ce projet' : 'Start this project'}
-                      </a>
-                    </div>
-                  </div>
-                  {index < cards.length - 1 && <div className={styles.separator} />}
-                </div>
+          <div className={styles.proof}>
+            <ul className={`container ${styles.proofInner}`}>
+              {t.hero.proof.map((item) => (
+                <li key={item}>{withRate(item)}</li>
               ))}
-            </div>
-
-            <p className={styles.vatNotice}>
-              {isFr
-                ? '* Le mécénat de compétences est conditionné à la fourniture d\'un récépissé de déclaration en préfecture ou équivalent.'
-                : '* Skills sponsorship is conditional on providing a declaration receipt from the prefecture or equivalent.'}
-            </p>
+            </ul>
           </div>
         </section>
 
-        {/* Outils — même layout que Method */}
-        <section className={styles.tools}>
+        {/* Outils — même composant que « Ce que je construis » sur l'accueil */}
+        <Build id="outils" dict={t.tools} items={t.tools.items} />
+
+        {/* Méthode et tarifs */}
+        <section id="methode" className={styles.method}>
           <div className="container">
-            <div className={styles.sectionHeader}>
-              <div className={styles.headerLeft}>
-                <p className={styles.eyebrow}>{isFr ? 'Ce que je construis pour vous' : 'What I build for you'}</p>
-                <h2 className={styles.sectionTitle}>
-                  {isFr ? 'Des outils à la hauteur de vos combats.' : 'Tools worthy of your causes.'}
-                </h2>
+            <header className={styles.methodHead} data-reveal="">
+              <p className={styles.eyebrow}>{t.method.eyebrow}</p>
+              <h2 className={styles.h2}>{withRate(t.method.section_title)}</h2>
+              <p className={styles.lead}>{t.method.intro}</p>
+            </header>
+
+            <ol className={styles.steps} data-reveal="">
+              {t.method.steps.map((step, index) => (
+                <li key={step.title} className={styles.step}>
+                  <span className={styles.stepNumber}>{String(index + 1).padStart(2, '0')}</span>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepText}>{step.text}</p>
+                </li>
+              ))}
+            </ol>
+
+            {/* Étape 01 — le cadrage, au tarif associatif */}
+            <div id="cadrage" className={styles.stage} data-reveal="">
+              <div className={styles.stageText}>
+                <span className={styles.tag}>{t.method.e1_tag}</span>
+                <h3 className={styles.h3}>{t.method.e1_title}</h3>
+                <p>{t.method.e1_text.replace('{price}', formatPrice(SCOPING_NON_PROFIT_FROM, lang))}</p>
+                <p className={styles.note}>{t.method.optional_note}</p>
               </div>
-              <div className={styles.headerRight}>
-                <p className={styles.intro}>
-                  {isFr
-                    ? "En tant qu'ancien manager d'équipes, je sais que les associations perdent un temps précieux à se battre contre des outils inadaptés. Mon métier est de vous fournir une architecture web robuste — pour que vous puissiez concentrer votre énergie sur le terrain."
-                    : "As a former team manager, I know that non-profits waste precious time fighting inadequate tools. My job is to provide you with a robust web architecture — so you can focus your energy on the ground."}
-                </p>
+              <aside className={styles.why}>
+                <h4 className={styles.whyTitle}>{t.method.why_title}</h4>
+                <p>{t.method.why_text}</p>
+              </aside>
+            </div>
+
+            {/* Étapes 02 et 03 — prix standard barré, prix solidaire à côté */}
+            <div className={styles.next} data-reveal="">
+              <div className={styles.card}>
+                <span className={styles.tag}>{t.method.e2_tag}</span>
+                <h3 className={styles.h3}>{t.method.e2_title}</h3>
+                <p>{t.method.e2_text}</p>
+                <ul className={styles.prices}>
+                  {TIERS.map((socle) => (
+                    <li key={socle.id}>
+                      <a href={`?budget=${socle.id}#contact`} className={styles.priceRow}>
+                        <span>{t.method.socles[socle.id]}</span>
+                        <span className={styles.priceValue}>
+                          <s>
+                            <span className="sr-only">{t.method.standard_label} </span>
+                            {formatPrice(socle.price, lang)}
+                          </s>
+                          <b>
+                            {t.method.from} {formatPrice(socle.nonProfitPrice, lang)} {ht}
+                          </b>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <p className={styles.budgetNote}>{t.method.budget_note}</p>
+              </div>
+
+              <div className={styles.card}>
+                <span className={styles.tag}>{t.method.e3_tag}</span>
+                <h3 className={styles.h3}>{t.method.e3_title}</h3>
+                <p>{t.method.e3_text}</p>
+                <ul className={styles.prices}>
+                  {TIERS.map((socle) => (
+                    <li key={socle.id} className={styles.priceRow}>
+                      <span>{t.method.socles[socle.id]}</span>
+                      <span className={styles.priceValue}>
+                        <s>
+                          <span className="sr-only">{t.method.standard_label} </span>
+                          {formatPrice(socle.maintenance.price, lang)}
+                        </s>
+                        <b>{formatMonthly(socle.maintenance.nonProfitPrice, lang)}</b>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
-            <div className={styles.blocks}>
-              {tools.map((item, index) => {
-                const Icon = item.icon
-                return (
-                  <div key={item.number} className={styles.block}>
-                    <span className={styles.blockNumber}>{item.number}</span>
-                    <div className={styles.blockContent}>
-                      <h3 className={styles.blockTitle}>
-                        <Icon size={20} strokeWidth={1.5} className={styles.blockIcon} />
-                        {item.title}
-                      </h3>
-                      <p className={styles.blockText}>{item.text}</p>
-                    </div>
-                    {index < tools.length - 1 && <div className={styles.blockSeparator} />}
-                  </div>
-                )
-              })}
+            <div className={styles.methodActions} data-reveal="">
+              <a href="#contact" className={styles.btn}>{t.method.cta}</a>
+              <Link href={`/${locale}/conditions-generales`} className={styles.textLink}>
+                {t.method.terms_link}
+              </Link>
+              <p className={styles.fine}>{t.method.vat_notice}</p>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <div className={styles.faq}>
+        <section className={styles.faq}>
           <div className="container">
-            <p className={styles.faqEyebrow}>{isFr ? 'Questions fréquentes' : 'FAQ'}</p>
-            <div className={styles.faqList}>
-              {[
-                {
-                  q: isFr ? 'Comment prouver le statut de mon association ?' : 'How do I prove my non-profit status?',
-                  a: isFr
-                    ? "Un récépissé de déclaration en préfecture, vos statuts déposés, ou un extrait du RNA suffisent. Je les demande avant la signature du devis — pas de paperasse au dernier moment."
-                    : "A registration receipt from the relevant authority, your filed articles of association, or an RNA extract are sufficient. I ask for these before signing the quote — no last-minute paperwork.",
-                },
-                {
-                  q: isFr ? 'La remise de 50 % s\'applique aussi à la maintenance ?' : 'Does the 50% discount apply to maintenance too?',
-                  a: isFr
-                    ? "La maintenance post-livraison est calculée sur un tarif solidaire dédié, indiqué sur chaque forfait. Elle n'est pas automatiquement à −50 % du tarif standard, mais reste très en dessous du marché."
-                    : "Post-delivery maintenance is calculated at a dedicated solidarity rate, shown on each plan. It is not automatically 50% off the standard rate, but remains well below market price.",
-                },
-                {
-                  q: isFr ? 'Vous travaillez exclusivement avec des associations LGBTQI+ ?' : 'Do you work exclusively with LGBTQI+ organisations?',
-                  a: isFr
-                    ? "En priorité, oui. Mais L'Échoppe Solidaire est ouverte à toutes les structures à but non lucratif dont les valeurs s'alignent. Je prends chaque demande au cas par cas."
-                    : "Primarily, yes. But L'Échoppe Solidaire is open to all non-profit structures whose values align. I assess each request individually.",
-                },
-                {
-                  q: isFr ? 'Et si notre budget est inférieur aux forfaits affichés ?' : 'What if our budget is below the listed plans?',
-                  a: isFr
-                    ? "Écrivez-moi quand même. Je peux adapter le périmètre, étaler les paiements, ou orienter vers une solution plus légère. Une conversation honnête vaut mieux qu'un formulaire fermé."
-                    : "Write to me anyway. I can adjust the scope, spread payments, or point you towards a lighter solution. An honest conversation is worth more than a closed form.",
-                },
-                {
-                  q: isFr ? 'Comment se passe le paiement avec l\'acompte ?' : 'How does payment work with the deposit?',
-                  a: isFr
-                    ? "30 % à la signature (une facture d'acompte officielle est émise par Jump Green), 70 % à la mise en ligne. Règlement par virement uniquement. Aucun paiement avant que vous ayez validé le devis officiel."
-                    : "30% on signing (an official deposit invoice is issued by Jump Green), 70% on go-live. Bank transfer only. No payment before you have validated the official quote.",
-                },
-                {
-                  q: isFr ? 'Que se passe-t-il après la livraison ?' : 'What happens after delivery?',
-                  a: isFr
-                    ? "Je vous forme à l'utilisation de votre outil, je vous remets toutes les clés d'accès, et le code vous appartient intégralement. Si vous avez besoin de moi plus tard, je suis là — mais vous n'en dépendez pas."
-                    : "I train you on using your tool, hand over all access credentials, and the code is entirely yours. If you need me later, I am here — but you will not depend on me.",
-                },
-              ].map((item, i) => (
-                <details key={i} className={styles.faqItem}>
-                  <summary>{item.q}</summary>
-                  <div className={styles.faqAnswer}>
-                    <div className={styles.faqAnswerInner}>{item.a}</div>
-                  </div>
-                </details>
-              ))}
+            <div className={styles.faqInner} data-reveal="">
+              <p className={styles.eyebrow}>{t.faq.eyebrow}</p>
+              <div className={styles.faqList}>
+                {t.faq.items.map((item) => (
+                  <details key={item.q} className={styles.faqItem}>
+                    <summary>{item.q}</summary>
+                    <div className={styles.faqAnswer}>
+                      <div className={styles.faqAnswerInner}>{item.a}</div>
+                    </div>
+                  </details>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Brief — même composant que Contact */}
+        {/* Brief — même composant que le contact de l'accueil */}
         <Suspense>
-          <Contact dict={{
-            eyebrow: isFr ? 'Votre projet' : 'Your project',
-            section_title: isFr ? 'Parlons de votre association.' : 'Let\'s talk about your organisation.',
-            intro: isFr
-              ? 'Décrivez-moi votre structure, vos besoins et vos contraintes budgétaires. Je reviens vers vous sous 48h avec une proposition honnête.'
-              : 'Tell me about your organisation, your needs and your budget constraints. I\'ll get back to you within 48h with an honest proposal.',
-            field_name: isFr ? 'Nom & association' : 'Name & organisation',
-            field_email: 'Email',
-            field_description: isFr ? 'Votre projet' : 'Your project',
-            field_description_placeholder: isFr
-              ? 'Décrivez votre association, ce que vous souhaitez construire, et ce qui bloque aujourd\'hui…'
-              : 'Describe your organisation, what you want to build, and what is blocking you today…',
-            field_budget: isFr ? 'Forfait souhaité' : 'Desired package',
-            field_budget_placeholder: isFr ? '— Choisir un forfait —' : '— Choose a package —',
-            budget_scoping: isFr ? 'Cadrage — À partir de 145 € HT' : 'Scoping — From €145 excl. VAT',
-            budget_1: `${tier('presence').name} — ${isFr ? 'à partir de' : 'from'} ${formatPrice(tier('presence').nonProfitPrice, isFr ? 'fr' : 'en')}${isFr ? ' HT' : ' excl. VAT'}`,
-            budget_2: `${tier('boutique').name} — ${isFr ? 'à partir de' : 'from'} ${formatPrice(tier('boutique').nonProfitPrice, isFr ? 'fr' : 'en')}${isFr ? ' HT' : ' excl. VAT'}`,
-            budget_3: `${tier('outils').name} — ${isFr ? 'à partir de' : 'from'} ${formatPrice(tier('outils').nonProfitPrice, isFr ? 'fr' : 'en')}${isFr ? ' HT' : ' excl. VAT'}`,
-            btn_submit: isFr ? 'Envoyer ma demande' : 'Send my request',
-            privacy_note: isFr
-              ? 'Vos données ne servent qu\'à répondre à cette demande.'
-              : 'Your details are only used to answer this request.',
-            privacy_link: isFr ? 'Politique de confidentialité' : 'Privacy policy',
-            success: isFr
-              ? 'Demande envoyée. Réponse sous 48 h.'
-              : 'Request sent. Reply within 48h.',
-            error_invalid: isFr
-              ? 'Certains champs sont incomplets. Vérifiez le formulaire ci-dessus.'
-              : 'Some fields are incomplete. Please check the form above.',
-            error_rate_limited: isFr
-              ? 'Vous avez déjà envoyé trois demandes. Réessayez dans quinze minutes.'
-              : 'You have already sent three requests. Try again in fifteen minutes.',
-            error_transport: isFr
-              ? 'L\'envoi a échoué de mon côté. Écrivez-moi directement à'
-              : 'Sending failed on my end. Write to me directly at',
-            err_name: isFr
-              ? 'Indiquez votre nom ou celui de votre association.'
-              : 'Enter your name or your organisation name.',
-            err_email: isFr
-              ? 'Cette adresse email ne semble pas valide.'
-              : 'This email address doesn\'t look valid.',
-            err_budget: isFr ? 'Sélectionnez un forfait.' : 'Select a package.',
-            err_message: isFr
-              ? 'Décrivez votre projet en dix caractères minimum.'
-              : 'Describe your project in at least ten characters.',
-          }} locale={locale} />
+          <Contact
+            locale={locale}
+            dict={{
+              ...t.contact,
+              budget_scoping: t.contact.budget_scoping.replace(
+                '{price}',
+                formatPrice(SCOPING_NON_PROFIT_FROM, lang),
+              ),
+              budget_1: t.contact.budget_tier
+                .replace('{name}', tier('presence').name)
+                .replace('{price}', formatPrice(tier('presence').nonProfitPrice, lang)),
+              budget_2: t.contact.budget_tier
+                .replace('{name}', tier('boutique').name)
+                .replace('{price}', formatPrice(tier('boutique').nonProfitPrice, lang)),
+              budget_3: t.contact.budget_tier
+                .replace('{name}', tier('outils').name)
+                .replace('{price}', formatPrice(tier('outils').nonProfitPrice, lang)),
+            }}
+          />
         </Suspense>
 
       </main>

@@ -1,430 +1,458 @@
-/* Layout commun — identique à Method/Solutions */
-.hero,
-.cards,
-.tools {
-  padding: var(--section-padding);
-}
+/* L'Échoppe Solidaire — refonte sur le modèle de l'accueil (base claire).
 
-.hero {
-  padding-top: 10rem;
-}
+   Les sections globales sont des flex en colonne où .container porte des
+   marges auto : sans largeur explicite, il prendrait la largeur de son contenu
+   le plus large. D'où la règle `> :global(.container)` répétée plus bas. */
 
-/* Header 2 colonnes — identique à Method */
-.sectionHeader {
-  display: grid;
-  grid-template-columns: 5fr 4fr;
-  gap: 4rem;
-  align-items: end;
-  margin-bottom: 5rem;
-}
-
-.headerLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
+/* ── Éléments communs ── */
 .eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.75rem;
   font-weight: 500;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  letter-spacing: 3px;
   color: var(--accent-primary);
 }
 
-.sectionTitle {
-  font-family: var(--font-heading);
+.h2 {
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 600;
-  color: var(--text-main);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
 }
 
-.headerRight {
-  padding-bottom: 0.5rem;
+.h3 {
+  margin: 0.75rem 0 1.25rem;
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  line-height: 1.1;
 }
 
-.intro {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.8;
-}
-
-/* Grille cards — identique à Solutions */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto auto auto 1fr auto auto;
-  gap: 0;
-}
-
-.card {
-  position: relative;
-  padding: 0 2.5rem;
-  overflow: visible;
-  display: grid;
-  grid-row: span 7;
-  grid-template-rows: subgrid;
-  transition: transform var(--transition-base);
-}
-
-.card:first-child {
-  padding-left: 2.5rem;
-}
-
-.card:first-child::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(var(--tint-rgb), 0.2) 20%,
-    rgba(var(--tint-rgb), 0.2) 80%,
-    transparent
-  );
-  box-shadow: 0 0 6px rgba(var(--tint-rgb), 0.25), 0 0 14px rgba(var(--tint-rgb), 0.1);
-}
-
-.card:last-child {
-  padding-right: 0;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    transform: translateY(-4px);
-  }
-}
-
-.separator {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(var(--tint-rgb), 0.2) 20%,
-    rgba(var(--tint-rgb), 0.2) 80%,
-    transparent
-  );
-  box-shadow: 0 0 6px rgba(var(--tint-rgb), 0.25), 0 0 14px rgba(var(--tint-rgb), 0.1);
-}
-
-.cardNumber {
-  position: absolute;
-  top: -1.5rem;
-  left: -0.5rem;
-  font-family: var(--font-heading);
-  font-size: 8rem;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--text-muted);
-  opacity: 0.1;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -4px;
-}
-
-.cardContent {
-  position: relative;
-  z-index: 1;
-  padding-top: 2rem;
-  display: grid;
-  grid-row: span 6;
-  grid-template-rows: subgrid;
-  gap: 1.5rem;
-}
-
-.cardHeader {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.cardTitle {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--text-main);
-  line-height: 1.2;
-}
-
-.cardSubtitle {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.lead {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
 }
 
-/* Prix barré */
-.priceBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.originalPrice {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  text-decoration: line-through;
-  opacity: 0.5;
-}
-
-.cardPrice {
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--accent-primary);
-  display: flex;
-  align-items: baseline;
-  gap: 0.3rem;
-}
-
-.cardPriceHT {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 400;
-  color: var(--text-muted);
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-}
-
-.badge {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
   color: var(--accent-primary);
-  opacity: 0.7;
 }
 
-.cardDesc {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-.features {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  align-self: start;
-}
-
-.feature {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.checkIcon {
-  color: var(--accent-primary);
-  flex-shrink: 0;
-}
-
-.warranty {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(154, 144, 136, 0.2);
-  font-family: var(--font-body);
+.number {
+  padding-top: 0.4rem;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
-  letter-spacing: 0.5px;
-  color: var(--text-muted);
-}
-
-.warrantyIcon {
   color: var(--accent-primary);
-  font-size: 0.65rem;
-  flex-shrink: 0;
 }
 
-.cardFooter {
-  display: flex;
+.btn,
+.btnGhost {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: auto;
-}
-
-.delay {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 1.75rem;
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--card-radius);
+  font-size: 0.95rem;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .btn {
-  display: inline-block;
-  padding: 0.6rem 1.25rem;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  background-color: var(--accent-primary);
+  color: var(--on-accent);
+}
+
+.btnGhost {
+  background-color: transparent;
   color: var(--accent-primary);
-  border: 1px solid var(--accent-primary);
-  border-radius: var(--card-radius);
-  transition: background-color var(--transition-base), color var(--transition-base);
-  white-space: nowrap;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .btn:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+
+  .btnGhost:hover {
     background-color: var(--accent-primary);
-    color: var(--bg-main);
+    color: var(--on-accent);
   }
 }
 
-.vatNotice {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  text-align: center;
-  margin-top: 2rem;
-}
-
-/* Outils — identique à Method blocks */
-.blocks {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-}
-
-.block {
-  position: relative;
-  padding: 0 2.5rem;
-}
-
-.block:first-child {
-  padding-left: 2.5rem;
-}
-
-.block:first-child::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(var(--tint-rgb), 0.2) 20%,
-    rgba(var(--tint-rgb), 0.2) 80%,
-    transparent
-  );
-  box-shadow: 0 0 6px rgba(var(--tint-rgb), 0.25), 0 0 14px rgba(var(--tint-rgb), 0.1);
-}
-
-.block:last-child {
-  padding-right: 0;
-}
-
-.blockNumber {
-  position: absolute;
-  top: -1.5rem;
-  left: -0.5rem;
-  font-family: var(--font-heading);
-  font-size: 8rem;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--text-muted);
-  opacity: 0.1;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -4px;
-}
-
-.blockSeparator {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(var(--tint-rgb), 0.2) 20%,
-    rgba(var(--tint-rgb), 0.2) 80%,
-    transparent
-  );
-  box-shadow: 0 0 6px rgba(var(--tint-rgb), 0.25), 0 0 14px rgba(var(--tint-rgb), 0.1);
-}
-
-.blockContent {
-  position: relative;
-  z-index: 1;
-  padding-top: 3rem;
-}
-
-.blockTitle {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--text-main);
-  margin-bottom: 1rem;
-  line-height: 1.3;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.blockIcon {
+.textLink {
   color: var(--accent-primary);
-  flex-shrink: 0;
-  position: relative;
-  top: 1px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.blockText {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.7;
+.btn:focus-visible,
+.btnGhost:focus-visible,
+.textLink:focus-visible,
+.priceRow:focus-visible,
+.faqItem summary:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 
-/* FAQ */
-.faq {
-  padding: var(--section-padding);
-  padding-top: 0;
+/* ── Hero ── */
+.hero {
+  justify-content: space-between;
+  padding: 8rem 0 0;
 }
 
-.faqEyebrow {
+.hero > :global(.container) {
+  width: 100%;
+  min-width: 0;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: center;
+  flex: 1;
+}
+
+.heroText {
+  grid-column: 1 / span 7;
+}
+
+.heroSide {
+  grid-column: 9 / span 4;
+}
+
+.title {
+  font-size: clamp(2.5rem, 4.6vw, 4.25rem);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+}
+
+.kicker {
+  display: block;
+  margin-bottom: 1.75rem;
   font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 500;
-  text-transform: uppercase;
   letter-spacing: 3px;
+  line-height: 1.6;
+  text-transform: uppercase;
   color: var(--accent-primary);
-  margin-bottom: 3rem;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--accent-primary);
+}
+
+.sub {
+  max-width: 37rem;
+  margin-top: 1.75rem;
+  font-size: 1.15rem;
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.reassurance {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.engagements {
+  list-style: none;
+  border-top: var(--border-subtle);
+}
+
+.engagement {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 0.25rem 0.75rem;
+  padding: 1.5rem 0;
+  border-bottom: var(--border-subtle);
+}
+
+.engagementTitle {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.engagementText {
+  margin-top: 0.375rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.proof {
+  margin-top: 4rem;
+  background-color: var(--bg-alt);
+  border-top: var(--border-subtle);
+  border-bottom: var(--border-subtle);
+}
+
+.proofInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem 1.5rem;
+  min-height: 64px;
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+  list-style: none;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.proofInner li + li::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-right: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--accent-soft);
+  vertical-align: middle;
+}
+
+/* ── Méthode et tarifs ── */
+.method {
+  min-height: 0;
+  padding-top: 2rem;
+}
+
+.method > :global(.container) {
+  width: 100%;
+  min-width: 0;
+}
+
+.methodHead {
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin: 5rem 0 4rem;
+  list-style: none;
+}
+
+/* Le filet qui relie les étapes se trace à l'apparition ; sans JavaScript,
+   il est simplement là. */
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 16.66%;
+  right: 16.66%;
+  height: 1px;
+  background-color: var(--accent-primary);
+  transform-origin: left;
+  transition: transform 0.9s var(--ease-out) 0.2s;
+}
+
+:global(.reveal-armed) .steps:not([data-visible])::before {
+  transform: scaleX(0);
+}
+
+.step {
+  position: relative;
+  text-align: center;
+}
+
+.stepNumber {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto;
+  border: 1px solid var(--accent-primary);
+  border-radius: 50%;
+  background-color: var(--bg-main);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+}
+
+.stepTitle {
+  margin: 1.25rem 0 0.25rem;
+  font-size: 1.6rem;
+}
+
+.stepText {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: start;
+  padding: 3.5rem 4rem;
+  background-color: var(--bg-alt);
+  border: var(--border-subtle);
+  border-radius: var(--card-radius);
+  scroll-margin-top: 100px;
+}
+
+.stageText {
+  grid-column: 1 / span 7;
+}
+
+.stageText p {
+  margin-bottom: 0.875rem;
+}
+
+.note {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.why {
+  grid-column: 9 / span 4;
+  padding: 1.5rem;
+  background-color: var(--bg-card);
+  border: var(--border-subtle);
+  border-top: 2px solid var(--accent-primary);
+  border-radius: var(--card-radius);
+}
+
+.whyTitle {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.why p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.next {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  padding: 2.5rem;
+  background-color: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--card-radius);
+}
+
+.card p {
+  margin-bottom: 0.75rem;
+}
+
+.prices {
+  margin-top: 1.5rem;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-top: 1px dashed rgba(var(--ink-rgb), 0.2);
+}
+
+a.priceRow {
+  color: var(--text-main);
+  transition: color var(--transition-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.priceRow:hover {
+    color: var(--accent-primary);
+  }
+}
+
+.priceValue {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.priceValue s {
+  margin-right: 0.625rem;
+  color: var(--text-muted);
+  text-decoration-thickness: 1px;
+}
+
+.priceValue b {
+  font-weight: 500;
+}
+
+.budgetNote {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.methodActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 3rem;
+}
+
+.fine {
+  flex-basis: 100%;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ── FAQ ── (comportement d'ouverture et de fermeture inchangé) */
+.faq {
+  min-height: 0;
+  padding-top: 0;
+}
+
+.faq > :global(.container) {
+  width: 100%;
+  min-width: 0;
+}
+
+.faqInner {
+  max-width: 52rem;
+  margin: 0 auto;
 }
 
 .faqList {
-  max-width: 680px;
+  border-top: var(--border-subtle);
 }
 
 .faqItem {
-  border-bottom: 1px solid rgba(154, 144, 136, 0.15);
+  border-bottom: var(--border-subtle);
 }
 
 .faqItem summary {
@@ -433,11 +461,11 @@
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  padding: 1.25rem 0;
+  padding: 1.375rem 0;
   font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.25;
   color: var(--text-main);
   cursor: pointer;
   transition: color var(--transition-base);
@@ -449,13 +477,12 @@
 
 .faqItem summary::after {
   content: '+';
-  font-family: var(--font-body);
-  font-style: normal;
-  font-size: 1.2rem;
-  font-weight: 300;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 400;
   line-height: 1;
   color: var(--accent-primary);
-  flex-shrink: 0;
   /* Le signe suit la même règle que la rangée : il revient au rythme de la
      fermeture, pas au sien. */
   transition: transform 0.35s cubic-bezier(0.4, 0, 1, 1);
@@ -465,26 +492,21 @@
   color: var(--accent-primary);
 }
 
-/* Le signe ne change pas de glyphe, il tourne : un + à 135° est un ×, et
-   c'est la seule façon d'animer le passage. Remplacer le caractère, comme
-   avant, produisait un saut sec au milieu d'une ouverture en douceur. */
+/* Le signe ne change pas de glyphe, il tourne : un + à 135° est un ×. */
 .faqItem[open] summary::after {
   transform: rotate(135deg);
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Les deux sens ont leur courbe. Ici, la fermeture : elle accélère vers zéro,
-   comme un tiroir qu'on pousse. Une courbe à longue traîne laisserait un filet
-   de rangée ramper un quart de seconde après que tout a l'air fini, et c'est
-   ce reste de mouvement qui se lit comme un à-coup. */
+/* Fermeture : elle accélère vers zéro, comme un tiroir qu'on pousse. */
 .faqAnswer {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 1, 1);
   overflow: hidden;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 1, 1);
 }
 
-/* L'ouverture, elle, part vite et se pose. */
+/* Ouverture : elle part vite et se pose. */
 .faqItem[open] .faqAnswer {
   grid-template-rows: 1fr;
   transition: grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -492,16 +514,13 @@
 
 .faqAnswerInner {
   overflow: hidden;
+  max-width: 44rem;
   padding-bottom: 1.5rem;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
   color: var(--text-muted);
-  line-height: 1.8;
   opacity: 0;
   transform: translateY(-4px);
-  /* Même durée et même courbe que la rangée : le texte descend avec elle.
-     Sinon on assiste à deux gestes — un texte qui s'efface, puis un vide qui
-     se referme — là où il n'y a qu'un seul objet qui se replie. */
   transition:
     opacity 0.35s cubic-bezier(0.4, 0, 1, 1),
     transform 0.35s cubic-bezier(0.4, 0, 1, 1);
@@ -515,11 +534,8 @@
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
 }
 
-/* La fermeture ne s'animait pas : en retirant `open`, le navigateur cache
-   son contenu à l'instant même, donc la rangée se refermait sur du vide.
-   `allow-discrete` repousse ce basculement à la fin de la transition — le
-   texte reste rendu le temps que la hauteur redescende, puis disparaît,
-   accessibilité comprise. */
+/* `allow-discrete` laisse le texte rendu le temps que la hauteur redescende :
+   sans lui, la rangée se refermait sur du vide. */
 @supports selector(::details-content) {
   .faqItem::details-content {
     content-visibility: hidden;
@@ -531,6 +547,95 @@
   }
 }
 
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 7rem;
+  }
+
+  .heroGrid,
+  .stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .heroText,
+  .heroSide,
+  .stageText,
+  .why {
+    grid-column: 1 / -1;
+  }
+
+  .heroSide {
+    margin-top: 1.5rem;
+  }
+
+  .next {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stage {
+    padding: 2rem 1.25rem;
+  }
+
+  .card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    margin: 3.5rem 0 2.5rem;
+  }
+
+  .steps::before {
+    display: none;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 0.125rem 1rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  .stepNumber {
+    grid-row: 1 / span 2;
+    margin: 0;
+  }
+
+  .stepTitle {
+    margin: 0;
+  }
+
+  .proofInner {
+    justify-content: flex-start;
+  }
+
+  .faqItem summary {
+    font-size: 1.2rem;
+  }
+}
+
+/* Sur un écran étroit, le prix passe sous le nom du forfait. */
+@media (max-width: 480px) {
+  .priceRow {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .priceValue {
+    text-align: left;
+    white-space: normal;
+  }
+
+  .proofInner li + li::before {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .faqAnswer,
   .faqAnswerInner,
@@ -538,109 +643,5 @@
   .faqItem summary::after {
     transition-duration: 0.01s;
     transition-delay: 0s;
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 7rem;
-  }
-
-  .sectionHeader {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .headerRight {
-    padding-bottom: 0;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .card {
-    padding: 0 0 3rem 0;
-  }
-
-  .card:first-child {
-    padding-left: 0;
-  }
-
-  .card:first-child::before {
-    display: none;
-  }
-
-  .card:last-child {
-    padding-bottom: 0;
-  }
-
-  .separator {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: auto;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(var(--tint-rgb), 0.2) 20%,
-      rgba(var(--tint-rgb), 0.2) 80%,
-      transparent
-    );
-  }
-
-  .cardNumber {
-    font-size: 6rem;
-  }
-
-  .cardFooter {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .blocks {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .block {
-    padding: 0 0 3rem 0;
-  }
-
-  .block:first-child {
-    padding-left: 0;
-  }
-
-  .block:first-child::before {
-    display: none;
-  }
-
-  .block:last-child {
-    padding-bottom: 0;
-  }
-
-  .blockSeparator {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: auto;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(var(--tint-rgb), 0.2) 20%,
-      rgba(var(--tint-rgb), 0.2) 80%,
-      transparent
-    );
-  }
-
-  .blockNumber {
-    font-size: 6rem;
   }
 }

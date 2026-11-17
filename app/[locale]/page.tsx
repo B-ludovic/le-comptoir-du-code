@@ -44,7 +44,26 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <Hero dict={dict.hero} />
 
       {/* Section 2 — Ce que je construis : trois familles, aucun prix */}
-      <Build dict={dict.build} />
+      <Build
+        dict={dict.build}
+        items={[
+          {
+            title: dict.build.item1_title,
+            text: dict.build.item1_text,
+            link: { label: dict.build.item1_link, href: '#muse' },
+          },
+          {
+            title: dict.build.item2_title,
+            text: dict.build.item2_text,
+            link: { label: dict.build.item2_link, href: '#fairy-chair-studio' },
+          },
+          {
+            title: dict.build.item3_title,
+            text: dict.build.item3_text,
+            link: { label: dict.build.item3_link, href: '#la-requeyrie' },
+          },
+        ]}
+      />
 
       {/* Section 3 — Méthodologie : cadrage (étape 01), construction (02),
           mise en service (03). Remplace Méthode, Cadrage et Solutions. */}

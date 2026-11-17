@@ -308,5 +308,154 @@
     "cookies": "Gestion des Cookies",
     "cgps": "CGP de Services",
     "cgp_scoping": "CGP Cadrage"
+  },
+  "solidaire": {
+    "hero": {
+      "kicker": "L'Échoppe Solidaire · développement web pour les associations",
+      "h1_lead": "Le code au service de celles et ceux ",
+      "h1_accent": "qui font",
+      "h1_tail": ".",
+      "sub": "Militer, informer, rassembler demande déjà beaucoup d'énergie. Elle ne doit pas partir dans des outils inadaptés. L'Échoppe Solidaire travaille en priorité avec les associations LGBTQI+, et plus largement avec toute structure engagée : même exigence technique, même code sur-mesure, avec {rate} de mécénat de compétences.",
+      "cta": "Parler de votre projet",
+      "cta_secondary": "Voir les tarifs solidaires",
+      "reassurance": "Un seul interlocuteur, un devis officiel, un code qui vous appartient.",
+      "engagements_label": "Trois engagements",
+      "engagements": [
+        {
+          "title": "Transparence totale",
+          "text": "Sur justificatifs, un devis officiel détaille la valeur réelle du travail et le mécénat appliqué. Un contrat est signé."
+        },
+        {
+          "title": "Une alliance, pas une exécution",
+          "text": "On part de vos besoins réels, on retire le superflu, et on conçoit ce qui soulage vos équipes sur le terrain."
+        },
+        {
+          "title": "Indépendance totale",
+          "text": "Le code et l'hébergement sont à votre nom. Je vous forme, et vous ne dépendez pas de moi."
+        }
+      ],
+      "proof": [
+        "Mécénat de compétences {rate}",
+        "Devis officiel sur justificatif",
+        "Code livré avec ses sources"
+      ]
+    },
+    "tools": {
+      "eyebrow": "Ce que je construis pour vous",
+      "section_title": "Des outils à la hauteur de vos combats.",
+      "intro": "Une association perd vite un temps précieux à se battre contre des outils inadaptés. Mon métier : une architecture web solide, pour que votre énergie aille au terrain.",
+      "items": [
+        {
+          "title": "Dons sécurisés",
+          "text": "Intégration Stripe directe, sans plateforme intermédiaire. Vous ne payez que les frais Stripe standard, sans commission prélevée par un tiers."
+        },
+        {
+          "title": "Gestion des membres",
+          "text": "Espaces adhérents privés, adhésions automatisées, reçus fiscaux PDF. Moins d'administration, plus de terrain."
+        },
+        {
+          "title": "Données sensibles protégées",
+          "text": "Orientation, santé, convictions : bases de données verrouillées, accès stricts par rôle, hébergement souverain. La protection des données est traitée dans le code, pas seulement dans une page de mentions légales."
+        }
+      ]
+    },
+    "method": {
+      "eyebrow": "Méthode et tarifs",
+      "section_title": "Les mêmes forfaits, avec {rate} de mécénat.",
+      "intro": "Le même travail que pour mes clients commerciaux, au même niveau d'exigence. Le mécénat de compétences s'applique directement sur le prix, sur présentation d'un justificatif : récépissé de déclaration en préfecture, statuts déposés ou extrait du RNA.",
+      "steps": [
+        {
+          "title": "Cadrage",
+          "text": "Le plan, par écrit"
+        },
+        {
+          "title": "Construction",
+          "text": "Le code, testé"
+        },
+        {
+          "title": "Mise en service",
+          "text": "En ligne, et à vous"
+        }
+      ],
+      "e1_tag": "Étape 01",
+      "e1_title": "Cadrage : poser le projet",
+      "e1_text": "Avant tout devis, un atelier en visio pour poser le projet : ce que l'outil doit gérer, qui y accède, quelles données il protège. Vous repartez avec un dossier écrit qui vous appartient, que vous pouvez confier à n'importe quel développeur. C'est une étape d'ingénierie préliminaire, au tarif associatif, à partir de {price} HT.",
+      "optional_note": "Facultatif pour un site vitrine. Nécessaire dès qu'il y a des comptes, des dons en ligne ou des données sensibles.",
+      "why_title": "Pourquoi commencer par là",
+      "why_text": "Les décisions les plus chères à corriger après coup sont prises au début : qui voit quelles données, comment l'argent circule, ce qui reste hors de la première version. Le cadrage les tranche, par écrit.",
+      "e2_tag": "Étape 02",
+      "e2_title": "Construction",
+      "e2_text": "Le devis sort du dossier : chiffré en jours, module par module, avec le prix standard et le mécénat appliqué écrits côte à côte.",
+      "budget_note": "Budget serré ? Le périmètre et l'échéancier s'adaptent aux moyens de l'association.",
+      "e3_tag": "Étape 03",
+      "e3_title": "Mise en service",
+      "e3_text": "Mise en ligne, prise en main, code source remis. Maintenance et sécurité au tarif solidaire, un barème dédié plutôt qu'une remise sur le tarif standard :",
+      "socles": {
+        "presence": "Site vitrine",
+        "boutique": "Dons, adhésions et espace membres",
+        "outils": "Application métier"
+      },
+      "from": "dès",
+      "standard_label": "Prix standard",
+      "cta": "Parler de votre projet",
+      "terms_link": "Conditions générales de prestation",
+      "vat_notice": "Tarifs hors taxes, TVA de 20 % en sus. Le mécénat de compétences est conditionné à la fourniture d'un récépissé de déclaration en préfecture ou équivalent."
+    },
+    "faq": {
+      "eyebrow": "Questions fréquentes",
+      "items": [
+        {
+          "q": "Comment prouver le statut de mon association ?",
+          "a": "Un récépissé de déclaration en préfecture, vos statuts déposés, ou un extrait du RNA suffisent. Je les demande avant la signature du devis — pas de paperasse au dernier moment."
+        },
+        {
+          "q": "La remise de 50 % s'applique aussi à la maintenance ?",
+          "a": "La maintenance post-livraison est calculée sur un tarif solidaire dédié, indiqué sur chaque forfait. Elle n'est pas automatiquement à −50 % du tarif standard, mais reste très en dessous du marché."
+        },
+        {
+          "q": "Vous travaillez exclusivement avec des associations LGBTQI+ ?",
+          "a": "En priorité, oui. Mais L'Échoppe Solidaire est ouverte à toutes les structures à but non lucratif dont les valeurs s'alignent. Je prends chaque demande au cas par cas."
+        },
+        {
+          "q": "Et si notre budget est inférieur aux forfaits affichés ?",
+          "a": "Écrivez-moi quand même. Je peux adapter le périmètre, étaler les paiements, ou orienter vers une solution plus légère. Une conversation honnête vaut mieux qu'un formulaire fermé."
+        },
+        {
+          "q": "Comment se passe le paiement avec l'acompte ?",
+          "a": "30 % à la signature (une facture d'acompte officielle est émise par Jump Green), 70 % à la mise en ligne. Règlement par virement uniquement. Aucun paiement avant que vous ayez validé le devis officiel."
+        },
+        {
+          "q": "Que se passe-t-il après la livraison ?",
+          "a": "Je vous forme à l'utilisation de votre outil, je vous remets toutes les clés d'accès, et le code vous appartient intégralement. Si vous avez besoin de moi plus tard, je suis là — mais vous n'en dépendez pas."
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "Votre projet",
+      "section_title": "Parlons de votre association.",
+      "intro": "Décrivez votre structure, vos besoins et vos contraintes budgétaires. Réponse sous 24 h ouvrées, avec une proposition honnête.",
+      "assurance1": "Réponse sous 24 h ouvrées",
+      "assurance2": "Échange de 15 minutes",
+      "assurance3": "Devis officiel, mécénat écrit noir sur blanc",
+      "field_name": "Nom & association",
+      "field_email": "Email",
+      "field_description": "Votre projet",
+      "field_description_placeholder": "Décrivez votre association, ce que vous souhaitez construire, et ce qui bloque aujourd'hui…",
+      "field_budget": "Forfait souhaité",
+      "field_budget_placeholder": "— Choisir un forfait —",
+      "budget_scoping": "Cadrage — à partir de {price} HT",
+      "budget_tier": "{name} — à partir de {price} HT",
+      "btn_submit": "Envoyer ma demande",
+      "privacy_note": "Vos données ne servent qu'à répondre à cette demande.",
+      "privacy_link": "Politique de confidentialité",
+      "success": "Demande envoyée. Réponse sous 24 heures ouvrées.",
+      "error_invalid": "Certains champs sont incomplets. Vérifiez le formulaire ci-dessus.",
+      "error_rate_limited": "Vous avez déjà envoyé trois demandes. Réessayez dans quinze minutes.",
+      "error_transport": "L'envoi a échoué de mon côté. Écrivez-moi directement à",
+      "err_name": "Indiquez votre nom ou celui de votre association.",
+      "err_email": "Cette adresse email ne semble pas valide.",
+      "err_budget": "Sélectionnez un forfait.",
+      "err_message": "Décrivez votre projet en dix caractères minimum."
+    }
   }
 }

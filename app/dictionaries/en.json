@@ -308,5 +308,154 @@
     "cookies": "Cookie Policy",
     "cgps": "Terms of Service",
     "cgp_scoping": "Scoping Terms"
+  },
+  "solidaire": {
+    "hero": {
+      "kicker": "L'Échoppe Solidaire · web development for non-profits",
+      "h1_lead": "Code in the service of those ",
+      "h1_accent": "who act",
+      "h1_tail": ".",
+      "sub": "Campaigning, informing, bringing people together already takes a lot of energy. None of it should go into fighting unsuitable tools. L'Échoppe Solidaire works first with LGBTQI+ organisations, and more broadly with any committed non-profit: the same technical standards, the same custom code, with {rate} skills sponsorship.",
+      "cta": "Tell me about your project",
+      "cta_secondary": "See non-profit pricing",
+      "reassurance": "One point of contact, an official quote, code that belongs to you.",
+      "engagements_label": "Three commitments",
+      "engagements": [
+        {
+          "title": "Total transparency",
+          "text": "On supporting documents, an official quote sets out the real value of the work and the sponsorship applied. A contract is signed."
+        },
+        {
+          "title": "A partnership, not an order",
+          "text": "We start from your real needs, cut what you don't need, and design what actually helps your teams on the ground."
+        },
+        {
+          "title": "Total independence",
+          "text": "The code and the hosting are in your name. I train you, and you don't depend on me."
+        }
+      ],
+      "proof": [
+        "{rate} skills sponsorship",
+        "Official quote on supporting documents",
+        "Code delivered with its sources"
+      ]
+    },
+    "tools": {
+      "eyebrow": "What I build for you",
+      "section_title": "Tools worthy of your causes.",
+      "intro": "A non-profit quickly loses precious time fighting unsuitable tools. My job: a solid web architecture, so your energy goes to the ground.",
+      "items": [
+        {
+          "title": "Secure donations",
+          "text": "Direct Stripe integration, no intermediary platform. You only pay standard Stripe fees, with no commission taken by a third party."
+        },
+        {
+          "title": "Member management",
+          "text": "Private member areas, automated memberships, PDF tax receipts. Less admin, more fieldwork."
+        },
+        {
+          "title": "Sensitive data protected",
+          "text": "Orientation, health, beliefs: locked databases, strict role-based access, sovereign hosting. Data protection is handled in the code, not just in a legal notice page."
+        }
+      ]
+    },
+    "method": {
+      "eyebrow": "Process and pricing",
+      "section_title": "The same packages, with {rate} sponsorship.",
+      "intro": "The same work as for my commercial clients, to the same standard. Skills sponsorship comes straight off the price, on presentation of a supporting document: registration receipt from the prefecture, filed articles of association or an RNA extract.",
+      "steps": [
+        {
+          "title": "Scoping",
+          "text": "The plan, in writing"
+        },
+        {
+          "title": "Build",
+          "text": "The code, tested"
+        },
+        {
+          "title": "Launch",
+          "text": "Live, and yours"
+        }
+      ],
+      "e1_tag": "Step 01",
+      "e1_title": "Scoping: setting out the project",
+      "e1_text": "Before any quote, a video workshop to set out the project: what the tool has to handle, who can access it, which data it protects. You leave with a written report that belongs to you, which you can hand to any developer. It is a preliminary engineering step, at the non-profit rate, from {price} excl. VAT.",
+      "optional_note": "Optional for a marketing website. Required as soon as there are accounts, online donations or sensitive data.",
+      "why_title": "Why start there",
+      "why_text": "The decisions that cost the most to fix later are made at the start: who sees which data, how the money flows, what stays out of the first version. Scoping settles them, in writing.",
+      "e2_tag": "Step 02",
+      "e2_title": "Build",
+      "e2_text": "The quote comes out of the report: priced in days, module by module, with the standard price and the sponsorship written side by side.",
+      "budget_note": "Tight budget? The scope and the payment schedule adapt to the organisation's means.",
+      "e3_tag": "Step 03",
+      "e3_title": "Launch",
+      "e3_text": "Go-live, handover, source code delivered. Maintenance and security at the non-profit rate, a dedicated scale rather than a discount on the standard rate:",
+      "socles": {
+        "presence": "Marketing website",
+        "boutique": "Donations, memberships and member area",
+        "outils": "Business application"
+      },
+      "from": "from",
+      "standard_label": "Standard price",
+      "cta": "Tell me about your project",
+      "terms_link": "General terms of service",
+      "vat_notice": "Prices exclude VAT; 20% VAT applies on top. Skills sponsorship is conditional on providing a registration receipt from the prefecture or equivalent."
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "items": [
+        {
+          "q": "How do I prove my non-profit status?",
+          "a": "A registration receipt from the relevant authority, your filed articles of association, or an RNA extract are sufficient. I ask for these before signing the quote — no last-minute paperwork."
+        },
+        {
+          "q": "Does the 50% discount apply to maintenance too?",
+          "a": "Post-delivery maintenance is calculated at a dedicated solidarity rate, shown on each plan. It is not automatically 50% off the standard rate, but remains well below market price."
+        },
+        {
+          "q": "Do you work exclusively with LGBTQI+ organisations?",
+          "a": "Primarily, yes. But L'Échoppe Solidaire is open to all non-profit structures whose values align. I assess each request individually."
+        },
+        {
+          "q": "What if our budget is below the listed plans?",
+          "a": "Write to me anyway. I can adjust the scope, spread payments, or point you towards a lighter solution. An honest conversation is worth more than a closed form."
+        },
+        {
+          "q": "How does payment work with the deposit?",
+          "a": "30% on signing (an official deposit invoice is issued by Jump Green), 70% on go-live. Bank transfer only. No payment before you have validated the official quote."
+        },
+        {
+          "q": "What happens after delivery?",
+          "a": "I train you on using your tool, hand over all access credentials, and the code is entirely yours. If you need me later, I am here — but you will not depend on me."
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "Your project",
+      "section_title": "Let's talk about your organisation.",
+      "intro": "Tell me about your organisation, your needs and your budget constraints. Reply within 24 working hours, with an honest proposal.",
+      "assurance1": "Reply within 24 working hours",
+      "assurance2": "A 15-minute call",
+      "assurance3": "Official quote, sponsorship in writing",
+      "field_name": "Name & organisation",
+      "field_email": "Email",
+      "field_description": "Your project",
+      "field_description_placeholder": "Describe your organisation, what you want to build, and what is blocking you today…",
+      "field_budget": "Desired package",
+      "field_budget_placeholder": "— Choose a package —",
+      "budget_scoping": "Scoping — from {price} excl. VAT",
+      "budget_tier": "{name} — from {price} excl. VAT",
+      "btn_submit": "Send my request",
+      "privacy_note": "Your details are only used to answer this request.",
+      "privacy_link": "Privacy policy",
+      "success": "Request sent. Reply within 24 working hours.",
+      "error_invalid": "Some fields are incomplete. Please check the form above.",
+      "error_rate_limited": "You have already sent three requests. Try again in fifteen minutes.",
+      "error_transport": "Sending failed on my end. Write to me directly at",
+      "err_name": "Enter your name or your organisation name.",
+      "err_email": "This email address doesn't look valid.",
+      "err_budget": "Select a package.",
+      "err_message": "Describe your project in at least ten characters."
+    }
   }
 }

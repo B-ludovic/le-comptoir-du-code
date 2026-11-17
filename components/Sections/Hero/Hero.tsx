@@ -64,7 +64,7 @@ export default function Hero({ dict }: Props) {
         </div>
       </div>
 
-      <div className={styles.proof} data-reveal="">
+      <div className={styles.proof}>
         <div className={`container ${styles.proofInner}`}>
           <a
             href={REVIEWS_SOURCE}
