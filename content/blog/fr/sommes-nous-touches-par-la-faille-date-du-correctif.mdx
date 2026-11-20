@@ -1,0 +1,58 @@
+---
+title: "« Sommes-nous touchés par la faille ? » Demandez plutôt la date du correctif"
+description: "Fin octobre, deux failles critiques de PHP concernaient plus de deux sites sur trois. Une semaine plus tôt, c'était Next.js. Aucune technologie n'est à l'abri : ce qui protège un site, c'est le délai entre la publication d'un correctif et son installation."
+date: '2026-11-17'
+coverImage: '/images/blog/date-du-correctif.png'
+excerpt: "Une cliente m'a demandé si son site était touché par la faille PHP de fin octobre. La réponse était non, mais ce n'était pas la bonne question. Deux vérifications à faire vous-même, et deux dates à demander à votre prestataire."
+summary:
+  - "PHP2Shell, révélée le 21 octobre, touchait toutes les versions de PHP depuis 2012. Une semaine plus tôt, Next.js corrigeait deux failles critiques du même type."
+  - "Aucun langage ni framework n'est à l'abri. Ce qui sépare un site exposé d'un site protégé, c'est la date à laquelle le correctif a été installé."
+  - "Vous pouvez lire la version de PHP de votre site en deux minutes, sans savoir coder, et demander à votre prestataire la date de sa dernière mise à jour de sécurité."
+alternate_slug: 'are-we-affected-by-the-flaw-ask-for-the-patch-date'
+---
+
+Fin octobre, une cliente m'a écrit, inquiète. Les bulletins de sécurité relayaient une alerte sur PHP, le langage qu'utilisent plus de deux sites sur trois parmi ceux dont on connaît la technologie, WordPress et PrestaShop compris. Deux failles, baptisées PHP2Shell, permettaient à n'importe qui, sans identifiant, d'exécuter du code sur le serveur. Toutes les versions de PHP encore en service étaient concernées.
+
+Sa question : « Sommes-nous touchés ? »
+
+Ma réponse a été courte : non. Son site n'utilise pas PHP.
+
+## Une réponse exacte, mais pas la bonne question
+
+Cette réponse était exacte, et elle ne disait presque rien de la sécurité de son site.
+
+Le 14 octobre, une semaine avant PHP2Shell, Next.js, le framework sur lequel reposent la plupart de mes projets, publiait en urgence deux correctifs pour des failles critiques du même type : exécution de code à distance, sans identifiant. Le 25 août, il en avait déjà corrigé deux autres. Entre octobre et novembre, il a publié dix avis de sécurité. En décembre 2025, React2Shell, une faille commune à React et à Next.js notée 10 sur 10, a été exploitée dans les jours qui ont suivi sa publication.
+
+Les failles de PHP2Shell n'étaient pas nouvelles. Elles se trouvaient dans le code depuis PHP 5.4, sortie en 2012, et des chercheurs qui s'aidaient de modèles d'IA les ont trouvées cet été. Tous les langages et tous les frameworks contiennent des failles que personne n'a encore trouvées. La date de leur découverte ne dépend pas de vous. Celle de l'installation du correctif, si.
+
+## Dix-sept jours, puis dix-neuf
+
+Sur une boutique en ligne que j'entretiens, construite avec Next.js, deux séries de correctifs critiques concernaient la version installée cette année. Celle du 25 août est arrivée sur le site le 11 septembre, dix-sept jours plus tard. Celle du 14 octobre, le 2 novembre : dix-neuf jours.
+
+Dans les deux cas, la faille passait par l'optimisation des images. Sur cette boutique, ce traitement est assuré par l'infrastructure de l'hébergeur, et les images ne viennent que de sources contrôlées. La faille n'y était vraisemblablement pas exploitable. Ce « vraisemblablement » doit beaucoup à la configuration et peu au délai : dix-neuf jours restent dix-neuf jours.
+
+## Des dates plutôt que des promesses
+
+Sur cette même boutique, les dépendances ont été mises à jour le 25 mars, le 1er avril, le 14 avril, le 22 juillet, le 17 août, le 11 septembre, le 5 octobre, le 20 octobre, le 2 novembre et le 16 novembre. Chaque mise à jour déclenche les contrôles automatiques du projet.
+
+Le site repose sur plus de 1 600 paquets écrits par d'autres développeurs. Je ne les ai pas tous lus, personne ne le fait. Je sais lesquels sont installés, en quelle version, et je vérifie à chaque passage lesquels sont visés par un avis de sécurité.
+
+Un site WordPress passé à PHP 8.4.27 le 22 octobre était protégé contre PHP2Shell. Un site Next.js resté sur une version de l'été restait concerné par les failles d'octobre. Le site exposé n'est pas celui qui tourne sous PHP ou sous Next.js. C'est celui sur lequel personne n'a installé le correctif.
+
+## Ce que vous pouvez vérifier vous-même
+
+**La version de PHP de votre site.** Sur ordinateur, ouvrez votre site dans Chrome ou Firefox et appuyez sur F12 (Cmd+Option+I sur Mac). Dans le panneau qui s'ouvre, choisissez l'onglet « Réseau », rechargez la page, puis cliquez sur la première ligne de la liste. Dans les en-têtes de réponse, cherchez « X-Powered-By ».
+
+Si vous lisez « PHP/ » suivi d'un numéro, comparez-le aux versions corrigées publiées le 21 octobre : 8.2.35, 8.3.36, 8.4.27 et 8.5.12. Un numéro plus bas dans la même série, 8.4.26 par exemple, mérite une question à votre prestataire : soit le correctif n'est pas installé, soit l'hébergeur l'a appliqué sans changer le numéro, ce que font certaines distributions Linux. Pour PHP 8.1 et les versions plus anciennes, le projet PHP n'a publié aucune version corrigée.
+
+Si l'en-tête n'apparaît pas, ça ne prouve rien : beaucoup d'hébergeurs le masquent.
+
+**Si votre site est un WordPress**, la version s'affiche aussi dans l'administration : Outils, puis Santé du site, onglet Infos, rubrique Serveur.
+
+**Deux dates à demander.** Demandez à votre prestataire à quelle date la dernière mise à jour de sécurité a été installée sur votre site, et à quelle date la précédente. Quelqu'un qui suit votre site vous répond avec deux dates.
+
+Le correctif de PHP était disponible pour tout le monde le 21 octobre. Les sites encore exposés aujourd'hui sont ceux sur lesquels personne ne l'a installé.
+
+---
+
+_Vous ne savez pas à quelle date votre site a été mis à jour pour la dernière fois ? [Parlons-en.](/fr#contact)_

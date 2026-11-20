@@ -1,0 +1,58 @@
+---
+title: "\"Are we affected by the flaw?\" Ask for the patch date instead"
+description: "In late October, two critical PHP flaws hit more than two websites in three. A week earlier, it was Next.js. No technology is immune: what protects a website is the time between a patch being published and being installed."
+date: '2026-11-17'
+coverImage: '/images/blog/date-du-correctif.png'
+excerpt: "A client asked me whether her website was affected by the PHP flaw in late October. The answer was no, but it wasn't the right question. Two checks you can run yourself, and two dates to ask your developer for."
+summary:
+  - "PHP2Shell, disclosed on 21 October, affected every PHP version since 2012. A week earlier, Next.js had fixed two critical flaws of the same kind."
+  - "No language or framework is immune. What separates an exposed website from a protected one is the date the patch was installed."
+  - "You can read your website's PHP version in two minutes, without coding, and ask your developer when the last security update was installed."
+alternate_slug: 'sommes-nous-touches-par-la-faille-date-du-correctif'
+---
+
+In late October, a client wrote to me, worried. Security bulletins were relaying an alert about PHP, the language used by more than two websites in three among those whose technology is known, WordPress and PrestaShop included. Two flaws, named PHP2Shell, let anyone run code on the server remotely, without logging in. Every PHP version still in use was affected.
+
+Her question: "Are we affected?"
+
+My answer was short: no. Her website doesn't use PHP.
+
+## An accurate answer to the wrong question
+
+That answer was accurate, and it said almost nothing about how secure her website was.
+
+On 14 October, a week before PHP2Shell, Next.js, the framework most of my projects are built on, shipped emergency fixes for two critical flaws of the same kind: remote code execution, no login required. On 25 August, it had already fixed two others. Between October and November, it published ten security advisories. In December 2025, React2Shell, a flaw shared by React and Next.js and rated 10 out of 10, was exploited within days of being disclosed.
+
+The PHP2Shell flaws weren't new. They had been in the code since PHP 5.4, released in 2012, and researchers working with AI models found them this summer. Every language and every framework contains flaws nobody has found yet. When they get discovered is out of your hands. When the patch gets installed isn't.
+
+## Seventeen days, then nineteen
+
+On an online shop I maintain, built with Next.js, two rounds of critical fixes this year applied to the installed version. The 25 August round reached the site on 11 September, seventeen days later. The 14 October round, on 2 November: nineteen days.
+
+Both times, the flaw went through image optimisation. On this shop, that processing runs on the host's infrastructure, and images only come from controlled sources. The flaw was most likely not exploitable there. That "most likely" owes a lot to the configuration and little to the delay: nineteen days are still nineteen days.
+
+## Dates rather than promises
+
+On that same shop, the dependencies were updated on 25 March, 1 April, 14 April, 22 July, 17 August, 11 September, 5 October, 20 October, 2 November and 16 November. Each update triggers the project's automated checks.
+
+The site relies on more than 1,600 packages written by other developers. I haven't read them all; nobody does. I know which ones are installed, in which version, and each time I go through them I check which ones are named in a security advisory.
+
+A WordPress site moved to PHP 8.4.27 on 22 October was protected against PHP2Shell. A Next.js site left on a summer version was still affected by the October flaws. The exposed website isn't the one running on PHP or on Next.js. It's the one where nobody installed the patch.
+
+## What you can check yourself
+
+**Your website's PHP version.** On a computer, open your website in Chrome or Firefox and press F12 (Cmd+Option+I on a Mac). In the panel that opens, choose the "Network" tab, reload the page, then click the first line in the list. In the response headers, look for "X-Powered-By".
+
+If you see "PHP/" followed by a number, compare it with the fixed versions released on 21 October: 8.2.35, 8.3.36, 8.4.27 and 8.5.12. A lower number in the same series, 8.4.26 for instance, deserves a question to your developer: either the patch isn't installed, or the host applied it without changing the number, which some Linux distributions do. For PHP 8.1 and older, the PHP project hasn't released any fixed version.
+
+If the header doesn't appear, that proves nothing: many hosts hide it.
+
+**If your website runs on WordPress**, the version also shows in the admin area: Tools, then Site Health, Info tab, Server section.
+
+**Two dates to ask for.** Ask your developer when the last security update was installed on your website, and when the one before it was. Someone who looks after your website answers with two dates.
+
+The PHP patch was available to everyone on 21 October. The websites still exposed today are the ones where nobody installed it.
+
+---
+
+_Not sure when your website was last updated? [Let's talk.](/en#contact)_

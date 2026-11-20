@@ -105,6 +105,16 @@ export const PROJECT_MEDIA: ProjectMedia[] = [
     flagship: true,
   },
   {
+    slug: 'la-requeyrie',
+    images: [
+      '/images/req-appartements.png',
+      '/images/req-around.png',
+      '/images/req-footer.png',
+    ],
+    url: 'https://www.larequeyrie.fr',
+    status: 'online',
+  },
+  {
     /* Mis hors ligne : okanime.live ne sert plus qu'une 404. Même traitement
        que Mea Vita — le chantier garde sa ligne au catalogue, sans URL, avec
        son seul code public. */
@@ -118,16 +128,6 @@ export const PROJECT_MEDIA: ProjectMedia[] = [
     url: null,
     repo: 'https://github.com/B-ludovic/okanime',
     status: 'archived',
-  },
-  {
-    slug: 'la-requeyrie',
-    images: [
-      '/images/req-appartements.png',
-      '/images/req-around.png',
-      '/images/req-footer.png',
-    ],
-    url: 'https://www.larequeyrie.fr',
-    status: 'online',
   },
   {
     /* La boutique n'est plus servie : le domaine ne résout plus. Le chantier
